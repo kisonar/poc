@@ -13,6 +13,7 @@
     </properties>
     <modules>
         <module>mossad-network</module>
+        <module>mossad-tools</module>
         <module>mossad-poc</module>
     </modules>
     <dependencyManagement>
@@ -59,6 +60,13 @@
                 <groupId>org.apache.kafka</groupId>
                 <artifactId>kafka-streams</artifactId>
                 <version>1.1.0</version>
+            </dependency>
+
+            <!-- tools libraries-->
+            <dependency>
+                <groupId>com.1stleg</groupId>
+                <artifactId>jnativehook</artifactId>
+                <version>2.1.0</version>
             </dependency>
 
         </dependencies>
