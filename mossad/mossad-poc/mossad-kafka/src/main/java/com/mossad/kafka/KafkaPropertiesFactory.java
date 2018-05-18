@@ -2,7 +2,7 @@ package com.mossad.kafka;
 
 import java.util.Properties;
 
-final class PropertiesFactory {
+public final class KafkaPropertiesFactory {
 
     public static Properties getProperties() {
         Properties props = new Properties();

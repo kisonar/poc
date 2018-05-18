@@ -1,9 +1,6 @@
-package com.mossad.kafka;
+package com.mossad.kafka.admin;
 
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
-
+import com.mossad.kafka.KafkaPropertiesFactory;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.DescribeClusterResult;
 import org.apache.kafka.clients.admin.ListTopicsResult;
@@ -11,11 +8,15 @@ import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.KafkaFuture;
 import org.apache.kafka.common.Node;
 
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
 
-public final class MossadKafkaAdminClient {
+
+public final class KafkaAdminClient {
 
     public static void main(String ... args){
-        Properties properties = PropertiesFactory.getProperties();
+        Properties properties = KafkaPropertiesFactory.getProperties();
         AdminClient adminClient = AdminClient.create(properties);
 
         NewTopic topic = new NewTopic("myTopic",1, Short.parseShort("1"));
@@ -34,8 +35,9 @@ public final class MossadKafkaAdminClient {
 
          DescribeClusterResult describeClusterResult = adminClient.describeCluster();
          KafkaFuture<Node> node=  describeClusterResult.controller();
-         node.whenComplete((node1, throwable) -> {
-             String idString = node1.idString();
+        node.whenComplete((nodeRed, throwable) -> {
+            String idString = nodeRed.idString();
+
          });
 
 
