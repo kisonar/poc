@@ -37,7 +37,8 @@ public class KeyReader implements NativeKeyListener {
     }
 
     public List getCollectedKeys(){
-        List result =  List.copyOf(readSigns);
+
+        List result =  List.of(readSigns);
         readSigns.clear();
         return result;
     }
