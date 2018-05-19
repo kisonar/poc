@@ -21,13 +21,11 @@ public class KeyReader implements NativeKeyListener {
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
         String keyText = NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode());
         String modifiersText = NativeKeyEvent.getModifiersText(nativeKeyEvent.getKeyCode());
-
         char keyChar = nativeKeyEvent.getKeyChar();
-
         System.out.println("readValue : "+keyText);
         System.out.println("modifiersText: "+modifiersText);
         System.out.println("keyChar: "+ keyChar);
-        //readSigns.add(readValue );
+        //TODO add content
     }
 
     @Override
