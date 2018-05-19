@@ -11,7 +11,7 @@ public class WriterTask extends TimerTask {
     private KeyReader keyReader;
     private LogRecorder logRecorder;
 
-    public WriterTask(KeyReader keyReader,LogRecorder logRecorder) {
+    public WriterTask(KeyReader keyReader, LogRecorder logRecorder) {
         this.keyReader = keyReader;
         this.logRecorder = logRecorder;
     }
