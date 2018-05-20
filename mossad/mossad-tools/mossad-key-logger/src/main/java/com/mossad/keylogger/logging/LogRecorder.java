@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import java.util.Objects;
+
 
 public class LogRecorder {
 
@@ -24,7 +26,10 @@ public class LogRecorder {
     }
 
     public void writeContent(String content) {
-        LOG.severe(content);
+
+        if (!Objects.isNull(content) && !content.isEmpty()) {
+            LOG.severe(content);
+        }
     }
 
 }
