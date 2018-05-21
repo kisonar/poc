@@ -10,6 +10,8 @@ public class KeyReader implements NativeKeyListener {
 
     private List<String> readSigns;
     private StringBuilder stringBuilder;
+    private final static String SPACE =" ";
+
 
     public KeyReader() {
         readSigns = new ArrayList<>();
@@ -24,6 +26,10 @@ public class KeyReader implements NativeKeyListener {
         //System.out.println("readValue : "+keyText);
         //System.out.println("modifiersText: "+modifiersText);
         //System.out.println("k347rdjnbveyChar: "+ keyChar);
+
+        if (isSpase(keyText)){
+            keyText = SPACE
+        }
         readSigns.add(keyText);
     }
 
@@ -36,10 +42,13 @@ public class KeyReader implements NativeKeyListener {
     }
 
     public List getCollectedKeys() {
-
         List<String> result = new ArrayList(readSigns);
         readSigns.clear();
         return result;
     }
 
+    private boolean isSpase (String keyText){
+        return (keyText.equalsIgnoreCase("space"))? true : false;
+
+    }
 }
