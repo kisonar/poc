@@ -28,7 +28,7 @@ public class KeyReader implements NativeKeyListener {
         //System.out.println("k347rdjnbveyChar: "+ keyChar);
 
         if (isSpase(keyText)){
-            keyText = SPACE
+            keyText = SPACE;
         }
         readSigns.add(keyText);
     }
