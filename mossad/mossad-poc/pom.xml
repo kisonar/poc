@@ -11,5 +11,6 @@
     <modules>
         <module>mossad-kafka</module>
         <module>mossad-others</module>
+        <module>mossad-java-features</module>
     </modules>
 </project>
