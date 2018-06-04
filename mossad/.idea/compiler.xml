@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mossad-berlin-clock" />
+        <module name="mossad-kafka" />
+        <module name="mossad-key-logger" />
+        <module name="mossad-network-client" />
+        <module name="mossad-network-library" />
+        <module name="mossad-network-server" />
+        <module name="mossad-ocjp" />
+        <module name="mossad-tree-walker" />
+        <module name="mossadjavafeaturesclient" />
+        <module name="mossadjavafeatureslibrary" />
+        <module name="mossadjavafeaturesservices" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mossad-berlin-clock" target="1.8" />
+      <module name="mossad-kafka" target="1.8" />
+      <module name="mossad-key-logger" target="1.8" />
+      <module name="mossad-network" target="1.5" />
+      <module name="mossad-network-client" target="1.8" />
+      <module name="mossad-network-library" target="1.8" />
+      <module name="mossad-network-server" target="1.8" />
+      <module name="mossad-ocjp" target="1.8" />
+      <module name="mossad-others" target="1.5" />
+      <module name="mossad-parent" target="1.5" />
+      <module name="mossad-poc" target="1.5" />
+      <module name="mossad-tools" target="1.5" />
+      <module name="mossad-tree-walker" target="1.8" />
+      <module name="mossadjavafeatures" target="1.5" />
+      <module name="mossadjavafeaturesclient" target="1.8" />
+      <module name="mossadjavafeatureslibrary" target="1.8" />
+      <module name="mossadjavafeaturesservices" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
