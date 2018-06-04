@@ -15,6 +15,13 @@
             <groupId>com.1stleg</groupId>
             <artifactId>jnativehook</artifactId>
         </dependency>
+		<!--
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.5</version>
+        </dependency>
+		-->
     </dependencies>
 
     <build>
