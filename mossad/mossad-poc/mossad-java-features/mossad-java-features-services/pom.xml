@@ -12,14 +12,12 @@
     <artifactId>mossad-java-features-services</artifactId>
     <packaging>jar</packaging>
 
-
     <dependencies>
         <dependency>
             <groupId>mossad</groupId>
             <artifactId>mossad-java-features-library</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
-
 
 </project>

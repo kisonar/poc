@@ -10,8 +10,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
         <maven.compiler.source>10</maven.compiler.source>
         <maven.compiler.target>10</maven.compiler.target>
+
     </properties>
     <modules>
         <module>mossad-network</module>
@@ -31,12 +33,6 @@
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.core</artifactId>
-                <!--
-                such version must be set for glassFish 4.1
-                version 5.0 and abovedoes not work -->
-                <!--
-                <version>4.3.0</version>
-                -->
                 <version>6.0.0</version>
                 <scope>provided</scope>
             </dependency>
@@ -92,6 +88,14 @@
                     <configuration>
                         <release>10</release>
                     </configuration>
+                    <!-- workaround for JAVA 10 -->
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.ow2.asm</groupId>
+                            <artifactId>asm</artifactId>
+                            <version>6.2</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
@@ -162,10 +166,10 @@
                                 </message>
                             </bannedPlugins>
                             <requireMavenVersion>
-                                <version>3.5.0</version>
+                                <version>3.5.3</version>
                             </requireMavenVersion>
                             <requireJavaVersion>
-                                <version>1.8</version>
+                                <version>1.10</version>
                             </requireJavaVersion>
                             <!--
                             <requireOS>
