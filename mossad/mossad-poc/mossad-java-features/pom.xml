@@ -12,6 +12,7 @@
     <artifactId>mossad-java-features</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>mossad-java-features-base</module>
         <module>mossad-java-features-library</module>
         <module>mossad-java-features-services</module>
         <module>mossad-java-features-client</module>
