@@ -1,4 +1,4 @@
-package mossad.java.features.base.streams;
+package mossad.java.features.base.nine.streams;
 
 import java.util.stream.Stream;
 

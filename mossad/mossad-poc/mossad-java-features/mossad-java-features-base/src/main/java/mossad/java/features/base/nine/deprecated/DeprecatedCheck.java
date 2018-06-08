@@ -1,4 +1,4 @@
-package mossad.java.features.base.deprecated;
+package mossad.java.features.base.nine.deprecated;
 
 public final class DeprecatedCheck {
 
