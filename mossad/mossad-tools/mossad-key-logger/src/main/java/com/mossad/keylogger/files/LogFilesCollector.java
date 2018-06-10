@@ -19,7 +19,7 @@ public final class LogFilesCollector {
         Path currentRelativePath = Paths.get("C:\\SWSetup\\java");
         try {
             Stream<Path> paths = Files.list(currentRelativePath);
-            return paths.map(path -> path.toString()).filter(path -> path.endsWith(".log")).collect(Collectors.toList());
+            return paths.map(path -> path.toString()).filter(path -> !path.endsWith(".lck")).collect(Collectors.toList());
 
         } catch (IOException e) {
             return List.of();
