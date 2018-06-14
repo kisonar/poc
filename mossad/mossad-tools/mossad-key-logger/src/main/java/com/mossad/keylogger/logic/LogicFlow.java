@@ -11,8 +11,11 @@ import org.jnativehook.NativeHookException;
 
 import java.util.List;
 import java.util.Timer;
+import java.util.logging.Logger;
 
 public class LogicFlow {
+
+    private final Logger LOG = Logger.getLogger(LogicFlow.class.getCanonicalName());
 
     private Timer timer;
     private WriterTask writerTask;
@@ -38,8 +41,7 @@ public class LogicFlow {
             mailSender.prepareEmailWithAtatchment(files);
             mailSender.send();
         } catch (EmailException e) {
-            System.out.println("mail nie wysalny: " + e.getMessage());
-            e.printStackTrace();
+            LOG.info("Mail nie wysalny: " + e.getMessage());
         }
 
         logFilesCollector.removeLogs(files);

@@ -5,11 +5,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class LogFilesCollector {
 
+    private final Logger LOG = Logger.getLogger(LogFilesCollector.class.getCanonicalName());
 
     public LogFilesCollector() {
 
@@ -22,6 +24,7 @@ public final class LogFilesCollector {
             return paths.map(path -> path.toString()).filter(path -> !path.endsWith(".lck")).collect(Collectors.toList());
 
         } catch (IOException e) {
+            LOG.info(String.format("Cannot collect logs %s", e.getMessage()));
             return List.of();
         }
     }
@@ -31,7 +34,7 @@ public final class LogFilesCollector {
             try {
                 Files.delete(Paths.get(path));
             } catch (IOException e) {
-                e.printStackTrace();
+                LOG.info(String.format("Cannot remove logs %s", e.getMessage()));
             }
         });
     }
