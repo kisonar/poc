@@ -10,11 +10,9 @@ public class KeyReader implements NativeKeyListener {
 
     private final static String SPACE = " ";
     private List<String> readSigns;
-    private StringBuilder stringBuilder;
 
     public KeyReader() {
         readSigns = new ArrayList<>();
-        stringBuilder = new StringBuilder();
     }
 
     @Override
@@ -33,7 +31,7 @@ public class KeyReader implements NativeKeyListener {
     }
 
     public List getCollectedKeys() {
-        List<String> result = new ArrayList(readSigns);
+        List<String> result = new ArrayList<>(readSigns);
         readSigns.clear();
         return result;
     }
@@ -68,11 +66,11 @@ public class KeyReader implements NativeKeyListener {
     }
 
     private boolean isSpace(String keyText) {
-        return (keyText.equalsIgnoreCase("space")) ? true : false;
+        return keyText.equalsIgnoreCase("space");
     }
 
     private boolean isShift(String keyText) {
-        return (keyText.equalsIgnoreCase("shift")) ? true : false;
+        return keyText.equalsIgnoreCase("shift");
     }
 
 

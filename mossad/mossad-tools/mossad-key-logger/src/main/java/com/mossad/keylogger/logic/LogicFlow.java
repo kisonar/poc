@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 public class LogicFlow {
 
     private final Logger LOG = Logger.getLogger(LogicFlow.class.getCanonicalName());
-
     private Timer timer;
     private WriterTask writerTask;
     private KeyReader keyReader;
@@ -41,7 +40,7 @@ public class LogicFlow {
             mailSender.prepareEmailWithAtatchment(files);
             mailSender.send();
         } catch (EmailException e) {
-            LOG.info("Mail nie wysalny: " + e.getMessage());
+            LOG.info("Mail has not been sent due to: " + e.getMessage());
         }
 
         logFilesCollector.removeLogs(files);

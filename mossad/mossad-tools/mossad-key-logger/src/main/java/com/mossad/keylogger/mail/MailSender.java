@@ -6,8 +6,11 @@ import org.apache.commons.mail.MultiPartEmail;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.logging.Logger;
 
 public final class MailSender {
+
+    private final Logger LOG = Logger.getLogger(MailSender.class.getCanonicalName());
 
     private EmailAttachment attachment;
     private MultiPartEmail email;
@@ -26,7 +29,7 @@ public final class MailSender {
             try {
                 email.attach(attachment);
             } catch (EmailException e) {
-                e.printStackTrace();
+                LOG.warning(String.format("Cannot send e-mail due to: %s", e.getMessage()));
             }
         });
 
