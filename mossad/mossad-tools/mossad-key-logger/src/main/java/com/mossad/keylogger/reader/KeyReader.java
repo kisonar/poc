@@ -27,7 +27,7 @@ public class KeyReader implements NativeKeyListener {
 
     @Override
     public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {
-        //collectKeyEvent(nativeKeyEvent);
+
     }
 
     public List getCollectedKeys() {
