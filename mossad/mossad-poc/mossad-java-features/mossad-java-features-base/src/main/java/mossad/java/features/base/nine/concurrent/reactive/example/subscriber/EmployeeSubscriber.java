@@ -5,7 +5,7 @@ import mossad.java.features.base.nine.concurrent.reactive.example.domain.Employe
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
 
-public class EmployeeSubscriber implements Subscriber<Employee> {
+public final class EmployeeSubscriber implements Subscriber<Employee> {
 
     private Subscription subscription;
 

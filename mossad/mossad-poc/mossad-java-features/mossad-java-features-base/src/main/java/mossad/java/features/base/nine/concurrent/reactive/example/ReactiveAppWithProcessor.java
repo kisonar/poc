@@ -1,7 +1,7 @@
 package mossad.java.features.base.nine.concurrent.reactive.example;
 
-import mossad.java.features.base.nine.concurrent.reactive.example.domain.EmpHelper;
 import mossad.java.features.base.nine.concurrent.reactive.example.domain.Employee;
+import mossad.java.features.base.nine.concurrent.reactive.example.domain.EmployeeFactory;
 import mossad.java.features.base.nine.concurrent.reactive.example.domain.Freelancer;
 import mossad.java.features.base.nine.concurrent.reactive.example.subscriber.FreelancerSubscriber;
 
@@ -26,7 +26,7 @@ public class ReactiveAppWithProcessor {
         publisher.subscribe(transformProcessor); // publisher to processor
         transformProcessor.subscribe(freelanceSubscriber); // processor to subscriber
 
-        List<Employee> emps = EmpHelper.getEmps();
+        List<Employee> emps = EmployeeFactory.getEmployees();
 
         // Publish items
         System.out.println("Publishing Items to Subscriber");

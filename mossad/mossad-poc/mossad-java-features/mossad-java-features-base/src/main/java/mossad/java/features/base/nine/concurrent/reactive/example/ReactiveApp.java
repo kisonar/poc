@@ -1,7 +1,7 @@
 package mossad.java.features.base.nine.concurrent.reactive.example;
 
-import mossad.java.features.base.nine.concurrent.reactive.example.domain.EmpHelper;
 import mossad.java.features.base.nine.concurrent.reactive.example.domain.Employee;
+import mossad.java.features.base.nine.concurrent.reactive.example.domain.EmployeeFactory;
 import mossad.java.features.base.nine.concurrent.reactive.example.subscriber.EmployeeSubscriber;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class ReactiveApp {
         EmployeeSubscriber subs = new EmployeeSubscriber();
         publisher.subscribe(subs);
 
-        List<Employee> emps = EmpHelper.getEmps();
+        List<Employee> emps = EmployeeFactory.getEmployees();
 
         // Publish items
         System.out.println("Publishing Items to Subscriber");

@@ -6,7 +6,7 @@ import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
 
 
-public class FreelancerSubscriber implements Subscriber<Freelancer> {
+public final class FreelancerSubscriber implements Subscriber<Freelancer> {
 
     private Subscription subscription;
 

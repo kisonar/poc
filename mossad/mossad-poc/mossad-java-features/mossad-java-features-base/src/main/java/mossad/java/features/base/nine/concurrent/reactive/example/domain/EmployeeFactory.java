@@ -3,9 +3,13 @@ package mossad.java.features.base.nine.concurrent.reactive.example.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpHelper {
+public final class EmployeeFactory {
 
-    public static List<Employee> getEmps() {
+    private EmployeeFactory() {
+
+    }
+
+    public static List<Employee> getEmployees() {
 
         Employee e1 = new Employee(1, "Pankaj");
         Employee e2 = new Employee(2, "David");
