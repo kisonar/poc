@@ -10,7 +10,7 @@ public class KafkaProcuderClient {
 
     public static void main(String[] args) {
         Producer<String, String> producer = new KafkaProducer<>(KafkaPropertiesFactory.getProperties());
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 10012; i++)
             producer.send(new ProducerRecord<>(KafkaTopicNames.TOPIC_WRITER, Integer.toString(i), Integer.toString(i)));
         producer.close();
     }
