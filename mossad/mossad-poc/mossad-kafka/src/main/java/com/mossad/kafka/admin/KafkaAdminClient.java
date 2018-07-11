@@ -1,16 +1,15 @@
 package com.mossad.kafka.admin;
 
 import com.mossad.kafka.KafkaPropertiesFactory;
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.DescribeClusterResult;
 import org.apache.kafka.clients.admin.ListTopicsResult;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.KafkaFuture;
 import org.apache.kafka.common.Node;
-
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
 
 
 public final class KafkaAdminClient {
@@ -26,6 +25,7 @@ public final class KafkaAdminClient {
         adminClient.createTopics(topicSet);
 
         ListTopicsResult listTopicsResult= adminClient.listTopics();
+        //adminClient.createAcls()
         KafkaFuture<Set<String>> names =  listTopicsResult.names();
         names.whenComplete((strings, throwable) -> {
             strings.forEach(s -> {
