@@ -15,6 +15,7 @@
 
     <modules>
         <module>mossad-key-logger</module>
+        <module>mossad-key-logger-parser</module>
     </modules>
 
 </project>
