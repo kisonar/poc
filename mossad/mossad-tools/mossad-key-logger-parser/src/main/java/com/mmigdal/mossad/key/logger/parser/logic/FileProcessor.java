@@ -1,5 +1,6 @@
 package com.mmigdal.mossad.key.logger.parser.logic;
 
+import com.mmigdal.mossad.key.logger.parser.logic.line.LineProcessor;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,13 +10,13 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
-public final class Logic {
+public final class FileProcessor {
 
-    private TextProcessor textProcessor;
+    private LineProcessor lineProcessor;
     private String pathToFile;
 
-    public Logic() {
-        textProcessor = new TextProcessor();
+    public FileProcessor() {
+        lineProcessor = new LineProcessor();
 
     }
 
@@ -23,8 +24,8 @@ public final class Logic {
         this.pathToFile = pathToFile;
         try {
             Stream<String> lines = readLines(pathToFile);
-            List<String> filteredLines = textProcessor.executeFiltering(lines);
-            List<String> processedLines = textProcessor.executeRepalcement(filteredLines.stream());
+            Stream<String> filteredLines = lineProcessor.executeFiltering(lines);
+            List<String> processedLines = lineProcessor.executeReplacement(filteredLines);
             saveResult(processedLines);
         } catch (IOException e) {
 
