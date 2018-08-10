@@ -2,6 +2,7 @@ package com.mmigdal.mossad.key.logger.parser.logic.line;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,20 +15,24 @@ public final class LineProcessor {
     }
 
 
-    public Stream<String> executeFiltering(Stream<String> streamOfLines) {
+    public Stream<String> executeFilteringForLogger(Stream<String> streamOfLines) {
         return streamOfLines.
-                filter(line -> startsWith(line, "rokko")).
-                filter(line -> startsWith(line, "mam")).
+            filter(line -> !line.contains("com.mossad.keylogger.logging.LogRecorder")).
             collect(Collectors.toList()).stream();
     }
 
     public List<String> executeReplacement(Stream<String> streamOfLines) {
 
-        String replacementPattern = "", replacementValue = "";
+        String replacementValue = "";
 
         streamOfLines.forEachOrdered(line -> {
-            String processedLine = line.replace(replacementPattern, replacementValue);
-            processedLinesOfText.add(processedLine);
+
+            Set<String> wordsToWipeOut = getStringsToFilterOut();
+            wordsToWipeOut.forEach(wordToWipeOut -> {
+                line.replace(wordToWipeOut, replacementValue);
+            });
+
+            processedLinesOfText.add(line);
         });
         return processedLinesOfText;
     }
@@ -35,4 +40,10 @@ public final class LineProcessor {
     private boolean startsWith(String text, String pattern) {
         return text.startsWith(pattern);
     }
+
+
+    Set<String> getStringsToFilterOut() {
+        return Set.of("INFO:", "Backspace", "Down", "Enter", "Up", "Volume", "Right", "Left", "Back", "Space", "Shift");
+    }
+
 }

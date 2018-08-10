@@ -3,20 +3,20 @@ package com.mmigdal.mossad.key.logger.parser.logic;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class LogitTest {
+public class LogicFlowTest {
 
 
-    private FileProcessor fileProcessor;
+    private LogicFlow logicFlow;
 
     @BeforeAll
-    public void setUp() {
-        fileProcessor = new FileProcessor();
+    public static void setUp() {
+
     }
 
     @Test
     public void processFile() {
-        fileProcessor.processFile("");
-
+        logicFlow = new LogicFlow("/home/marcin/private");
+        logicFlow.execute();
 
     }
 
