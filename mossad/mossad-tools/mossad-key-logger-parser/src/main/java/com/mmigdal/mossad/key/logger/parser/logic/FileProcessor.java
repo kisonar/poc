@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
@@ -18,11 +19,9 @@ public final class FileProcessor {
 
     public FileProcessor() {
         lineProcessor = new LineProcessor();
-
     }
 
     public void processFile(Path pathInputFile, Path pathOutputFile) {
-
         try {
             LOG.info(String.format("Starting processing files %s %s", pathInputFile.toAbsolutePath().toFile().getName(),
                 pathOutputFile.toAbsolutePath().toFile().getName()));
@@ -31,9 +30,8 @@ public final class FileProcessor {
             List<String> processedLines = lineProcessor.executeReplacement(filteredLines);
             saveResult(processedLines, pathOutputFile);
         } catch (IOException e) {
-
+            LOG.log(Level.WARNING,e.getMessage());
         }
-
     }
 
     private Stream<String> readLines(Path filePath) throws IOException {
@@ -55,7 +53,7 @@ public final class FileProcessor {
                 try {
                     fileWriter.write(line);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LOG.log(Level.WARNING,String.format("Problems during saving result: %s ",e.getMessage()));
                 }
             });
 

