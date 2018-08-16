@@ -2,7 +2,6 @@ package com.mmigdal.mossad.key.logger.parser.logic.line;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,7 +13,6 @@ public final class LineProcessor {
         processedLinesOfText = new ArrayList<>();
     }
 
-
     public Stream<String> executeFilteringForLogger(Stream<String> streamOfLines) {
         return streamOfLines.
             filter(line -> !line.contains("com.mossad.keylogger.logging.LogRecorder")).
@@ -22,28 +20,30 @@ public final class LineProcessor {
     }
 
     public List<String> executeReplacement(Stream<String> streamOfLines) {
-
-        String replacementValue = "";
-
         streamOfLines.forEachOrdered(line -> {
+            String processedLine = filterLine(line);
+            processedLinesOfText.add(processedLine);
 
-            Set<String> wordsToWipeOut = getStringsToFilterOut();
-            wordsToWipeOut.forEach(wordToWipeOut -> {
-                line.replace(wordToWipeOut, replacementValue);
-            });
-
-            processedLinesOfText.add(line);
         });
         return processedLinesOfText;
     }
 
-    private boolean startsWith(String text, String pattern) {
-        return text.startsWith(pattern);
+    private String filterLine(String input) {
+        List<String> patterns = getStringsToFilterOut();
+        for (String pattern : patterns) {
+            input = filterLine(input, pattern);
+        }
+        return input;
     }
 
 
-    Set<String> getStringsToFilterOut() {
-        return Set.of("INFO:", "Backspace", "Down", "Enter", "Up", "Volume", "Right", "Left", "Back", "Space", "Shift");
+    private String filterLine(String input, String wordToRemove) {
+        return input.replaceAll(wordToRemove, "");
+    }
+
+    private List<String> getStringsToFilterOut() {
+        return List.of("INFO:", "Backspace", "Down", "Enter", "Up", "Volume", "Right", "Left", "Back", "Space", "Shift",
+            "Escape");
     }
 
 }
