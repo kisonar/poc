@@ -1,5 +1,7 @@
 package com.mmigdal.mossad.key.logger.parser.logic.line;
 
+import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,7 +31,7 @@ public final class LineProcessor {
     }
 
     private String filterLine(String input) {
-        List<String> patterns = getStringsToFilterOut();
+        List<String> patterns = KeyLoggerEntries.getStringsToFilterOut();
         for (String pattern : patterns) {
             input = filterLine(input, pattern);
         }
@@ -41,9 +43,5 @@ public final class LineProcessor {
         return input.replaceAll(wordToRemove, "");
     }
 
-    private List<String> getStringsToFilterOut() {
-        return List.of("INFO:", "Backspace", "Down", "Enter", "Up", "Volume", "Right", "Left", "Back", "Space", "Shift",
-            "Escape");
-    }
 
 }

