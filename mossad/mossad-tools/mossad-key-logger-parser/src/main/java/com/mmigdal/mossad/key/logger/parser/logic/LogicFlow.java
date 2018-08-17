@@ -14,6 +14,8 @@ public class LogicFlow {
     private FileProcessor fileProcessor;
     private static Logger LOG = Logger.getLogger(LogicFlow.class.getName());
 
+    private static String postfix = ".logging.0";
+
     public LogicFlow(String directoryLocation) {
         this.directoryLocation = directoryLocation;
         fileProcessor = new FileProcessor();
@@ -24,9 +26,9 @@ public class LogicFlow {
 
         try {
             Stream<Path> filesPaths = Files.list(directoryPath);
-            filesPaths.map(path -> path.toString()).filter(path -> path.endsWith(".log")).forEach(path -> {
+            filesPaths.map(path -> path.toString()).filter(path -> path.endsWith(postfix)).forEach(path -> {
                 Path source = Paths.get(path);
-                Path destination = Paths.get(path.replace(".log", "").concat(".processed.log"));
+                Path destination = Paths.get(path.replace(postfix, "").concat(".processed.log"));
                 fileProcessor.processFile(source, destination);
             });
 

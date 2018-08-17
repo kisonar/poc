@@ -52,6 +52,7 @@ public final class FileProcessor {
             linesToWrite.stream().forEachOrdered(line -> {
                 try {
                     fileWriter.write(line);
+                    fileWriter.write("\n");
                 } catch (IOException e) {
                     LOG.log(Level.WARNING,String.format("Problems during saving result: %s ",e.getMessage()));
                 }
