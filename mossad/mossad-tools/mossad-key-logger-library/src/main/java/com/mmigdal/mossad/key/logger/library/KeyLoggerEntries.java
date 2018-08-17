@@ -12,7 +12,7 @@ public final class KeyLoggerEntries {
 
     public final static String SHIFT_PRESSED= "shift_pressed";
     public final static String SHIFT_RELEASED = "shift_released";
-
-
+    public final static String SIGN_SPACE = " ";
+    public final static String SIGN_EMPTY = "";
 
 }

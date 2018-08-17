@@ -23,11 +23,25 @@ public final class LineProcessor {
 
     public List<String> executeReplacement(Stream<String> streamOfLines) {
         streamOfLines.forEachOrdered(line -> {
-            String processedLine = filterLine(line);
+            String processedLineWithEmptySings = filterLine(line);
+            String processedLine = removeBlankSigns(processedLineWithEmptySings);
             processedLinesOfText.add(processedLine);
 
         });
         return processedLinesOfText;
+    }
+
+    private String removeBlankSigns(String processedLineWithEmptySings) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        String [] splittedWords = processedLineWithEmptySings.split(KeyLoggerEntries.SIGN_SPACE);
+        for (String splittedWord : splittedWords) {
+            if(splittedWord.equals(KeyLoggerEntries.SIGN_SPACE) || splittedWord.equals(KeyLoggerEntries.SIGN_EMPTY))
+            {continue;}
+            stringBuilder.append(splittedWord);
+            stringBuilder.append(KeyLoggerEntries.SIGN_SPACE);
+        }
+        return stringBuilder.toString();
     }
 
     private String filterLine(String input) {

@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 public class LogicFlow {
 
     private final String directoryLocation;
     private FileProcessor fileProcessor;
+    private static Logger LOG = Logger.getLogger(LogicFlow.class.getName());
 
     public LogicFlow(String directoryLocation) {
         this.directoryLocation = directoryLocation;
@@ -27,10 +30,9 @@ public class LogicFlow {
                 fileProcessor.processFile(source, destination);
             });
 
-
         } catch (IOException e) {
+            LOG.log(Level.ALL,String.format("Cannot start execution due to %s",e.getMessage()));
         }
-
 
     }
 
