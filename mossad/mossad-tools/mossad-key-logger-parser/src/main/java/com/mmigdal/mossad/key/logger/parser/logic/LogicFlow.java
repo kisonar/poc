@@ -1,5 +1,6 @@
 package com.mmigdal.mossad.key.logger.parser.logic;
 
+import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,10 +11,9 @@ import java.util.stream.Stream;
 
 public class LogicFlow {
 
+    private static Logger LOG = Logger.getLogger(LogicFlow.class.getName());
     private final String directoryLocation;
     private FileProcessor fileProcessor;
-    private static Logger LOG = Logger.getLogger(LogicFlow.class.getName());
-
     private static String postfix = ".logging.0";
 
     public LogicFlow(String directoryLocation) {
@@ -23,12 +23,12 @@ public class LogicFlow {
 
     public void execute() {
         Path directoryPath = Paths.get(directoryLocation);
-
         try {
             Stream<Path> filesPaths = Files.list(directoryPath);
             filesPaths.map(path -> path.toString()).filter(path -> path.endsWith(postfix)).forEach(path -> {
                 Path source = Paths.get(path);
-                Path destination = Paths.get(path.replace(postfix, "").concat(".processed.log"));
+                Path destination = Paths
+                    .get(path.replace(postfix, KeyLoggerEntries.SIGN_EMPTY).concat(".processed.log"));
                 fileProcessor.processFile(source, destination);
             });
 

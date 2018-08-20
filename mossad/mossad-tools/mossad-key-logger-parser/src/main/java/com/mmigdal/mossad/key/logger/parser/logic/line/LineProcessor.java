@@ -1,7 +1,6 @@
 package com.mmigdal.mossad.key.logger.parser.logic.line;
 
 import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,8 +35,9 @@ public final class LineProcessor {
         StringBuilder stringBuilder = new StringBuilder();
         String [] splittedWords = processedLineWithEmptySings.split(KeyLoggerEntries.SIGN_SPACE);
         for (String splittedWord : splittedWords) {
-            if(splittedWord.equals(KeyLoggerEntries.SIGN_SPACE) || splittedWord.equals(KeyLoggerEntries.SIGN_EMPTY))
-            {continue;}
+            if(splittedWord.equals(KeyLoggerEntries.SIGN_SPACE) || splittedWord.equals(KeyLoggerEntries.SIGN_EMPTY)) {
+                continue;
+            }
             stringBuilder.append(splittedWord);
             stringBuilder.append(KeyLoggerEntries.SIGN_SPACE);
         }
@@ -54,7 +54,7 @@ public final class LineProcessor {
 
 
     private String filterLine(String input, String wordToRemove) {
-        return input.replaceAll(wordToRemove, "");
+        return input.replaceAll(wordToRemove, KeyLoggerEntries.SIGN_EMPTY);
     }
 
 
