@@ -14,6 +14,10 @@ public final class LineProcessor {
         processedLinesOfText = new ArrayList<>();
     }
 
+    public void reset(){
+        processedLinesOfText.clear();
+    }
+
     public Stream<String> executeFilteringForLogger(Stream<String> streamOfLines) {
         return streamOfLines.
             filter(line -> !line.contains("com.mossad.keylogger.logging.LogRecorder")).

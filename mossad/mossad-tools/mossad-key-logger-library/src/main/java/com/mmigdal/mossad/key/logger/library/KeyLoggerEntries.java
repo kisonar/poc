@@ -6,7 +6,7 @@ public final class KeyLoggerEntries {
 
     public static List<String> getStringsToFilterOut() {
         return List.of("INFO:", "Backspace", "Down", "Enter", "Up", "Volume", "Right", "Left", "Back", "Space", "Shift",
-            "Escape","Ctrl","Alt","Semiolon","Home","Delete","Semicolon","Comma","Tab","Caps","Lock", SHIFT_PRESSED, SHIFT_RELEASED);
+            "Escape","Ctrl","Alt","Semiolon","Home","Delete","Semicolon","Comma","Tab","Caps","Lock");
     }
 
 
