@@ -1,6 +1,8 @@
 package com.mmigdal.mossad.key.logger.parser.logic;
 
 import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
+import com.mmigdal.mossad.key.logger.parser.logic.file.FileProcessor;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

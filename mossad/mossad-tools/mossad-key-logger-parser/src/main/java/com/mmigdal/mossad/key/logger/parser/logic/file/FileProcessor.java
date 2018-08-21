@@ -1,4 +1,4 @@
-package com.mmigdal.mossad.key.logger.parser.logic;
+package com.mmigdal.mossad.key.logger.parser.logic.file;
 
 import com.mmigdal.mossad.key.logger.parser.logic.line.LineProcessor;
 import java.io.File;
