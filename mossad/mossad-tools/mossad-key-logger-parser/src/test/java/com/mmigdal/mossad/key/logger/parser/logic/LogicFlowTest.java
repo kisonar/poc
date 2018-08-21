@@ -32,7 +32,6 @@ public class LogicFlowTest {
     @Disabled
     @Test
     public void processFile_whenLinux() {
-
         logicFlow = new LogicFlow("/home/marcin/private");
         logicFlow.execute();
     }

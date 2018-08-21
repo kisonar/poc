@@ -23,8 +23,6 @@ public final class FileProcessor {
 
     public void processFile(Path pathInputFile, Path pathOutputFile) {
         try {
-
-
             LOG.info(String.format("Starting processing files %s %s", pathInputFile.toAbsolutePath().toFile().getName(),
                 pathOutputFile.toAbsolutePath().toFile().getName()));
             Stream<String> lines = readLines(pathInputFile);
