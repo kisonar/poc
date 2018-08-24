@@ -50,7 +50,6 @@ public final class FileProcessor {
             outputFile.delete();
         }
         outputFile.createNewFile();
-
         try (FileWriter fileWriter = new FileWriter(outputFile)) {
             linesToWrite.stream().forEachOrdered(line -> {
                 try {

