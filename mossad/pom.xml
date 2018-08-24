@@ -21,6 +21,7 @@
     <module>mossad-network</module>
     <module>mossad-poc</module>
     <module>mossad-tools</module>
+    <module>mossad-cloud</module>
   </modules>
 
   <dependencyManagement>
