@@ -1,12 +1,11 @@
 package com.mmigdal.mossad.key.logger.parser.logic;
 
+import java.util.Calendar;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Disabled;
-
-import java.util.Calendar;
+import org.junit.jupiter.api.Test;
 
 public class LogicFlowTest {
 
@@ -29,13 +28,15 @@ public class LogicFlowTest {
         System.out.println(String.format("Execution took: %d ms", (endTime-startTime)));
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void processFile_whenLinux() {
-        logicFlow = new LogicFlow("/home/marcin/private");
+        logicFlow = new LogicFlow(
+            "/run/media/marcin/MigiBigDisk/repozytoria/repo_test/korpo/toBeDestroyed/tools/wlam/input");
         logicFlow.execute();
     }
 
+    @Disabled
     @Test
     public void processFile_whenWindows() {
         logicFlow = new LogicFlow("G:\\repozytoria\\repo_test\\korpo\\toBeDestroyed\\tools\\wlam\\input");

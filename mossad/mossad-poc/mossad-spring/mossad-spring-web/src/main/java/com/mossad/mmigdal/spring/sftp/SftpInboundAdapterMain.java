@@ -29,8 +29,9 @@ public class SftpInboundAdapterMain {
         SpringApplication.run(SftpInboundAdapterMain.class, args);
     }
 
-
-    //28.7.3 inbound adapter, czyli czytanie
+    //28.7.3 inbound adapter, czyli polling
+    //The SFTP Inbound Channel Adapter is a special listener that will connect to the server and listen for the remote directory events (e.g., new file created)
+    // at which point it will initiate a file transfer.
     @Bean
     public SessionFactory<LsEntry> sftpSessionFactory() {
         DefaultSftpSessionFactory factory = new DefaultSftpSessionFactory(true);

@@ -19,6 +19,7 @@ import org.springframework.messaging.MessageHandler;
 
 
 //28.12
+//typical SFTP operations
 @SpringBootApplication
 public class SftpOutboundAdapterMain {
 
@@ -28,7 +29,7 @@ public class SftpOutboundAdapterMain {
                 .web(false)
                 .run(args);
         MyGateway gateway = context.getBean(MyGateway.class);
-        //gateway.sendToSftp(new File("/foo/bar.txt"));
+        gateway.sendToSftp(new File("/foo/bar.txt"));
     }
 
 
