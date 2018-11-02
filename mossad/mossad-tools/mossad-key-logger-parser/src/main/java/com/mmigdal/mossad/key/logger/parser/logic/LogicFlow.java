@@ -1,8 +1,6 @@
 package com.mmigdal.mossad.key.logger.parser.logic;
 
-import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
 import com.mmigdal.mossad.key.logger.parser.logic.file.FileProcessor;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,28 +12,28 @@ import java.util.stream.Stream;
 public class LogicFlow {
 
     private static Logger LOG = Logger.getLogger(LogicFlow.class.getName());
-    private final String directoryLocation;
+    private Path inputPath;
+    private Path outputPath;
     private FileProcessor fileProcessor;
-    private static String postfix = ".logging.0";
 
-    public LogicFlow(String directoryLocation) {
-        this.directoryLocation = directoryLocation;
+    public LogicFlow(String inputPathString, String outputPathString) {
+        inputPath = Paths.get(inputPathString);
+        outputPath = Paths.get(outputPathString);
         fileProcessor = new FileProcessor();
     }
 
+
     public void execute() {
-        Path directoryPath = Paths.get(directoryLocation);
         try {
-            Stream<Path> filesPaths = Files.list(directoryPath);
-            filesPaths.map(path -> path.toString()).filter(path -> path.endsWith(postfix)).forEach(path -> {
-                Path source = Paths.get(path);
-                Path destination = Paths
-                    .get(path.replace(postfix, KeyLoggerEntries.SIGN_EMPTY).concat(".processed.log"));
-                fileProcessor.processFile(source, destination);
+            Stream<Path> filesPaths = Files.list(inputPath);
+            filesPaths.forEach(sourceFilePath -> {
+                String sourceFileName = sourceFilePath.toFile().getName();
+                Path destinationFilePath = Paths.get(outputPath.toString(), sourceFileName);
+                fileProcessor.processFile(sourceFilePath, destinationFilePath);
             });
 
         } catch (IOException e) {
-            LOG.log(Level.ALL,String.format("Cannot start execution due to %s",e.getMessage()));
+            LOG.log(Level.ALL, String.format("Cannot start execution due to %s", e.getMessage()));
         }
 
     }
