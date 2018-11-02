@@ -1,11 +1,13 @@
 package com.mmigdal.mossad.key.logger.parser.logic;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
+
 
 public class LogicFlowTest {
 
@@ -28,7 +30,7 @@ public class LogicFlowTest {
         System.out.println(String.format("Execution took: %d ms", (endTime-startTime)));
     }
 
-    //@Disabled
+    @EnabledOnOs(OS.LINUX)
     @Test
     public void processFile_whenLinux() {
         logicFlow = new LogicFlow(
@@ -36,7 +38,7 @@ public class LogicFlowTest {
         logicFlow.execute();
     }
 
-    @Disabled
+    @EnabledOnOs(OS.WINDOWS)
     @Test
     public void processFile_whenWindows() {
         logicFlow = new LogicFlow("G:\\repozytoria\\repo_test\\korpo\\toBeDestroyed\\tools\\wlam\\input");
@@ -44,6 +46,7 @@ public class LogicFlowTest {
     }
 
     private long getTime (){
-        return Calendar.getInstance().getTimeInMillis();
+        return LocalDateTime.now().getNano();
+
     }
 }
