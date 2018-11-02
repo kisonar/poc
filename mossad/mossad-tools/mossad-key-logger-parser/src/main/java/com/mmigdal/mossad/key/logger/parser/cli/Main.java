@@ -11,7 +11,7 @@ public class Main {
             throw new IllegalArgumentException("Insufficient number of input parameters");
         }
 
-        LogicFlow logicFlow = new LogicFlow(args[0]);
+        LogicFlow logicFlow = new LogicFlow(args[0], args[1]);
         logicFlow.execute();
     }
 
