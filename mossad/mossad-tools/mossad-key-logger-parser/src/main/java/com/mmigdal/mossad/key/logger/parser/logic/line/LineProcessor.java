@@ -10,12 +10,14 @@ import java.util.stream.Stream;
 public final class LineProcessor {
 
     private List<String> processedLinesOfText;
+    private BiFunction<String, String, String> filterLineFunction = (s1, s2) -> s1
+        .replaceAll(s2, KeyLoggerEntries.SIGN_EMPTY);
 
     public LineProcessor() {
         processedLinesOfText = new ArrayList<>();
     }
 
-    public void reset(){
+    public void reset() {
         processedLinesOfText.clear();
     }
 
@@ -37,7 +39,7 @@ public final class LineProcessor {
     private String removeBlankSigns(String processedLineWithEmptySings) {
         StringBuilder stringBuilder = new StringBuilder();
         for (String splittedWord : processedLineWithEmptySings.split(KeyLoggerEntries.SIGN_SPACE)) {
-            if(splittedWord.equals(KeyLoggerEntries.SIGN_SPACE) || splittedWord.equals(KeyLoggerEntries.SIGN_EMPTY)) {
+            if (splittedWord.equals(KeyLoggerEntries.SIGN_SPACE) || splittedWord.equals(KeyLoggerEntries.SIGN_EMPTY)) {
                 continue;
             }
             stringBuilder.append(splittedWord);
@@ -48,10 +50,8 @@ public final class LineProcessor {
 
     private String filterLine(String input) {
         for (String pattern : KeyLoggerEntries.getStringsToFilterOut()) {
-            input =  filterLineFunction.apply(input,pattern);
+            input = filterLineFunction.apply(input, pattern);
         }
         return input;
     }
-
-    private BiFunction<String,String,String> filterLineFunction = (s1,s2) -> s1.replaceAll(s2, KeyLoggerEntries.SIGN_EMPTY);
 }

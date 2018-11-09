@@ -5,14 +5,13 @@ package com.mossad.network.library.coding;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+import com.mossad.network.library.LoopBackTimeStamp;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
-import com.mossad.network.library.LoopBackTimeStamp;
-
 /**
- *
  * @author mmigdal
  */
 public class TimeStampEncoder extends MessageToByteEncoder<LoopBackTimeStamp> {

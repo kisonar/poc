@@ -1,16 +1,15 @@
 package mossad.java.features.base.nine.concurrent.reactive.example;
 
-import mossad.java.features.base.nine.concurrent.reactive.example.domain.Employee;
-import mossad.java.features.base.nine.concurrent.reactive.example.domain.Freelancer;
-
 import java.util.concurrent.Flow.Processor;
 import java.util.concurrent.Flow.Subscription;
 import java.util.concurrent.SubmissionPublisher;
 import java.util.function.Function;
+import mossad.java.features.base.nine.concurrent.reactive.example.domain.Employee;
+import mossad.java.features.base.nine.concurrent.reactive.example.domain.Freelancer;
 
 public final class MyProcessor
-        extends SubmissionPublisher<Freelancer>
-        implements Processor<Employee, Freelancer> {
+    extends SubmissionPublisher<Freelancer>
+    implements Processor<Employee, Freelancer> {
 
     private Subscription subscription;
     private Function<Employee, Freelancer> function;

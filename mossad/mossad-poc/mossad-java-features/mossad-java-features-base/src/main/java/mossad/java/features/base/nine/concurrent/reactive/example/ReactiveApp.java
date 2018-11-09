@@ -1,11 +1,10 @@
 package mossad.java.features.base.nine.concurrent.reactive.example;
 
+import java.util.List;
+import java.util.concurrent.SubmissionPublisher;
 import mossad.java.features.base.nine.concurrent.reactive.example.domain.Employee;
 import mossad.java.features.base.nine.concurrent.reactive.example.domain.EmployeeFactory;
 import mossad.java.features.base.nine.concurrent.reactive.example.subscriber.EmployeeSubscriber;
-
-import java.util.List;
-import java.util.concurrent.SubmissionPublisher;
 
 public class ReactiveApp {
 

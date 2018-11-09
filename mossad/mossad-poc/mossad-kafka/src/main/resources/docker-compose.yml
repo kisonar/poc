@@ -3,18 +3,18 @@ services:
   zookeeper:
     image: wurstmeister/zookeeper:3.4.6
     ports:
-      - "2181:2181"
+    - "2181:2181"
 
   kafka:
-   image: wurstmeister/kafka:1.1.0
-   ports:
+    image: wurstmeister/kafka:1.1.0
+    ports:
     - "9092:9092"
-   environment:
-    HOSTNAME_COMMAND: "hostname -i"
-    KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-   #volumes:
-   # - /var/run/docker.sock:/var/run/docker.sock
-   depends_on:
+    environment:
+      HOSTNAME_COMMAND: "hostname -i"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    #volumes:
+    # - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
     - zookeeper
 
   #dmaap:

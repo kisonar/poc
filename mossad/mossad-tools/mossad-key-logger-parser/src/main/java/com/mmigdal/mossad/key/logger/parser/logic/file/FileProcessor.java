@@ -32,7 +32,7 @@ public final class FileProcessor {
             saveResult(processedLines, pathOutputFile);
             lineProcessor.reset();
             LOG.info(String.format("Finished processing files %s %s", pathInputFile.toAbsolutePath().toFile().getName(),
-                    pathOutputFile.toAbsolutePath().toFile().getName()));
+                pathOutputFile.toAbsolutePath().toFile().getName()));
         } catch (IOException e) {
             LOG.log(Level.WARNING, String
                 .format("Problems with processing file %s %s", pathInputFile.getFileName().toString(), e.getMessage()));
@@ -58,7 +58,7 @@ public final class FileProcessor {
                     fileWriter.write(line);
                     fileWriter.write("\n");
                 } catch (IOException e) {
-                    LOG.log(Level.WARNING,String.format("Problems during saving result: %s ",e.getMessage()));
+                    LOG.log(Level.WARNING, String.format("Problems during saving result: %s ", e.getMessage()));
                 }
             });
 

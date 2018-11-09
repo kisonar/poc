@@ -1,7 +1,7 @@
 package mossad.java.features.client;
 
-import mossad.java.features.services.Service;
 import mossad.java.features.library.position.Position;
+import mossad.java.features.services.Service;
 
 public class Client {
 
