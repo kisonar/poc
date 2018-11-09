@@ -16,11 +16,13 @@ public class LogRecorder {
         simpleFormatter = new SimpleFormatter();
         try {
             fileHandler = new FileHandler("Logging", 1024000, 100, true);
+            fileHandler.setEncoding("UTF-8");
         } catch (IOException ex) {
             throw new RuntimeException("Cannot create logging file. Exiting application");
         }
         fileHandler.setFormatter(simpleFormatter);
         LOG.addHandler(fileHandler);
+
     }
 
     public void writeContent(String content) {
