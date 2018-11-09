@@ -6,8 +6,8 @@
 package com.mossad.network.library;
 
 import java.nio.ByteBuffer;
+
 /**
- *
  * @author mmigdal
  */
 public class LoopBackTimeStamp {
@@ -25,10 +25,7 @@ public class LoopBackTimeStamp {
     }
 
     /**
-     * Transfer 2 long number to a 16 byte-long byte[], every 8 bytes represent
-     * a long number.
-     *
-     * @return
+     * Transfer 2 long number to a 16 byte-long byte[], every 8 bytes represent a long number.
      */
     public byte[] toByteArray() {
 
@@ -48,10 +45,7 @@ public class LoopBackTimeStamp {
     }
 
     /**
-     * Transfer a 16 byte-long byte[] to 2 long numbers, every 8 bytes represent
-     * a long number.
-     *
-     * @param content
+     * Transfer a 16 byte-long byte[] to 2 long numbers, every 8 bytes represent a long number.
      */
     public void fromByteArray(byte[] content) {
         int len = content.length;

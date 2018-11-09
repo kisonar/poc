@@ -6,10 +6,10 @@
 package com.mossad.others.berlinclock;
 
 /**
- *
  * @author mmigdal
  */
 public interface TimeConverter {
+
     String convertTime(String timeAsString);
-    
+
 }

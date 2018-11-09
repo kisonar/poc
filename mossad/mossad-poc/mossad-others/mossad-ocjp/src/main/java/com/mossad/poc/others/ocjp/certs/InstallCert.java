@@ -9,16 +9,27 @@ package com.mossad.poc.others.ocjp.certs;
  * @author mmigdal
  */
 
-import javax.net.ssl.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.security.KeyStore;
 import java.security.MessageDigest;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 
 /**
- * Class used to add the server's certificate to the KeyStore
- * with your trusted certificates.
+ * Class used to add the server's certificate to the KeyStore with your trusted certificates.
  */
 public class InstallCert {
 
@@ -43,7 +54,7 @@ public class InstallCert {
         if (file.isFile() == false) {
             char SEP = File.separatorChar;
             File dir = new File(System.getProperty("java.home") + SEP
-                    + "lib" + SEP + "security");
+                + "lib" + SEP + "security");
             file = new File(dir, "jssecacerts");
             if (file.isFile() == false) {
                 file = new File(dir, "cacerts");
@@ -58,7 +69,7 @@ public class InstallCert {
 
         SSLContext context = SSLContext.getInstance("TLS");
         TrustManagerFactory tmf =
-                TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
         tmf.init(ks);
         X509TrustManager defaultTrustManager = (X509TrustManager) tmf.getTrustManagers()[0];
         SavingTrustManager tm = new SavingTrustManager(defaultTrustManager);
@@ -86,7 +97,7 @@ public class InstallCert {
         }
 
         BufferedReader reader =
-                new BufferedReader(new InputStreamReader(System.in));
+            new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println();
         System.out.println("Server sent " + chain.length + " certificate(s):");
@@ -96,7 +107,7 @@ public class InstallCert {
         for (int i = 0; i < chain.length; i++) {
             X509Certificate cert = chain[i];
             System.out.println
-                    (" " + (i + 1) + " Subject " + cert.getSubjectDN());
+                (" " + (i + 1) + " Subject " + cert.getSubjectDN());
             System.out.println("   Issuer  " + cert.getIssuerDN());
             sha1.update(cert.getEncoded());
             System.out.println("   sha1    " + toHexString(sha1.digest()));
@@ -127,8 +138,8 @@ public class InstallCert {
         System.out.println(cert);
         System.out.println();
         System.out.println
-                ("Added certificate to keystore 'jssecacerts' using alias '"
-                        + alias + "'");
+            ("Added certificate to keystore 'jssecacerts' using alias '"
+                + alias + "'");
     }
 
     private static String toHexString(byte[] bytes) {
@@ -150,7 +161,7 @@ public class InstallCert {
         SavingTrustManager(X509TrustManager tm) {
             this.tm = tm;
         }
-        
+
         @Override
         public X509Certificate[] getAcceptedIssuers() {
             throw new UnsupportedOperationException();
@@ -158,12 +169,13 @@ public class InstallCert {
 
         @Override
         public void checkClientTrusted(X509Certificate[] chain, String authType)
-                throws CertificateException {
+            throws CertificateException {
             throw new UnsupportedOperationException();
         }
+
         @Override
         public void checkServerTrusted(X509Certificate[] chain, String authType)
-                throws CertificateException {
+            throws CertificateException {
             this.chain = chain;
             tm.checkServerTrusted(chain, authType);
         }

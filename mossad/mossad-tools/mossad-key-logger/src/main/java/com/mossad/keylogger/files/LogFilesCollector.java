@@ -25,7 +25,8 @@ public final class LogFilesCollector {
         String pathAsString = currentDirectory.getAbsolutePath();
         try {
             Stream<Path> paths = Files.list(Paths.get(pathAsString));
-            return paths.map(path -> path.toString()).filter(path -> !path.endsWith(".lck") && path.contains("Log")).collect(Collectors.toList());
+            return paths.map(path -> path.toString()).filter(path -> !path.endsWith(".lck") && path.contains("Log"))
+                .collect(Collectors.toList());
 
         } catch (IOException e) {
             LOG.info(String.format("Cannot collect logs %s", e.getMessage()));

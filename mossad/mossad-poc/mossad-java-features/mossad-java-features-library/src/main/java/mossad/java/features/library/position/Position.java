@@ -1,9 +1,8 @@
 package mossad.java.features.library.position;
 
-import mossad.java.features.library.position.item.PositionItem;
-
 import java.util.ArrayList;
 import java.util.List;
+import mossad.java.features.library.position.item.PositionItem;
 
 public final class Position {
 
@@ -18,7 +17,7 @@ public final class Position {
         return positionItems;
     }
 
-    public void addPositionItem(PositionItem positionItem){
+    public void addPositionItem(PositionItem positionItem) {
         positionItems.add(positionItem);
     }
 }

@@ -1,9 +1,8 @@
 package mossad.java.features.base.nine.concurrent.reactive.example.subscriber;
 
-import mossad.java.features.base.nine.concurrent.reactive.example.domain.Freelancer;
-
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
+import mossad.java.features.base.nine.concurrent.reactive.example.domain.Freelancer;
 
 
 public final class FreelancerSubscriber implements Subscriber<Freelancer> {

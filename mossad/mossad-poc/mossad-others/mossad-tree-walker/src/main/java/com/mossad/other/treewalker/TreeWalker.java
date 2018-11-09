@@ -6,11 +6,10 @@
 package com.mossad.other.treewalker;
 
 /**
- *
  * @author mmigdal
  */
 public interface TreeWalker {
-    
-    void walk (String path);
-    
+
+    void walk(String path);
+
 }
