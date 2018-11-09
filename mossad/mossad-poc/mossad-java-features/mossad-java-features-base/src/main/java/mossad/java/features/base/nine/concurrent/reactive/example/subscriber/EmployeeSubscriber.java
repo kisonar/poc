@@ -28,7 +28,6 @@ public final class EmployeeSubscriber implements Subscriber<Employee> {
     @Override
     public void onError(Throwable e) {
         System.out.println("Some error happened");
-        //e.printStackTrace();
     }
 
     @Override
