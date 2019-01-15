@@ -1,6 +1,9 @@
 package com.mmigdal.mossad.key.logger.parser.logic;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -54,6 +57,8 @@ public class LogicFlowTest {
     }
 
     private long getTime() {
-        return LocalDateTime.now().getNano();
+
+        return Calendar.getInstance().getTime().getTime();
+        //return LocalDateTime.now().getSecond();
     }
 }
