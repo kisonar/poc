@@ -1,9 +1,6 @@
 package com.mmigdal.mossad.key.logger.parser.logic;
 
-import java.time.LocalDateTime;
 import java.util.Calendar;
-import java.util.Date;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,7 +32,7 @@ public class LogicFlowTest {
     @EnabledOnOs(OS.LINUX)
     @Test
     public void processFile_whenLinux() {
-        String generalLinuxPath = "/run/media/marcin/MigiBigDisk/repozytoria/repo_test/korpo/toBeDestroyed/tools/wlam/";
+        String generalLinuxPath = "/run/media/marcin/MigiBigDisk/repozytoria/repo-arbeit-client/trunk/korpo/toBeDestroyed/tools/wlam/";
         inputPath = generalLinuxPath + INPUT;
         outputPath = generalLinuxPath + OUTPUT;
         logicFlow = new LogicFlow(
