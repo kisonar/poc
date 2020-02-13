@@ -15,8 +15,6 @@
     <module>mossad-others</module>
     <module>mossad-java-features</module>
     <module>mossad-rabbitmq</module>
-    <!--
     <module>mossad-spring</module>
-    -->
   </modules>
 </project>

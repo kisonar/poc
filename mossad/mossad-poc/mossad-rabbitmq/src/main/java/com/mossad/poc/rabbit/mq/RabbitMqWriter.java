@@ -10,14 +10,19 @@ public class RabbitMqWriter {
 
     public static void main(String[] args) {
 
+        /*
         String userName = "guest";
         String password = "guest";
         String virtualHost = "/";
         String hostName = "10.133.131.152";
         int portNumber = 9001;
-
+        */
+        String userName = "vcc_DENA";
+        String password = "DEN@2020";
+        String virtualHost = "svcc";
+        String hostName = "135.3.65.36";
+        int portNumber = 5672;
         ConnectionFactory factory = new ConnectionFactory();
-// "guest"/"guest" by default, limited to localhost connections
         factory.setUsername(userName);
         factory.setPassword(password);
         factory.setVirtualHost(virtualHost);
@@ -32,15 +37,21 @@ public class RabbitMqWriter {
             System.out.println("connection");
             channel = conn.createChannel();
             System.out.println("channel");
-            channel.close();
             System.out.println("Closign channel");
-            conn.close();
             System.out.println("Closing connection");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {
             e.printStackTrace();
         } finally {
+            try {
+                channel.close();
+                conn.close();
+            } catch (IOException e) {
+
+            } catch (TimeoutException e) {
+                e.printStackTrace();
+            }
 
         }
 
