@@ -10,8 +10,8 @@ import org.junit.jupiter.api.condition.OS;
 
 public class LogicFlowTest {
 
-    private final static String INPUT = "input";
-    private final static String OUTPUT = "output";
+    private final static String INPUT_2020 = "2020";
+    private final static String OUTPUT_2000 = "2020";
     private LogicFlow logicFlow;
     private long startTime;
     private long endTime;
@@ -31,10 +31,10 @@ public class LogicFlowTest {
 
     @EnabledOnOs(OS.LINUX)
     @Test
-    public void processFile_whenLinux() {
-        String generalLinuxPath = "/run/media/marcin/MigiBigDisk/repozytoria/repo-arbeit-client/trunk/korpo/toBeDestroyed/tools/wlam/";
-        inputPath = generalLinuxPath + INPUT;
-        outputPath = generalLinuxPath + OUTPUT;
+    public void processFile_whenLinux_2020() {
+        String generalLinuxPath = "/run/media/marcin/MigiBigDisk/repozytoria/repo-arbeit-client/trunk/korpo/toBeDestroyed/tools/wlam/input/";
+        inputPath = generalLinuxPath + INPUT_2020;
+        outputPath = generalLinuxPath + OUTPUT_2000;
         logicFlow = new LogicFlow(
             inputPath,
             outputPath);
@@ -43,10 +43,10 @@ public class LogicFlowTest {
 
     @EnabledOnOs(OS.WINDOWS)
     @Test
-    public void processFile_whenWindows() {
-        String generalWindowsPath = "G:\\repozytoria\\repo_test\\korpo\\toBeDestroyed\\tools\\wlam\\";
-        inputPath = generalWindowsPath + INPUT;
-        outputPath = generalWindowsPath + OUTPUT;
+    public void processFile_whenWindows_2020() {
+        String generalWindowsPath = "G:\\repozytoria\\repo_test\\korpo\\toBeDestroyed\\tools\\wlam\\output\\";
+        inputPath = generalWindowsPath + INPUT_2020;
+        outputPath = generalWindowsPath + OUTPUT_2000;
         logicFlow = new LogicFlow(
             inputPath,
             outputPath);
