@@ -14,7 +14,6 @@
   <modules>
     <module>mossad-network-server</module>
     <module>mossad-network-client</module>
-    <module>mossad-network-library</module>
   </modules>
 
 </project>
