@@ -4,7 +4,6 @@ import com.mmigdal.mossad.key.logger.parser.logic.LogicFlow;
 
 public class Main {
 
-
     public static void main(String[] args) {
 
         if (args.length < 1) {
@@ -14,5 +13,4 @@ public class Main {
         LogicFlow logicFlow = new LogicFlow(args[0], args[1]);
         logicFlow.execute();
     }
-
 }

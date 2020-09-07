@@ -22,7 +22,6 @@ public class LogicFlow {
         fileProcessor = new FileProcessor();
     }
 
-
     public void execute() {
         try {
             Stream<Path> filesPaths = Files.list(inputPath);
@@ -31,12 +30,8 @@ public class LogicFlow {
                 Path destinationFilePath = Paths.get(outputPath.toString(), sourceFileName);
                 fileProcessor.processFile(sourceFilePath, destinationFilePath);
             });
-
         } catch (IOException e) {
             LOG.log(Level.ALL, String.format("Cannot start execution due to %s", e.getMessage()));
         }
-
     }
-
-
 }
