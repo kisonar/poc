@@ -24,7 +24,7 @@ public class LogicFlow {
 
     public void execute() {
         try {
-            Stream<Path> filesPaths = Files.list(inputPath);
+            Stream<Path> filesPaths = Files.list(inputPath).sorted();
             filesPaths.forEach(sourceFilePath -> {
                 String sourceFileName = sourceFilePath.toFile().getName();
                 Path destinationFilePath = Paths.get(outputPath.toString(), sourceFileName);

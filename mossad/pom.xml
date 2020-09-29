@@ -13,8 +13,9 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.compiler.source>1.10</maven.compiler.source>
-    <maven.compiler.target>1.10</maven.compiler.target>
+    <maven.compiler.source>15</maven.compiler.source>
+    <maven.compiler.target>15</maven.compiler.target>
+
   </properties>
 
   <modules>
@@ -99,9 +100,9 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.7.0</version>
           <configuration>
-            <release>10</release>
+            <release>15</release>
           </configuration>
-          <!-- workaround for JAVA 10 -->
+          <!-- workaround for JAVA 10 to check java 15-->
           <dependencies>
             <dependency>
               <groupId>org.ow2.asm</groupId>
@@ -142,24 +143,6 @@
         <plugin>
           <artifactId>maven-assembly-plugin</artifactId>
           <version>2.2-beta-5</version>
-        </plugin>
-
-        <!-- Add SVN revision to metadata against mvn package-->
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>buildnumber-maven-plugin</artifactId>
-          <executions>
-            <execution>
-              <phase>validate</phase>
-              <goals>
-                <goal>create</goal>
-              </goals>
-            </execution>
-          </executions>
-          <configuration>
-            <doCheck>false</doCheck>
-            <doUpdate>true</doUpdate>
-          </configuration>
         </plugin>
         <plugin>
           <groupId>pl.project13.maven</groupId>
