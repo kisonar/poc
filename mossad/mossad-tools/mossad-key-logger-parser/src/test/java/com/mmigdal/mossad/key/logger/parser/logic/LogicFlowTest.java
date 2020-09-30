@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
@@ -32,6 +33,7 @@ public class LogicFlowTest {
     }
 
     @EnabledOnOs(OS.LINUX)
+    @Disabled
     @Test
     public void processFile_whenLinux_2020() {
         String generalLinuxPathInput = generalLinuxPath + File.separatorChar + INPUT;
@@ -40,6 +42,7 @@ public class LogicFlowTest {
     }
 
     @EnabledOnOs(OS.WINDOWS)
+    @Disabled
     @Test
     public void processFile_whenWindows_2020() {
         String generalWinPathInput = generalWinPath + File.pathSeparator + INPUT;
