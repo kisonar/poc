@@ -3,7 +3,19 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-    <build>
+  <parent>
+    <groupId>mossad</groupId>
+    <artifactId>mossad-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>mossad-cloud</artifactId>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>mossad-cloud-deployments</module>
+  </modules>
+  
+  <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -14,15 +26,6 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
-    <parent>
-    <groupId>mossad</groupId>
-    <artifactId>mossad-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
-  <artifactId>mossad-cloud</artifactId>
-  <packaging>pom</packaging>
-  <modules>
-    <module>mossad-cloud-deployments</module>
-  </modules>
+  </build>
+  
 </project>
