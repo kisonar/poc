@@ -11,7 +11,19 @@
 
   <artifactId>mossad-others</artifactId>
   <packaging>pom</packaging>
-  <modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>14</source>
+                    <target>14</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <modules>
     <module>mossad-ocjp</module>
     <module>mossad-tree-walker</module>
     <module>mossad-berlin-clock</module>

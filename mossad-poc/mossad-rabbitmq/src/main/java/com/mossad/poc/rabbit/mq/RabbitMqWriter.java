@@ -9,23 +9,13 @@ import java.util.concurrent.TimeoutException;
 
 public class RabbitMqWriter {
 
-    //static String QUEUE_NAME = "svc-test-2";
-    static String QUEUE_NAME = "svcc_dena_dfdr11_filer_stats_q";
+    private final static String QUEUE_NAME = "svcc_dena_dfdr11_filer_stats_q";
 
     public static void main(String[] args) {
-        /*
-        String userName = "guest";
-        String password = "guest";
-        String virtualHost = "virtual-host";
-        int portNumber = 9200;
-        String hostName = "10.133.131.152";
-        */
-        //String hostName = "localhost";
-
-        String userName = "svcc_DENA";
-        String password = "DEN@2020!";
-        String virtualHost = "svcc";
-        String hostName = "135.3.65.36";
+        String userName = "";
+        String password = "";
+        String virtualHost = "";
+        String hostName = "";
         int portNumber = 5672;
         ConnectionFactory factory = new ConnectionFactory();
         factory.setUsername(userName);
@@ -42,16 +32,10 @@ public class RabbitMqWriter {
             String message = "Hello World!";
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
             System.out.println(" [x] Sent '" + message + "'");
-
-
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
 }

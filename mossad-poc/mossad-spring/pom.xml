@@ -11,7 +11,19 @@
 
   <artifactId>mossad-spring</artifactId>
   <packaging>pom</packaging>
-  <modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>14</source>
+                    <target>14</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <modules>
     <module>mossad-spring-library</module>
     <module>mossad-spring-core</module>
     <module>mossad-spring-web</module>
