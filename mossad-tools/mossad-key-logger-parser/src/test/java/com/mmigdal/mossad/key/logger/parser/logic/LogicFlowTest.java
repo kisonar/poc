@@ -33,7 +33,6 @@ public class LogicFlowTest {
     }
 
     @EnabledOnOs(OS.LINUX)
-    @Disabled
     @Test
     public void processFile_whenLinux_2020() {
         String generalLinuxPathInput = generalLinuxPath + File.separatorChar + INPUT;

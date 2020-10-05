@@ -1,6 +1,8 @@
 package com.mmigdal.mossad.key.logger.parser.logic.line;
 
 import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -14,7 +16,7 @@ public final class LineProcessor {
         .replaceAll(s2, KeyLoggerEntries.SIGN_EMPTY);
 
     public LineProcessor() {
-        processedLinesOfText = Collections.EMPTY_LIST;
+        processedLinesOfText = new ArrayList<>();
     }
 
     public void reset() {
