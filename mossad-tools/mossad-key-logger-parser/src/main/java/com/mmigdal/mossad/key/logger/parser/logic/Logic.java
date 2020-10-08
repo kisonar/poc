@@ -45,8 +45,8 @@ public final class Logic {
     }
 
     public ExecutorService determineExecutorService() {
-        ExecutorService executorService = switch (mode) {
-            case PARALLEL -> Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
+        var executorService = switch (mode) {
+            case PARALLEL ->  Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
             default -> Executors.newSingleThreadExecutor();
         };
         return executorService;
