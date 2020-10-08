@@ -1,6 +1,7 @@
 package com.mmigdal.mossad.key.logger.parser.cli;
 
-import com.mmigdal.mossad.key.logger.parser.logic.LogicFlow;
+import com.mmigdal.mossad.key.logger.parser.logic.Logic;
+import com.mmigdal.mossad.key.logger.parser.logic.Mode;
 
 public class Main {
 
@@ -10,7 +11,7 @@ public class Main {
             throw new IllegalArgumentException("Insufficient number of input parameters");
         }
 
-        LogicFlow logicFlow = new LogicFlow(args[0], args[1]);
-        logicFlow.execute();
+        Logic logic = new Logic(Mode.PARALLEL);
+        logic.execute(args[0], args[1]);
     }
 }

@@ -24,15 +24,14 @@ public final class FileProcessor {
 
     public void processFile(Path pathInputFile, Path pathOutputFile) {
         try {
-            LOG.info(String.format("Starting processing files %s %s", pathInputFile.toAbsolutePath().toFile().getName(),
-                pathOutputFile.toAbsolutePath().toFile().getName()));
+            //LOG.info(String.format("Starting processing files %s %s", pathInputFile.toAbsolutePath().toFile().getName(), pathOutputFile.toAbsolutePath().toFile().getName()));
             Stream<String> lines = readLines(pathInputFile);
             Stream<String> filteredLines = lineProcessor.executeFilteringForLogger(lines);
             List<String> processedLines = lineProcessor.executeReplacement(filteredLines);
             saveResult(processedLines, pathOutputFile);
             lineProcessor.reset();
-            LOG.info(String.format("Finished processing files %s %s", pathInputFile.toAbsolutePath().toFile().getName(),
-                pathOutputFile.toAbsolutePath().toFile().getName()));
+            //LOG.info(String.format("Finished processing files %s %s", pathInputFile.toAbsolutePath().toFile().getName(),
+            //    pathOutputFile.toAbsolutePath().toFile().getName()));
         } catch (IOException e) {
             LOG.log(Level.WARNING, String
                 .format("Problems with processing file %s %s", pathInputFile.getFileName().toString(), e.getMessage()));

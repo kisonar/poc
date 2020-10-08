@@ -13,7 +13,7 @@ import org.junit.jupiter.api.condition.OS;
 public class LogicFlowTest {
 
     private final static List<String> years = List.of("2018", "2019", "2020");
-    private LogicFlow logicFlow;
+    private Logic logic;
     private long startTime;
     private long endTime;
     private final String generalLinuxPath = "/run/media/marcin/MigiBigDisk/repozytoria/repo-arbeit-client/trunk/korpo/toBeDestroyed/tools/wlam";
@@ -34,29 +34,35 @@ public class LogicFlowTest {
 
     @EnabledOnOs(OS.LINUX)
     @Test
-    public void processFile_whenLinux_2020() {
+    public void processFile_whenLinux_parallel() {
         String generalLinuxPathInput = generalLinuxPath + File.separatorChar + INPUT;
         String generalLinuxPathOutput = generalLinuxPath + File.separatorChar + OUTPUT;
-        executeGeneritTest(generalLinuxPathInput, generalLinuxPathOutput);
+        executeGenericTest(generalLinuxPathInput, generalLinuxPathOutput,Mode.PARALLEL);
+    }
+
+    @EnabledOnOs(OS.LINUX)
+    @Test
+    public void processFile_whenLinux_single() {
+        String generalLinuxPathInput = generalLinuxPath + File.separatorChar + INPUT;
+        String generalLinuxPathOutput = generalLinuxPath + File.separatorChar + OUTPUT;
+        executeGenericTest(generalLinuxPathInput, generalLinuxPathOutput,Mode.SINGLE);
     }
 
     @EnabledOnOs(OS.WINDOWS)
     @Disabled
     @Test
-    public void processFile_whenWindows_2020() {
+    public void processFile_whenWindows() {
         String generalWinPathInput = generalWinPath + File.pathSeparator + INPUT;
         String generalWinPathOutput = generalWinPath + File.pathSeparator + OUTPUT;
-        executeGeneritTest(generalWinPathInput, generalWinPathOutput);
+        executeGenericTest(generalWinPathInput, generalWinPathOutput,Mode.PARALLEL);
     }
 
-    private void executeGeneritTest(String generalLinuxPathInput, String generalLinuxPathOutput) {
+    private void executeGenericTest(String generalLinuxPathInput, String generalLinuxPathOutput, Mode mode) {
+        logic = new Logic(mode);
         for (String year : years) {
             String yearPathInput = generalLinuxPathInput + File.separatorChar + year;
             String yearPathOutput = generalLinuxPathOutput + File.separatorChar + year;
-            logicFlow = new LogicFlow(
-                yearPathInput,
-                yearPathOutput);
-            logicFlow.execute();
+            logic.execute(yearPathInput,yearPathOutput);
         }
     }
 
