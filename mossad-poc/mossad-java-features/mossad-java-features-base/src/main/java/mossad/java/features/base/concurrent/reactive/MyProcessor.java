@@ -1,11 +1,11 @@
-package mossad.java.features.base.concurrent.reactive.example;
+package mossad.java.features.base.concurrent.reactive;
 
 import java.util.concurrent.Flow.Processor;
 import java.util.concurrent.Flow.Subscription;
 import java.util.concurrent.SubmissionPublisher;
 import java.util.function.Function;
-import mossad.java.features.base.concurrent.reactive.example.domain.Employee;
-import mossad.java.features.base.concurrent.reactive.example.domain.Freelancer;
+import mossad.java.features.base.concurrent.reactive.domain.Employee;
+import mossad.java.features.base.concurrent.reactive.domain.Freelancer;
 
 public final class MyProcessor
     extends SubmissionPublisher<Freelancer>
@@ -14,7 +14,7 @@ public final class MyProcessor
     private Subscription subscription;
     private Function<Employee, Freelancer> function;
 
-    MyProcessor(Function<Employee, Freelancer> function) {
+    public MyProcessor(Function<Employee, Freelancer> function) {
         super();
         this.function = function;
     }

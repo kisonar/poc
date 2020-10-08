@@ -1,4 +1,4 @@
-package mossad.java.features.base.concurrent.reactive.example.domain;
+package mossad.java.features.base.concurrent.reactive.domain;
 
 import java.util.ArrayList;
 import java.util.List;

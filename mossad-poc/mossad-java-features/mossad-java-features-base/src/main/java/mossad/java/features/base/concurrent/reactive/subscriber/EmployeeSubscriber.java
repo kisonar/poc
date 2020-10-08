@@ -1,8 +1,8 @@
-package mossad.java.features.base.concurrent.reactive.example.subscriber;
+package mossad.java.features.base.concurrent.reactive.subscriber;
 
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
-import mossad.java.features.base.concurrent.reactive.example.domain.Employee;
+import mossad.java.features.base.concurrent.reactive.domain.Employee;
 
 public final class EmployeeSubscriber implements Subscriber<Employee> {
 

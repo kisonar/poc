@@ -9,6 +9,4 @@ public final class CompletableFutureAPIImprovements {
     public void check() {
         Executor executor = CompletableFuture.delayedExecutor(50L, TimeUnit.SECONDS);
     }
-
-
 }

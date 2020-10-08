@@ -1,15 +1,19 @@
-package mossad.java.features.base.concurrent.reactive.example;
+package mossad.java.features.base.mossad.java.features.base.concurrent.reactive;
 
 import java.util.List;
 import java.util.concurrent.SubmissionPublisher;
-import mossad.java.features.base.concurrent.reactive.example.domain.Employee;
-import mossad.java.features.base.concurrent.reactive.example.domain.EmployeeFactory;
-import mossad.java.features.base.concurrent.reactive.example.domain.Freelancer;
-import mossad.java.features.base.concurrent.reactive.example.subscriber.FreelancerSubscriber;
 
-public class ReactiveAppWithProcessor {
+import mossad.java.features.base.concurrent.reactive.MyProcessor;
+import mossad.java.features.base.concurrent.reactive.domain.Employee;
+import mossad.java.features.base.concurrent.reactive.domain.EmployeeFactory;
+import mossad.java.features.base.concurrent.reactive.domain.Freelancer;
+import mossad.java.features.base.concurrent.reactive.subscriber.FreelancerSubscriber;
+import org.junit.jupiter.api.Test;
 
-    public static void main(String[] args) throws InterruptedException {
+public class ReactiveWithProcessorTest {
+
+    @Test
+    public void logic() throws InterruptedException {
         // Create End Publisher
         SubmissionPublisher<Employee> publisher = new SubmissionPublisher<>();
 
