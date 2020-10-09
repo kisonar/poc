@@ -54,21 +54,9 @@ public final class Logic {
     }
 
     private void determineExecutorService() {
-        switch (mode) {
-            case SINGLE:
-                executorService = Executors.newSingleThreadExecutor();
-                break;
-            case PARALLEL:
-                executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
-            default:
-                break;
-        }
-        /*
-        ExecutorService executorService = switch (mode) {
-            case PARALLEL ->  Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
+        executorService = switch (mode) {
+            case PARALLEL -> Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
             default -> Executors.newSingleThreadExecutor();
         };
-        return executorService;
-        */
     }
 }
