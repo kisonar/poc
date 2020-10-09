@@ -11,7 +11,7 @@ public class Main {
             throw new IllegalArgumentException("Insufficient number of input parameters");
         }
 
-        Logic logic = new Logic(Mode.PARALLEL);
+        Logic logic = new Logic(Mode.EXECUTOR_PARALLEL);
         logic.configure();
         logic.execute(args[0], args[1]);
     }

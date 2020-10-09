@@ -37,7 +37,7 @@ public class LogicFlowTest {
     public void processFile_whenLinux_parallel() {
         String generalLinuxPathInput = generalLinuxPath + File.separatorChar + INPUT;
         String generalLinuxPathOutput = generalLinuxPath + File.separatorChar + OUTPUT;
-        executeGenericTest(generalLinuxPathInput, generalLinuxPathOutput,Mode.PARALLEL);
+        executeGenericTest(generalLinuxPathInput, generalLinuxPathOutput, Mode.EXECUTOR_PARALLEL);
     }
 
     @EnabledOnOs(OS.LINUX)
@@ -45,7 +45,7 @@ public class LogicFlowTest {
     public void processFile_whenLinux_single() {
         String generalLinuxPathInput = generalLinuxPath + File.separatorChar + INPUT;
         String generalLinuxPathOutput = generalLinuxPath + File.separatorChar + OUTPUT;
-        executeGenericTest(generalLinuxPathInput, generalLinuxPathOutput,Mode.SINGLE);
+        executeGenericTest(generalLinuxPathInput, generalLinuxPathOutput, Mode.EXECUTOR_SINGLE);
     }
 
     @EnabledOnOs(OS.WINDOWS)
@@ -54,7 +54,7 @@ public class LogicFlowTest {
     public void processFile_whenWindows() {
         String generalWinPathInput = generalWinPath + File.pathSeparator + INPUT;
         String generalWinPathOutput = generalWinPath + File.pathSeparator + OUTPUT;
-        executeGenericTest(generalWinPathInput, generalWinPathOutput,Mode.PARALLEL);
+        executeGenericTest(generalWinPathInput, generalWinPathOutput, Mode.EXECUTOR_PARALLEL);
     }
 
     private void executeGenericTest(String generalLinuxPathInput, String generalLinuxPathOutput, Mode mode) {

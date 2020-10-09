@@ -4,11 +4,9 @@ public class StepRunRecording extends StepAbstract {
 
     @Override
     public void execute() {
-
     }
 
     @Override
     public void goToNext() {
-
     }
 }

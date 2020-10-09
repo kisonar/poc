@@ -5,6 +5,7 @@ import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
+
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.MultiPartEmail;
@@ -19,7 +20,6 @@ public final class MailSender {
     private MultiPartEmail email;
 
     public MailSender() {
-
     }
 
     public void prepareEmailWithAtatchment(List<String> files) throws EmailException {
@@ -32,7 +32,6 @@ public final class MailSender {
                 LOG.warning(String.format("Cannot add attachment due to: %s", e.getMessage()));
             }
         });
-
     }
 
     public void send() throws EmailException {

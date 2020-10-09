@@ -13,5 +13,4 @@ public final class KeyLoggerEntries {
         return List.of("INFO:", "Backspace", "Down", "Enter", "Up", "Volume", "Right", "Left", "Back", "Space", "Shift",
                 "Escape", "Ctrl", "Alt", "Semicolon", "Home", "Delete", "Semicolon", "Comma", "Tab", "Caps", "Lock");
     }
-
 }

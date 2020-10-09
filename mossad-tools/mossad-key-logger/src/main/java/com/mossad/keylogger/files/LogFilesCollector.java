@@ -1,6 +1,7 @@
 package com.mossad.keylogger.files;
 
 import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,17 +17,15 @@ public final class LogFilesCollector {
     private final Logger LOG = Logger.getLogger(LogFilesCollector.class.getCanonicalName());
 
     public LogFilesCollector() {
-
     }
 
     public List<String> collectLogs() {
-
         File currentDirectory = new File(new File(KeyLoggerEntries.SIGN_EMPTY).getAbsolutePath());
         String pathAsString = currentDirectory.getAbsolutePath();
         try {
             Stream<Path> paths = Files.list(Paths.get(pathAsString));
             return paths.map(path -> path.toString()).filter(path -> !path.endsWith(".lck") && path.contains("Log"))
-                .collect(Collectors.toList());
+                    .collect(Collectors.toList());
 
         } catch (IOException e) {
             LOG.info(String.format("Cannot collect logs %s", e.getMessage()));
@@ -43,5 +42,4 @@ public final class LogFilesCollector {
             }
         });
     }
-
 }
