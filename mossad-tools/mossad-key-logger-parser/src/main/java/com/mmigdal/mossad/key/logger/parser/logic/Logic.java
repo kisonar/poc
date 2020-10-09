@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -28,27 +31,46 @@ public final class Logic {
         try {
             Stream<Path> filesPaths = Files.list(inputPath).sorted();
             final ExecutorService executorService = determineExecutorService();
-            filesPaths.forEach(sourceFilePath -> {
+            final List<Item> items = new ArrayList<>();
+            filesPaths.forEach(filePath -> {
+                String sourceFileName = filePath.toFile().getName();
+                Path destinationFilePath = Paths.get(outputPath.toString(), sourceFileName);
+                items.add( new Item(filePath,destinationFilePath));
+            });
+
+            items.stream().forEach(item -> {
                 executorService.submit(() -> {
                     FileProcessor fileProcessor = new FileProcessor();
-                    String sourceFileName = sourceFilePath.toFile().getName();
-                    Path destinationFilePath = Paths.get(outputPath.toString(), sourceFileName);
-                    fileProcessor.processFile(sourceFilePath, destinationFilePath);
+                    fileProcessor.processFile(item.input, item.output);
                 });
             });
-            executorService.awaitTermination(1, TimeUnit.SECONDS);
-            executorService.shutdown();
-
-        } catch (IOException |InterruptedException e) {
+        } catch (IOException e) {
             LOG.log(Level.ALL, String.format("Cannot start execution due to %s", e.getMessage()));
         }
     }
 
     public ExecutorService determineExecutorService() {
-        var executorService = switch (mode) {
+
+        ExecutorService executorService = null;
+        switch (mode){
+            case SINGLE :
+                executorService = Executors.newSingleThreadExecutor();
+                break;
+            case PARALLEL:
+                executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()-1 );
+            default:
+                break;
+        }
+        return executorService;
+
+        /*
+        ExecutorService executorService = switch (mode) {
             case PARALLEL ->  Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
             default -> Executors.newSingleThreadExecutor();
         };
+
         return executorService;
+        */
+
     }
 }

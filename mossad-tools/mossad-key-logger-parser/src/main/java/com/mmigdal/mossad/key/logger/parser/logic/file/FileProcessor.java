@@ -1,6 +1,7 @@
 package com.mmigdal.mossad.key.logger.parser.logic.file;
 
 import com.mmigdal.mossad.key.logger.parser.logic.line.LineProcessor;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -34,7 +35,7 @@ public final class FileProcessor {
             //    pathOutputFile.toAbsolutePath().toFile().getName()));
         } catch (IOException e) {
             LOG.log(Level.WARNING, String
-                .format("Problems with processing file %s %s", pathInputFile.getFileName().toString(), e.getMessage()));
+                    .format("Problems with processing file %s %s", pathInputFile.getFileName().toString(), e.getMessage()));
         }
     }
 

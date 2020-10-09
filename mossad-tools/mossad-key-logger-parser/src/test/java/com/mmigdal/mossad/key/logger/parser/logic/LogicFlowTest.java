@@ -12,7 +12,7 @@ import org.junit.jupiter.api.condition.OS;
 
 public class LogicFlowTest {
 
-    private final static List<String> years = List.of("2018", "2019", "2020");
+    private final static List<String> years = List.of("2018","2019", "2020");
     private Logic logic;
     private long startTime;
     private long endTime;
