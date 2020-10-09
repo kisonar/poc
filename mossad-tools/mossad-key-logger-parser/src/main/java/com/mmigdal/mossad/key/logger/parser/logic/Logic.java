@@ -20,9 +20,14 @@ public final class Logic {
 
     private static Logger LOG = Logger.getLogger(Logic.class.getName());
     private Mode mode;
+    private ExecutorService executorService;
 
     public Logic(Mode mode) {
         this.mode = mode;
+    }
+
+    public void configure() {
+        determineExecutorService();
     }
 
     public void execute(String inputPathString, String outputPathString) {
@@ -30,12 +35,11 @@ public final class Logic {
         Path outputPath = Paths.get(outputPathString);
         try {
             Stream<Path> filesPaths = Files.list(inputPath).sorted();
-            final ExecutorService executorService = determineExecutorService();
-            final List<Item> items = new ArrayList<>();
+            List<Item> items = new ArrayList<>();
             filesPaths.forEach(filePath -> {
                 String sourceFileName = filePath.toFile().getName();
                 Path destinationFilePath = Paths.get(outputPath.toString(), sourceFileName);
-                items.add( new Item(filePath,destinationFilePath));
+                items.add(new Item(filePath, destinationFilePath));
             });
 
             items.stream().forEach(item -> {
@@ -49,28 +53,22 @@ public final class Logic {
         }
     }
 
-    public ExecutorService determineExecutorService() {
-
-        ExecutorService executorService = null;
-        switch (mode){
-            case SINGLE :
+    private void determineExecutorService() {
+        switch (mode) {
+            case SINGLE:
                 executorService = Executors.newSingleThreadExecutor();
                 break;
             case PARALLEL:
-                executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()-1 );
+                executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
             default:
                 break;
         }
-        return executorService;
-
         /*
         ExecutorService executorService = switch (mode) {
             case PARALLEL ->  Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
             default -> Executors.newSingleThreadExecutor();
         };
-
         return executorService;
         */
-
     }
 }

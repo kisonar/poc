@@ -59,6 +59,7 @@ public class LogicFlowTest {
 
     private void executeGenericTest(String generalLinuxPathInput, String generalLinuxPathOutput, Mode mode) {
         logic = new Logic(mode);
+        logic.configure();
         for (String year : years) {
             String yearPathInput = generalLinuxPathInput + File.separatorChar + year;
             String yearPathOutput = generalLinuxPathOutput + File.separatorChar + year;
