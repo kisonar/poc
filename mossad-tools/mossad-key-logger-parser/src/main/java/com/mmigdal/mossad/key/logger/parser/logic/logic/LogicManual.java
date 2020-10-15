@@ -1,7 +1,7 @@
 package com.mmigdal.mossad.key.logger.parser.logic.logic;
 
 import com.mmigdal.mossad.key.logger.parser.logic.model.Item;
-import com.mmigdal.mossad.key.logger.parser.logic.model.Mode;
+import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeExecution;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -9,13 +9,12 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public final class LogicManual implements Logic {
+public final class LogicManual extends LogicAbstraction {
 
     private static Logger LOG = Logger.getLogger(LogicManual.class.getName());
-    private Mode mode;
 
-    public LogicManual(Mode mode) {
-        this.mode = mode;
+    public LogicManual(ModeExecution modeExecution) {
+        super(modeExecution);
     }
 
     @Override

@@ -5,8 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.mmigdal.mossad.key.logger.parser.logic.logic.Logic;
-import com.mmigdal.mossad.key.logger.parser.logic.logic.LogicExecutors;
-import com.mmigdal.mossad.key.logger.parser.logic.model.Mode;
+import com.mmigdal.mossad.key.logger.parser.logic.logic.LogicFactory;
+import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeExecution;
+import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeRuntime;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,43 +38,43 @@ public class LogicExecutorTest {
 
     @EnabledOnOs(OS.LINUX)
     @Test
-    public void processFile_whenLinux_parallel() {
+    public void processFile_whenLinux_executor_parallel() {
         String generalLinuxPathInput = generalLinuxPath + File.separatorChar + INPUT;
         String generalLinuxPathOutput = generalLinuxPath + File.separatorChar + OUTPUT;
-        executeGenericTest(generalLinuxPathInput, generalLinuxPathOutput, Mode.EXECUTOR_PARALLEL);
+        executeGenericTest(generalLinuxPathInput, generalLinuxPathOutput, ModeRuntime.EXECUTOR, ModeExecution.PARALLEL);
     }
 
     @EnabledOnOs(OS.LINUX)
     @Test
-    public void processFile_whenLinux_single() {
+    public void processFile_whenLinux_executor_single() {
         String generalLinuxPathInput = generalLinuxPath + File.separatorChar + INPUT;
         String generalLinuxPathOutput = generalLinuxPath + File.separatorChar + OUTPUT;
-        executeGenericTest(generalLinuxPathInput, generalLinuxPathOutput, Mode.EXECUTOR_SINGLE);
+        executeGenericTest(generalLinuxPathInput, generalLinuxPathOutput, ModeRuntime.EXECUTOR, ModeExecution.SINGLE);
     }
 
     @EnabledOnOs(OS.WINDOWS)
     @Test
-    public void processFile_whenWindows_single() {
+    public void processFile_whenWindows_executor_single() {
         String generalWinPathInput = generalWinPath + File.pathSeparator + INPUT;
         String generalWinPathOutput = generalWinPath + File.pathSeparator + OUTPUT;
-        executeGenericTest(generalWinPathInput, generalWinPathOutput, Mode.EXECUTOR_PARALLEL);
+        executeGenericTest(generalWinPathInput, generalWinPathOutput, ModeRuntime.EXECUTOR, ModeExecution.SINGLE);
     }
 
     @EnabledOnOs(OS.WINDOWS)
     @Test
-    public void processFile_whenWindows_parallel() {
+    public void processFile_whenWindows_executor_parallel() {
         String generalWinPathInput = generalWinPath + File.pathSeparator + INPUT;
         String generalWinPathOutput = generalWinPath + File.pathSeparator + OUTPUT;
-        executeGenericTest(generalWinPathInput, generalWinPathOutput, Mode.EXECUTOR_SINGLE);
+        executeGenericTest(generalWinPathInput, generalWinPathOutput, ModeRuntime.EXECUTOR, ModeExecution.PARALLEL);
     }
 
-    private void executeGenericTest(String generalLinuxPathInput, String generalLinuxPathOutput, Mode mode) {
-        logic = new LogicExecutors(mode);
+    private void executeGenericTest(String generalLinuxPathInput, String generalLinuxPathOutput, ModeRuntime modeRuntime, ModeExecution modeExecution) {
+        logic = LogicFactory.getLogic(modeRuntime, modeExecution);
         logic.configure();
         for (String year : years) {
             String yearPathInput = generalLinuxPathInput + File.separatorChar + year;
             String yearPathOutput = generalLinuxPathOutput + File.separatorChar + year;
-            logic.execute(yearPathInput,yearPathOutput);
+            logic.execute(yearPathInput, yearPathOutput);
         }
     }
 

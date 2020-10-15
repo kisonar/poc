@@ -1,7 +1,7 @@
 package com.mmigdal.mossad.key.logger.parser.logic.logic;
 
 import com.mmigdal.mossad.key.logger.parser.logic.model.Item;
-import com.mmigdal.mossad.key.logger.parser.logic.model.Mode;
+import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeExecution;
 import com.mmigdal.mossad.key.logger.parser.logic.file.FileProcessor;
 
 import java.io.IOException;
@@ -12,14 +12,13 @@ import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public final class LogicExecutors implements Logic {
+public final class LogicExecutor extends LogicAbstraction {
 
-    private static Logger LOG = Logger.getLogger(LogicExecutors.class.getName());
-    private Mode mode;
+    private static Logger LOG = Logger.getLogger(LogicExecutor.class.getName());
     private ExecutorService executorService;
 
-    public LogicExecutors(Mode mode) {
-        this.mode = mode;
+    public LogicExecutor(ModeExecution modeExecution) {
+        super(modeExecution);
     }
 
     @Override
@@ -43,9 +42,10 @@ public final class LogicExecutors implements Logic {
     }
 
     private void determineExecutorService() {
-        executorService = switch (mode) {
-            case EXECUTOR_PARALLEL -> Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
-            default -> Executors.newSingleThreadExecutor();
+        executorService = switch (modeExecution) {
+            case PARALLEL -> Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
+            case SINGLE -> Executors.newSingleThreadExecutor();
+            default -> throw new IllegalArgumentException(String.format("Mode execution is not supported ", modeExecution));
         };
     }
 }
