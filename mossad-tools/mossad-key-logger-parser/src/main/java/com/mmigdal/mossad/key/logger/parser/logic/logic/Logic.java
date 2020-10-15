@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public interface Logic {
+
     void configure();
 
     void execute(String inputPathString, String outputPathString);
