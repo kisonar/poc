@@ -1,4 +1,4 @@
-package com.mmigdal.mossad.key.logger.parser.logic;
+package com.mmigdal.mossad.key.logger.parser.logic.model;
 
 import java.nio.file.Path;
 

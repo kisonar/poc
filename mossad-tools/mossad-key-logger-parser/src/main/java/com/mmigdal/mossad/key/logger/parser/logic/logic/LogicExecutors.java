@@ -1,38 +1,36 @@
-package com.mmigdal.mossad.key.logger.parser.logic;
+package com.mmigdal.mossad.key.logger.parser.logic.logic;
 
+import com.mmigdal.mossad.key.logger.parser.logic.model.Item;
+import com.mmigdal.mossad.key.logger.parser.logic.model.Mode;
 import com.mmigdal.mossad.key.logger.parser.logic.file.FileProcessor;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 
-public final class Logic {
+public final class LogicExecutors implements Logic {
 
-    private static Logger LOG = Logger.getLogger(Logic.class.getName());
+    private static Logger LOG = Logger.getLogger(LogicExecutors.class.getName());
     private Mode mode;
     private ExecutorService executorService;
 
-    public Logic(Mode mode) {
+    public LogicExecutors(Mode mode) {
         this.mode = mode;
     }
 
+    @Override
     public void configure() {
         determineExecutorService();
     }
 
+    @Override
     public void execute(String inputPathString, String outputPathString) {
-        Path inputPath = Paths.get(inputPathString);
-        Path outputPath = Paths.get(outputPathString);
         try {
-            List<Item> items = getItems(inputPath, outputPath);
+            List<Item> items = getItems(Paths.get(inputPathString), Paths.get(outputPathString));
             items.stream().forEach(item -> {
                 executorService.submit(() -> {
                     FileProcessor fileProcessor = new FileProcessor();
@@ -42,17 +40,6 @@ public final class Logic {
         } catch (IOException e) {
             LOG.log(Level.ALL, String.format("Cannot start execution due to %s", e.getMessage()));
         }
-    }
-
-    private List<Item> getItems(Path inputPath, Path outputPath) throws IOException {
-        Stream<Path> filesPaths = Files.list(inputPath).sorted();
-        List<Item> items = new ArrayList<>();
-        filesPaths.forEach(filePath -> {
-            String sourceFileName = filePath.toFile().getName();
-            Path destinationFilePath = Paths.get(outputPath.toString(), sourceFileName);
-            items.add(new Item(filePath, destinationFilePath));
-        });
-        return items;
     }
 
     private void determineExecutorService() {
