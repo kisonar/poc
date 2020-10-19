@@ -31,7 +31,7 @@ public class Employee {
         }
         Employee employee = (Employee) o;
         return id == employee.id &&
-            Objects.equals(name, employee.name);
+                Objects.equals(name, employee.name);
     }
 
     @Override

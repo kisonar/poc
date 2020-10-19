@@ -35,7 +35,7 @@ public final class FileProcessor {
             //    pathOutputFile.toAbsolutePath().toFile().getName()));
         } catch (IOException e) {
             LOG.log(Level.WARNING, String
-                    .format("Problems with processing file %s %s", pathInputFile.getFileName().toString(), e.getMessage()));
+                    .format("Problems with processing file %s %s", pathInputFile.toString(), e.getMessage()));
         }
     }
 

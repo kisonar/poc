@@ -4,12 +4,16 @@ import com.mmigdal.mossad.key.logger.parser.logic.logic.Logic;
 import com.mmigdal.mossad.key.logger.parser.logic.logic.LogicFactory;
 import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeExecution;
 import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeRuntime;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
 
-import static com.mmigdal.mossad.key.logger.parser.cli.Configuration.YEARS;
+import java.util.Calendar;
+import java.util.logging.Logger;
 
+import static com.mmigdal.mossad.key.logger.parser.cli.Configuration.YEARS;
 import static com.mmigdal.mossad.key.logger.parser.logic.others.ConfigurationTest.LINUX_PATH_FQ_INPUT;
 import static com.mmigdal.mossad.key.logger.parser.logic.others.ConfigurationTest.LINUX_PATH_FQ_OUTPUT;
 import static com.mmigdal.mossad.key.logger.parser.logic.others.ConfigurationTest.WIN_PATH_FQ_INPUT;
@@ -17,7 +21,22 @@ import static com.mmigdal.mossad.key.logger.parser.logic.others.ConfigurationTes
 
 public class LogicExecutorTest {
 
+    private static Logger LOG = Logger.getLogger(LogicExecutorTest.class.getName());
+
     private Logic logic;
+    private long startTime;
+    private long endTime;
+
+    @BeforeEach
+    public void recordStartTime() {
+        startTime = getTime();
+    }
+
+    @AfterEach
+    public void recordEndTime() {
+        endTime = getTime();
+        LOG.info(String.format("Execution took: %d ms", (endTime - startTime)));
+    }
 
     @EnabledOnOs(OS.LINUX)
     @Test
@@ -49,5 +68,7 @@ public class LogicExecutorTest {
         logic.execute();
     }
 
-
+    private long getTime() {
+        return Calendar.getInstance().getTime().getTime();
+    }
 }
