@@ -61,7 +61,6 @@ public final class FileProcessor {
                     LOG.log(Level.WARNING, String.format("Problems during saving result: %s ", e.getMessage()));
                 }
             });
-
         }
     }
 

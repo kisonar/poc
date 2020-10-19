@@ -12,11 +12,11 @@ import java.util.stream.Stream;
 
 public interface Logic {
 
-    void configure();
+    void execute();
 
-    void execute(String inputPathString, String outputPathString);
+    void prepare(String inputPath, String outputPath, List<String> years);
 
-    default List<Item> getItems(Path inputPath, Path outputPath) throws IOException {
+    default List<Item> readItems(Path inputPath, Path outputPath) throws IOException {
         Stream<Path> filesPaths = Files.list(inputPath).sorted();
         List<Item> items = new ArrayList<>();
         filesPaths.forEach(filePath -> {
