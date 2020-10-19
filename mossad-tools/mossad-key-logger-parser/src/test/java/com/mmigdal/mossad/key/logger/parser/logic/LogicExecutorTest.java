@@ -41,7 +41,7 @@ public class LogicExecutorTest {
     @EnabledOnOs(OS.LINUX)
     @Test
     public void processFile_whenLinux_executor_parallel() {
-        executeGenericTest(LINUX_PATH_FQ_INPUT, LINUX_PATH_FQ_OUTPUT, ModeRuntime.EXECUTOR, ModeExecution.PARALLEL);
+        executeGenericTest(LINUX_PATH_FQ_INPUT, LINUX_PATH_FQ_OUTPUT, ModeRuntime.EXECUTOR, ModeExecution.PARALLEL_FIXED);
     }
 
     @EnabledOnOs(OS.LINUX)
@@ -59,7 +59,7 @@ public class LogicExecutorTest {
     @EnabledOnOs(OS.WINDOWS)
     @Test
     public void processFile_whenWindows_executor_parallel() {
-        executeGenericTest(WIN_PATH_FQ_INPUT, WIN_PATH_FQ_OUTPUT, ModeRuntime.EXECUTOR, ModeExecution.PARALLEL);
+        executeGenericTest(WIN_PATH_FQ_INPUT, WIN_PATH_FQ_OUTPUT, ModeRuntime.EXECUTOR, ModeExecution.PARALLEL_FIXED);
     }
 
     private void executeGenericTest(String inputPath, String outputPath, ModeRuntime modeRuntime, ModeExecution modeExecution) {

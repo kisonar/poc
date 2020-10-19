@@ -31,11 +31,10 @@ public final class LogicExecutor extends LogicAbstraction {
 
     private void determineExecutorService() {
         executorService = switch (modeExecution) {
-            case PARALLEL -> Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
+            case PARALLEL_FIXED -> Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
+            case PARALLEL_DEFAULT -> Executors.newWorkStealingPool();
             case SINGLE -> Executors.newSingleThreadExecutor();
             default -> throw new IllegalArgumentException(String.format("Provided mode execution is not supported %s", modeExecution));
         };
     }
-
-
 }

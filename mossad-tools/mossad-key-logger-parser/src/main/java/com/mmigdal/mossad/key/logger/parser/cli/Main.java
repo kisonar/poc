@@ -17,7 +17,7 @@ public class Main {
         String inputPath = args[0];
         String outputPath = args[1];
 
-        Logic logic = LogicFactory.getLogic(ModeRuntime.EXECUTOR, ModeExecution.PARALLEL);
+        Logic logic = LogicFactory.getLogic(ModeRuntime.EXECUTOR, ModeExecution.PARALLEL_FIXED);
         logic.prepare(inputPath, outputPath, List.of());
         logic.execute();
     }
