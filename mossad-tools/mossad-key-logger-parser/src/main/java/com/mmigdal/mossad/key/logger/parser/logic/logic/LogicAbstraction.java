@@ -23,14 +23,20 @@ public abstract class LogicAbstraction implements Logic {
         this.items = new ArrayList<>();
     }
 
-    public void prepare(String inputPath, String outputPath, List<String> years) {
+    public void prepare(String inputDirectory, String outputDirectory, List<String> years) {
         years.forEach(year -> {
-            String input = inputPath + File.separatorChar + year;
-            String output = outputPath + File.separatorChar + year;
-            try {
-                items.addAll(readItems(Path.of(input), Path.of(output)));
-            } catch (IOException e) {
-                LOG.log(Level.WARNING, String.format("Cannot read items for %s %s", input, output));
+            String inputYear = createYearLocation(inputDirectory, year);
+            String outputYear = createYearLocation(outputDirectory, year);
+            Path input = Path.of(inputYear);
+            Path output = Path.of(outputYear);
+            if (input.toFile().isDirectory() && output.toFile().isDirectory()) {
+                try {
+                    items.addAll(readItems(input, output));
+                } catch (IOException e) {
+                    LOG.log(Level.WARNING, String.format("Cannot read items for %s %s", inputYear, outputYear));
+                }
+            } else {
+                LOG.log(Level.WARNING, String.format("One of locations is not a directory %s %s", input, output));
             }
         });
     }
@@ -38,4 +44,9 @@ public abstract class LogicAbstraction implements Logic {
     public List<Item> getItems() {
         return Collections.unmodifiableList(items);
     }
+
+    private String createYearLocation(String inputPath, String year) {
+        return inputPath + File.separatorChar + year;
+    }
+
 }

@@ -14,7 +14,7 @@ public interface Logic {
 
     void execute();
 
-    void prepare(String inputPath, String outputPath, List<String> years);
+    void prepare(String inputDirectory, String outputDirectory, List<String> years);
 
     default List<Item> readItems(Path inputPath, Path outputPath) throws IOException {
         Stream<Path> filesPaths = Files.list(inputPath).sorted();
