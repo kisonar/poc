@@ -2,13 +2,13 @@ package mossad.java.features.base.collections;
 
 import java.util.Objects;
 
-public final class EntityHashProperEqualsFalse {
+public final class EntityHashOkEqualsOk {
 
     public final int id;
     public final String name;
     public final String value;
 
-    public EntityHashProperEqualsFalse(int id, String name, String value) {
+    public EntityHashOkEqualsOk(int id, String name, String value) {
         this.name = name;
         this.id = id;
         this.value = value;
@@ -21,6 +21,6 @@ public final class EntityHashProperEqualsFalse {
 
     @Override
     public boolean equals(Object obj) {
-        return false;
+        return Objects.equals(this, obj);
     }
 }
