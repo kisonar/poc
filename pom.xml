@@ -21,7 +21,6 @@
     <module>mossad-poc</module>
     <module>mossad-tools</module>
     <module>mossad-cloud</module>
-      <module>ldap</module>
   </modules>
 
   <dependencyManagement>

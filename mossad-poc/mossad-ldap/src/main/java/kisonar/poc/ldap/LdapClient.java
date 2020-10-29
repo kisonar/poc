@@ -10,6 +10,7 @@ import javax.naming.directory.DirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 
+import java.util.StringJoiner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,12 +32,12 @@ public class LdapClient {
             SearchResult sr = namingEnumeration.next();
             LOGGER.log(Level.INFO, "-----------------------------------------------------------------------");
             LOGGER.log(Level.INFO, "SearchResult: " + sr);
-            LOGGER.log(Level.INFO, "Name in namespace :" + sr.getNameInNamespace());
-            LOGGER.log(Level.INFO, "DN: " + sr.getName());
-            LOGGER.log(Level.INFO, "UID: " + sr.getAttributes().get("uid"));
-            LOGGER.log(Level.INFO, "dc: " + sr.getAttributes().get("dc"));
-            LOGGER.log(Level.INFO, "Password encoded by bytes: " + sr.getAttributes().get("userPassword").get());
-            LOGGER.log(Level.INFO, "Password:" + new String((byte[]) sr.getAttributes().get("userPassword").get()));
+            // LOGGER.log(Level.INFO, "Name in namespace :" + sr.getNameInNamespace());
+            //LOGGER.log(Level.INFO, "DN: " + sr.getName());
+            //LOGGER.log(Level.INFO, "UID: " + sr.getAttributes().get("uid"));
+            //LOGGER.log(Level.INFO, "dc: " + sr.getAttributes().get("dc"));
+            //LOGGER.log(Level.INFO, "Password encoded by bytes: " + sr.getAttributes().get("userPassword").get());
+            // LOGGER.log(Level.INFO, "Password:" + new String((byte[]) sr.getAttributes().get("userPassword").get()));
         }
     }
 
@@ -54,7 +55,7 @@ public class LdapClient {
     }
 
 
-    public void addUser(String name, String surname) throws NamingException {
+    public void addUser(String userId, String name, String surname, String email) throws NamingException {
         Attributes attributes = new BasicAttributes();
         attributes.put(LDAPConsts.PERSON);
         attributes.put(LDAPConsts.ORGANIZATIONAL_PERSON);
@@ -64,11 +65,11 @@ public class LdapClient {
 
         //String valueHomeDirectory = "/home/"+prefix;
         // Attribute attributeHomeDirectory = new BasicAttribute(LDAPConsts.HOME_DIRECTORY,valueHomeDirectory);
-        Attribute attributeSn = new BasicAttribute(LDAPConsts.SN, surname);
+        Attribute attributeUid = new BasicAttribute(LDAPConsts.UID, userId);
         Attribute attributeCn = new BasicAttribute(LDAPConsts.CN, name);
+        Attribute attributeSn = new BasicAttribute(LDAPConsts.SN, surname);
+        Attribute attributeEmail = new BasicAttribute(LDAPConsts.EMAIL, email);
 
-        String valueUid = "testowy-uid";
-        Attribute attributeUid = new BasicAttribute(LDAPConsts.UID, valueUid);
 
         String parameterPassword = "userPassword";
         String valuePassword = "-password";
@@ -80,21 +81,22 @@ public class LdapClient {
         attributes.put(attributeUid);
         //attributes.put(attributeHomeDirectory);
 
-        String dn = generateDn(name);
+        String dn = generateDn(userId);
         ctx.createSubcontext(dn, attributes);
-        LOGGER.log(Level.INFO, "User added");
+        LOGGER.log(Level.INFO, String.format("Added user with ID: %s", userId));
     }
 
-    public void removeUser(String name) throws NamingException {
-        ctx.destroySubcontext(generateDn(name));
+    public void removeUser(String userId) throws NamingException {
+        ctx.destroySubcontext(generateDn(userId));
+        LOGGER.log(Level.INFO, String.format("Removed user with ID: %s", userId));
     }
 
     public void close() throws NamingException {
         ctx.close();
     }
 
-    private String generateDn(String userName) {
-        String dn = LDAPConsts.UID + "=" + userName + "," + LDAPConsts.OU + "=" + "users";
-        return dn;
+    private String generateDn(String uid) {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append(LDAPConsts.UID).append("=").append(uid).append(",").append(LDAPConsts.OU).append("=").append("users").toString();
     }
 }

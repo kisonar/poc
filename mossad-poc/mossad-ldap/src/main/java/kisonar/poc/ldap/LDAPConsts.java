@@ -18,6 +18,7 @@ public final class LDAPConsts {
     public static final String CN = "cn";
     public static final String OU = "ou";
     public static final String HOME_DIRECTORY = "homeDirectory";
+    public static final String EMAIL = "e-mail";
 
     private LDAPConsts() {
 

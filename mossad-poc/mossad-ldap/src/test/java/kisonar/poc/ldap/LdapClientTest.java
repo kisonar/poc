@@ -1,6 +1,9 @@
 package kisonar.poc.ldap;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 
 import javax.naming.Context;
 import javax.naming.NamingException;
@@ -14,8 +17,10 @@ public class LdapClientTest {
     private final static Hashtable<String, Object> env = new Hashtable<>();
     private DirContext ctx;
     private LdapClient ldapClient;
-    private String userName = "mandi";
-    private String userSurname = "makumba";
+    private String userId = "mmigdal";
+    private String userName = "marcin";
+    private String userSurname = "migdal";
+    private String userEmail = "kisonar@wp.pl";
 
     @BeforeEach
     public void beforeEach() throws NamingException {
@@ -42,7 +47,7 @@ public class LdapClientTest {
 
     @Test
     public void addUser() throws NamingException {
-        ldapClient.addUser(userName, userSurname);
+        ldapClient.addUser(userId, userName, userSurname, userEmail);
     }
 
     @Test
@@ -50,15 +55,13 @@ public class LdapClientTest {
         ldapClient.listAll();
     }
 
-
     @Test
     public void removeUser() throws NamingException {
-        ldapClient.removeUser(userName);
+        ldapClient.removeUser(userId);
     }
 
     @Test
     public void listAfterRemoval() throws NamingException {
         ldapClient.listAll();
     }
-
 }
