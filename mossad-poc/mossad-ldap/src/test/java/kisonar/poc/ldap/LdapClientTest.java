@@ -21,6 +21,8 @@ public class LdapClientTest {
     private String userName = "marcin";
     private String userSurname = "migdal";
     private String userEmail = "kisonar@wp.pl";
+    private String groupName = "mygroup";
+    private String groupDescription = "myGroupDescription";
 
     @BeforeEach
     public void beforeEach() throws NamingException {
@@ -46,13 +48,34 @@ public class LdapClientTest {
     }
 
     @Test
-    public void addUser() throws NamingException {
-        ldapClient.addUser(userId, userName, userSurname, userEmail);
+    public void createGroup() throws NamingException {
+        ldapClient.createGroup(groupName);
     }
 
     @Test
-    public void listAfterAdding() throws NamingException {
-        ldapClient.listAll();
+    public void listGroups() throws NamingException {
+        ldapClient.listGroups();
+    }
+
+    @Test
+    public void removeGroup() throws NamingException {
+        ldapClient.removeGroup(groupName);
+    }
+
+
+    @Test
+    public void createUser() throws NamingException {
+        ldapClient.createUser(userId, userName, userSurname, userEmail);
+    }
+
+    @Test
+    public void listUsersAfterUserCreation() throws NamingException {
+        ldapClient.listUsers();
+    }
+
+    @Test
+    public void searchUser() throws NamingException {
+        ldapClient.searchUser(userId);
     }
 
     @Test
@@ -61,7 +84,7 @@ public class LdapClientTest {
     }
 
     @Test
-    public void listAfterRemoval() throws NamingException {
-        ldapClient.listAll();
+    public void listUsersAfterUserRemoval() throws NamingException {
+        ldapClient.listUsers();
     }
 }
