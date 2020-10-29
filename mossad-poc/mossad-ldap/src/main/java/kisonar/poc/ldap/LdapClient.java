@@ -13,7 +13,6 @@ import javax.naming.directory.SearchResult;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class LdapClient {
 
     private final static Logger LOGGER = Logger.getLogger(LdapClient.class.getClass().getName());
@@ -55,32 +54,47 @@ public class LdapClient {
     }
 
 
-    public void addUser(String name2, String surname2) throws NamingException {
-
+    public void addUser(String name, String surname) throws NamingException {
         Attributes attributes = new BasicAttributes();
         attributes.put(LDAPConsts.PERSON);
         attributes.put(LDAPConsts.ORGANIZATIONAL_PERSON);
         attributes.put(LDAPConsts.INET_ORG_PERSON);
+        // attributes.put(LDAPConsts.POSSIX_ACCOUNT);
+        //attributes.put(LDAPConsts.SHADOW_ACCOUNT);
 
-        Attribute snAttribute = new BasicAttribute("sn", "testowy-sn");
-        String parameterCn = "cn";
-        String valueCn = "testowy-common-name";
-        Attribute attributeCn = new BasicAttribute(parameterCn, valueCn);
+        //String valueHomeDirectory = "/home/"+prefix;
+        // Attribute attributeHomeDirectory = new BasicAttribute(LDAPConsts.HOME_DIRECTORY,valueHomeDirectory);
+        Attribute attributeSn = new BasicAttribute(LDAPConsts.SN, surname);
+        Attribute attributeCn = new BasicAttribute(LDAPConsts.CN, name);
 
-        String valuePassword = "pass";
+        String valueUid = "testowy-uid";
+        Attribute attributeUid = new BasicAttribute(LDAPConsts.UID, valueUid);
+
         String parameterPassword = "userPassword";
-        String name = "testowy";
+        String valuePassword = "-password";
         Attribute attributePassword = new BasicAttribute(parameterPassword, valuePassword);
 
-        attributes.put(snAttribute);
+        attributes.put(attributeSn);
         attributes.put(attributeCn);
         attributes.put(attributePassword);
-        String dn = "uid=" + name + ",ou=users";
+        attributes.put(attributeUid);
+        //attributes.put(attributeHomeDirectory);
+
+        String dn = generateDn(name);
         ctx.createSubcontext(dn, attributes);
         LOGGER.log(Level.INFO, "User added");
     }
 
+    public void removeUser(String name) throws NamingException {
+        ctx.destroySubcontext(generateDn(name));
+    }
+
     public void close() throws NamingException {
         ctx.close();
+    }
+
+    private String generateDn(String userName) {
+        String dn = LDAPConsts.UID + "=" + userName + "," + LDAPConsts.OU + "=" + "users";
+        return dn;
     }
 }

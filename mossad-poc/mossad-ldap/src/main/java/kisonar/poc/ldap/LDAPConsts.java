@@ -13,6 +13,11 @@ public final class LDAPConsts {
     public static final Attribute SHADOW_ACCOUNT = new BasicAttribute(OBJECT_CLASS, "shadowAccount");
 
     public static final String UID_ALL = "(uid=*)";
+    public static final String UID = "uid";
+    public static final String SN = "sn";
+    public static final String CN = "cn";
+    public static final String OU = "ou";
+    public static final String HOME_DIRECTORY = "homeDirectory";
 
     private LDAPConsts() {
 
