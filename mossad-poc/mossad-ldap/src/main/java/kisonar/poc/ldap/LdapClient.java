@@ -10,9 +10,13 @@ import javax.naming.directory.DirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class LdapClient {
 
+    private final static Logger LOGGER = Logger.getLogger(LdapClient.class.getClass().getName());
     private DirContext ctx;
 
     public LdapClient(DirContext ctx) {
@@ -23,19 +27,33 @@ public class LdapClient {
         SearchControls searchControls = new SearchControls();
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
         NamingEnumeration<SearchResult> namingEnumeration =
-                ctx.search("", "(uid=*)", new Object[]{}, searchControls);
+                ctx.search("", LDAPConsts.UID_ALL, new Object[]{}, searchControls);
         while (namingEnumeration.hasMore()) {
             SearchResult sr = namingEnumeration.next();
-            System.out.println("-----------------------------------------------------------------------");
-            System.out.println("SearchResult: " + sr);
-            System.out.println("Name in namespace :" + sr.getNameInNamespace());
-            System.out.println("DN: " + sr.getName());
-            System.out.println("UID: " + sr.getAttributes().get("uid"));
-            System.out.println("dc: " + sr.getAttributes().get("dc"));
-            System.out.println("Password encoded by bytes: " + sr.getAttributes().get("userPassword").get());
-            System.out.println("Password:" + new String((byte[]) sr.getAttributes().get("userPassword").get()));
+            LOGGER.log(Level.INFO, "-----------------------------------------------------------------------");
+            LOGGER.log(Level.INFO, "SearchResult: " + sr);
+            LOGGER.log(Level.INFO, "Name in namespace :" + sr.getNameInNamespace());
+            LOGGER.log(Level.INFO, "DN: " + sr.getName());
+            LOGGER.log(Level.INFO, "UID: " + sr.getAttributes().get("uid"));
+            LOGGER.log(Level.INFO, "dc: " + sr.getAttributes().get("dc"));
+            LOGGER.log(Level.INFO, "Password encoded by bytes: " + sr.getAttributes().get("userPassword").get());
+            LOGGER.log(Level.INFO, "Password:" + new String((byte[]) sr.getAttributes().get("userPassword").get()));
         }
     }
+
+    public int countUsers() throws NamingException {
+        int counter = 0;
+        SearchControls searchControls = new SearchControls();
+        searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+        NamingEnumeration<SearchResult> namingEnumeration =
+                ctx.search("", LDAPConsts.UID_ALL, new Object[]{}, searchControls);
+        while (namingEnumeration.hasMore()) {
+            SearchResult sr = namingEnumeration.next();
+            counter++;
+        }
+        return counter;
+    }
+
 
     public void addUser(String name2, String surname2) throws NamingException {
 
@@ -59,7 +77,7 @@ public class LdapClient {
         attributes.put(attributePassword);
         String dn = "uid=" + name + ",ou=users";
         ctx.createSubcontext(dn, attributes);
-        System.out.println("User added");
+        LOGGER.log(Level.INFO, "User added");
     }
 
     public void close() throws NamingException {

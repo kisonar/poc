@@ -1,7 +1,6 @@
 package kisonar.poc.ldap;
 
 import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
 import javax.naming.directory.BasicAttribute;
 
 public final class LDAPConsts {
@@ -12,6 +11,8 @@ public final class LDAPConsts {
     public static final Attribute INET_ORG_PERSON = new BasicAttribute(OBJECT_CLASS, "inetorgperson"); // requires cn
     public static final Attribute POSSIX_ACCOUNT = new BasicAttribute(OBJECT_CLASS, "posixAccount");
     public static final Attribute SHADOW_ACCOUNT = new BasicAttribute(OBJECT_CLASS, "shadowAccount");
+
+    public static final String UID_ALL = "(uid=*)";
 
     private LDAPConsts() {
 
