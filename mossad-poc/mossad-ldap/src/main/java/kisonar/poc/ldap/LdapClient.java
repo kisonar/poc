@@ -10,6 +10,7 @@ import javax.naming.directory.DirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,87 +23,94 @@ public class LdapClient {
         this.ctx = ctx;
     }
 
-    public void listUsers() throws NamingException {
-        SearchControls searchControls = new SearchControls();
-        searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-        NamingEnumeration<SearchResult> namingEnumeration =
-                ctx.search("", LDAPConsts.UID_ALL, new Object[]{}, searchControls);
-        LOGGER.log(Level.INFO, "---- Users-----");
-        while (namingEnumeration.hasMore()) {
-            SearchResult sr = namingEnumeration.next();
-
-            LOGGER.log(Level.INFO, "SearchResult: " + sr);
-            // LOGGER.log(Level.INFO, "Name in namespace :" + sr.getNameInNamespace());
-            //LOGGER.log(Level.INFO, "DN: " + sr.getName());
-            //LOGGER.log(Level.INFO, "UID: " + sr.getAttributes().get("uid"));
-            //LOGGER.log(Level.INFO, "dc: " + sr.getAttributes().get("dc"));
-            //LOGGER.log(Level.INFO, "Password encoded by bytes: " + sr.getAttributes().get("userPassword").get());
-            // LOGGER.log(Level.INFO, "Password:" + new String((byte[]) sr.getAttributes().get("userPassword").get()));
-        }
+    public void createGroup(String groupName) throws NamingException {
+        Attributes attrs = new BasicAttributes(true);
+        attrs.put(LDAPConsts.OBJECT_CLASS, "organizationalUnit");
+        String groupDn = generateGroupFQName(groupName);
+        ctx.createSubcontext(groupDn, attrs);
     }
 
-    public void listGroups() throws NamingException {
+    public void removeGroup(String groupName) throws NamingException {
+        ctx.destroySubcontext(generateGroupFQName(groupName));
+    }
+
+    public List<String> fetchGroups() throws NamingException {
         SearchControls searchControls = new SearchControls();
         searchControls.setSearchScope(SearchControls.ONELEVEL_SCOPE);
         NamingEnumeration<SearchResult> namingEnumeration =
                 ctx.search("", LDAPConsts.OU_ALL, new Object[]{}, searchControls);
-        LOGGER.log(Level.INFO, "---- Groups - OU -----");
+        //LOGGER.log(Level.INFO, "---- Groups - OU -----");
+        List<String> groups = new ArrayList<>();
         while (namingEnumeration.hasMore()) {
             SearchResult sr = namingEnumeration.next();
+            Attributes attributes = sr.getAttributes();
             LOGGER.log(Level.INFO, "-----------------------------------------------------------------------");
             LOGGER.log(Level.INFO, "SearchResult: " + sr);
+            Attribute attribute = attributes.get("ou");
+            groups.add(attribute.get().toString());
         }
+        return Collections.unmodifiableList(groups);
     }
 
-    public int countUsers() throws NamingException {
-        int counter = 0;
-        SearchControls searchControls = new SearchControls();
-        searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-        NamingEnumeration<SearchResult> namingEnumeration =
-                ctx.search("", LDAPConsts.UID_ALL, new Object[]{}, searchControls);
-        while (namingEnumeration.hasMore()) {
-            SearchResult sr = namingEnumeration.next();
-            counter++;
-        }
-        return counter;
-    }
-
-    public void createUser(String userId, String name, String surname, String email) throws NamingException {
+    public void createUser(User user, String groupName) throws NamingException {
         Attributes attributes = new BasicAttributes();
         attributes.put(LDAPConsts.PERSON);
         attributes.put(LDAPConsts.ORGANIZATIONAL_PERSON);
         attributes.put(LDAPConsts.INET_ORG_PERSON);
         // attributes.put(LDAPConsts.POSSIX_ACCOUNT);
         //attributes.put(LDAPConsts.SHADOW_ACCOUNT);
-
         //String valueHomeDirectory = "/home/"+prefix;
         // Attribute attributeHomeDirectory = new BasicAttribute(LDAPConsts.HOME_DIRECTORY,valueHomeDirectory);
-        Attribute attributeUid = new BasicAttribute(LDAPConsts.UID, userId);
-        Attribute attributeCn = new BasicAttribute(LDAPConsts.CN, name);
-        Attribute attributeSn = new BasicAttribute(LDAPConsts.SN, surname);
-        Attribute attributeEmail = new BasicAttribute(LDAPConsts.EMAIL, email);
+        Attribute attributeUid = new BasicAttribute(LDAPConsts.UID, user.userId);
+        Attribute attributeCn = new BasicAttribute(LDAPConsts.CN, user.name);
+        Attribute attributeSn = new BasicAttribute(LDAPConsts.SN, user.surname);
+        //Attribute attributeEmail = new BasicAttribute(LDAPConsts.EMAIL, user.email);
 
-        String parameterPassword = "userPassword";
-        String valuePassword = "-password";
-        Attribute attributePassword = new BasicAttribute(parameterPassword, valuePassword);
+        //String parameterPassword = "userPassword";
+        //String valuePassword = "-password";
+        //Attribute attributePassword = new BasicAttribute(parameterPassword, valuePassword);
 
         attributes.put(attributeSn);
         attributes.put(attributeCn);
-        attributes.put(attributePassword);
+        //attributes.put(attributePassword);
         attributes.put(attributeUid);
         //attributes.put(attributeHomeDirectory);
 
-        String dn = generateDnUser(userId);
+        String dn = generateUserFQname(user.userId, List.of(groupName));
         ctx.createSubcontext(dn, attributes);
-        LOGGER.log(Level.INFO, String.format("Added user with ID: %s", userId));
+        LOGGER.log(Level.INFO, String.format("Added user with ID: %s", user.userId));
     }
 
-    public void searchUser(String userId) throws NamingException {
-        String base = "ou=users";//,ou=BusinessObjectsDisaster,ou=system";
+    public List<User> fetchUsers() throws NamingException {
+        SearchControls searchControls = new SearchControls();
+        searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+        NamingEnumeration<SearchResult> namingEnumeration =
+                ctx.search("", LDAPConsts.UID_ALL, new Object[]{}, searchControls);
+        LOGGER.log(Level.INFO, "---- Users-----");
+        List<User> users = new ArrayList<>();
+        while (namingEnumeration.hasMore()) {
+            SearchResult sr = namingEnumeration.next();
+            LOGGER.log(Level.INFO, "SearchResult: " + sr);
+            LOGGER.log(Level.INFO, "Name in namespace :" + sr.getNameInNamespace());
+            Attributes attributes = sr.getAttributes();
+            users.add(new User(attributes.get("uid").toString(), sr.getName(), "", ""));
+            LOGGER.log(Level.INFO, "DN: " + sr.getName());
+            LOGGER.log(Level.INFO, "UID: " + sr.getAttributes().get("uid"));
+            //LOGGER.log(Level.INFO, "dc: " + sr.getAttributes().get("dc"));
+            //LOGGER.log(Level.INFO, "Password encoded by bytes: " + sr.getAttributes().get("userPassword").get());
+            // LOGGER.log(Level.INFO, "Password:" + new String((byte[]) sr.getAttributes().get("userPassword").get()));
+        }
+        return Collections.unmodifiableList(users);
+    }
+
+    //TODO
+    public String searchUser(String userId) throws NamingException {
+        List<String> groups = fetchGroups();
+        String groupsBase = generateGroupsString(groups);
         SearchControls searchControls = new SearchControls();
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
         String filter = "(&(objectclass=" + LDAPConsts.INETORGPERSON + ")(uid=" + userId + "))";
-        NamingEnumeration<SearchResult> results = ctx.search(base, filter, searchControls);
+        NamingEnumeration<SearchResult> results = ctx.search(groupsBase, filter, searchControls);
         while (results.hasMore()) {
             SearchResult sr = results.next();
             Attributes attrs = sr.getAttributes();
@@ -113,37 +121,56 @@ public class LdapClient {
                 //LOGGER.info("GID          : " + attrs.get("ou").get(0));
             }
         }
-    }
-
-    public void removeUser(String userId) throws NamingException {
-        ctx.destroySubcontext(generateDnUser(userId));
-        LOGGER.log(Level.INFO, String.format("Removed user with ID: %s", userId));
-    }
-
-    public void createGroup(String groupName) throws NamingException {
-        Attributes attrs = new BasicAttributes(true);
-        attrs.put("objectClass", "organizationalUnit");
-        String groupDn = generateDnGroup(groupName);
-        ctx.createSubcontext(groupDn, attrs);
-    }
-
-    public void removeGroup(String groupName) throws NamingException {
-        ctx.destroySubcontext(generateDnGroup(groupName));
+        return null;
     }
 
     public void close() throws NamingException {
         ctx.close();
     }
 
-    private String generateDnUser(String uid) {
+    public void removeUser(String userId) throws NamingException {
+        Optional<String> userFQNameOptional = findUserFQName(userId);
+        if (userFQNameOptional.isPresent())
+            ctx.destroySubcontext(userFQNameOptional.get());
+        LOGGER.log(Level.INFO, String.format("Removed user with ID: %s", userId));
+    }
+
+    private Optional<String> findUserFQName(String userId) throws NamingException {
+        Optional<String> userDn = Optional.empty();
+        List<String> groups = fetchGroups();
+        String groupsBase = "";//"ou=*";//generateGroupsString(groups);
+        SearchControls searchControls = new SearchControls();
+        searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+        String filter = "(&(objectclass=" + LDAPConsts.INETORGPERSON + ")(uid=" + userId + "))";
+        NamingEnumeration<SearchResult> results = ctx.search(groupsBase, filter, searchControls);
+        while (results.hasMore()) {
+            SearchResult sr = results.next();
+            userDn = Optional.of(sr.getName());
+            break;
+        }
+        return userDn;
+    }
+
+    private String generateUserFQname(String uid, List<String> groups) {
         StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append(LDAPConsts.UID).append("=").append(uid)
-                //.append(",").append(LDAPConsts.OU).append("=").append("users")
+        return stringBuilder.append(LDAPConsts.UID).append(LDAPConsts.EQUALS).append(uid)
+                .append(",")
+                .append(generateGroupsString(groups))
                 .toString();
     }
 
-    private String generateDnGroup(String groupName) {
+    private String generateGroupFQName(String groupName) {
         return LDAPConsts.OU + "=" + groupName;//+ ",dc=example,dc=org";
+    }
+
+    private String generateGroupsString(List<String> groups) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String group : groups) {
+            stringBuilder.append(LDAPConsts.OU).append(LDAPConsts.EQUALS).append(group).append(LDAPConsts.COMA);
+        }
+        if (!groups.isEmpty())
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        return stringBuilder.toString();
     }
 
 }
