@@ -6,7 +6,6 @@ import javax.naming.directory.BasicAttribute;
 public final class LDAPConsts {
 
     static final String OBJECT_CLASS = "objectclass";
-    static final String EQUALS = "=";
     static final String INETORGPERSON = "inetorgperson";
     static final Attribute PERSON = new BasicAttribute(OBJECT_CLASS, "person");
     static final Attribute ORGANIZATIONAL_PERSON = new BasicAttribute(OBJECT_CLASS, "organizationalPerson");
@@ -23,8 +22,6 @@ public final class LDAPConsts {
     static final String CN = "cn";
     static final String HOME_DIRECTORY = "homeDirectory";
     static final String EMAIL = "e-mail";
-    static final String COMA = ",";
-    static final String EMPTY = "";
 
     private LDAPConsts() {
 

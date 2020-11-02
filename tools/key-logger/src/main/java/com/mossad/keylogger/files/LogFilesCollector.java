@@ -1,6 +1,6 @@
 package com.mossad.keylogger.files;
 
-import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
+import static kisonar.platform.domain.BaseDefinitions.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +20,7 @@ public final class LogFilesCollector {
     }
 
     public List<String> collectLogs() {
-        File currentDirectory = new File(new File(KeyLoggerEntries.SIGN_EMPTY).getAbsolutePath());
+        File currentDirectory = new File(new File(EMPTY).getAbsolutePath());
         String pathAsString = currentDirectory.getAbsolutePath();
         try {
             Stream<Path> paths = Files.list(Paths.get(pathAsString));

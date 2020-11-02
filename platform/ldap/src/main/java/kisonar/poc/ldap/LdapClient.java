@@ -1,6 +1,7 @@
 package kisonar.poc.ldap;
 
 import static kisonar.poc.ldap.LDAPConsts.*;
+import static kisonar.platform.domain.BaseDefinitions.*;
 
 import kisonar.platform.domain.User;
 

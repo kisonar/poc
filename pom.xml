@@ -25,6 +25,7 @@
     -->
     <module>platform</module>
     <module>tools</module>
+    <module>network</module>
   </modules>
 
   <dependencyManagement>

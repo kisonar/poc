@@ -6,15 +6,7 @@ package com.mossad.network.server;
  * and open the template in the editor.
  */
 
-import com.mossad.network.library.LoopBackTimeStamp;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.handler.timeout.IdleState;
-import io.netty.handler.timeout.IdleStateEvent;
-
-/**
- * @author mmigdal
- */
+/*
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
@@ -42,3 +34,5 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         ctx.close();
     }
 }
+
+ */

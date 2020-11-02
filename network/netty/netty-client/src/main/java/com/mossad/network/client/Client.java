@@ -5,19 +5,14 @@
  */
 package com.mossad.network.client;
 
-import com.mossad.network.library.coding.TimeStampDecoder;
-import com.mossad.network.library.coding.TimeStampEncoder;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
 
 /**
  * @author mmigdal
  */
 public class Client {
 
+
+    /*
     public static void main(String[] args) {
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
         Bootstrap b = new Bootstrap();
@@ -35,5 +30,7 @@ public class Client {
         b.connect(serverIp, 19000);
         System.out.print("Client has been run ...");
     }
+    */
+
 
 }
