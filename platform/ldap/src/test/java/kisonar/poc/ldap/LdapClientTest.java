@@ -18,8 +18,7 @@ public class LdapClientTest {
     private LdapClient ldapClient;
     private String groupNameNotDefined = "groupNotDefined";
     private String groupName = "mygroup";
-    //private String groupDescription = "myGroupDescription";
-    private User user = new User("mmigdal", "marcin", "migdal", "password", "kisonar@wp.pl");
+    private User user = new User("mmigdal", "marcin", "migdal", "password");
 
     @BeforeEach
     public void beforeEach() throws NamingException {
@@ -104,6 +103,11 @@ public class LdapClientTest {
         Assertions.assertThrows(javax.naming.NameNotFoundException.class, () -> {
             ldapClient.createUser(user, groupNameNotDefined);
         });
+    }
+
+    @Test
+    public void user_fetch() throws NamingException {
+        ldapClient.fetchUsers();
     }
 
 }

@@ -66,21 +66,18 @@ public class LdapClient {
         Attribute attributeUid = new BasicAttribute(UID, user.userId);
         Attribute attributeCn = new BasicAttribute(CN, user.name);
         Attribute attributeSn = new BasicAttribute(SN, user.surname);
-        //Attribute attributeEmail = new BasicAttribute(LDAPConsts.EMAIL, user.email);
-
-        //String parameterPassword = "userPassword";
-        //String valuePassword = "-password";
-        //Attribute attributePassword = new BasicAttribute(parameterPassword, valuePassword);
-
-        attributes.put(attributeSn);
-        attributes.put(attributeCn);
-        //attributes.put(attributePassword);
+        Attribute attributePassword = new BasicAttribute(PASSWORD, user.password);
+        //Attribute attributeEmail = new BasicAttribute(EMAIL, user.email);
         attributes.put(attributeUid);
-        //attributes.put(attributeHomeDirectory);
+        attributes.put(attributeCn);
+        attributes.put(attributeSn);
+        attributes.put(attributePassword);
+        //attributes.put(attributeEmail);
 
         String dn = generateUserFQName(user.userId, List.of(groupName));
         ctx.createSubcontext(dn, attributes);
         LOGGER.log(Level.INFO, String.format("Added user with ID: %s to group %s", user.userId, groupName));
+        LOGGER.log(Level.INFO, String.format("FQDN is: %s", dn));
     }
 
     public List<User> fetchUsers() throws NamingException {
@@ -88,42 +85,36 @@ public class LdapClient {
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
         NamingEnumeration<SearchResult> namingEnumeration =
                 ctx.search("", UID_ALL, new Object[]{}, searchControls);
-        LOGGER.log(Level.INFO, "---- Users-----");
         List<User> users = new ArrayList<>();
         while (namingEnumeration.hasMore()) {
             SearchResult sr = namingEnumeration.next();
-            LOGGER.log(Level.INFO, "SearchResult: " + sr);
-            LOGGER.log(Level.INFO, "Name in namespace :" + sr.getNameInNamespace());
             Attributes attributes = sr.getAttributes();
-            users.add(new User(attributes.get(UID).toString(), sr.getName(), "", "", ""));
-            LOGGER.log(Level.INFO, "DN: " + sr.getName());
-            LOGGER.log(Level.INFO, "UID: " + sr.getAttributes().get("uid"));
-            //LOGGER.log(Level.INFO, "dc: " + sr.getAttributes().get("dc"));
-            //LOGGER.log(Level.INFO, "Password encoded by bytes: " + sr.getAttributes().get("userPassword").get());
-            // LOGGER.log(Level.INFO, "Password:" + new String((byte[]) sr.getAttributes().get("userPassword").get()));
+            users.add(extractUser(attributes));
         }
         return Collections.unmodifiableList(users);
     }
 
     //TODO
-    public String searchUser(String userId) throws NamingException {
+    public Optional<User> findUser(String userId) throws NamingException {
         List<String> groups = fetchGroups();
         String groupsBase = generateGroupsString(groups);
         SearchControls searchControls = new SearchControls();
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
         String filter = "(&(objectclass=" + INETORGPERSON + ")(" + UID + EQUALS + userId + "))";
         NamingEnumeration<SearchResult> results = ctx.search(groupsBase, filter, searchControls);
+        User user = null;
         while (results.hasMore()) {
             SearchResult sr = results.next();
-            Attributes attrs = sr.getAttributes();
-            Attribute attr = attrs.get("uid");
-            if (attr != null) {
-                LOGGER.info("Record found : " + attr.get());
-                LOGGER.info("Attrs        : " + attrs);
-                //LOGGER.info("GID          : " + attrs.get("ou").get(0));
+            Attributes attributes = sr.getAttributes();
+            Attribute attributeUid = attributes.get(UID);
+            if (attributeUid != null) {
+                String candidateUserId = attributeUid.get().toString();
+                if (candidateUserId.equals(userId)) {
+                    user = extractUser(attributes);
+                }
             }
         }
-        return null;
+        return Optional.ofNullable(user);
     }
 
     public void close() throws NamingException {
@@ -172,6 +163,14 @@ public class LdapClient {
         if (!groups.isEmpty())
             stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         return stringBuilder.toString();
+    }
+
+    private User extractUser(Attributes attributes) throws NamingException {
+        String nameCn = attributes.get(CN).toString();
+        String surnameSN = attributes.get(SN).toString();
+        String password = new String((byte[]) attributes.get(PASSWORD).get());
+        User user = new User(attributes.get(UID).toString(), nameCn, surnameSN, password);
+        return user;
     }
 
 }
