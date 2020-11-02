@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>mossad</groupId>
-        <artifactId>mossad-parent</artifactId>
+        <groupId>kisonar-poc</groupId>
+        <artifactId>kisonar-poc-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>mossad-poc</artifactId>

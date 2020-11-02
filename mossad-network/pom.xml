@@ -15,11 +15,12 @@
             </plugin>
         </plugins>
     </build>
+
     <parent>
-    <groupId>mossad</groupId>
-    <artifactId>mossad-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+        <groupId>kisonar-poc</groupId>
+        <artifactId>kisonar-poc-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
   <artifactId>mossad-network</artifactId>
   <packaging>pom</packaging>
 
