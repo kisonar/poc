@@ -19,7 +19,7 @@ public class LdapClientTest {
     private String groupNameNotDefined = "groupNotDefined";
     private String groupName = "mygroup";
     //private String groupDescription = "myGroupDescription";
-    private User user = new User("mmigdal", "marcin", "migdal", "kisonar@wp.pl");
+    private User user = new User("mmigdal", "marcin", "migdal", "password", "kisonar@wp.pl");
 
     @BeforeEach
     public void beforeEach() throws NamingException {

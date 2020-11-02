@@ -20,6 +20,7 @@ public final class LDAPConsts {
 
     static final String SN = "sn";
     static final String CN = "cn";
+
     static final String HOME_DIRECTORY = "homeDirectory";
     static final String EMAIL = "e-mail";
 

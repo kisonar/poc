@@ -30,7 +30,7 @@ public class LdapClient {
 
     public void createGroup(String groupName) throws NamingException {
         Attributes attrs = new BasicAttributes(true);
-        attrs.put(LDAPConsts.OBJECT_CLASS, "organizationalUnit");
+        attrs.put(OBJECT_CLASS, "organizationalUnit");
         String groupDn = generateGroupFQName(groupName);
         ctx.createSubcontext(groupDn, attrs);
     }
@@ -43,15 +43,12 @@ public class LdapClient {
         SearchControls searchControls = new SearchControls();
         searchControls.setSearchScope(SearchControls.ONELEVEL_SCOPE);
         NamingEnumeration<SearchResult> namingEnumeration =
-                ctx.search("", LDAPConsts.OU_ALL, new Object[]{}, searchControls);
-        //LOGGER.log(Level.INFO, "---- Groups - OU -----");
+                ctx.search(EMPTY, OU_ALL, new Object[]{}, searchControls);
         List<String> groups = new ArrayList<>();
         while (namingEnumeration.hasMore()) {
             SearchResult sr = namingEnumeration.next();
             Attributes attributes = sr.getAttributes();
-            LOGGER.log(Level.INFO, "-----------------------------------------------------------------------");
-            LOGGER.log(Level.INFO, "SearchResult: " + sr);
-            Attribute attribute = attributes.get("ou");
+            Attribute attribute = attributes.get(OU);
             groups.add(attribute.get().toString());
         }
         return Collections.unmodifiableList(groups);
@@ -83,7 +80,7 @@ public class LdapClient {
 
         String dn = generateUserFQName(user.userId, List.of(groupName));
         ctx.createSubcontext(dn, attributes);
-        LOGGER.log(Level.INFO, String.format("Added user with ID: %s", user.userId));
+        LOGGER.log(Level.INFO, String.format("Added user with ID: %s to group %s", user.userId, groupName));
     }
 
     public List<User> fetchUsers() throws NamingException {
@@ -98,7 +95,7 @@ public class LdapClient {
             LOGGER.log(Level.INFO, "SearchResult: " + sr);
             LOGGER.log(Level.INFO, "Name in namespace :" + sr.getNameInNamespace());
             Attributes attributes = sr.getAttributes();
-            users.add(new User(attributes.get("uid").toString(), sr.getName(), "", ""));
+            users.add(new User(attributes.get(UID).toString(), sr.getName(), "", "", ""));
             LOGGER.log(Level.INFO, "DN: " + sr.getName());
             LOGGER.log(Level.INFO, "UID: " + sr.getAttributes().get("uid"));
             //LOGGER.log(Level.INFO, "dc: " + sr.getAttributes().get("dc"));
@@ -151,13 +148,14 @@ public class LdapClient {
             userDn = Optional.of(searchResult.getName());
             break;
         }
+
         return userDn;
     }
 
     private String generateUserFQName(String uid, List<String> groups) {
         StringBuilder stringBuilder = new StringBuilder();
         return stringBuilder.append(UID).append(EQUALS).append(uid)
-                .append(",")
+                .append(COMA)
                 .append(generateGroupsString(groups))
                 .toString();
     }
