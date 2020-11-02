@@ -2,6 +2,8 @@ package kisonar.poc.ldap;
 
 import org.junit.jupiter.api.*;
 
+import kisonar.platform.domain.User;
+
 import javax.naming.Context;
 import javax.naming.NamingException;
 import javax.naming.directory.DirContext;

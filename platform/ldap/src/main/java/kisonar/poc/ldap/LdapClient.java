@@ -2,6 +2,8 @@ package kisonar.poc.ldap;
 
 import static kisonar.poc.ldap.LDAPConsts.*;
 
+import kisonar.platform.domain.User;
+
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;

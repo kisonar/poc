@@ -17,8 +17,8 @@
     </build>
 
     <parent>
-        <groupId>kisonar-poc</groupId>
-        <artifactId>kisonar-poc-parent</artifactId>
+        <groupId>kisonar</groupId>
+        <artifactId>poc</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
   <artifactId>mossad-network</artifactId>

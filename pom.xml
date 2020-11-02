@@ -3,8 +3,8 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>kisonar-poc</groupId>
-  <artifactId>kisonar-poc-parent</artifactId>
+  <groupId>kisonar</groupId>
+  <artifactId>poc</artifactId>
   <name>${project.artifactId}</name>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -17,10 +17,14 @@
   </properties>
 
   <modules>
+    <!--
     <module>mossad-network</module>
     <module>mossad-poc</module>
     <module>mossad-tools</module>
     <module>mossad-cloud</module>
+    -->
+    <module>platform</module>
+    <module>tools</module>
   </modules>
 
   <dependencyManagement>

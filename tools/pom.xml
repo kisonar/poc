@@ -2,21 +2,22 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>kisonar</groupId>
         <artifactId>poc</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>mossad-poc</artifactId>
+
+    <artifactId>tools</artifactId>
+    <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+
     <modules>
-        <module>mossad-kafka</module>
-        <module>mossad-others</module>
-        <module>mossad-java-features</module>
-        <module>mossad-rabbitmq</module>
-        <module>mossad-spring</module>
-        <module>mossad-ldap</module>
+        <module>key-logger</module>
+        <module>key-logger-parser</module>
+        <module>key-logger-library</module>
     </modules>
+
 </project>

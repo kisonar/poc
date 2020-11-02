@@ -1,4 +1,4 @@
-package kisonar.poc.ldap;
+package kisonar.platform.domain;
 
 public final class User {
 
