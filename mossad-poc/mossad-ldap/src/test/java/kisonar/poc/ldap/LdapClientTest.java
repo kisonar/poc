@@ -14,12 +14,10 @@ public class LdapClientTest {
     private final static Hashtable<String, Object> env = new Hashtable<>();
     private DirContext ctx;
     private LdapClient ldapClient;
-
     private String groupNameNotDefined = "groupNotDefined";
     private String groupName = "mygroup";
-    private String groupDescription = "myGroupDescription";
+    //private String groupDescription = "myGroupDescription";
     private User user = new User("mmigdal", "marcin", "migdal", "kisonar@wp.pl");
-
 
     @BeforeEach
     public void beforeEach() throws NamingException {

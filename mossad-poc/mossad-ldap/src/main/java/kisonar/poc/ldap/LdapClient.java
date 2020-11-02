@@ -1,5 +1,7 @@
 package kisonar.poc.ldap;
 
+import static kisonar.poc.ldap.LDAPConsts.*;
+
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
@@ -54,16 +56,16 @@ public class LdapClient {
 
     public void createUser(User user, String groupName) throws NamingException {
         Attributes attributes = new BasicAttributes();
-        attributes.put(LDAPConsts.PERSON);
-        attributes.put(LDAPConsts.ORGANIZATIONAL_PERSON);
-        attributes.put(LDAPConsts.INET_ORG_PERSON);
+        attributes.put(PERSON);
+        attributes.put(ORGANIZATIONAL_PERSON);
+        attributes.put(INET_ORG_PERSON);
         // attributes.put(LDAPConsts.POSSIX_ACCOUNT);
         //attributes.put(LDAPConsts.SHADOW_ACCOUNT);
         //String valueHomeDirectory = "/home/"+prefix;
         // Attribute attributeHomeDirectory = new BasicAttribute(LDAPConsts.HOME_DIRECTORY,valueHomeDirectory);
-        Attribute attributeUid = new BasicAttribute(LDAPConsts.UID, user.userId);
-        Attribute attributeCn = new BasicAttribute(LDAPConsts.CN, user.name);
-        Attribute attributeSn = new BasicAttribute(LDAPConsts.SN, user.surname);
+        Attribute attributeUid = new BasicAttribute(UID, user.userId);
+        Attribute attributeCn = new BasicAttribute(CN, user.name);
+        Attribute attributeSn = new BasicAttribute(SN, user.surname);
         //Attribute attributeEmail = new BasicAttribute(LDAPConsts.EMAIL, user.email);
 
         //String parameterPassword = "userPassword";
@@ -76,7 +78,7 @@ public class LdapClient {
         attributes.put(attributeUid);
         //attributes.put(attributeHomeDirectory);
 
-        String dn = generateUserFQname(user.userId, List.of(groupName));
+        String dn = generateUserFQName(user.userId, List.of(groupName));
         ctx.createSubcontext(dn, attributes);
         LOGGER.log(Level.INFO, String.format("Added user with ID: %s", user.userId));
     }
@@ -85,7 +87,7 @@ public class LdapClient {
         SearchControls searchControls = new SearchControls();
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
         NamingEnumeration<SearchResult> namingEnumeration =
-                ctx.search("", LDAPConsts.UID_ALL, new Object[]{}, searchControls);
+                ctx.search("", UID_ALL, new Object[]{}, searchControls);
         LOGGER.log(Level.INFO, "---- Users-----");
         List<User> users = new ArrayList<>();
         while (namingEnumeration.hasMore()) {
@@ -109,7 +111,7 @@ public class LdapClient {
         String groupsBase = generateGroupsString(groups);
         SearchControls searchControls = new SearchControls();
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-        String filter = "(&(objectclass=" + LDAPConsts.INETORGPERSON + ")(uid=" + userId + "))";
+        String filter = "(&(objectclass=" + INETORGPERSON + ")(" + UID + EQUALS + userId + "))";
         NamingEnumeration<SearchResult> results = ctx.search(groupsBase, filter, searchControls);
         while (results.hasMore()) {
             SearchResult sr = results.next();
@@ -137,36 +139,34 @@ public class LdapClient {
 
     private Optional<String> findUserFQName(String userId) throws NamingException {
         Optional<String> userDn = Optional.empty();
-        List<String> groups = fetchGroups();
-        String groupsBase = "";//"ou=*";//generateGroupsString(groups);
         SearchControls searchControls = new SearchControls();
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-        String filter = "(&(objectclass=" + LDAPConsts.INETORGPERSON + ")(uid=" + userId + "))";
-        NamingEnumeration<SearchResult> results = ctx.search(groupsBase, filter, searchControls);
+        String filter = "(&(" + OBJECT_CLASS + EQUALS + INETORGPERSON + ")(" + UID + EQUALS + userId + "))";
+        NamingEnumeration<SearchResult> results = ctx.search(EMPTY, filter, searchControls);
         while (results.hasMore()) {
-            SearchResult sr = results.next();
-            userDn = Optional.of(sr.getName());
+            SearchResult searchResult = results.next();
+            userDn = Optional.of(searchResult.getName());
             break;
         }
         return userDn;
     }
 
-    private String generateUserFQname(String uid, List<String> groups) {
+    private String generateUserFQName(String uid, List<String> groups) {
         StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append(LDAPConsts.UID).append(LDAPConsts.EQUALS).append(uid)
+        return stringBuilder.append(UID).append(EQUALS).append(uid)
                 .append(",")
                 .append(generateGroupsString(groups))
                 .toString();
     }
 
     private String generateGroupFQName(String groupName) {
-        return LDAPConsts.OU + "=" + groupName;//+ ",dc=example,dc=org";
+        return OU + EQUALS + groupName;
     }
 
     private String generateGroupsString(List<String> groups) {
         StringBuilder stringBuilder = new StringBuilder();
         for (String group : groups) {
-            stringBuilder.append(LDAPConsts.OU).append(LDAPConsts.EQUALS).append(group).append(LDAPConsts.COMA);
+            stringBuilder.append(OU).append(EQUALS).append(group).append(COMA);
         }
         if (!groups.isEmpty())
             stringBuilder.deleteCharAt(stringBuilder.length() - 1);
