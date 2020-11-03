@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mossad.poc.others.ocjp.certs;
+package kisonar.poc.learning.java.jdk.cert;
 
 /**
  * @author mmigdal
