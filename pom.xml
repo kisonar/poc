@@ -27,6 +27,7 @@
     <module>tools</module>
     <module>network</module>
     <module>services</module>
+    <module>learning</module>
   </modules>
 
   <dependencyManagement>
