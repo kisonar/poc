@@ -1,3 +1,3 @@
-module mossad.java.features.library {
+module features.library {
     exports mossad.java.features.library.position;
 }

@@ -13,6 +13,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>jdk</module>
+        <module>features-library</module>
+        <!--
+        <module>features-services</module>
+        <module>features-client</module>
+        -->
     </modules>
 
 
