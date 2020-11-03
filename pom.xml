@@ -17,12 +17,6 @@
   </properties>
 
   <modules>
-    <!--
-    <module>mossad-network</module>
-    <module>mossad-poc</module>
-    <module>mossad-tools</module>
-    <module>mossad-cloud</module>
-    -->
     <module>platform</module>
     <module>tools</module>
     <module>network</module>
@@ -49,6 +43,12 @@
         <artifactId>kafka-streams</artifactId>
         <version>2.0.0</version>
       </dependency>
+
+      <dependency>
+        <groupId>com.rabbitmq</groupId>
+        <artifactId>amqp-client</artifactId>
+        <version>5.10.0</version>
+      </dependency>
       <!-- Spring stuff -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -67,6 +67,12 @@
         <version>2.1.0</version>
       </dependency>
 
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-email</artifactId>
+        <version>1.5</version>
+      </dependency>
+
       <!-- TESTING Junit 5-->
       <dependency>
         <groupId>org.junit.jupiter</groupId>
@@ -79,12 +85,6 @@
         <artifactId>mockito-core</artifactId>
         <version>2.21.0</version>
         <scope>test</scope>
-      </dependency>
-
-      <dependency>
-        <artifactId>amqp-client</artifactId>
-        <groupId>com.rabbitmq</groupId>
-        <version>5.10.0</version>
       </dependency>
 
     </dependencies>
@@ -110,16 +110,6 @@
             <source>14</source>
             <target>14</target>
           </configuration>
-
-          <!--
-          <dependencies>
-            <dependency>
-              <groupId>org.ow2.asm</groupId>
-              <artifactId>asm</artifactId>
-              <version>6.2.1</version>
-            </dependency>
-          </dependencies>
-          -->
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
