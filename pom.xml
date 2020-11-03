@@ -26,6 +26,7 @@
     <module>platform</module>
     <module>tools</module>
     <module>network</module>
+    <module>services</module>
   </modules>
 
   <dependencyManagement>
@@ -82,7 +83,7 @@
       <dependency>
         <artifactId>amqp-client</artifactId>
         <groupId>com.rabbitmq</groupId>
-        <version>5.8.0</version>
+        <version>5.10.0</version>
       </dependency>
 
     </dependencies>
