@@ -1,4 +1,4 @@
-module features.services {
-    requires transitive mossad.java.features.library;
+module kisonar.com.larning.java.features.services {
+    requires transitive kisonar.com.larning.java.features.library;
     exports mossad.java.features.services;
 }

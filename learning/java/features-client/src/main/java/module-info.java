@@ -1,3 +1,3 @@
-module mossad.java.features.client {
-    requires mossad.java.features.services;
+module kisonar.com.larning.java.features.client {
+    requires kisonar.com.larning.java.features.services;
 }
