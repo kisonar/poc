@@ -1,3 +1,3 @@
-# poc
-Needed JAVA 10
+# POC
+Requires JAVA 14+
 
