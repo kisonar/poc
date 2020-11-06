@@ -14,10 +14,10 @@ import java.util.Calendar;
 import java.util.logging.Logger;
 
 import static com.mmigdal.mossad.key.logger.parser.cli.Configuration.YEARS;
-import static com.mmigdal.mossad.key.logger.parser.logic.others.ConfigurationTest.LINUX_PATH_FQ_INPUT;
-import static com.mmigdal.mossad.key.logger.parser.logic.others.ConfigurationTest.LINUX_PATH_FQ_OUTPUT;
-import static com.mmigdal.mossad.key.logger.parser.logic.others.ConfigurationTest.WIN_PATH_FQ_INPUT;
-import static com.mmigdal.mossad.key.logger.parser.logic.others.ConfigurationTest.WIN_PATH_FQ_OUTPUT;
+import static com.mmigdal.mossad.key.logger.parser.logic.others.TestingConfiguration.LINUX_PATH_FQ_INPUT;
+import static com.mmigdal.mossad.key.logger.parser.logic.others.TestingConfiguration.LINUX_PATH_FQ_OUTPUT;
+import static com.mmigdal.mossad.key.logger.parser.logic.others.TestingConfiguration.WIN_PATH_FQ_INPUT;
+import static com.mmigdal.mossad.key.logger.parser.logic.others.TestingConfiguration.WIN_PATH_FQ_OUTPUT;
 
 public class LogicExecutorTest {
 

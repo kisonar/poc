@@ -5,7 +5,7 @@ import java.io.File;
 import static com.mmigdal.mossad.key.logger.parser.cli.Configuration.INPUT;
 import static com.mmigdal.mossad.key.logger.parser.cli.Configuration.OUTPUT;
 
-public final class ConfigurationTest {
+public final class TestingConfiguration {
 
     public final static String GENERAL_PATH_LINUX = "/run/media/marcin/MigiBigDisk/repozytoria/repo-arbeit-client/trunk/korpo/toBeDestroyed/tools/wlam";
     public final static String GENERAL_PATH_WIN = "G:\\repozytoria\\repo_test\\korpo\\toBeDestroyed\\tools\\wlam\\output\\";
@@ -14,6 +14,6 @@ public final class ConfigurationTest {
     public final static String WIN_PATH_FQ_INPUT = GENERAL_PATH_WIN + File.pathSeparator + INPUT;
     public final static String WIN_PATH_FQ_OUTPUT = GENERAL_PATH_WIN + File.pathSeparator + OUTPUT;
 
-    private ConfigurationTest() {
+    private TestingConfiguration() {
     }
 }

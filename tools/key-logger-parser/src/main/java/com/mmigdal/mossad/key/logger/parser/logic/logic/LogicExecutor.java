@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 public final class LogicExecutor extends LogicAbstraction {
 
-    private static Logger LOG = Logger.getLogger(LogicExecutor.class.getName());
     private ExecutorService executorService;
 
     public LogicExecutor(ModeExecution modeExecution) {
@@ -22,8 +21,7 @@ public final class LogicExecutor extends LogicAbstraction {
         getItems().stream().forEach(item -> {
             executorService.submit(() -> {
                 FileProcessor fileProcessor = new FileProcessor();
-                fileProcessor.processFile(item.input, item.output);
-                LOG.finest(String.format("Thread name %s", Thread.currentThread().getName()));
+                fileProcessor.processFile(Thread.currentThread().getName(), item.input, item.output);
             });
         });
         executorService.shutdown();
@@ -34,6 +32,7 @@ public final class LogicExecutor extends LogicAbstraction {
             case PARALLEL_FIXED -> Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
             case PARALLEL_DEFAULT -> Executors.newWorkStealingPool();
             case SINGLE -> Executors.newSingleThreadExecutor();
+            case CACHED -> Executors.newCachedThreadPool();
             default -> throw new IllegalArgumentException(String.format("Provided mode execution is not supported %s", modeExecution));
         };
     }

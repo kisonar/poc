@@ -40,11 +40,11 @@ public final class LineProcessor {
 
     private String removeBlankSigns(String processedLineWithEmptySings) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (String splittedWord : processedLineWithEmptySings.split(SPACE)) {
-            if (splittedWord.equals(SPACE) || splittedWord.equals(EMPTY)) {
+        for (String word : processedLineWithEmptySings.split(SPACE)) {
+            if (word.equals(SPACE) || word.equals(EMPTY)) {
                 continue;
             }
-            stringBuilder.append(splittedWord);
+            stringBuilder.append(word);
             stringBuilder.append(SPACE);
         }
         return stringBuilder.toString();

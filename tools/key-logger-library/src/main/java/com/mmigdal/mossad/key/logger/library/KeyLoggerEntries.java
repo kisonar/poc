@@ -4,6 +4,9 @@ import java.util.List;
 
 public final class KeyLoggerEntries {
 
+    private KeyLoggerEntries() {
+    }
+
     public final static String SHIFT_PRESSED = "shift_pressed";
     public final static String SHIFT_RELEASED = "shift_released";
 

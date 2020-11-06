@@ -23,19 +23,19 @@ public final class FileProcessor {
         lineProcessor = new LineProcessor();
     }
 
-    public void processFile(Path pathInputFile, Path pathOutputFile) {
+    public void processFile(String threadName, Path pathInputFile, Path pathOutputFile) {
         try {
-            //LOG.info(String.format("Starting processing files %s %s", pathInputFile.toAbsolutePath().toFile().getName(), pathOutputFile.toAbsolutePath().toFile().getName()));
+            LOG.info(String.format("Thread %s is starting processing files %s %s", threadName, pathInputFile.toAbsolutePath().toFile().getName(), pathOutputFile.toAbsolutePath().toFile().getName()));
             Stream<String> lines = readLines(pathInputFile);
             Stream<String> filteredLines = lineProcessor.executeFilteringForLogger(lines);
             List<String> processedLines = lineProcessor.executeReplacement(filteredLines);
             saveResult(processedLines, pathOutputFile);
             lineProcessor.reset();
-            //LOG.info(String.format("Finished processing files %s %s", pathInputFile.toAbsolutePath().toFile().getName(),
-            //    pathOutputFile.toAbsolutePath().toFile().getName()));
+            LOG.info(String.format("Thread %s finished processing files %s %s", threadName, pathInputFile.toAbsolutePath().toFile().getName(),
+                    pathOutputFile.toAbsolutePath().toFile().getName()));
         } catch (IOException e) {
             LOG.log(Level.WARNING, String
-                    .format("Problems with processing file %s %s", pathInputFile.toString(), e.getMessage()));
+                    .format("Thread %s had problems with processing file %s %s", threadName, pathInputFile.toString(), e.getMessage()));
         }
     }
 
@@ -43,7 +43,7 @@ public final class FileProcessor {
         if (!Files.exists(filePath, LinkOption.NOFOLLOW_LINKS)) {
             return Stream.empty();
         }
-        return Files.readAllLines(filePath, StandardCharsets.UTF_8).stream();
+        return Files.readAllLines(filePath, StandardCharsets.ISO_8859_1).stream();
     }
 
     private void saveResult(List<String> linesToWrite, Path outputFilePath) throws IOException {
