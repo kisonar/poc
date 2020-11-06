@@ -2,8 +2,8 @@ package com.mmigdal.mossad.key.logger.parser.logic.others;
 
 import java.io.File;
 
-import static com.mmigdal.mossad.key.logger.parser.cli.Configuration.INPUT;
-import static com.mmigdal.mossad.key.logger.parser.cli.Configuration.OUTPUT;
+import static com.mmigdal.mossad.key.logger.parser.logic.model.Configuration.INPUT;
+import static com.mmigdal.mossad.key.logger.parser.logic.model.Configuration.OUTPUT;
 
 public final class TestingConfiguration {
 
