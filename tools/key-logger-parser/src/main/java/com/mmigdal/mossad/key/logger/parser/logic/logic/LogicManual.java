@@ -14,7 +14,6 @@ public final class LogicManual extends LogicAbstraction {
 
     @Override
     public void execute() {
-
+        throw new RuntimeException("Not implemented yet...");
     }
-
 }

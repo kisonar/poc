@@ -1,6 +1,8 @@
 package com.mmigdal.mossad.key.logger.parser.logic.line;
 
 import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
+import com.mmigdal.mossad.key.logger.parser.logic.model.Configuration;
+
 import static kisonar.platform.domain.BaseDefinitions.*;
 
 import java.util.ArrayList;
@@ -25,8 +27,8 @@ public final class LineProcessor {
 
     public Stream<String> executeFilteringForLogger(Stream<String> streamOfLines) {
         return streamOfLines.
-            filter(line -> !line.contains("com.mossad.keylogger.logging.LogRecorder")).
-            collect(Collectors.toList()).stream();
+                filter(line -> !line.contains(Configuration.LOG_RECORDER)).
+                collect(Collectors.toList()).stream();
     }
 
     public List<String> executeReplacement(Stream<String> streamOfLines) {

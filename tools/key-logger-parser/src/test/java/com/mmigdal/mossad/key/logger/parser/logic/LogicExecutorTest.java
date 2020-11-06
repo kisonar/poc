@@ -13,7 +13,7 @@ import org.junit.jupiter.api.condition.OS;
 import java.util.Calendar;
 import java.util.logging.Logger;
 
-import static com.mmigdal.mossad.key.logger.parser.cli.Configuration.YEARS;
+import static com.mmigdal.mossad.key.logger.parser.logic.model.Configuration.YEARS;
 import static com.mmigdal.mossad.key.logger.parser.logic.others.TestingConfiguration.LINUX_PATH_FQ_INPUT;
 import static com.mmigdal.mossad.key.logger.parser.logic.others.TestingConfiguration.LINUX_PATH_FQ_OUTPUT;
 import static com.mmigdal.mossad.key.logger.parser.logic.others.TestingConfiguration.WIN_PATH_FQ_INPUT;

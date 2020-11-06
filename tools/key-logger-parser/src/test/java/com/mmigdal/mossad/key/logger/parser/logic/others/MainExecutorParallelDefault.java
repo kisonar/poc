@@ -1,6 +1,6 @@
 package com.mmigdal.mossad.key.logger.parser.logic.others;
 
-import com.mmigdal.mossad.key.logger.parser.cli.Configuration;
+import com.mmigdal.mossad.key.logger.parser.logic.model.Configuration;
 import com.mmigdal.mossad.key.logger.parser.logic.logic.Logic;
 import com.mmigdal.mossad.key.logger.parser.logic.logic.LogicFactory;
 import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeExecution;
