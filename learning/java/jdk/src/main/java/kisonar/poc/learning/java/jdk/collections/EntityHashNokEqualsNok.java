@@ -1,7 +1,5 @@
 package kisonar.poc.learning.java.jdk.collections;
 
-import java.util.Objects;
-
 public final class EntityHashNokEqualsNok {
 
     public final int id;
@@ -16,11 +14,11 @@ public final class EntityHashNokEqualsNok {
 
     @Override
     public int hashCode() {
-        return 456754;
+        return 456;
     }
 
     @Override
     public boolean equals(Object obj) {
-        return Objects.equals(this, obj);
+        return true;
     }
 }

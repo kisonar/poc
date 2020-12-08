@@ -16,11 +16,11 @@ public final class EntityHashNokEqualsOk {
 
     @Override
     public int hashCode() {
-        return 456754;
+        return 4554;
     }
 
     @Override
     public boolean equals(Object obj) {
-        return false;
+        return Objects.equals(this, obj);
     }
 }
