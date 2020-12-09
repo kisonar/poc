@@ -2,21 +2,15 @@ package kisonar.poc.learning.java.jdk.collections;
 
 import java.util.Objects;
 
-public final class EntityHashNokEqualsOk {
-
-    public final int id;
-    public final String name;
-    public final String value;
+public final class EntityHashNokEqualsOk extends EntityHashOkEqualsOk {
 
     public EntityHashNokEqualsOk(int id, String name, String value) {
-        this.name = name;
-        this.id = id;
-        this.value = value;
+        super(id, name, value);
     }
 
     @Override
     public int hashCode() {
-        return 4554;
+        return Objects.hash(id, value); //missing name
     }
 
     @Override
