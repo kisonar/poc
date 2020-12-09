@@ -13,14 +13,12 @@ public class MapsTest {
     private Map<EntityHashNokEqualsOk, String> hashNokEqualsOk = new HashMap<>();
     private Map<EntityHashOkEqualsNok, String> hashOkEqualsNok = new HashMap<>();
     private Map<EntityHashOkEqualsOk, String> hashOkEqualsOk = new HashMap<>();
-
     private String itemName1 = "one";
     private String itemName2 = "two";
     private String itemName3 = "three";
     private String value1 = "value1";
     private String value2 = "value1";
     private String value3 = "value1";
-
 
     @BeforeEach
     public void setUp() {
@@ -81,5 +79,4 @@ public class MapsTest {
 
         Assertions.assertEquals(3, hashOkEqualsOk.size());
     }
-
 }
