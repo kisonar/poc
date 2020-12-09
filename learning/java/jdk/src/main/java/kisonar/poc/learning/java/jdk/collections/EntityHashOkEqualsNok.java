@@ -1,6 +1,5 @@
 package kisonar.poc.learning.java.jdk.collections;
 
-
 import java.util.Objects;
 
 public final class EntityHashOkEqualsNok extends EntityHashOkEqualsOk {
