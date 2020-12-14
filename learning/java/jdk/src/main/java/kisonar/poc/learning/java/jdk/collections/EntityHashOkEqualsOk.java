@@ -2,7 +2,7 @@ package kisonar.poc.learning.java.jdk.collections;
 
 import java.util.Objects;
 
-public final class EntityHashOkEqualsOk {
+public class EntityHashOkEqualsOk {
 
     public final int id;
     public final String name;

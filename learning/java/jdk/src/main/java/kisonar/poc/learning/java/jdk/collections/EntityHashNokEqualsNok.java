@@ -2,25 +2,19 @@ package kisonar.poc.learning.java.jdk.collections;
 
 import java.util.Objects;
 
-public final class EntityHashNokEqualsNok {
-
-    public final int id;
-    public final String name;
-    public final String value;
+public final class EntityHashNokEqualsNok extends EntityHashOkEqualsOk {
 
     public EntityHashNokEqualsNok(int id, String name, String value) {
-        this.name = name;
-        this.id = id;
-        this.value = value;
+        super(id, name, value);
     }
 
     @Override
     public int hashCode() {
-        return 456754;
+        return Objects.hash(id, name);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return Objects.equals(this, obj);
+        return true;
     }
 }
