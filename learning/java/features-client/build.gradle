@@ -7,7 +7,7 @@ plugins {
 }
 
 dependencies {
-    implementation project(':features-services')
+    implementation project(':learning:java:features-services')
 }
 
 description = 'features-client'
