@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'groovy-gradle-plugin'
+}
+
+allprojects {
+    group = 'kisonar.poc'
+    version = '0.0.1-SNAPSHOT'
+    apply from: "${rootDir}/libraries.gradle"
+    apply plugin: 'groovy-gradle-plugin'
+    apply plugin: 'java'
+    /* comment - it executes java + executes dependency transfer */
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url 'https://repo.spring.io/snapshot' }
+        maven { url 'https://repo.spring.io/milestone' }
+	    jcenter()
+        gradlePluginPortal()
+    }
+}
+
