@@ -20,5 +20,12 @@ allprojects {
 	    jcenter()
         gradlePluginPortal()
     }
+
+    test {
+        useJUnitPlatform()
+        ignoreFailures = true /*continue even there are test failers*/
+    }
+
+
 }
 
