@@ -5,9 +5,11 @@ package com.mossad.network.server;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
-import com.mossad.network.library.coding.TimeStampDecoder;
-import com.mossad.network.library.coding.TimeStampEncoder;
+
+import kisonar.poc.network.netty.library.TimeStampDecoder;
+import kisonar.poc.network.netty.library.TimeStampEncoder;
+import com.mossad.network.server.ServerHandler;
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -18,7 +20,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 import io.netty.util.concurrent.EventExecutorGroup;
-*/
+
 
 import java.io.IOException;
 
@@ -29,7 +31,7 @@ public class Server {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        /*
+
         NioEventLoopGroup boosGroup = new NioEventLoopGroup();
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
         ServerBootstrap bootstrap = new ServerBootstrap();
@@ -61,6 +63,6 @@ public class Server {
         bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
         bootstrap.bind(19000).sync();
         System.out.println("Server has been run");
-    */
+
     }
 }
