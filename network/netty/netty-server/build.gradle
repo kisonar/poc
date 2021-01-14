@@ -1,0 +1,6 @@
+dependencies {
+    implementation libraries.nettyAll
+    implementation project(':network:netty:netty-library')
+}
+
+description = 'netty-server'

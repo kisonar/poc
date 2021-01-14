@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(':platform:base')
+    implementation project(':tools:key-logger-library')
+    implementation 'org.apache.commons:commons-email:1.5'
+    implementation 'com.1stleg:jnativehook:2.1.0'
+}
+
+description = 'key-logger'

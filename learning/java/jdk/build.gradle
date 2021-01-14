@@ -1,0 +1,5 @@
+dependencies {
+    implementation libraries.jdbc6
+}
+
+description = 'jdk'

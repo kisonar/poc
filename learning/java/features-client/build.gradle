@@ -1,0 +1,5 @@
+dependencies {
+    implementation project(':learning:java:features-services')
+}
+
+description = 'features-client'

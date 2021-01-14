@@ -28,4 +28,5 @@ hs_err_pid*
 # Directories of Maven
 **/target/
 **/.idea/
+**/gradle
 

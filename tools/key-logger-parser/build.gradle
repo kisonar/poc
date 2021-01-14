@@ -1,0 +1,6 @@
+dependencies {
+    implementation project(':platform:base')
+    implementation project(':tools:key-logger-library')
+}
+
+description = 'key-logger-parser'

@@ -1,0 +1,68 @@
+ext {
+
+    //SPRING_BOOT_VERSION = '2.0.1.RELEASE'
+    //SPRING_BOM = '5.0.4.RELEASE'
+    //REACTOR_BOM = 'Bismuth-SR7'
+    //METRICS_BOM = '4.0.2'
+    //LOG4J_BOM = '2.10.0'
+    //MBEAN_REPORTER_VERSION = '0.2'
+
+    libraries = [
+            jdbc6:'com.oracle.database.jdbc:ojdbc6:11.2.0.4',
+            junit5jupiterEngine : 'org.junit.jupiter:junit-jupiter-engine:5.6.2',
+            nettyAll            : 'io.netty:netty-all:4.1.56.Final'
+            /*
+            springBootWeb         : "org.springframework.boot:spring-boot-starter-web:${SPRING_BOOT_VERSION}",
+            springBootWebflux     : "org.springframework.boot:spring-boot-starter-webflux:${SPRING_BOOT_VERSION}",
+            springBootActuator    : "org.springframework.boot:spring-boot-starter-actuator:${SPRING_BOOT_VERSION}",
+            springBootLogging     : "org.springframework.boot:spring-boot-starter-logging:${SPRING_BOOT_VERSION}",
+            springBootLog4j       : "org.springframework.boot:spring-boot-starter-log4j2:${SPRING_BOOT_VERSION}",
+            springContext         : 'org.springframework:spring-context',
+            springWeb             : 'org.springframework:spring-web',
+            springWebflux         : 'org.springframework:spring-webflux',
+            spotifyDns            : 'com.spotify:dns:3.1.5',
+            jetbrainsAnnotations  : 'org.jetbrains:annotations:16.0.1',
+            log4j                 : 'org.apache.logging.log4j:log4j-api',
+            log4jCore             : 'org.apache.logging.log4j:log4j-core',
+            log4jJul              : 'org.apache.logging.log4j:log4j-jul',
+            log4jSlf4j            : 'org.apache.logging.log4j:log4j-slf4j-impl',
+            mockitoCore           : 'org.mockito:mockito-core:2.16.0',
+            assertjCore           : 'org.assertj:assertj-core:3.9.0',
+            catcher               : 'eu.codearte.catch-exception:catch-exception:1.4.6',
+            awaitility            : 'com.jayway.awaitility:awaitility:1.7.0',
+            guava                 : 'com.google.guava:guava:24.1-jre',
+            guavaRetry            : 'com.github.rholder:guava-retrying:2.0.0',
+            httpClient            : 'org.apache.httpcomponents:httpclient:4.5.2',
+            restAssured           : 'io.rest-assured:rest-assured:3.0.1',
+            immutables            : 'org.immutables:value:2.5.5:annotations',
+            immutablesProcessor   : 'org.immutables:value:2.5.5',
+            reactor               : 'io.projectreactor:reactor-core',
+            reactorTest           : 'io.projectreactor:reactor-test',
+            reactorExtra          : 'io.projectreactor.addons:reactor-extra',
+            reactorNetty          : 'io.projectreactor.ipc:reactor-netty',
+            reactorKafka          : 'io.projectreactor.kafka:reactor-kafka',
+            cucumberJava          : 'io.cucumber:cucumber-java:2.4.0',
+            cucumberJava8         : 'io.cucumber:cucumber-java8:2.4.0',
+            cucumberJunit         : 'io.cucumber:cucumber-junit:2.4.0',
+            cucumberPico          : 'io.cucumber:cucumber-picocontainer:2.4.0',
+            metrics               : 'io.dropwizard.metrics:metrics-core',
+            metricsJmx            : 'io.dropwizard.metrics:metrics-jmx',
+            jackson               : 'com.fasterxml.jackson.core:jackson-databind:2.9.5',
+            jsonProcessingApi     : 'javax.json:javax.json-api:1.1.2',
+            jsonProcessingImpl    : 'org.glassfish:javax.json:1.1.2',
+            protobuf              : 'com.google.protobuf:protobuf-java:3.5.1',
+            protoc                : 'com.google.protobuf:protoc:3.5.1-1',
+            jtwig                 : 'org.jtwig:jtwig-core:5.86.1.RELEASE',
+            gherkin               : 'io.cucumber:gherkin:5.0.0',
+            cli                   : 'commons-cli:commons-cli:1.4',
+
+            */
+    ]
+
+    pluginLibraries = [
+            //docker                : 'com.bmuschko:gradle-docker-plugin:3.2.4',
+            //download              : 'de.undercouch:gradle-download-task:3.3.0',
+            junit                 : 'org.junit.platform:junit-platform-gradle-plugin:1.0.0',
+            //protobuf              : 'com.google.protobuf:protobuf-gradle-plugin:0.8.4',
+    ]
+}

@@ -5,24 +5,22 @@
  */
 package com.mossad.network.client;
 
-/*
-import com.mossad.network.library.LoopBackTimeStamp;
+//import com.mossad.network.library.LoopBackTimeStamp;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-*/
+
 
 /**
  * @author mmigdal
  */
-public class ClientHandler //extends ChannelInboundHandlerAdapter
-{
-    /*
+public class ClientHandler extends ChannelInboundHandlerAdapter {
+
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        LoopBackTimeStamp ts = (LoopBackTimeStamp) msg;
+        //LoopBackTimeStamp ts = (LoopBackTimeStamp) msg;
         System.out.println("Cient received message..");
-        ctx.writeAndFlush(ts); //recieved message sent back directly
-        System.out.println("CLient write and flush");
+        //ctx.writeAndFlush(ts); //recieved message sent back directly
+        //System.out.println("CLient write and flush");
     }
 
     @Override
@@ -32,5 +30,5 @@ public class ClientHandler //extends ChannelInboundHandlerAdapter
         ctx.close();
     }
 
-     */
+
 }
