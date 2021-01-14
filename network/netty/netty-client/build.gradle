@@ -1,6 +1,5 @@
 dependencies {
     implementation project(':network:netty:netty-library')
-    testImplementation libraries.junit5jupiterEngine
     implementation libraries.nettyAll
 }
 

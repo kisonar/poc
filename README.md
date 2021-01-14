@@ -10,5 +10,4 @@ Gradle
 ```
 gradle clean build 
 gradle clean build -x test => skip tests
-
 ```
