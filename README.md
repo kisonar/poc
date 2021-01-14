@@ -2,7 +2,7 @@
 
 ```
 Requires JAVA 14+
-Gradle
+Gradle 6.7.1
 ```
 
 ## Steps

@@ -3,6 +3,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'groovy-gradle-plugin'
+    id 'org.javamodularity.moduleplugin' version '1.7.0'
 }
 
 allprojects {
@@ -11,6 +12,7 @@ allprojects {
     apply from: "${rootDir}/libraries.gradle"
     apply plugin: 'groovy-gradle-plugin'
     apply plugin: 'java'
+    apply plugin: "org.javamodularity.moduleplugin"
 
     repositories {
         mavenLocal()
