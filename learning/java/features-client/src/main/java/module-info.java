@@ -1,3 +1,3 @@
-module kisonar.com.larning.java.features.client {
-    requires kisonar.com.larning.java.features.services;
+module kisonar.poc.learning.java.features.client {
+    requires kisonar.poc.learning.java.features.services;
 }

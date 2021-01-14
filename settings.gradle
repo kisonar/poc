@@ -11,6 +11,7 @@ include('network:netty:netty-client')
 include('services:kafka')
 include('services:rabbitmq')
 include('learning:java:jdk')
-//include('learning:java:features-library') => JAVA modularity does not work
-//include('learning:java:features-services')
-//include('learning:java:features-client')
+//below we have Java modularity
+include('learning:java:features-library')
+include('learning:java:features-services')
+include('learning:java:features-client')
