@@ -1,3 +1,3 @@
-module kisonar.com.larning.java.features.library {
+module kisonar.com.learning.java.features.library {
     exports mossad.java.features.library.position;
 }

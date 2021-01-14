@@ -1,7 +1,6 @@
 dependencies {
     implementation project(':platform:base')
     implementation project(':tools:key-logger-library')
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
 }
 
 description = 'key-logger-parser'

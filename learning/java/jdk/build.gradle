@@ -1,6 +1,5 @@
 dependencies {
     implementation libraries.jdbc6
-    testImplementation libraries.junit5jupiterEngine
 }
 
 description = 'jdk'

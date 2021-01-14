@@ -1,6 +1,5 @@
 dependencies {
     implementation libraries.nettyAll
-    testImplementation libraries.junit5jupiterEngine
 }
 
 test {
