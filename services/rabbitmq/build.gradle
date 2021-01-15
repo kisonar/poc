@@ -1,5 +1,5 @@
 dependencies {
-    implementation 'com.rabbitmq:amqp-client:5.10.0'
+    implementation libraries.rabbitMqAmqpClient
 }
 
 description = 'rabbitmq'

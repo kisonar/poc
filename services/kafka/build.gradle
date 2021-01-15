@@ -1,6 +1,6 @@
 dependencies {
-    implementation 'org.apache.kafka:kafka-clients:2.0.0'
-    implementation 'org.apache.kafka:kafka-streams:2.0.0'
+    implementation libraries.apacheKafkaClients
+    implementation libraries.apacheKafkaStreams
 }
 
 description = 'kafka'

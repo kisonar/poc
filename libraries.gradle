@@ -8,9 +8,14 @@ ext {
     //MBEAN_REPORTER_VERSION = '0.2'
 
     libraries = [
-            jdbc6:'com.oracle.database.jdbc:ojdbc6:11.2.0.4',
-            junit5jupiterEngine : 'org.junit.jupiter:junit-jupiter-engine:5.6.2',
-            nettyAll            : 'io.netty:netty-all:4.1.56.Final'
+            jdbc6               :   'com.oracle.database.jdbc:ojdbc6:11.2.0.4',
+            junit5jupiterEngine :   'org.junit.jupiter:junit-jupiter-engine:5.6.2',
+            nettyAll            :   'io.netty:netty-all:4.1.56.Final',
+            apacheKafkaClients  :   'org.apache.kafka:kafka-clients:2.0.0',
+            apacheKafkaStreams  :   'org.apache.kafka:kafka-streams:2.0.0',
+            rabbitMqAmqpClient  :   'com.rabbitmq:amqp-client:5.10.0',
+            apacheCommonsEmail  :   'org.apache.commons:commons-email:1.5',
+            jNativeHook : 'com.1stleg:jnativehook:2.1.0'
             /*
             springBootWeb         : "org.springframework.boot:spring-boot-starter-web:${SPRING_BOOT_VERSION}",
             springBootWebflux     : "org.springframework.boot:spring-boot-starter-webflux:${SPRING_BOOT_VERSION}",
@@ -60,9 +65,10 @@ ext {
     ]
 
     pluginLibraries = [
+            junit                 : 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
             //docker                : 'com.bmuschko:gradle-docker-plugin:3.2.4',
             //download              : 'de.undercouch:gradle-download-task:3.3.0',
-            junit                 : 'org.junit.platform:junit-platform-gradle-plugin:1.0.0',
+
             //protobuf              : 'com.google.protobuf:protobuf-gradle-plugin:0.8.4',
     ]
 }

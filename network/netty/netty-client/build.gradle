@@ -1,6 +1,5 @@
 dependencies {
     implementation project(':network:netty:netty-library')
-    implementation libraries.nettyAll
 }
 
 description = 'netty-client'

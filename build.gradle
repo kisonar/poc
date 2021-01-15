@@ -30,6 +30,6 @@ allprojects {
     }
 
     dependencies {
-        testCompile libraries.junit5jupiterEngine /* all projects have JUnit activated in compilation & execution*/
+        testImplementation libraries.junit5jupiterEngine /* all projects have JUnit activated in compilation & execution*/
     }
 }
