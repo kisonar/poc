@@ -6,8 +6,6 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 
 import java.util.List;
 
-import kisonar.poc.network.netty.library.LoopBackTimeStamp;
-
 public class TimeStampDecoder extends ByteToMessageDecoder {
 
     @Override

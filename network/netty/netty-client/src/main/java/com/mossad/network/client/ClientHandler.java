@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mossad.network.client;
 
-//import com.mossad.network.library.LoopBackTimeStamp;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-
+import kisonar.poc.network.netty.library.LoopBackTimeStamp;
 
 /**
  * @author mmigdal
@@ -16,11 +10,11 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 public class ClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        //LoopBackTimeStamp ts = (LoopBackTimeStamp) msg;
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+        LoopBackTimeStamp ts = (LoopBackTimeStamp) msg;
         System.out.println("Cient received message..");
-        //ctx.writeAndFlush(ts); //recieved message sent back directly
-        //System.out.println("CLient write and flush");
+        ctx.writeAndFlush(ts); //recieved message sent back directly
+        System.out.println("CLient write and flush");
     }
 
     @Override
@@ -29,6 +23,4 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         cause.printStackTrace();
         ctx.close();
     }
-
-
 }

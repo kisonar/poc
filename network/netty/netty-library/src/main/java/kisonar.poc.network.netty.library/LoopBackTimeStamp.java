@@ -58,5 +58,4 @@ public class LoopBackTimeStamp {
         this.recvTimeStamp = buf2.getLong();
     }
 
-    // getter/setter ignored
 }

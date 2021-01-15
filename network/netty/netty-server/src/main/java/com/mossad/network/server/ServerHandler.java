@@ -16,7 +16,7 @@ import kisonar.poc.network.netty.library.LoopBackTimeStamp;
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         LoopBackTimeStamp ts = (LoopBackTimeStamp) msg;
         ts.setRecvTimeStamp(System.nanoTime());
         System.out.println("loop delay in ms : " + 1.0 * ts.timeLapseInNanoSecond() / 1000000L);
@@ -24,7 +24,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     // Here is how we send out heart beat for idle to long
     @Override
-    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) {
         if (evt instanceof IdleStateEvent) {
             IdleStateEvent event = (IdleStateEvent) evt;
             if (event.state() == IdleState.ALL_IDLE) { // idle for no read and write
