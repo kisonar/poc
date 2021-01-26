@@ -11,6 +11,7 @@ import javax.naming.directory.InitialDirContext;
 import java.util.Hashtable;
 import java.util.Optional;
 
+@Disabled
 public class LdapClientTest {
 
     private final static Hashtable<String, Object> env = new Hashtable<>();
@@ -42,6 +43,7 @@ public class LdapClientTest {
             }
         });
     }
+
 
     @Test
     public void groups_CreateNewOne_Fetch_RemoveCreated() throws NamingException {

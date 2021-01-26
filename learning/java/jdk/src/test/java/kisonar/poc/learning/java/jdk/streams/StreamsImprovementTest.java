@@ -7,7 +7,7 @@ public class StreamsImprovementTest {
 
     @Test
     public void usageCheckTest() {
-        StreamsImprovement.usageCheck();
+        StreamsImprovement.usageStreamOf();
     }
 
 }
