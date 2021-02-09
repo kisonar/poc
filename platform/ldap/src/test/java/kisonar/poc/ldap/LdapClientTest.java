@@ -91,7 +91,7 @@ public class LdapClientTest {
         Assertions.assertEquals(2, ldapClient.fetchUsers().size());
         Assertions.assertEquals(2, ldapClient.fetchGroups().size());
 
-        ldapClient.removeUser(user.userId);
+        ldapClient.removeUser(user.ldapId);
         Assertions.assertEquals(1, ldapClient.fetchUsers().size());
         Assertions.assertEquals(2, ldapClient.fetchGroups().size());
 

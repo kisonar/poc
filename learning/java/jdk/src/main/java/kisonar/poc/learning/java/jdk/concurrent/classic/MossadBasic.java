@@ -1,4 +1,4 @@
-package kisonar.poc.learning.java.jdk.concurrent;
+package kisonar.poc.learning.java.jdk.concurrent.classic;
 
 public final class MossadBasic {
 
