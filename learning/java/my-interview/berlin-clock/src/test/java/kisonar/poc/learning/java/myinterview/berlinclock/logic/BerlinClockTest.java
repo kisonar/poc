@@ -1,6 +1,7 @@
 package kisonar.poc.learning.java.myinterview.berlinclock.logic;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,14 +21,28 @@ class BerlinClockTest {
     }
 
     @Test
-    void parseInput() {
+    void convert() {
+        String time = "16:50";
+        Result result = berlinClock.convert(time);
+        Assertions.assertEquals(16, result.hours);
+        Assertions.assertEquals(50, result.minutes);
+
     }
 
     @Test
-    void executeProcessing() {
+    public void logicFlow() {
+        Result result = berlinClock.convert("17:11");
+
+
     }
 
+
     @Test
-    void printResult() {
+    void print() {
     }
+
+
+
+
+
 }
