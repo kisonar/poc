@@ -1,5 +1,6 @@
 dependencies {
     implementation libraries.jdbc6
+    implementation libraries.junit5jupiterEngine
     implementation project(':platform:base')
 }
 

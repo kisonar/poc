@@ -1,5 +1,35 @@
-dependencies {
-
+plugins {
+    id "org.springframework.boot" version "2.4.3"
 }
 
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.3'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.4.3'
+}
+
+/**
+ * Solvs problem LoggerFactory is not a Logback LoggerContext but Logback is on the classpath.
+ * */
+
+configurations {
+
+    /* all*.exclude module: 'spring-boot-starter-logging' */
+    /*all*.exclude module: 'logback-classic'
+
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+    * */
+    all {
+
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+
+
+    }
+}
+
+
 description = 'spring'
+
+bootJar {
+    mainClassName = 'kisonar.poc.framework.spring.App'
+}

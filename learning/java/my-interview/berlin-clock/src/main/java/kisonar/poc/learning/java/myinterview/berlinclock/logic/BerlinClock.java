@@ -1,6 +1,8 @@
 package kisonar.poc.learning.java.myinterview.berlinclock.logic;
 
-import java.time.LocalDateTime;
+import kisonar.poc.learning.java.myinterview.berlinclock.logic.converter.Converter;
+import kisonar.poc.learning.java.myinterview.berlinclock.logic.converter.ConvertionResult;
+
 import java.time.LocalTime;
 
 public class BerlinClock {
@@ -11,14 +13,11 @@ public class BerlinClock {
         converter = new Converter();
     }
 
+  public ConvertionResult convert(String inputHhMm) {
+    LocalTime dateTime = LocalTime.parse(inputHhMm);
+    return converter.convertToBerlinClockFormat(dateTime);
+  }
 
-    public Result convert(String inputHhMm) {
-        LocalTime dateTime = LocalTime.parse(inputHhMm);
-        return converter.convertToBerlinClockFormat(dateTime);
-    }
-
-    public void printResult(Result result) {
-    }
-
-
+  public void printResult(ConvertionResult convertionResult) {
+  }
 }
