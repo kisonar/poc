@@ -1,10 +1,10 @@
 plugins {
-    id "org.springframework.boot" version "2.4.3"
+    id "org.springframework.boot" version "2.4.4"
 }
 
 dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.3'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.4.3'
+    //implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.4.3'
 }
 
 /**
@@ -31,5 +31,5 @@ configurations {
 description = 'spring'
 
 bootJar {
-    mainClassName = 'kisonar.poc.framework.spring.App'
+    //mainClassName = 'kisonar.poc.framework.spring.App'
 }

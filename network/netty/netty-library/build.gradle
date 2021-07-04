@@ -1,5 +1,5 @@
 dependencies {
-    compile libraries.nettyAll
+    implementation libraries.nettyAll
 }
 
 test {
