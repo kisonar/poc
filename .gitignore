@@ -25,7 +25,8 @@ hs_err_pid*
 # IntelliJIdea
 *.iml
 
-# Directories of Maven
+# Gradle directories
+**/build/
 **/target/
 **/.idea/
 **/gradle

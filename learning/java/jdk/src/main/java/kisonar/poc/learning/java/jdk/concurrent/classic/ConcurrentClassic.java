@@ -1,6 +1,6 @@
-package kisonar.poc.learning.java.jdk.concurrent;
+package kisonar.poc.learning.java.jdk.concurrent.classic;
 
-public final class MossadBasic {
+public final class ConcurrentClassic {
 
     public static void main(String... args) {
         Runnable task = () -> {
@@ -13,6 +13,12 @@ public final class MossadBasic {
 
         Thread thread = new Thread(task);
         thread.start();
+
+        Thread thread2 = new Thread(task);
+        thread2.start();
+
+        Thread thread3 = new Thread(task);
+        thread3.start();
 
         System.out.println("Main finished!");
     }

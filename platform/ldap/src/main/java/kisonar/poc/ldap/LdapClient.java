@@ -63,7 +63,7 @@ public class LdapClient {
         //attributes.put(LDAPConsts.SHADOW_ACCOUNT);
         //String valueHomeDirectory = "/home/"+prefix;
         // Attribute attributeHomeDirectory = new BasicAttribute(LDAPConsts.HOME_DIRECTORY,valueHomeDirectory);
-        Attribute attributeUid = new BasicAttribute(UID, user.userId);
+        Attribute attributeUid = new BasicAttribute(UID, user.ldapId);
         Attribute attributeCn = new BasicAttribute(CN, user.name);
         Attribute attributeSn = new BasicAttribute(SN, user.surname);
         Attribute attributePassword = new BasicAttribute(PASSWORD, user.password);
@@ -74,9 +74,9 @@ public class LdapClient {
         attributes.put(attributePassword);
         //attributes.put(attributeEmail);
 
-        String dn = generateUserFQName(user.userId, List.of(groupName));
+        String dn = generateUserFQName(user.ldapId, List.of(groupName));
         ctx.createSubcontext(dn, attributes);
-        LOGGER.log(Level.INFO, String.format("Added user with ID: %s to group %s", user.userId, groupName));
+        LOGGER.log(Level.INFO, String.format("Added user with ID: %s to group %s", user.ldapId, groupName));
         LOGGER.log(Level.INFO, String.format("FQDN is: %s", dn));
     }
 

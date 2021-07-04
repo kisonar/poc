@@ -10,4 +10,6 @@ Gradle 6.7.1 soon 7.x
 ```
 gradle clean build 
 gradle clean build -x test => skip tests
+gradle dependencies
+gradle dependencyUpdates
 ```
