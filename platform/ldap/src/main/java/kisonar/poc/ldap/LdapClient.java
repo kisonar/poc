@@ -63,10 +63,10 @@ public class LdapClient {
         //attributes.put(LDAPConsts.SHADOW_ACCOUNT);
         //String valueHomeDirectory = "/home/"+prefix;
         // Attribute attributeHomeDirectory = new BasicAttribute(LDAPConsts.HOME_DIRECTORY,valueHomeDirectory);
-        Attribute attributeUid = new BasicAttribute(UID, user.ldapId);
-        Attribute attributeCn = new BasicAttribute(CN, user.name);
-        Attribute attributeSn = new BasicAttribute(SN, user.surname);
-        Attribute attributePassword = new BasicAttribute(PASSWORD, user.password);
+        Attribute attributeUid = new BasicAttribute(UID, user.ldapId());
+        Attribute attributeCn = new BasicAttribute(CN, user.name());
+        Attribute attributeSn = new BasicAttribute(SN, user.surname());
+        Attribute attributePassword = new BasicAttribute(PASSWORD, user.password());
         //Attribute attributeEmail = new BasicAttribute(EMAIL, user.email);
         attributes.put(attributeUid);
         attributes.put(attributeCn);
@@ -74,9 +74,9 @@ public class LdapClient {
         attributes.put(attributePassword);
         //attributes.put(attributeEmail);
 
-        String dn = generateUserFQName(user.ldapId, List.of(groupName));
+        String dn = generateUserFQName(user.ldapId(), List.of(groupName));
         ctx.createSubcontext(dn, attributes);
-        LOGGER.log(Level.INFO, String.format("Added user with ID: %s to group %s", user.ldapId, groupName));
+        LOGGER.log(Level.INFO, String.format("Added user with ID: %s to group %s", user.ldapId(), groupName));
         LOGGER.log(Level.INFO, String.format("FQDN is: %s", dn));
     }
 
@@ -169,7 +169,7 @@ public class LdapClient {
         String nameCn = attributes.get(CN).toString();
         String surnameSN = attributes.get(SN).toString();
         String password = new String((byte[]) attributes.get(PASSWORD).get());
-        User user = new User(attributes.get(UID).toString(), nameCn, surnameSN, password);
+        User user = new User(attributes.get(UID).toString(), nameCn, surnameSN, password,nameCn+"."+surnameSN+"@email.com");
         return user;
     }
 

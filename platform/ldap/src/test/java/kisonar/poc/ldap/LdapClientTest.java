@@ -1,8 +1,10 @@
 package kisonar.poc.ldap;
 
-import org.junit.jupiter.api.*;
-
 import kisonar.platform.domain.User;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import javax.naming.Context;
 import javax.naming.NamingException;
@@ -10,6 +12,10 @@ import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
 import java.util.Hashtable;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 @Disabled
 public class LdapClientTest {
@@ -19,7 +25,7 @@ public class LdapClientTest {
     private LdapClient ldapClient;
     private String groupNameNotDefined = "groupNotDefined";
     private String groupName = "mygroup";
-    private User user = new User("mmigdal", "marcin", "migdal", "password");
+    private User user = new User("mmigdal", "marcin", "migdal", "password","marcin.migdal@email.com");
 
     @BeforeEach
     public void beforeEach() throws NamingException {
@@ -39,76 +45,75 @@ public class LdapClientTest {
             try {
                 item.close();
             } catch (NamingException e) {
-                Assertions.fail(e);
+                fail(e);
             }
         });
     }
 
-
     @Test
-    public void groups_CreateNewOne_Fetch_RemoveCreated() throws NamingException {
-        Assertions.assertEquals(1, ldapClient.fetchGroups().size());
+    public void createGroup_FetchCreatedGroup_RemoveCreatedGroup() throws NamingException {
+        assertEquals(1, ldapClient.fetchGroups().size());
 
         ldapClient.createGroup(groupName);
-        Assertions.assertEquals(2, ldapClient.fetchGroups().size());
+        assertEquals(2, ldapClient.fetchGroups().size());
 
         ldapClient.removeGroup(groupName);
-        Assertions.assertEquals(1, ldapClient.fetchGroups().size());
+        assertEquals(1, ldapClient.fetchGroups().size());
     }
 
     @Test
-    public void groups_CreateGroupWhichAlreadyExists() throws NamingException {
-        Assertions.assertEquals(1, ldapClient.fetchGroups().size());
+    public void createGroup_createGroupWhichAlreadyExists_removeGroup() throws NamingException {
+        assertEquals(1, ldapClient.fetchGroups().size());
         ldapClient.createGroup(groupName);
-        Assertions.assertEquals(2, ldapClient.fetchGroups().size());
+        assertEquals(2, ldapClient.fetchGroups().size());
 
-        Assertions.assertThrows(javax.naming.NameAlreadyBoundException.class, () -> {
+        assertThrows(javax.naming.NameAlreadyBoundException.class, () -> {
             ldapClient.createGroup(groupName);
         });
 
         ldapClient.removeGroup(groupName);
-        Assertions.assertEquals(1, ldapClient.fetchGroups().size());
+        assertEquals(1, ldapClient.fetchGroups().size());
     }
 
     @Test
-    public void groups_removeWhichDoesNotExist() throws NamingException {
-        Assertions.assertEquals(1, ldapClient.fetchUsers().size());
+    public void removeGroupWhichDoesNotExist() throws NamingException {
+        assertEquals(1, ldapClient.fetchUsers().size());
 
         ldapClient.removeGroup(groupNameNotDefined);
-        Assertions.assertEquals(1, ldapClient.fetchUsers().size());
-        Assertions.assertEquals(1, ldapClient.fetchGroups().size());
+        assertEquals(1, ldapClient.fetchUsers().size());
+        assertEquals(1, ldapClient.fetchGroups().size());
     }
 
     @Test
-    public void user_createUserWithDefinedGroup_removeUserWithDefinedGroup() throws NamingException {
-        Assertions.assertEquals(1, ldapClient.fetchUsers().size());
-        Assertions.assertEquals(1, ldapClient.fetchGroups().size());
+    public void createUserWithDefinedGroupAndNextRemoveUserWithDefinedGroup() throws NamingException {
+        assertEquals(1, ldapClient.fetchUsers().size());
+        assertEquals(1, ldapClient.fetchGroups().size());
 
         ldapClient.createGroup(groupName);
-        Assertions.assertEquals(2, ldapClient.fetchGroups().size());
+        assertEquals(2, ldapClient.fetchGroups().size());
 
         ldapClient.createUser(user, groupName);
-        Assertions.assertEquals(2, ldapClient.fetchUsers().size());
-        Assertions.assertEquals(2, ldapClient.fetchGroups().size());
+        assertEquals(2, ldapClient.fetchUsers().size());
+        assertEquals(2, ldapClient.fetchGroups().size());
 
-        ldapClient.removeUser(user.ldapId);
-        Assertions.assertEquals(1, ldapClient.fetchUsers().size());
-        Assertions.assertEquals(2, ldapClient.fetchGroups().size());
+        ldapClient.removeUser(user.ldapId());
+        assertEquals(1, ldapClient.fetchUsers().size());
+        assertEquals(2, ldapClient.fetchGroups().size());
 
         ldapClient.removeGroup(groupName);
-        Assertions.assertEquals(1, ldapClient.fetchUsers().size());
-        Assertions.assertEquals(1, ldapClient.fetchGroups().size());
+        assertEquals(1, ldapClient.fetchUsers().size());
+        assertEquals(1, ldapClient.fetchGroups().size());
     }
 
     @Test
-    public void user_addUserToNonExistingGroup() throws NamingException {
-        Assertions.assertThrows(javax.naming.NameNotFoundException.class, () -> {
+    public void addUserToNonExistingGroup() throws NamingException {
+        assertThrows(javax.naming.NameNotFoundException.class, () -> {
             ldapClient.createUser(user, groupNameNotDefined);
         });
     }
 
     @Test
-    public void user_fetch() throws NamingException {
+    public void fetchUsers() throws NamingException {
         ldapClient.fetchUsers();
     }
 
