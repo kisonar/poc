@@ -2,7 +2,6 @@ plugins {
     id 'java'
     id 'java-library'
     id 'maven-publish'
-    id 'groovy-gradle-plugin'
     //id 'org.javamodularity.moduleplugin' version '1.7.0'
     id 'com.github.ben-manes.versions' version '0.20.0'
 }
@@ -11,8 +10,8 @@ allprojects {
     group = 'kisonar.poc'
     version = '0.0.1-SNAPSHOT'
     apply from: "${rootDir}/libraries.gradle"
-    apply plugin: 'groovy-gradle-plugin'
     apply plugin: 'java'
+    apply plugin: 'java-library'
     //apply plugin: 'org.javamodularity.moduleplugin'
 
     repositories {
@@ -20,8 +19,18 @@ allprojects {
         mavenCentral()
         maven { url 'https://repo.spring.io/snapshot' }
         maven { url 'https://repo.spring.io/milestone' }
-	    jcenter()
         gradlePluginPortal()
+    }
+
+    dependencies {
+        testImplementation libraries.junit5jupiterEngine /* all projects have JUnit activated in compilation & execution*/
+
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(16)
+        }
     }
 
     test {
@@ -29,7 +38,4 @@ allprojects {
         ignoreFailures = true /*continue even there are test failers*/
     }
 
-    dependencies {
-        testImplementation libraries.junit5jupiterEngine /* all projects have JUnit activated in compilation & execution*/
-    }
 }

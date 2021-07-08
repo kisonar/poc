@@ -8,7 +8,5 @@ public final class BaseDefinitions {
     public static final String SPACE = " ";
 
     private BaseDefinitions() {
-
     }
-
 }

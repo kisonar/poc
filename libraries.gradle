@@ -9,7 +9,7 @@ ext {
 
     libraries = [
             jdbc6               :   'com.oracle.database.jdbc:ojdbc6:11.2.0.4',
-            junit5jupiterEngine :   'org.junit.jupiter:junit-jupiter-engine:5.6.2',
+            junit5jupiterEngine :   'org.junit.jupiter:junit-jupiter-engine:5.8.0-M1',
             nettyAll            :   'io.netty:netty-all:4.1.56.Final',
             apacheKafkaClients  :   'org.apache.kafka:kafka-clients:2.0.0',
             apacheKafkaStreams  :   'org.apache.kafka:kafka-streams:2.0.0',
@@ -67,7 +67,7 @@ ext {
     ]
 
     pluginLibraries = [
-            junit                 : 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
+            junit                 : 'org.junit.platform:junit-platform-gradle-plugin:1.2.0'
             //docker                : 'com.bmuschko:gradle-docker-plugin:3.2.4',
             //download              : 'de.undercouch:gradle-download-task:3.3.0',
             //protobuf              : 'com.google.protobuf:protobuf-gradle-plugin:0.8.4',
