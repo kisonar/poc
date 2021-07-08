@@ -15,4 +15,6 @@ public class StringMethodsTest {
     public void setUp() {
         stringMethods = new StringMethods();
     }
+
+    
 }
