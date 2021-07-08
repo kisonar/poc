@@ -2,6 +2,9 @@ package kisonar.platform.domain.util;
 
 import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
 
 public final class Measurement {
 
@@ -9,6 +12,8 @@ public final class Measurement {
     private int stop = 0;
     private long startLong = 0;
     private long stopLong = 0;
+
+    private final Logger LOG = Logger.getLogger(Measurement.class.getCanonicalName());
 
     public Measurement() {
     }
@@ -31,7 +36,9 @@ public final class Measurement {
     }
 
     public void printResult() {
-        System.out.println(String.format("Execution took %d", stop - start));
-        System.out.println(String.format("Execution took %d", stopLong - startLong));
+        LOG.log(Level.INFO,String.format("Execution took %d", stop - start));
+        LOG.log(Level.INFO,String.format("Execution took %d", stopLong - startLong));
+       // System.out.println(String.format("Execution took %d", stop - start));
+       // System.out.println(String.format("Execution took %d", stopLong - startLong));
     }
 }
