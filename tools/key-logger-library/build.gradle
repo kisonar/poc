@@ -2,4 +2,6 @@ dependencies {
     implementation project(':platform:base')
 }
 
+apply plugin: 'java'
+
 description = 'key-logger-library'

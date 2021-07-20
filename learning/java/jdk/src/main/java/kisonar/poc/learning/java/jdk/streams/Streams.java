@@ -3,9 +3,7 @@ package kisonar.poc.learning.java.jdk.streams;
 import kisonar.platform.domain.User;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -23,11 +21,11 @@ public class Streams {
     }
 
     public List<String> getUsersNames() {
-        return usersList.stream().map(user -> user.name).collect(Collectors.toList());
+        return usersList.stream().map(user -> user.name()).collect(Collectors.toList());
     }
 
     public void usageIntStream() {
-        IntStream.rangeClosed(1, 13).takeWhile(value -> value < 8 && value % 2 == 0).forEach(value -> System.out.println(value));
+        IntStream.rangeClosed(1, 13).takeWhile(value -> value < 8 && value % 2 == 0).forEach(System.out::println);
     }
 
     public void usageStreamOf() {

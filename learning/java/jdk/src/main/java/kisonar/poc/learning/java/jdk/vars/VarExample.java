@@ -36,7 +36,7 @@ public final class VarExample {
     var strings3 = new ArrayList<>();
     strings.add("Hello World");
     for (var string31 : strings3) {
-      System.out.println(string31.equals("Worldava 10")); // cannot find symbol 'replace'
+      System.out.println(string31.equals("Worldava 10"));
     }
 
     var strings2 = new ArrayList<String>();

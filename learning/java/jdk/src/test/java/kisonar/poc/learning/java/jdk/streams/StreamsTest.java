@@ -26,8 +26,8 @@ public class StreamsTest {
 
     @Test
     public void addUsersAndFetchNames() {
-        User user1 = UserFactory.getUser("1", "Marcin", "Migdal", "kisonar@wp.pl");
-        User user2 = UserFactory.getUser("2", "Adrian", "Puchalski", "kisonar@wp.pl");
+        User user1 = UserFactory.getUser("1", "Marcin", "Migdal", "password1","kisonar@wp.pl");
+        User user2 = UserFactory.getUser("2", "Adrian", "Puchalski", "password2","kisonar@wp.pl");
         streams.addUser(user1);
         streams.addUser(user2);
 

@@ -35,7 +35,7 @@ allprojects {
 
     test {
         useJUnitPlatform()
-        ignoreFailures = true /*continue even there are test failers*/
+        ignoreFailures = false /*continue even there are test failers*/
     }
 
 }
