@@ -1,4 +1,4 @@
-package kisonar.poc.framework.spring;
+package kisonar.poc.framework.spring.controller;
 
 
 //import org.apache.log4j.Logger;

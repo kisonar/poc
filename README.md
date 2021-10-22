@@ -1,8 +1,8 @@
 # POC
 
 ```
-Requires JAVA 16+
-Gradle 7.1.1
+Requires JAVA 17
+Gradle 7.2
 ```
 
 ## Steps

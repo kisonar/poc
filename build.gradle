@@ -2,8 +2,8 @@ plugins {
     id 'java'
     id 'java-library'
     id 'maven-publish'
-    //id 'org.javamodularity.moduleplugin' version '1.7.0'
     id 'com.github.ben-manes.versions' version '0.20.0'
+    id 'org.javamodularity.moduleplugin' version '1.7.0'
 }
 
 allprojects {
@@ -12,7 +12,7 @@ allprojects {
     apply from: "${rootDir}/libraries.gradle"
     apply plugin: 'java'
     apply plugin: 'java-library'
-    //apply plugin: 'org.javamodularity.moduleplugin'
+    apply plugin: 'org.javamodularity.moduleplugin'
 
     repositories {
         mavenLocal()
@@ -24,7 +24,6 @@ allprojects {
 
     dependencies {
         testImplementation libraries.junit5jupiterEngine /* all projects have JUnit activated in compilation & execution*/
-
     }
 
     java {
