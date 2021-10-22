@@ -1,14 +1,13 @@
 package kisonar.poc.services.kafka.producer;
 
-
-import java.security.Security;
-
 import kisonar.poc.services.kafka.KafkaPropertiesFactory;
 import kisonar.poc.services.kafka.KafkaTopicNames;
 import kisonar.poc.services.kafka.security.CustomProvider;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+
+import java.security.Security;
 
 public class KafkaProcuderClient {
 
