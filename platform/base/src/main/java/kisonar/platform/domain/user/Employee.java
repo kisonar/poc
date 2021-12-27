@@ -1,4 +1,4 @@
-package kisonar.poc.learning.java.jdk.concurrent.reactive.domain;
+package kisonar.platform.domain.user;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ public class Employee {
     private final int id;
     private final String name;
 
-    Employee(int i, String s) {
+    public Employee(int i, String s) {
         this.id = i;
         this.name = s;
     }

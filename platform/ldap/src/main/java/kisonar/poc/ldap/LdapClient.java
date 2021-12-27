@@ -1,9 +1,6 @@
 package kisonar.poc.ldap;
 
-import static kisonar.poc.ldap.LDAPConsts.*;
-import static kisonar.platform.domain.BaseDefinitions.*;
-
-import kisonar.platform.domain.User;
+import kisonar.platform.domain.user.User;
 
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
@@ -14,15 +11,22 @@ import javax.naming.directory.BasicAttributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static kisonar.platform.domain.BaseDefinitions.COMA;
+import static kisonar.platform.domain.BaseDefinitions.EMPTY;
+import static kisonar.platform.domain.BaseDefinitions.EQUALS;
+import static kisonar.poc.ldap.LDAPConsts.*;
 
 public class LdapClient {
 
     private final static Logger LOGGER = Logger.getLogger(LdapClient.class.getName());
-    private DirContext ctx;
+    private final DirContext ctx;
 
     public LdapClient(DirContext ctx) {
         this.ctx = ctx;

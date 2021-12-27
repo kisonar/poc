@@ -1,6 +1,6 @@
 package kisonar.poc.learning.java.jdk.concurrent.reactive.subscriber;
 
-import kisonar.poc.learning.java.jdk.concurrent.reactive.domain.Employee;
+import kisonar.platform.domain.user.Employee;
 
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;

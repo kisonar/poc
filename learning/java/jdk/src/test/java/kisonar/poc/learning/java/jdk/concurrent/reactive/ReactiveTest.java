@@ -1,13 +1,13 @@
 package kisonar.poc.learning.java.jdk.concurrent.reactive;
 
 
-import java.util.List;
-import java.util.concurrent.SubmissionPublisher;
-
-import kisonar.poc.learning.java.jdk.concurrent.reactive.domain.Employee;
-import kisonar.poc.learning.java.jdk.concurrent.reactive.domain.EmployeeFactory;
+import kisonar.platform.domain.user.Employee;
+import kisonar.platform.domain.user.factory.EmployeeFactory;
 import kisonar.poc.learning.java.jdk.concurrent.reactive.subscriber.EmployeeSubscriber;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.concurrent.SubmissionPublisher;
 
 public class ReactiveTest {
 
@@ -24,7 +24,7 @@ public class ReactiveTest {
 
         // Publish items
         System.out.println("Publishing Items to Subscriber");
-        employees.forEach(employee -> publisher.submit(employee));
+        employees.forEach(publisher::submit);
 
         // logic to wait till processing of all messages are over
         while (employees.size() != subscriber.getCounter()) {

@@ -1,6 +1,6 @@
 package kisonar.poc.learning.java.jdk.streams;
 
-import kisonar.platform.domain.User;
+import kisonar.platform.domain.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class Streams {
 
-    private List<User> usersList;
+    private final List<User> usersList;
 
     public Streams() {
         usersList = new ArrayList<>();
@@ -21,7 +21,7 @@ public class Streams {
     }
 
     public List<String> getUsersNames() {
-        return usersList.stream().map(user -> user.name()).collect(Collectors.toList());
+        return usersList.stream().map(User::name).collect(Collectors.toList());
     }
 
     public void usageIntStream() {

@@ -1,8 +1,7 @@
 package kisonar.poc.learning.java.jdk.streams;
 
-import kisonar.platform.domain.User;
-import kisonar.platform.domain.factory.UserFactory;
-
+import kisonar.platform.domain.user.User;
+import kisonar.platform.domain.user.factory.UserFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

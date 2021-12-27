@@ -1,6 +1,6 @@
-package kisonar.platform.domain.factory;
+package kisonar.platform.domain.user.factory;
 
-import kisonar.platform.domain.User;
+import kisonar.platform.domain.user.User;
 
 public class UserFactory {
 
