@@ -16,9 +16,7 @@ ext {
             rabbitMqAmqpClient  :   'com.rabbitmq:amqp-client:5.10.0',
             apacheCommonsEmail  :   'org.apache.commons:commons-email:1.5',
             jNativeHook         :   'com.1stleg:jnativehook:2.1.0',
-
             mariaDbLibrary      :   'org.mariadb.jdbc:mariadb-java-client:2.7.4',
-
             springBootWeb         : "org.springframework.boot:spring-boot-starter-web:${SPRING_BOOT_VERSION}",
             springBootWebflux     : "org.springframework.boot:spring-boot-starter-webflux:${SPRING_BOOT_VERSION}",
             springBootActuator    : "org.springframework.boot:spring-boot-starter-actuator:${SPRING_BOOT_VERSION}",
