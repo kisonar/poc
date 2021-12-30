@@ -17,3 +17,7 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      org:
+        hibernate:
+          flushMode: COMMIT

@@ -1,7 +1,6 @@
-package kisonar.poc.framework.spring.domain.jpa;
+package kisonar.poc.framework.spring.domain.jpa.user;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
+
+import static kisonar.poc.framework.spring.domain.jpa.EntitytGenerationType.NATIVE;
 
 @Entity
 @Table(name = "users")
@@ -21,7 +22,8 @@ public class UserEntity {
     private static final String USER_EMAIL = "userEmail";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = NATIVE)
+    @GenericGenerator(name = NATIVE, strategy = NATIVE)
     @Column(name = USER_ID)
     private Long userId;
 
@@ -37,9 +39,8 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    @JsonCreator
-    public UserEntity(@JsonProperty(USER_ID) Long userId, @JsonProperty(USER_NAME) String userName,
-                      @JsonProperty(USER_PASSWORD) String userPassword, @JsonProperty(USER_EMAIL) String userEmail) {
+    public UserEntity(Long userId, String userName,
+                      String userPassword, String userEmail) {
         this.userId = userId;
         this.userName = userName;
         this.userPassword = userPassword;
@@ -57,6 +58,16 @@ public class UserEntity {
     @Override
     public int hashCode() {
         return Objects.hash(userId, userName, userPassword, userEmail);
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                '}';
     }
 
     public Long getUserId() {
@@ -90,4 +101,5 @@ public class UserEntity {
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
+
 }
