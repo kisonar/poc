@@ -1,15 +1,14 @@
 package kisonar.poc.learning.java.jdk.concurrent.reactive;
 
 
-import java.util.List;
-import java.util.concurrent.SubmissionPublisher;
-
-
-import kisonar.poc.learning.java.jdk.concurrent.reactive.domain.Employee;
-import kisonar.poc.learning.java.jdk.concurrent.reactive.domain.EmployeeFactory;
-import kisonar.poc.learning.java.jdk.concurrent.reactive.domain.Freelancer;
+import kisonar.platform.domain.user.Employee;
+import kisonar.platform.domain.user.Freelancer;
+import kisonar.platform.domain.user.factory.EmployeeFactory;
 import kisonar.poc.learning.java.jdk.concurrent.reactive.subscriber.FreelancerSubscriber;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.concurrent.SubmissionPublisher;
 
 public class ReactiveWithProcessorTest {
 
@@ -19,9 +18,7 @@ public class ReactiveWithProcessorTest {
         SubmissionPublisher<Employee> publisher = new SubmissionPublisher<>();
 
         // Create Processor
-        MyProcessor transformProcessor = new MyProcessor(s -> {
-            return new Freelancer(s.getId(), s.getId() + 100, s.getName());
-        });
+        MyProcessor transformProcessor = new MyProcessor(s -> new Freelancer(s.getId(), s.getId() + 100, s.getName()));
 
         //Create End Subscriber
         FreelancerSubscriber freelanceSubscriber = new FreelancerSubscriber();
@@ -34,7 +31,7 @@ public class ReactiveWithProcessorTest {
 
         // Publish items
         System.out.println("Publishing Items to Subscriber");
-        emps.forEach(i -> publisher.submit(i));
+        emps.forEach(publisher::submit);
 
         // Logic to wait for messages processing to finish
         while (emps.size() != freelanceSubscriber.getCounter()) {

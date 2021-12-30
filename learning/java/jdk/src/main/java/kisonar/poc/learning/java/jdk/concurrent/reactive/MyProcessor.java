@@ -1,7 +1,7 @@
 package kisonar.poc.learning.java.jdk.concurrent.reactive;
 
-import kisonar.poc.learning.java.jdk.concurrent.reactive.domain.Employee;
-import kisonar.poc.learning.java.jdk.concurrent.reactive.domain.Freelancer;
+import kisonar.platform.domain.user.Employee;
+import kisonar.platform.domain.user.Freelancer;
 
 import java.util.concurrent.Flow.Processor;
 import java.util.concurrent.Flow.Subscription;
@@ -14,7 +14,7 @@ public final class MyProcessor
         implements Processor<Employee, Freelancer> {
 
     private Subscription subscription;
-    private Function<Employee, Freelancer> function;
+    private final Function<Employee, Freelancer> function;
 
     public MyProcessor(Function<Employee, Freelancer> function) {
         super();

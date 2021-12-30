@@ -1,4 +1,4 @@
-package kisonar.poc.learning.java.jdk.concurrent.reactive.domain;
+package kisonar.platform.domain.user;
 
 public final class Freelancer extends Employee {
 

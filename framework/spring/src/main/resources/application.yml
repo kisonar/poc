@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: kisonar-poc-spring
+    main:
+      banner-mode: "on"
+    http.encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  datasource:
+    url: jdbc:mariadb://localhost:3306/default_database
+    username: user
+    password: pass
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      org:
+        hibernate:
+          flushMode: COMMIT

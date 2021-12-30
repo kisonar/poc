@@ -1,6 +1,6 @@
 ext {
 
-    SPRING_BOOT_VERSION = '2.4.3'
+    SPRING_BOOT_VERSION = '2.6.2'
     //SPRING_BOM = '5.0.4.RELEASE'
     //REACTOR_BOM = 'Bismuth-SR7'
     //METRICS_BOM = '4.0.2'
@@ -15,16 +15,14 @@ ext {
             apacheKafkaStreams  :   'org.apache.kafka:kafka-streams:2.0.0',
             rabbitMqAmqpClient  :   'com.rabbitmq:amqp-client:5.10.0',
             apacheCommonsEmail  :   'org.apache.commons:commons-email:1.5',
-            jNativeHook : 'com.1stleg:jnativehook:2.1.0',
-
-
-
+            jNativeHook         :   'com.1stleg:jnativehook:2.1.0',
+            mariaDbLibrary      :   'org.mariadb.jdbc:mariadb-java-client:2.7.4',
             springBootWeb         : "org.springframework.boot:spring-boot-starter-web:${SPRING_BOOT_VERSION}",
             springBootWebflux     : "org.springframework.boot:spring-boot-starter-webflux:${SPRING_BOOT_VERSION}",
             springBootActuator    : "org.springframework.boot:spring-boot-starter-actuator:${SPRING_BOOT_VERSION}",
             springBootLogging     : "org.springframework.boot:spring-boot-starter-logging:${SPRING_BOOT_VERSION}",
-            springBootLog4j       : "org.springframework.boot:spring-boot-starter-log4j2:${SPRING_BOOT_VERSION}",
             springBootDataJpa     : "org.springframework.boot:spring-boot-starter-data-jpa:${SPRING_BOOT_VERSION}"
+            //springBootLog4j       : "org.springframework.boot:spring-boot-starter-log4j2:${SPRING_BOOT_VERSION}",
             /*
             springContext         : 'org.springframework:spring-context',
             springWeb             : 'org.springframework:spring-web',
