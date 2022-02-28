@@ -35,6 +35,9 @@ allprojects {
     test {
         useJUnitPlatform()
         ignoreFailures = false /*continue even there are test failers*/
+        testLogging {
+            events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
+        }
     }
 
 }
