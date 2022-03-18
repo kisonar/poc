@@ -40,4 +40,9 @@ allprojects {
         }
     }
 
+    task copyDependencies(type: Copy) {
+        from configurations.default
+        into 'dependencies'
+    }
+
 }
