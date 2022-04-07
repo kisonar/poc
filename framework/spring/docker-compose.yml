@@ -1,0 +1,48 @@
+version: '3'
+services:
+
+  # MariaDB
+  statusdb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: 'myDatabase'
+      MYSQL_USER: 'myUser'
+      MYSQL_PASSWORD: 'myPassword'
+    volumes:
+      - ./status-db-data:/var/lib/mysql/
+    ports:
+      - "3306:3306"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8085:8080"
+    depends_on:
+      - statusdb
+
+  # Kafka
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+    hostname: localhost
+    depends_on:
+      - adminer
+
+  kafka:
+    image: wurstmeister/kafka
+    command: [ start-kafka.sh ]
+    ports:
+      - "9092:9092"
+    hostname: 127.0.0.1
+    environment:
+      KAFKA_CREATE_TOPICS: "test-topic-read:1:1,test-topic-write:1:1" # topic:partition:replicas
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1 # docker-machine ip
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_PORT: 9092
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - zookeeper
