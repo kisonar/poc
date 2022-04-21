@@ -17,9 +17,6 @@ public class JDBC {
             }
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-
-        } finally {
-            System.err.print("Problem in JDBC execution");
         }
     }
 }
