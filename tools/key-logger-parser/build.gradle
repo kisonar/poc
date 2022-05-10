@@ -1,6 +1,8 @@
 dependencies {
     implementation project(':platform:base')
     implementation project(':tools:key-logger-library')
+    implementation libraries.opencsv
+    implementation libraries.googleJson
 }
 
 description = 'key-logger-parser'
