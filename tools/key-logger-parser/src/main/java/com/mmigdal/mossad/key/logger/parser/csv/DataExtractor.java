@@ -28,7 +28,7 @@ public class DataExtractor {
             average = entries.stream().mapToInt(item -> Integer.parseInt(item.time)).average().orElse(0);
             max = entries.stream().mapToInt(item -> Integer.parseInt(item.time)).max().orElse(0);
             min = entries.stream().mapToInt(item -> Integer.parseInt(item.time)).min().orElse(0);
-            System.out.println(daoName + ": " + methodName + ": min:" + min + " average: " + average + " max: +" + max
+            System.out.println(daoName + ": " + methodName + " : items: " + entries.size() + ": min: " + min + " average: " + average + " max: +" + max
             );
 
       }

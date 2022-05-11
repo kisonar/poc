@@ -8,21 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.DAO_CHARGE_POINT_STATUS;
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.DAO_CHARGE_POINT_STATUS_upsertOnline;
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.STATUS_VIEW_DAO;
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.STATUS_VIEW_DAO_findByChargePointId;
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.STATUS_VIEW_DAO_findByConnectorId;
+
 public class Main {
 
-      private static final String ChargePointStatusDao = "ChargePointStatusDao";
-      private static final String upsertOnline = "upsertOnline";
-      private static final String StatusViewDao = "StatusViewDao";
-      private static final String findByChargePointId = "findByChargePointId";
-      private static final String findByConnectorId = "findByConnectorId";
-      private static final String PublishingService = "PublishingService";
-      private static final String publishEvent = "publishEvent";
-      private static final String CircuitBreakerDao = "CircuitBreakerDao";
-      private static final String findByChargePointAndConnectorId = "findByChargePointAndConnectorId";
-      private static final String ConnectorStatusDao = "ConnectorStatusDao";
-      private static final String insertStatusNotification = "insertStatusNotification";
-      private static final String ConnectorErrorDao = "ConnectorErrorDao";
-      private static final String deleteByConnectorId = "deleteByConnectorId";
+
 
       public static void main(String[] args) throws IOException {
 
@@ -42,15 +36,15 @@ public class Main {
                   databasePerformanceEntry.ifPresent(item -> databasePerformanceEntryList.add(item));
             });
 
-            DataExtractor dataExtractorChargePointStatusDaoUpsertOnline = new DataExtractor(ChargePointStatusDao, upsertOnline);
+            DataExtractor dataExtractorChargePointStatusDaoUpsertOnline = new DataExtractor(DAO_CHARGE_POINT_STATUS, DAO_CHARGE_POINT_STATUS_upsertOnline);
             dataExtractorChargePointStatusDaoUpsertOnline.extractData(List.copyOf(databasePerformanceEntryList));
             dataExtractorChargePointStatusDaoUpsertOnline.generateStatistics();
 
-            DataExtractor dataExtractorStatusViewDaoFindByChargePointId = new DataExtractor(StatusViewDao, findByChargePointId);
+            DataExtractor dataExtractorStatusViewDaoFindByChargePointId = new DataExtractor(STATUS_VIEW_DAO, STATUS_VIEW_DAO_findByChargePointId);
             dataExtractorStatusViewDaoFindByChargePointId.extractData(List.copyOf(databasePerformanceEntryList));
             dataExtractorStatusViewDaoFindByChargePointId.generateStatistics();
 
-            DataExtractor dataExtractorStatusViewDaoFindByConnectorId = new DataExtractor(StatusViewDao, findByConnectorId);
+            DataExtractor dataExtractorStatusViewDaoFindByConnectorId = new DataExtractor(STATUS_VIEW_DAO, STATUS_VIEW_DAO_findByConnectorId);
             dataExtractorStatusViewDaoFindByConnectorId.extractData(List.copyOf(databasePerformanceEntryList));
             dataExtractorStatusViewDaoFindByConnectorId.generateStatistics();
       }
