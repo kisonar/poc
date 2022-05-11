@@ -1,6 +1,9 @@
 package com.mmigdal.mossad.key.logger.parser.csv;
 
 import com.google.gson.Gson;
+import com.mmigdal.mossad.key.logger.parser.csv.line.LineEntry;
+import com.mmigdal.mossad.key.logger.parser.csv.line.LineEntryContract;
+import com.mmigdal.mossad.key.logger.parser.csv.line.LineEntryEmpty;
 import com.opencsv.bean.CsvBindByPosition;
 
 import java.time.Instant;

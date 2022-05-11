@@ -1,5 +1,6 @@
 package com.mmigdal.mossad.key.logger.parser.csv;
 
+import com.mmigdal.mossad.key.logger.parser.csv.line.LineEntryContract;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import java.io.FileReader;

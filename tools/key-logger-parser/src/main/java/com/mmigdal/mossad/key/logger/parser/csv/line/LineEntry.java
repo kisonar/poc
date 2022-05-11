@@ -1,4 +1,6 @@
-package com.mmigdal.mossad.key.logger.parser.csv;
+package com.mmigdal.mossad.key.logger.parser.csv.line;
+
+import com.mmigdal.mossad.key.logger.parser.csv.DatabasePerformanceEntry;
 
 import java.util.Date;
 import java.util.Optional;
@@ -9,7 +11,7 @@ public class LineEntry implements LineEntryContract {
 
       public String timestamp;
       public String message;
-      private DatabasePerformanceEntry DatabasePerformanceEntry;
+      private com.mmigdal.mossad.key.logger.parser.csv.DatabasePerformanceEntry DatabasePerformanceEntry;
 
       @Override
       public String toString() {

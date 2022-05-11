@@ -1,9 +1,11 @@
-package com.mmigdal.mossad.key.logger.parser.csv;
+package com.mmigdal.mossad.key.logger.parser.csv.line;
+
+import com.mmigdal.mossad.key.logger.parser.csv.DatabasePerformanceEntry;
 
 import java.util.Date;
 import java.util.Optional;
 
-interface LineEntryContract {
+public interface LineEntryContract {
 
       Optional<DatabasePerformanceEntry> getDatabasePerformanceEntry();
 
