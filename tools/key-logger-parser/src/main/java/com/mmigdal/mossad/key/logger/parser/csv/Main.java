@@ -9,11 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.CHARGE_POINT_STATUS_DAO;
-import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.CIRCUIT_BREAKER_DAO;
-import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.CONNECTOR_STATUS_DAO;
-import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.STATUS_LOOKUP_DAO;
-import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.STATUS_VIEW_DAO;
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosAndDefinitions.*;
 
 public class Main {
 
@@ -36,11 +32,14 @@ public class Main {
             });
 
             List<DataExtractor> extractors = new ArrayList<>();
-            extractors = arm(extractors, CHARGE_POINT_STATUS_DAO, DaosDefenitions.ChargePointStatusDaoMapping);
-            extractors = arm(extractors, STATUS_VIEW_DAO, DaosDefenitions.StatusViewDaoMapping);
-            extractors = arm(extractors, STATUS_LOOKUP_DAO, DaosDefenitions.StatusLookupDaoMapping);
-            extractors = arm(extractors, CONNECTOR_STATUS_DAO, DaosDefenitions.ConnectorStatusDaoMapping);
-            extractors = arm(extractors, CIRCUIT_BREAKER_DAO, DaosDefenitions.CircuirBrakerDaoMapping);
+            extractors = armExtractors(extractors, CHARGE_POINT_STATUS_DAO, ChargePointStatusDaoMapping);
+            extractors = armExtractors(extractors, STATUS_VIEW_DAO, StatusViewDaoMapping);
+            extractors = armExtractors(extractors, STATUS_LOOKUP_DAO, StatusLookupDaoMapping);
+            extractors = armExtractors(extractors, CONNECTOR_STATUS_DAO, ConnectorStatusDaoMapping);
+            extractors = armExtractors(extractors, CIRCUIT_BREAKER_DAO, CircuitBreakerDaoMapping);
+            extractors = armExtractors(extractors, CONNECTOR_ERROR_DAO, connectorErrorDaoMapping);
+            extractors = armExtractors(extractors, CHARGE_POINT_ERROR_DAO, chargePointErrorDaoMapping);
+            extractors = armExtractors(extractors, PUBLISHING_SERVICE, publishingServiceMapping);
 
             extractors.forEach(
                     item -> {
@@ -50,12 +49,4 @@ public class Main {
             );
       }
 
-      public static List<DataExtractor> arm(List<DataExtractor> extractors, String daoname, List<String> mapping) {
-            mapping.forEach(
-                    item -> {
-                          extractors.add(new DataExtractor(daoname, item));
-                    }
-            );
-            return extractors;
-      }
 }

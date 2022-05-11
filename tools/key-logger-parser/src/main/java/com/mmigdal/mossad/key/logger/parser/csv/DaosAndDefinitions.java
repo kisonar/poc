@@ -2,7 +2,7 @@ package com.mmigdal.mossad.key.logger.parser.csv;
 
 import java.util.List;
 
-public class DaosDefenitions {
+public class DaosAndDefinitions {
 
       public static final String CHARGE_POINT_STATUS_DAO = "ChargePointStatusDao";
       public static final String CHARGE_POINT_STATUS_DAO_upsertOnline = "upsertOnline";
@@ -65,11 +65,27 @@ public class DaosDefenitions {
       public static List<String> StatusLookupDaoMapping = List.of(STATUS_LOOKUP_getUpdateQuery, STATUS_LOOKUP_getInsertQuery);
       public static List<String> ConnectorStatusDaoMapping = List.of(CONNECTOR_STATUS_DAO_deleteByChargePointId, CONNECTOR_STATUS_DAO_insertStatusNotification,
               CONNECTOR_STATUS_DAO_findById, CONNECTOR_STATUS_DAO_insert, CONNECTOR_STATUS_DAO_update, CONNECTOR_STATUS_DAO_delete);
-      public static List<String> CircuirBrakerDaoMapping = List.of(CIRCUIT_BREAKER_DAO_findByConnectorId, CIRCUIT_BREAKER_DAO_findByChargePointAndConnectorId,
+      public static List<String> CircuitBreakerDaoMapping = List.of(CIRCUIT_BREAKER_DAO_findByConnectorId, CIRCUIT_BREAKER_DAO_findByChargePointAndConnectorId,
               CIRCUIT_BREAKER_DAO_insert, CIRCUIT_BREAKER_DAO_update, CIRCUIT_BREAKER_DAO_upsert
       );
+      public static List<String> connectorErrorDaoMapping = List.of(CONNECTOR_ERROR_DAO_findById, CONNECTOR_ERROR_DAO_find,
+              CONNECTOR_ERROR_DAO_insert, CONNECTOR_ERROR_DAO_deleteByConnectorId
+      );
+      public static List<String> chargePointErrorDaoMapping = List.of(
+              CHARGE_POINT_ERROR_DAO_findById, CHARGE_POINT_ERROR_DAO_find, CHARGE_POINT_ERROR_DAO_insert, CHARGE_POINT_ERROR_DAO_deleteByChargePointId
+      );
+      public static List<String> publishingServiceMapping = List.of(PUBLISHING_SERVICE_publishEvent);
 
-      private DaosDefenitions() {
+
+      private DaosAndDefinitions() {
       }
 
+      public static List<DataExtractor> armExtractors(List<DataExtractor> extractors, String daoName, List<String> mapping) {
+            mapping.forEach(
+                    item -> {
+                          extractors.add(new DataExtractor(daoName, item));
+                    }
+            );
+            return extractors;
+      }
 }
