@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.mmigdal.mossad.key.logger.parser.csv.DaosAndDefinitions.*;
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosAndDefinitions.getExtractors;
 
 public class Main {
 
@@ -31,15 +31,7 @@ public class Main {
                   databasePerformanceEntry.ifPresent(item -> databasePerformanceEntryList.add(item));
             });
 
-            List<DataExtractor> extractors = new ArrayList<>();
-            extractors = armExtractors(extractors, CHARGE_POINT_STATUS_DAO, ChargePointStatusDaoMapping);
-            extractors = armExtractors(extractors, STATUS_VIEW_DAO, StatusViewDaoMapping);
-            extractors = armExtractors(extractors, STATUS_LOOKUP_DAO, StatusLookupDaoMapping);
-            extractors = armExtractors(extractors, CONNECTOR_STATUS_DAO, ConnectorStatusDaoMapping);
-            extractors = armExtractors(extractors, CIRCUIT_BREAKER_DAO, CircuitBreakerDaoMapping);
-            extractors = armExtractors(extractors, CONNECTOR_ERROR_DAO, connectorErrorDaoMapping);
-            extractors = armExtractors(extractors, CHARGE_POINT_ERROR_DAO, chargePointErrorDaoMapping);
-            extractors = armExtractors(extractors, PUBLISHING_SERVICE, publishingServiceMapping);
+            List<DataExtractor> extractors = getExtractors();
 
             extractors.forEach(
                     item -> {

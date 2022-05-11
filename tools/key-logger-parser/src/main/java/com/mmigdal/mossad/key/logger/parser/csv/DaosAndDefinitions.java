@@ -1,5 +1,6 @@
 package com.mmigdal.mossad.key.logger.parser.csv;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DaosAndDefinitions {
@@ -76,11 +77,24 @@ public class DaosAndDefinitions {
       );
       public static List<String> publishingServiceMapping = List.of(PUBLISHING_SERVICE_publishEvent);
 
-
       private DaosAndDefinitions() {
       }
 
-      public static List<DataExtractor> armExtractors(List<DataExtractor> extractors, String daoName, List<String> mapping) {
+
+      public static List<DataExtractor> getExtractors() {
+            List<DataExtractor> extractors = new ArrayList<>();
+            extractors = armExtractors(extractors, CHARGE_POINT_STATUS_DAO, ChargePointStatusDaoMapping);
+            extractors = armExtractors(extractors, STATUS_VIEW_DAO, StatusViewDaoMapping);
+            extractors = armExtractors(extractors, STATUS_LOOKUP_DAO, StatusLookupDaoMapping);
+            extractors = armExtractors(extractors, CONNECTOR_STATUS_DAO, ConnectorStatusDaoMapping);
+            extractors = armExtractors(extractors, CIRCUIT_BREAKER_DAO, CircuitBreakerDaoMapping);
+            extractors = armExtractors(extractors, CONNECTOR_ERROR_DAO, connectorErrorDaoMapping);
+            extractors = armExtractors(extractors, CHARGE_POINT_ERROR_DAO, chargePointErrorDaoMapping);
+            extractors = armExtractors(extractors, PUBLISHING_SERVICE, publishingServiceMapping);
+            return extractors;
+      }
+
+      private static List<DataExtractor> armExtractors(List<DataExtractor> extractors, String daoName, List<String> mapping) {
             mapping.forEach(
                     item -> {
                           extractors.add(new DataExtractor(daoName, item));
