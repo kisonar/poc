@@ -24,7 +24,7 @@ public class CSVEntry {
             return Date.from(date);
       }
 
-      public LineEntry getLineEntry() {
+      public LineEntryContract getLineEntry() {
 
             try {
                   return gson.fromJson(textToParse, LineEntry.class);
@@ -32,7 +32,7 @@ public class CSVEntry {
             catch (Exception ex) {
                   System.out.println("Parsing JSON line  failed: " + textToParse);
             }
-            return new LineEntry();
+            return new LineEntryEmpty();
       }
 
 }

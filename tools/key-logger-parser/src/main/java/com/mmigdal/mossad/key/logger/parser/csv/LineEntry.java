@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LineEntry {
+public class LineEntry implements LineEntryContract {
 
       public String timestamp;
       public String message;
@@ -19,6 +19,7 @@ public class LineEntry {
                     '}';
       }
 
+      @Override
       public void parseLineForDatabasePerformance(Date date) {
             String regexp = ".+?(?=with)";
             Pattern pattern = Pattern.compile(regexp);
@@ -31,15 +32,10 @@ public class LineEntry {
                         System.out.println("No entry related to DB perfomrance");
                   }
             }
-
       }
 
+      @Override
       public Optional<DatabasePerformanceEntry> getDatabasePerformanceEntry() {
             return Optional.ofNullable(DatabasePerformanceEntry);
       }
-
-      public boolean notEmpty() {
-            return timestamp != null && message != null;
-      }
-
 }

@@ -16,8 +16,6 @@ import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.STATUS_VI
 
 public class Main {
 
-
-
       public static void main(String[] args) throws IOException {
 
             String fileName = "/Users/marcin/development/logging/log-events-viewer-result-1c03adcf643f4f6ebe232a118e6eff26-rocco.csv";
@@ -30,7 +28,7 @@ public class Main {
             List<DatabasePerformanceEntry> databasePerformanceEntryList = new ArrayList<>();
 
             beans.forEach(csvEntry -> {
-                  LineEntry lineEntry = csvEntry.getLineEntry();
+                  LineEntryContract lineEntry = csvEntry.getLineEntry();
                   lineEntry.parseLineForDatabasePerformance(csvEntry.getDate());
                   Optional<DatabasePerformanceEntry> databasePerformanceEntry = lineEntry.getDatabasePerformanceEntry();
                   databasePerformanceEntry.ifPresent(item -> databasePerformanceEntryList.add(item));
