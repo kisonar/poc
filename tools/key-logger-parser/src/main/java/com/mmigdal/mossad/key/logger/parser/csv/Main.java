@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.DAO_CHARGE_POINT_STATUS;
-import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.DAO_CHARGE_POINT_STATUS_upsertOnline;
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.CHARGE_POINT_STATUS_DAO;
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.CIRCUIT_BREAKER_DAO;
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.CONNECTOR_STATUS_DAO;
+import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.STATUS_LOOKUP_DAO;
 import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.STATUS_VIEW_DAO;
-import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.STATUS_VIEW_DAO_findByChargePointId;
-import static com.mmigdal.mossad.key.logger.parser.csv.DaosDefenitions.STATUS_VIEW_DAO_findByConnectorId;
 
 public class Main {
 
@@ -35,17 +35,27 @@ public class Main {
                   databasePerformanceEntry.ifPresent(item -> databasePerformanceEntryList.add(item));
             });
 
-            DataExtractor dataExtractorChargePointStatusDaoUpsertOnline = new DataExtractor(DAO_CHARGE_POINT_STATUS, DAO_CHARGE_POINT_STATUS_upsertOnline);
-            dataExtractorChargePointStatusDaoUpsertOnline.extractData(List.copyOf(databasePerformanceEntryList));
-            dataExtractorChargePointStatusDaoUpsertOnline.generateStatistics();
+            List<DataExtractor> extractors = new ArrayList<>();
+            extractors = arm(extractors, CHARGE_POINT_STATUS_DAO, DaosDefenitions.ChargePointStatusDaoMapping);
+            extractors = arm(extractors, STATUS_VIEW_DAO, DaosDefenitions.StatusViewDaoMapping);
+            extractors = arm(extractors, STATUS_LOOKUP_DAO, DaosDefenitions.StatusLookupDaoMapping);
+            extractors = arm(extractors, CONNECTOR_STATUS_DAO, DaosDefenitions.ConnectorStatusDaoMapping);
+            extractors = arm(extractors, CIRCUIT_BREAKER_DAO, DaosDefenitions.CircuirBrakerDaoMapping);
 
-            DataExtractor dataExtractorStatusViewDaoFindByChargePointId = new DataExtractor(STATUS_VIEW_DAO, STATUS_VIEW_DAO_findByChargePointId);
-            dataExtractorStatusViewDaoFindByChargePointId.extractData(List.copyOf(databasePerformanceEntryList));
-            dataExtractorStatusViewDaoFindByChargePointId.generateStatistics();
-
-            DataExtractor dataExtractorStatusViewDaoFindByConnectorId = new DataExtractor(STATUS_VIEW_DAO, STATUS_VIEW_DAO_findByConnectorId);
-            dataExtractorStatusViewDaoFindByConnectorId.extractData(List.copyOf(databasePerformanceEntryList));
-            dataExtractorStatusViewDaoFindByConnectorId.generateStatistics();
+            extractors.forEach(
+                    item -> {
+                          item.extractData(List.copyOf(databasePerformanceEntryList));
+                          item.generateStatistics();
+                    }
+            );
       }
 
+      public static List<DataExtractor> arm(List<DataExtractor> extractors, String daoname, List<String> mapping) {
+            mapping.forEach(
+                    item -> {
+                          extractors.add(new DataExtractor(daoname, item));
+                    }
+            );
+            return extractors;
+      }
 }

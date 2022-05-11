@@ -33,7 +33,7 @@ public class CSVEntry {
                   return gson.fromJson(textToParse, LineEntry.class);
             }
             catch (Exception ex) {
-                  System.out.println("Parsing JSON line  failed: " + textToParse);
+                 // System.out.println("Parsing JSON line  failed: " + textToParse);
             }
             return new LineEntryEmpty();
       }
