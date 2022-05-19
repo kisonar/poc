@@ -15,7 +15,7 @@ public class Main {
 
       public static void main(String[] args) throws IOException {
 
-            String fileName = "/Users/marcin/development/logging/log-events-viewer-result-1c03adcf643f4f6ebe232a118e6eff26-rocco.csv";
+            String fileName = "Path to file...";
 
             List<CSVEntry> beans = new CsvToBeanBuilder(new FileReader(fileName))
                     .withType(CSVEntry.class).withSkipLines(1)
