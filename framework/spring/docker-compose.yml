@@ -2,25 +2,29 @@ version: '3'
 services:
 
   # MariaDB
-  statusdb:
-    image: mariadb:latest
+  mariadb:
+    image: mariadb/server:10.4
+    container_name: mariadb
     environment:
+      #MARIADB_RANDOM_ROOT_PASSWORD: "true"
+      MARIADB_DATABASE: default_database
+      MARIADB_USER: user
+      MARIADB_PASSWORD: pass
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: 'myDatabase'
-      MYSQL_USER: 'myUser'
-      MYSQL_PASSWORD: 'myPassword'
     volumes:
-      - ./status-db-data:/var/lib/mysql/
+      - ./storage:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d/
     ports:
       - "3306:3306"
 
   adminer:
     image: adminer
+    container_name: adminer
     restart: always
     ports:
       - "8085:8080"
     depends_on:
-      - statusdb
+      - mariadb
 
   # Kafka
   zookeeper:
