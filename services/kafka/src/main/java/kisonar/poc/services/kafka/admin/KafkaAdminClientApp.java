@@ -1,11 +1,7 @@
 package kisonar.poc.services.kafka.admin;
 
 
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
-
-import kisonar.poc.services.kafka.KafkaPropertiesFactory;
+import kisonar.poc.services.kafka.KafkaProperties;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.DescribeClusterResult;
 import org.apache.kafka.clients.admin.ListTopicsResult;
@@ -13,14 +9,18 @@ import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.KafkaFuture;
 import org.apache.kafka.common.Node;
 
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
 
-public final class KafkaAdminClient {
+
+public final class KafkaAdminClientApp {
 
     public static void main(String... args) {
-        Properties properties = KafkaPropertiesFactory.getProperties();
+        Properties properties = KafkaProperties.getProducerProperties(KafkaProperties.getConsumerProperties(KafkaProperties.getCommonProperties()));
         AdminClient adminClient = AdminClient.create(properties);
 
-        NewTopic topic = new NewTopic("myTopic", 1, Short.parseShort("1"));
+        NewTopic topic = new NewTopic("TopicCreatedByKafkaAdmin", 1, Short.parseShort("1"));
 
         Set<NewTopic> topicSet = new HashSet<>();
         topicSet.add(topic);

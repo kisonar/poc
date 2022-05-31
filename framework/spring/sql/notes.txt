@@ -1,0 +1,12 @@
+select u.userId,r.roleId, r.roleName from users u
+join user_roles ur on u.userId = ur.userId
+join roles r on ur.roleId = r.roleId
+where u.userId = <userId>;
+
+
+select distinct u.userId, r.roleName, t.taskName from users u
+join users_roles ur on u.userId = ur.userId
+join roles r on ur.roleId = r.roleId
+join users_tasks ut on ut.userid = u.userId
+join tasks t on t.taskId = ut.taskId
+where u.userId = <userId>

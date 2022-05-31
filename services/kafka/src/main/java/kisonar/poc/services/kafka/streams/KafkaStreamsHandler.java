@@ -1,8 +1,5 @@
 package kisonar.poc.services.kafka.streams;
 
-import java.util.Properties;
-import java.util.concurrent.CountDownLatch;
-
 import kisonar.poc.services.kafka.KafkaTopicNames;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
@@ -11,12 +8,18 @@ import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.KStream;
 
+import java.util.Properties;
+import java.util.concurrent.CountDownLatch;
+
+import static kisonar.poc.services.kafka.KafkaProperties.KAFKA_HOST;
+import static kisonar.poc.services.kafka.KafkaProperties.KAFKA_PORT;
+
 public class KafkaStreamsHandler {
 
     public static void main(String[] args) {
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-pipe");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_HOST + ":" + KAFKA_PORT);
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
@@ -44,6 +47,7 @@ public class KafkaStreamsHandler {
             streams.start();
             latch.await();
         } catch (Throwable e) {
+
             System.exit(1);
         }
         System.exit(0);

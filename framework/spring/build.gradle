@@ -7,6 +7,8 @@ dependencies {
     implementation libraries.springBootDataJpa
     implementation libraries.springBootWeb
     implementation libraries.mariaDbLibrary
+    testImplementation libraries.testContainersJupiter
+    testImplementation libraries.testContainersLibrary
 }
 
 /**
