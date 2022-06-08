@@ -1,9 +1,10 @@
 plugins {
-    id "org.springframework.boot" version "2.4.4"
+    id "org.springframework.boot" version "2.7.0"
 }
 
-dependencies {
+apply plugin: 'io.spring.dependency-management'
 
+dependencies {
     implementation libraries.springBootDataJpa
     implementation libraries.springBootWeb
     implementation libraries.mariaDbLibrary
@@ -29,9 +30,9 @@ configurations {
     //}
 }
 
-
 description = 'spring'
 
 bootJar {
-    //mainClassName = 'kisonar.poc.framework.spring.App'
+    mainClass = 'kisonar.poc.framework.spring.App'
 }
+

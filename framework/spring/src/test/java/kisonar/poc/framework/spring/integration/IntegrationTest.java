@@ -3,6 +3,7 @@ package kisonar.poc.framework.spring.integration;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.testcontainers.containers.DockerComposeContainer;
 
 import java.io.File;
@@ -14,15 +15,21 @@ public class IntegrationTest {
               new DockerComposeContainer(new File("docker-compose.yml"))
                       .withExposedService("kafka", 9092);
 
+      @BeforeAll
+      public static void setUp() {
+            environment.start();
+      }
+
+      @AfterAll
+      public static void afterAll() {
+            environment.stop();
+            environment.close();
+      }
 
       @Test
       public void simpleTest() {
 
-      }
 
-      @AfterAll
-      public void tearDown() {
-            environment.close();
       }
 
 }
