@@ -1,9 +1,9 @@
 package kisonar.poc.framework.spring.integration;
 
 import org.junit.ClassRule;
-import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.DockerComposeContainer;
 
 import java.io.File;

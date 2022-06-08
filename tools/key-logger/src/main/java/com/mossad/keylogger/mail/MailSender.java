@@ -26,7 +26,7 @@ public final class MailSender {
         this.password = password;
     }
 
-    public void prepareEmailWithAtatchment(List<String> files) throws EmailException {
+    public void prepareEmailWithAttqchment(List<String> files) throws EmailException {
         email = prepareEmail();
         files.forEach(file -> {
             attachment = prepareEmailAttachment(file);

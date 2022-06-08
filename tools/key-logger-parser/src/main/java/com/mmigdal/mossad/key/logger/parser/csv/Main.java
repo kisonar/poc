@@ -28,7 +28,7 @@ public class Main {
                   LineEntryContract lineEntry = csvEntry.getLineEntry();
                   lineEntry.parseLineForDatabasePerformance(csvEntry.getDate());
                   Optional<DatabasePerformanceEntry> databasePerformanceEntry = lineEntry.getDatabasePerformanceEntry();
-                  databasePerformanceEntry.ifPresent(item -> databasePerformanceEntryList.add(item));
+                  databasePerformanceEntry.ifPresent(databasePerformanceEntryList::add);
             });
 
             List<DataExtractor> extractors = getExtractors();

