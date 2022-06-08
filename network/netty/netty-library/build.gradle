@@ -2,8 +2,4 @@ dependencies {
     implementation libraries.nettyAll
 }
 
-test {
-    useJUnitPlatform()
-}
-
 description 'netty-library'
