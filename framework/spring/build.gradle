@@ -11,7 +11,7 @@ dependencies {
     implementation libraries.mariaDbLibrary
     testImplementation libraries.testContainersJupiter
     testImplementation libraries.testContainersLibrary
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation libraries.springBootStarterTest
 }
 
 /**

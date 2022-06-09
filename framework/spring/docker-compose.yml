@@ -10,15 +10,14 @@ services:
       MARIADB_USER: user
       MARIADB_PASSWORD: pass
       MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - ./storage:/var/lib/mysql
-      - ./sql:/docker-entrypoint-initdb.d/
+    #volumes:
+    #  - ./storage:/var/lib/mysql
+    #  - ./sql:/docker-entrypoint-initdb.d/
     ports:
       - "3306:3306"
 
   adminer:
     image: adminer
-    restart: always
     ports:
       - "8085:8080"
     depends_on:
