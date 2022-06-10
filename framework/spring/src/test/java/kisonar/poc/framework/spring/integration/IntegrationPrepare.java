@@ -17,7 +17,8 @@ public class IntegrationPrepare {
       public static DockerComposeContainer environment =
               new DockerComposeContainer(new File("docker-compose.yml")).withLocalCompose(true)
                       .withExposedService("adminer_1", 8080, Wait.forListeningPort().withStartupTimeout(Duration.ofSeconds(30)))
-                      .withExposedService("mariadb_1", 3306, Wait.forListeningPort().withStartupTimeout(Duration.ofSeconds(30)));
+                      .withExposedService("mariadb_1", 3306, Wait.forListeningPort().withStartupTimeout(Duration.ofSeconds(30)))
+                      .withExposedService("kafka", 9092);
 
       @BeforeAll
       public static void start() {
