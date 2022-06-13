@@ -15,5 +15,5 @@ gradle dependencies
 gradle dependencyUpdates
 
 customization
-gradle clean build => and then: shadowJar copyDependencies
+gradle clean build copyDependencies shadowJar
 ```

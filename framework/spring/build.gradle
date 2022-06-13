@@ -10,7 +10,8 @@ dependencies {
     implementation libraries.springBootWeb
     implementation libraries.springBootStarterWebSocket
     implementation libraries.mariaDbLibrary
-    implementation libraries.guacamole
+    implementation libraries.guacamoleCommon
+    implementation libraries.guacamoleCommonJs
 
     testImplementation libraries.testContainersJupiter
     testImplementation libraries.testContainersLibrary

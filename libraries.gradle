@@ -3,6 +3,7 @@ ext {
     SPRING_BOOT_VERSION = '2.7.0'
     KAFKA_VERSION = '2.0.0'
     TEST_CONTAINERS_VERSION ='1.16.3'
+    GUACAMOLE_VERSION = '1.4.0'
     //SPRING_BOM = '5.0.4.RELEASE'
     //REACTOR_BOM = 'Bismuth-SR7'
     //METRICS_BOM = '4.0.2'
@@ -29,11 +30,13 @@ ext {
             springBootStarterWebSocket: "org.springframework.boot:spring-boot-starter-websocket:${SPRING_BOOT_VERSION}",
             springBootStarterTest : "org.springframework.boot:spring-boot-starter-test:${SPRING_BOOT_VERSION}",
 
+            guacamoleCommon       : "org.apache.guacamole:guacamole-common:${GUACAMOLE_VERSION}",
+            guacamoleCommonJs     : "org.apache.guacamole:guacamole-common-js:${GUACAMOLE_VERSION}",
 
-            junit5jupiterEngine :   "org.junit.jupiter:junit-jupiter-engine:5.8.2",
+            junit5jupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.8.2",
             testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
-            testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",
-            guacamole             : "org.apache.guacamole:guacamole-common:1.4.0"
+            testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}"
+
 
             //springBootLog4j       : "org.springframework.boot:spring-boot-starter-log4j2:${SPRING_BOOT_VERSION}",
             /*
