@@ -18,3 +18,8 @@ spring:
       #ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # files underscores in JPA
+
+guacamole:
+  guacd:
+    server: localhost
+    port: 4822

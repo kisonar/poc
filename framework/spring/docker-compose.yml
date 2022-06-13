@@ -23,7 +23,19 @@ services:
     depends_on:
       - mariadb
 
-  # Kafka
+  guacd:
+    image: guacamole/guacd:1.4.0
+    ports:
+      - "4822:4822"
+      - "5900:5900" # VNC port
+      - "3389:3389" # RDP port
+    environment:
+      ENABLE_WEBSOCKET: "true"
+      GUACD_LOG_LEVEL: "debug" # debug
+    depends_on:
+      - adminer
+
+    Kafka
   zookeeper:
     image: wurstmeister/zookeeper
     ports:

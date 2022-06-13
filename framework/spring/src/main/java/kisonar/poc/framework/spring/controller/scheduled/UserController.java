@@ -1,4 +1,4 @@
-package kisonar.poc.framework.spring.controller;
+package kisonar.poc.framework.spring.controller.scheduled;
 
 import kisonar.poc.framework.spring.domain.jpa.user.UserEntity;
 import kisonar.poc.framework.spring.service.user.UserService;
@@ -21,8 +21,9 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@Scheduled(fixedDelay = 1, timeUnit = TimeUnit.SECONDS)
-	void rocco() {
+
+	@Scheduled(fixedDelay = 100, timeUnit = TimeUnit.SECONDS)
+	void generateUsers() {
 		int value = atomicInteger.incrementAndGet();
 		String stringValue = "test" + value;
 		UserEntity userEntity = UserEntityFactory.getUserEntity(stringValue, stringValue, stringValue);
