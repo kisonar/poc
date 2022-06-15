@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 
-
 @RestController
 @RequestMapping(path = "/tunnel", method = {RequestMethod.POST, RequestMethod.GET})
 @WebServlet //mandatory !!
