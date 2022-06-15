@@ -1,4 +1,4 @@
-package kisonar.poc.framework.spring.domain.ras;
+package kisonar.poc.framework.spring.util.ras;
 
 import org.apache.guacamole.GuacamoleException;
 import org.apache.guacamole.net.GuacamoleSocket;
@@ -14,16 +14,15 @@ public final class RasUtils {
       }
 
       public static GuacamoleTunnel getSimpleGuacamoleTunnel() throws GuacamoleException {
-            String guacdHost = "192.168.0.1";
+            String guacdHost = "localhost";
             int guacdPort = 4822;
             InetGuacamoleSocket inetGuacamoleSocket = new InetGuacamoleSocket(guacdHost, guacdPort);
-
             GuacamoleConfiguration configuration = new GuacamoleConfiguration();
             configuration.setProtocol("vnc");
-            configuration.setParameter("hostname", "192.168.0.2");
-            configuration.setParameter("port", "3389");
-            configuration.setParameter("username", "administrator");
-            configuration.setParameter("password", "123456");
+            configuration.setParameter("hostname", "192.168.0.5");
+            configuration.setParameter("port", "5900");
+            configuration.setParameter("username", "");
+            configuration.setParameter("password", "Marcin");
             configuration.setParameter("ignore-cert", "true");
 
             GuacamoleSocket socket = new ConfiguredGuacamoleSocket(inetGuacamoleSocket, configuration);

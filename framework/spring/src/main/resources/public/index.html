@@ -15,7 +15,7 @@ var display = document.getElementById("display");
 
 // Instantiate client, using an HTTP tunnel for communications.
 var guac = new Guacamole.Client(
-    new Guacamole.HTTPTunnel("http://localhost:8080/tunnel")
+    new Guacamole.WebSocketTunnel("ws://localhost:8080/websocket")
 );
 
 // Add client to display div

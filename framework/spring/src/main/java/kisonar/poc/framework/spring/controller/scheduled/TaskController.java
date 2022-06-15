@@ -4,7 +4,6 @@ import kisonar.poc.framework.spring.domain.TaskState;
 import kisonar.poc.framework.spring.domain.jpa.task.TaskEntity;
 import kisonar.poc.framework.spring.service.task.TaskService;
 import kisonar.poc.framework.spring.util.task.TaskEntityFactory;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 
@@ -13,7 +12,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@EnableScheduling
+//@EnableScheduling
 @Controller
 public class TaskController {
 

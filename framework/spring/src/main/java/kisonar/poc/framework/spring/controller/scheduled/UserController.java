@@ -3,14 +3,13 @@ package kisonar.poc.framework.spring.controller.scheduled;
 import kisonar.poc.framework.spring.domain.jpa.user.UserEntity;
 import kisonar.poc.framework.spring.service.user.UserService;
 import kisonar.poc.framework.spring.util.user.UserEntityFactory;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@EnableScheduling
+//@EnableScheduling
 @Controller
 public class UserController {
 
