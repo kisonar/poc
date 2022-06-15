@@ -1,6 +1,5 @@
 package kisonar.poc.framework.spring;
 
-import kisonar.poc.framework.spring.util.ras.RasUtils;
 import org.apache.guacamole.GuacamoleException;
 import org.apache.guacamole.net.GuacamoleTunnel;
 import org.apache.guacamole.websocket.GuacamoleWebSocketTunnelEndpoint;
