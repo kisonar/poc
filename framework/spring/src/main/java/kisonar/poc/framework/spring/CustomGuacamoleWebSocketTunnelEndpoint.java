@@ -9,7 +9,7 @@ import javax.websocket.EndpointConfig;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint(value = "/websocket", subprotocols = "guacamole")
+@ServerEndpoint(value = "/websocket-guacamole", subprotocols = "guacamole")
 @Component
 public class CustomGuacamoleWebSocketTunnelEndpoint extends GuacamoleWebSocketTunnelEndpoint {
 

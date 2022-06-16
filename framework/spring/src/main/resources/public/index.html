@@ -21,14 +21,12 @@ console.log("Starting")
 // Get display div from document
 var display = document.getElementById("display");
 
-// Instantiate client, using an HTTP tunnel for communications.
-//var guac = new Guacamole.Client(
-//    new Guacamole.HTTPTunnel("tunnel")
-//);
+// DOES not work at ALL according to manuals. Requires additional token/data to be sent
+// Instantiate client, using an HTTP tunnel for communications. => does not work with version 1.4.0
+//var guac = new Guacamole.Client( new Guacamole.HTTPTunnel("http://localhost:8080/tunnel"));
 
-
-var guac = new Guacamole.Client(new Guacamole.WebSocketTunnel("ws://localhost:8080/websocket"));
-
+// Instantiate client, using WebSocket tunnel for communications.
+var guac = new Guacamole.Client(new Guacamole.WebSocketTunnel("ws://localhost:8080/websocket-guacamole"));
 
 // Add client to display div
 display.appendChild(guac.getDisplay().getElement());

@@ -6,6 +6,9 @@ import org.apache.guacamole.servlet.GuacamoleHTTPTunnelServlet;
 
 import javax.servlet.http.HttpServletRequest;
 
+// Does not work http at all.
+// when activated, WebSocket just gets stuck...
+
 //@RestController
 //@RequestMapping(path = "/tunnel", method = {RequestMethod.POST, RequestMethod.GET})
 //@WebServlet //mandatory !!

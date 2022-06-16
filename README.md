@@ -5,7 +5,14 @@ Requires JAVA 18
 Gradle 7.4.2
 ```
 
-## Steps
+## It contains
+
+``` 
+JDK learning
+Guacamole example API usage
+```
+
+### Steps for building
 
 ```
 gradle clean build test => compile, test and generate JAR
