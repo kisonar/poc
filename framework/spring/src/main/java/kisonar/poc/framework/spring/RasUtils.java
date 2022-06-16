@@ -14,20 +14,30 @@ public final class RasUtils {
       }
 
       public static GuacamoleTunnel getSimpleGuacamoleTunnel() throws GuacamoleException {
-            String guacdHost = "localhost";
-            int guacdPort = 4822;
-            InetGuacamoleSocket inetGuacamoleSocket = new InetGuacamoleSocket(guacdHost, guacdPort);
-            GuacamoleConfiguration configuration = new GuacamoleConfiguration();
-            configuration.setProtocol("vnc");
-            configuration.setParameter("hostname", "192.168.0.5");
-            configuration.setParameter("port", "5900");
-            configuration.setParameter("username", "");
-            configuration.setParameter("password", "Marcin");
-            configuration.setParameter("ignore-cert", "true");
 
-            GuacamoleSocket socket = new ConfiguredGuacamoleSocket(inetGuacamoleSocket, configuration);
-            GuacamoleTunnel tunnel = new SimpleGuacamoleTunnel(socket);
-            return tunnel;
+            try {
+
+                  String guacdHost = "127.0.0.1";
+                  int guacdPort = 4822;
+                  InetGuacamoleSocket inetGuacamoleSocket = new InetGuacamoleSocket(guacdHost, guacdPort);
+                  GuacamoleConfiguration configuration = new GuacamoleConfiguration();
+                  configuration.setProtocol("vnc");
+                  configuration.setParameter("hostname", "192.168.0.105");
+                  configuration.setParameter("port", "5900");
+                  //configuration.setParameter("username", "");
+                  configuration.setParameter("password", "Marcin");
+                  configuration.setParameter("ignore-cert", "true");
+
+                  GuacamoleSocket socket = new ConfiguredGuacamoleSocket(inetGuacamoleSocket, configuration);
+                  GuacamoleTunnel tunnel = new SimpleGuacamoleTunnel(socket);
+                  return tunnel;
+
+            }
+            catch (Exception e) {
+                  e.printStackTrace();
+            }
+
+            return null;
       }
 
 }
