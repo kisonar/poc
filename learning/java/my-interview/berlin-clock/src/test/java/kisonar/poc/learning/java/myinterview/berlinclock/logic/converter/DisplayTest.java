@@ -3,12 +3,13 @@ package kisonar.poc.learning.java.myinterview.berlinclock.logic.converter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.time.LocalTime;
 
 public class DisplayTest {
 
-      private final Converter converter = new Converter();
+      private final Converter converter = Mockito.mock(Converter.class);
       private Display display;
 
       @BeforeEach
@@ -18,7 +19,11 @@ public class DisplayTest {
 
       @Test
       public void fetchResult() {
-            int result = display.fetchResult(LocalTime.now());
+            LocalTime localTime = Mockito.mock(LocalTime.class);
+            ConvertionResult convertionResult = Mockito.mock(ConvertionResult.class);
+            Mockito.when(converter.convertToBerlinClockFormat(localTime)).thenReturn(convertionResult);
+
+            int result = display.fetchResult(localTime);
             Assertions.assertEquals(0, result);
       }
 

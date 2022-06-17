@@ -24,6 +24,7 @@ allprojects {
 
     dependencies {
         testImplementation libraries.junit5jupiterEngine /* all projects have JUnit activated in compilation & execution*/
+        testImplementation("org.mockito:mockito-core:4.6.1")
     }
 
     java {
