@@ -1,4 +1,4 @@
-package kisonar.poc.framework.spring;
+package kisonar.poc.framework.spring.config.ras;
 
 import org.apache.guacamole.GuacamoleException;
 import org.apache.guacamole.net.GuacamoleSocket;
