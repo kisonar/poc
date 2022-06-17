@@ -37,7 +37,7 @@ guac.onerror = function (error) {
 };
 
 // Connect
-guac.connect()
+guac.connect('id=46')
 
 // Disconnect on close
 window.onunload = function () {
@@ -49,6 +49,7 @@ var mouse = new Guacamole.Mouse(guac.getDisplay().getElement());
 
 mouse.onEach(['mousedown', 'mouseup', 'mousemove'], function sendMouseEvent(e) {
     guac.sendMouseState(e.state);
+
 });
 
 // Keyboard
