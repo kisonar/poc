@@ -14,9 +14,7 @@ public final class RasUtils {
       }
 
       public static GuacamoleTunnel getSimpleGuacamoleTunnel() throws GuacamoleException {
-
             try {
-
                   String guacdHost = "127.0.0.1";
                   int guacdPort = 4822;
                   InetGuacamoleSocket inetGuacamoleSocket = new InetGuacamoleSocket(guacdHost, guacdPort);
@@ -34,10 +32,7 @@ public final class RasUtils {
 
             }
             catch (Exception e) {
-                  e.printStackTrace();
+                  throw new GuacamoleException(e);
             }
-
-            return null;
       }
-
 }

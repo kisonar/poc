@@ -13,14 +13,19 @@ import javax.websocket.server.ServerEndpoint;
 @Component
 public class CustomGuacamoleWebSocketTunnelEndpoint extends GuacamoleWebSocketTunnelEndpoint {
 
+      private final String HARDCODED_ID = "id";
+
       public CustomGuacamoleWebSocketTunnelEndpoint() {
       }
 
       @Override
       protected GuacamoleTunnel createTunnel(Session session, EndpointConfig config)
 
-      throws GuacamoleException {
+              throws GuacamoleException {
+
+            var params = session.getRequestParameterMap();
+            var values = params.get(HARDCODED_ID);
+            values.forEach(it -> System.out.println("Received parameter: " + it));
             return RasUtils.getSimpleGuacamoleTunnel();
       }
-
 }
