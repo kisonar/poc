@@ -1,5 +1,7 @@
 package kisonar.poc.framework.spring.config;
 
-@org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
 public class SpringCustomConfiguration {
 }

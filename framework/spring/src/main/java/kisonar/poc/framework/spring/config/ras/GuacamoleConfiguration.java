@@ -1,4 +1,4 @@
-package kisonar.poc.framework.spring;
+package kisonar.poc.framework.spring.config.ras;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
