@@ -8,7 +8,11 @@ apply plugin: 'org.springframework.boot'
 dependencies {
     implementation libraries.springBootDataJpa
     implementation libraries.springBootWeb
+    implementation libraries.springBootStarterWebSocket
     implementation libraries.mariaDbLibrary
+    implementation libraries.guacamoleCommon
+    implementation libraries.guacamoleCommonJs
+
     testImplementation libraries.testContainersJupiter
     testImplementation libraries.testContainersLibrary
     testImplementation libraries.springBootStarterTest
