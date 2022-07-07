@@ -2,7 +2,7 @@ package kisonar.poc.learning.java.jdk.collections;
 
 import java.util.Objects;
 
-public final class EntityHashOkEqualsNok extends EntityHashOkEqualsOk {
+public final class EntityHashOkEqualsNok extends Entity {
 
     public EntityHashOkEqualsNok(int id, String name, String value) {
         super(id, name, value);
@@ -13,6 +13,7 @@ public final class EntityHashOkEqualsNok extends EntityHashOkEqualsOk {
         return Objects.hash(id, name, value);
     }
 
+    @SuppressWarnings("should check the class of its parameter")
     @Override
     public boolean equals(Object obj) {
         return true;

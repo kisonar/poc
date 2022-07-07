@@ -1,82 +1,77 @@
 package kisonar.poc.learning.java.jdk.collections;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static kisonar.poc.learning.java.jdk.collections.CollectionsFactory.getEntityHashOkEqualsNok;
+import static kisonar.poc.learning.java.jdk.collections.CollectionsFactory.getEntityOK;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class MapsTest {
 
-    private Map<EntityHashNokEqualsNok, String> hashNokEqualsNok = new HashMap<>();
-    private Map<EntityHashNokEqualsOk, String> hashNokEqualsOk = new HashMap<>();
-    private Map<EntityHashOkEqualsNok, String> hashOkEqualsNok = new HashMap<>();
-    private Map<EntityHashOkEqualsOk, String> hashOkEqualsOk = new HashMap<>();
-    private String itemName1 = "one";
-    private String itemName2 = "two";
-    private String itemName3 = "three";
-    private String value1 = "value1";
-    private String value2 = "value1";
-    private String value3 = "value1";
+    private final Map<Entity, String> map = new HashMap<>();
+
+    private final String name1 = "one";
+    private final String name2 = "two";
+    private final String name3 = "three";
+    private final String value1 = "value1";
+    private final String value2 = "value2";
+    private final String value3 = "value3";
+    private final String value4 = "value4";
+    private final int id1 = 1;
+    private final int id2 = 2;
+    private final int id3 = 3;
+    private final int id4 = 4;
+
 
     @BeforeEach
     public void setUp() {
-        hashNokEqualsNok.clear();
-        hashNokEqualsOk.clear();
-        hashOkEqualsNok.clear();
-        hashOkEqualsOk.clear();
-    }
-
-    @Test
-    public void hashNokEqualsNok() {
-        EntityHashNokEqualsNok item1 = new EntityHashNokEqualsNok(1, itemName1, value1);
-        EntityHashNokEqualsNok item2 = new EntityHashNokEqualsNok(2, itemName1, value2);
-        EntityHashNokEqualsNok item3 = new EntityHashNokEqualsNok(3, itemName1, value3);
-
-        hashNokEqualsNok.put(item1, itemName1);
-        hashNokEqualsNok.put(item2, itemName2);
-        hashNokEqualsNok.put(item3, itemName3);
-
-        Assertions.assertEquals(0, hashOkEqualsOk.size());
-    }
-
-    @Test
-    public void hashNokEqualsOk() {
-        EntityHashNokEqualsOk item1 = new EntityHashNokEqualsOk(1, itemName1, value1);
-        EntityHashNokEqualsOk item2 = new EntityHashNokEqualsOk(2, itemName1, value2);
-        EntityHashNokEqualsOk item3 = new EntityHashNokEqualsOk(3, itemName1, value3);
-
-        hashNokEqualsOk.put(item1, itemName1);
-        hashNokEqualsOk.put(item2, itemName2);
-        hashNokEqualsOk.put(item3, itemName3);
-
-        Assertions.assertEquals(0, hashOkEqualsOk.size());
-    }
-
-    @Test
-    public void hashOkEqualsNok() {
-        EntityHashOkEqualsNok item1 = new EntityHashOkEqualsNok(1, itemName1, value1);
-        EntityHashOkEqualsNok item2 = new EntityHashOkEqualsNok(2, itemName2, value2);
-        EntityHashOkEqualsNok item3 = new EntityHashOkEqualsNok(3, itemName3, value3);
-
-        hashOkEqualsNok.put(item1, itemName1);
-        hashOkEqualsNok.put(item2, itemName2);
-        hashOkEqualsNok.put(item3, itemName3);
-
-        Assertions.assertEquals(0, hashOkEqualsOk.size());
+        map.clear();
     }
 
     @Test
     public void hashOkEqualsOk() {
-        EntityHashOkEqualsOk item1 = new EntityHashOkEqualsOk(1, itemName1, value1);
-        EntityHashOkEqualsOk item2 = new EntityHashOkEqualsOk(2, itemName2, value2);
-        EntityHashOkEqualsOk item3 = new EntityHashOkEqualsOk(3, itemName3, value3);
+        Entity entity1 = getEntityOK(id1, name1, value1);
+        Entity entity2 = getEntityOK(id2, name2, value2);
+        Entity entity3 = getEntityOK(id3, name3, value3);
+        Entity entity4sameAs3 = getEntityOK(id3, name3, value3);
 
-        hashOkEqualsOk.put(item1, itemName1);
-        hashOkEqualsOk.put(item2, itemName2);
-        hashOkEqualsOk.put(item3, itemName3);
+        map.put(entity1, value1);
+        map.put(entity2, value2);
+        map.put(entity3, value3);
+        map.put(entity4sameAs3, value4);
 
-        Assertions.assertEquals(3, hashOkEqualsOk.size());
+        assertEquals(3, map.size());
+        assertTrue(map.containsKey(entity1));
+        assertTrue(map.containsKey(entity2));
+        assertTrue(map.containsKey(entity3));
+        assertTrue(map.containsKey(entity4sameAs3));
+
+        assertTrue(map.containsValue(value1));
+        assertTrue(map.containsValue(value2));
+        assertFalse(map.containsValue(value3)); //3 overridden by 4 as keys for 3 and 4 have same hashId and equals
+        assertTrue(map.containsValue(value4));
+
     }
+
+    @Test
+    public void hashNokEqualsOk() {
+        Entity entity1 = getEntityHashOkEqualsNok(id1, name1, value1);
+        Entity entity2 = getEntityHashOkEqualsNok(id2, name2, value2);
+        Entity entity3 = getEntityHashOkEqualsNok(id3, name3, value3);
+
+        map.put(entity1, value1);
+        map.put(entity2, value2);
+        map.put(entity3, value3);
+
+        assertEquals(3, map.size());
+    }
+
+
+
 }
