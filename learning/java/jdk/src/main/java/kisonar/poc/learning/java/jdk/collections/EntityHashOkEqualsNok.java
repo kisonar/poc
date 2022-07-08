@@ -4,18 +4,25 @@ import java.util.Objects;
 
 public final class EntityHashOkEqualsNok extends Entity {
 
-    public EntityHashOkEqualsNok(int id, String name, String value) {
-        super(id, name, value);
-    }
+      public EntityHashOkEqualsNok(int id, String name, String value) {
+            super(id, name, value);
+      }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, value);
-    }
+      @Override
+      public int hashCode() {
+            return Objects.hash(id, name, value);
+      }
 
-    @SuppressWarnings("should check the class of its parameter")
-    @Override
-    public boolean equals(Object obj) {
-        return true;
-    }
+      @SuppressWarnings("should check the class of its parameter")
+      @Override
+      public boolean equals(Object obj) {
+            if (obj == this) {
+                  return true;
+            }
+
+            if (!(obj instanceof Entity e)) return false;
+
+            return this.id == e.id && Objects.equals(e.name, this.name);
+      }
+
 }
