@@ -10,10 +10,10 @@ include('network:netty:netty-server')
 include('network:netty:netty-client')
 include('services:kafka')
 include('services:rabbitmq')
+include('services:wiremock')
 include('learning:java:jdk')
 include('learning:java:my-interview:berlin-clock')
 include('framework:spring')
-include('wiremock')
 
 //below we have Java modularity
 include('learning:java:features-library')
