@@ -10,7 +10,7 @@ public final class EntityHashNokEqualsOk extends Entity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, value); //missing name
+        return Objects.hash(id, name); //missing value
     }
 
     @Override

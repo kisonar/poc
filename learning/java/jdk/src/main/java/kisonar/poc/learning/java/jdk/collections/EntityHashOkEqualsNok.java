@@ -22,7 +22,7 @@ public final class EntityHashOkEqualsNok extends Entity {
 
             if (!(obj instanceof Entity e)) return false;
 
-            return this.id == e.id && Objects.equals(e.name, this.name);
+            return this.id == e.id && Objects.equals(e.name, this.name);  //missing value
       }
 
 }
