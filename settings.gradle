@@ -13,6 +13,7 @@ include('services:rabbitmq')
 include('learning:java:jdk')
 include('learning:java:my-interview:berlin-clock')
 include('framework:spring')
+include('wiremock')
 
 //below we have Java modularity
 include('learning:java:features-library')
