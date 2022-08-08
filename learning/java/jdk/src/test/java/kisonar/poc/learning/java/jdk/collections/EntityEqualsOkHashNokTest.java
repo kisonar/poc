@@ -39,6 +39,7 @@ public class EntityEqualsOkHashNokTest extends CollectionsSetup {
             assertTrue(map.containsKey(entityKey4));
             assertTrue(map.containsKey(entityKey5));
             assertTrue(map.containsKey(entityKey6));
+
             assertTrue(map.containsValue(value1));
             assertTrue(map.containsValue(value2));
             assertTrue(map.containsValue(value3));
@@ -92,7 +93,5 @@ public class EntityEqualsOkHashNokTest extends CollectionsSetup {
             assertSame(value4, map.get(entityKey4));
             assertSame(value5, map.get(entityKey5));
             assertSame(value6, map.get(entityKey6));
-
       }
-
 }

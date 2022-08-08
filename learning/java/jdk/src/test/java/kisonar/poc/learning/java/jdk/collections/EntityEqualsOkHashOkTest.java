@@ -37,6 +37,7 @@ public class EntityEqualsOkHashOkTest extends CollectionsSetup {
             assertTrue(map.containsKey(entityKey3));
             assertTrue(map.containsKey(entityKey4));
             assertTrue(map.containsKey(entityKey5));
+
             assertTrue(map.containsValue(value1));
             assertTrue(map.containsValue(value2));
             assertTrue(map.containsValue(value3));
