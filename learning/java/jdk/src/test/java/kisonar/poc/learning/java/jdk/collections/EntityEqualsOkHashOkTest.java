@@ -23,7 +23,6 @@ public class EntityEqualsOkHashOkTest extends CollectionsSetup {
             Entity entityKey3 = getEntityEqualsOkHashOk(id3, name3, value3);
             Entity entityKey4 = getEntityEqualsOkHashOk(id4, name4, value4);
             Entity entityKey5 = getEntityEqualsOkHashOk(id5, name5, value5);
-
             map.put(entityKey1, value1);
             map.put(entityKey2, value2);
             map.put(entityKey3, value3);
@@ -58,7 +57,6 @@ public class EntityEqualsOkHashOkTest extends CollectionsSetup {
             Entity entityKey3 = getEntityEqualsOkHashOk(id3, name3, value3);
             Entity entityKey4 = getEntityEqualsOkHashOk(id3, name3, value3); // same as key three
             Entity entityKey5 = getEntityEqualsOkHashOk(id5, name5, value5);
-
             map.put(entityKey1, value1);
             map.put(entityKey2, value2);
             map.put(entityKey3, value3);
@@ -75,7 +73,7 @@ public class EntityEqualsOkHashOkTest extends CollectionsSetup {
 
             assertTrue(map.containsValue(value1));
             assertTrue(map.containsValue(value2));
-            assertFalse(map.containsValue(value3)); //overridden by 4
+            assertFalse(map.containsValue(value3));
             assertTrue(map.containsValue(value4));
             assertTrue(map.containsValue(value5));
 
@@ -84,7 +82,5 @@ public class EntityEqualsOkHashOkTest extends CollectionsSetup {
             assertSame(value4, map.get(entityKey3)); //overridden by  4
             assertSame(value4, map.get(entityKey4));
             assertSame(value5, map.get(entityKey5));
-
       }
-
 }

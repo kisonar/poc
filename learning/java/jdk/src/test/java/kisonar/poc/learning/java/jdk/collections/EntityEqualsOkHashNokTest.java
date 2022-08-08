@@ -23,7 +23,6 @@ public class EntityEqualsOkHashNokTest extends CollectionsSetup {
             Entity entityKey4 = getEntityEqualsOkHashNok(id4, name4, value4);
             Entity entityKey5 = getEntityEqualsOkHashNok(id5, name5, value5);
             Entity entityKey6 = getEntityEqualsOkHashNok(id6, name6, value6);
-
             map.put(entityKey1, value1);
             map.put(entityKey2, value2);
             map.put(entityKey3, value3);
@@ -63,7 +62,6 @@ public class EntityEqualsOkHashNokTest extends CollectionsSetup {
             Entity entityKey4 = getEntityEqualsOkHashNok(id4, name3, value3);
             Entity entityKey5 = getEntityEqualsOkHashNok(id5, name5, value5);
             Entity entityKey6 = getEntityEqualsOkHashNok(id6, name5, value5);
-
             map.put(entityKey1, value1);
             map.put(entityKey2, value2);
             map.put(entityKey3, value3);

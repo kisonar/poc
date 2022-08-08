@@ -17,12 +17,15 @@ public final class CollectionsFactory {
             return new EntityEqualsOkHashNokHardcoded(id, name, value);
       }
 
-
       static Entity getEntityEqualsNokHashOk(int id, String name, String value) {
             return new EntityEqualsNokHashOk(id, name, value);
       }
 
-      static Entity getEntityEqualsNokHashNok(int id, String name, String value) {
-            return new EntityEqualsNokHashNok(id, name, value);
+      static Entity getEntityEqualsNokFalseHashNokHardcoded(int id, String name, String value) {
+            return new EntityEqualsNokFalseHashNokHardcoded(id, name, value);
+      }
+
+      static Entity getEntityEqualsNokTrueHashNokHardcoded(int id, String name, String value) {
+            return new EntityEqualsNokTrueHashNokHardcoded(id, name, value);
       }
 }
