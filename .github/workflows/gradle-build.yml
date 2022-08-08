@@ -1,0 +1,26 @@
+name: 'Kisonar POC CI'
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: GitHub checkout action
+        uses: actions/checkout@v3
+      - name: Setup Java 18
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '18.0.2+9'
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 7.4.2
+      - name: Print Gradle version
+        run: gradle --version
+      - name: Execute Gradle build
+        run: gradle build
