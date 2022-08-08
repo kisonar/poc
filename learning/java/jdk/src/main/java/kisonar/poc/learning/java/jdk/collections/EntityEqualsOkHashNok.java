@@ -1,7 +1,5 @@
 package kisonar.poc.learning.java.jdk.collections;
 
-import java.util.Objects;
-
 public final class EntityEqualsOkHashNok extends Entity {
 
     public EntityEqualsOkHashNok(int id, String name, String value) {
@@ -10,7 +8,7 @@ public final class EntityEqualsOkHashNok extends Entity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name); //missing value
+        return 4; //missing value
     }
 
     @Override
