@@ -5,20 +5,19 @@ public final class CollectionsFactory {
       private CollectionsFactory() {
       }
 
-      static Entity getEntityOK(int id, String name, String value) {
-            return new EntityOK(id, name, value);
+      static Entity getEntityEqualsOkHashOk(int id, String name, String value) {
+            return new EntityEqualsOkHashOk(id, name, value);
       }
 
-      static Entity getEntityHashNokEqualsNok(int id, String name, String value) {
-            return new EntityHashNokEqualsNok(id, name, value);
+      static Entity getEntityEqualsOkHashNok(int id, String name, String value) {
+            return new EntityEqualsOkHashNok(id, name, value);
       }
 
-      static Entity getEntityHashNokEqualsOk(int id, String name, String value) {
-            return new EntityHashNokEqualsOk(id, name, value);
+      static Entity getEntityEqualsNokHashOk(int id, String name, String value) {
+            return new EntityEqualsNokHashOk(id, name, value);
       }
 
-      static Entity getEntityHashOkEqualsNok(int id, String name, String value) {
-            return new EntityHashOkEqualsNok(id, name, value);
+      static Entity getEntityEqualsNokHashNok(int id, String name, String value) {
+            return new EntityEqualsNokHashNok(id, name, value);
       }
-
 }

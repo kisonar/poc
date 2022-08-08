@@ -2,9 +2,9 @@ package kisonar.poc.learning.java.jdk.collections;
 
 import java.util.Objects;
 
-public final class EntityHashNokEqualsNok extends Entity {
+public final class EntityEqualsNokHashNok extends Entity {
 
-    public EntityHashNokEqualsNok(int id, String name, String value) {
+    public EntityEqualsNokHashNok(int id, String name, String value) {
         super(id, name, value);
     }
 

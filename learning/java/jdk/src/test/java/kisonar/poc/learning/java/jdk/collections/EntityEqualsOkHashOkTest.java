@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static kisonar.poc.learning.java.jdk.collections.CollectionsFactory.getEntityOK;
+import static kisonar.poc.learning.java.jdk.collections.CollectionsFactory.getEntityEqualsOkHashOk;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class EntityHashOkEqualsOkTest {
+public class EntityEqualsOkHashOkTest {
 
       private final Map<Entity, String> map = new HashMap<>();
 
@@ -38,12 +38,12 @@ public class EntityHashOkEqualsOkTest {
       }
 
       @Test
-      public void hashOkEqualsOkWithDifferentKeys() {
-            Entity entityKey1 = getEntityOK(id1, name1, value1);
-            Entity entityKey2 = getEntityOK(id2, name2, value2);
-            Entity entityKey3 = getEntityOK(id3, name3, value3);
-            Entity entityKey4 = getEntityOK(id4, name4, value4);
-            Entity entityKey5 = getEntityOK(id5, name5, value5);
+      public void equalsOkHashOkWithDifferentKeys() {
+            Entity entityKey1 = getEntityEqualsOkHashOk(id1, name1, value1);
+            Entity entityKey2 = getEntityEqualsOkHashOk(id2, name2, value2);
+            Entity entityKey3 = getEntityEqualsOkHashOk(id3, name3, value3);
+            Entity entityKey4 = getEntityEqualsOkHashOk(id4, name4, value4);
+            Entity entityKey5 = getEntityEqualsOkHashOk(id5, name5, value5);
 
             map.put(entityKey1, value1);
             map.put(entityKey2, value2);
@@ -72,12 +72,12 @@ public class EntityHashOkEqualsOkTest {
       }
 
       @Test
-      public void hashOkEqualsOkWithSameKeys() {
-            Entity entityKey1 = getEntityOK(id1, name1, value1);
-            Entity entityKey2 = getEntityOK(id2, name2, value2);
-            Entity entityKey3 = getEntityOK(id3, name3, value3);
-            Entity entityKey4 = getEntityOK(id3, name3, value3); // same as key three
-            Entity entityKey5 = getEntityOK(id3, name3, value5);
+      public void equalsOkHashOkWithSameKeys() {
+            Entity entityKey1 = getEntityEqualsOkHashOk(id1, name1, value1);
+            Entity entityKey2 = getEntityEqualsOkHashOk(id2, name2, value2);
+            Entity entityKey3 = getEntityEqualsOkHashOk(id3, name3, value3);
+            Entity entityKey4 = getEntityEqualsOkHashOk(id3, name3, value3); // same as key three
+            Entity entityKey5 = getEntityEqualsOkHashOk(id3, name3, value5);
 
             map.put(entityKey1, value1);
             map.put(entityKey2, value2);
