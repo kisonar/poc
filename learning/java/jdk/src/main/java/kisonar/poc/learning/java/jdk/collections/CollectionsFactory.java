@@ -13,6 +13,11 @@ public final class CollectionsFactory {
             return new EntityEqualsOkHashNok(id, name, value);
       }
 
+      static Entity getEntityEqualsOkHashNokHardcoded(int id, String name, String value) {
+            return new EntityEqualsOkHashNokHardcoded(id, name, value);
+      }
+
+
       static Entity getEntityEqualsNokHashOk(int id, String name, String value) {
             return new EntityEqualsNokHashOk(id, name, value);
       }
