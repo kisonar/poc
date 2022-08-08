@@ -36,7 +36,8 @@ ext {
             junit5jupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.8.2",
             testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
             testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",
-            mockito               : "org.mockito:mockito-core:4.6.1"
+            mockito               : "org.mockito:mockito-core:4.6.1",
+            wiremock              : "com.github.tomakehurst:wiremock-jre8:2.33.2"
 
             //springBootLog4j       : "org.springframework.boot:spring-boot-starter-log4j2:${SPRING_BOOT_VERSION}",
             /*

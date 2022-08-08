@@ -1,0 +1,5 @@
+dependencies {
+    implementation libraries.wiremock
+}
+
+description = 'wiremock'
