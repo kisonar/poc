@@ -10,7 +10,7 @@ on:
       docker_tag:
         description: 'docker image tag to pick for ECS deployment'
         required: true
-        default: "latest"
+        default: latest
 jobs:
   build:
     runs-on: ubuntu-latest
