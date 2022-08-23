@@ -1,0 +1,22 @@
+name: 'Kisonar POC GHA check'
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_env:
+        description: 'environment to which make the terraform deployment'
+        required: true
+        default: dev
+      docker_tag:
+        description: 'docker image tag to pick for ECS deployment'
+        required: true
+        default: latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Check identity
+        run: whoami
