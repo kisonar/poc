@@ -19,11 +19,13 @@ public final class MailSender {
     private final String mailHostName;
     private final String emailAccount;
     private final String password;
+    private final int port;
 
-    public MailSender(String mailHostName, String emailAccount, String password) {
+    public MailSender(String mailHostName, String emailAccount, String password, int port) {
         this.mailHostName = mailHostName;
         this.emailAccount = emailAccount;
         this.password = password;
+        this.port = port;
     }
 
     public void prepareEmailWithAttqchment(List<String> files) throws EmailException {
@@ -50,7 +52,7 @@ public final class MailSender {
         email.setFrom(emailAccount);
         email.setSubject("AI report: " + LocalDateTime.now());
         email.setMsg(resolveHostName());
-        email.setSmtpPort(465);
+        email.setSmtpPort(port);
         email.setSSLOnConnect(true);
         email.setSSLCheckServerIdentity(true);
         email.setBounceAddress(emailAccount);
