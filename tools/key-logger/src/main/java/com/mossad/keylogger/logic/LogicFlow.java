@@ -23,9 +23,9 @@ public final class LogicFlow {
     private final LogFilesCollector logFilesCollector;
     private List<String> files;
 
-    public LogicFlow(String mailHostName, String emailAccount, String password) {
+    public LogicFlow(String mailHostName, String emailAccount, String password, int port) {
         logFilesCollector = new LogFilesCollector();
-        mailSender = new MailSender(mailHostName, emailAccount, password);
+        mailSender = new MailSender(mailHostName, emailAccount, password, port);
         timer = new Timer();
         keyReader = new KeyReader();
     }
