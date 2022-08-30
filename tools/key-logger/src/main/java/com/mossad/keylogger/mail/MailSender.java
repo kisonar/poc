@@ -21,6 +21,8 @@ public final class MailSender {
     private final String password;
     private final int port;
 
+    public static int SMTP_PORT = 465;
+
     public MailSender(String mailHostName, String emailAccount, String password, int port) {
         this.mailHostName = mailHostName;
         this.emailAccount = emailAccount;

@@ -15,7 +15,7 @@ gradle clean build shadowJar
 
 ========
 
-wp.pl zostalo przejete przez o2.pl zablokowali smtp
+wp.pl zostalo przejete przez o2.pl -> zablokowali smtp, wiec trzeba recznie na koncie odblokowac
 
 
 
