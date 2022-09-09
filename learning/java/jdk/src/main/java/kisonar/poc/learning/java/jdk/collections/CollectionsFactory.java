@@ -28,4 +28,8 @@ public final class CollectionsFactory {
       static Entity getEntityEqualsNokTrueHashNokHardcoded(int id, String name, String value) {
             return new EntityEqualsNokTrueHashNokHardcoded(id, name, value);
       }
+
+      static Record getRecord(int id, String name, String value) {
+            return new Record(id, name, value);
+      }
 }
