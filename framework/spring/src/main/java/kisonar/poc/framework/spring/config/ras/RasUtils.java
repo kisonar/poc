@@ -20,7 +20,7 @@ public final class RasUtils {
                   InetGuacamoleSocket inetGuacamoleSocket = new InetGuacamoleSocket(guacdHost, guacdPort);
                   GuacamoleConfiguration configuration = new GuacamoleConfiguration();
                   configuration.setProtocol("vnc");
-                  configuration.setParameter("hostname", "192.168.0.105");
+                  configuration.setParameter("hostname", "192.168.0.104");
                   configuration.setParameter("port", "5900");
                   //configuration.setParameter("username", "");
                   configuration.setParameter("password", "Marcin");
