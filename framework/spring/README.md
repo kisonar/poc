@@ -8,3 +8,6 @@ returns UUID
 
 ws://localhost:8080/websocket
 
+
+Required at client side TightVNC as VNC server/receiver/sender
+
