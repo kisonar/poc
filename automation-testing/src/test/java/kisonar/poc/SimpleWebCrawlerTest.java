@@ -20,7 +20,7 @@ public class SimpleWebCrawlerTest {
       }
 
       @Test
-      public void US_Login() throws InterruptedException {
+      public void login() throws InterruptedException {
             String correctUsername = "admin";
             String correctPassword = "Nexus2022";
 
@@ -39,11 +39,4 @@ public class SimpleWebCrawlerTest {
 
             driver.close();
       }
-
-      /*
-      @Test
-      public void simpleTest() {
-            driver.get("https://www.selenium.dev/selenium/web/web-form.html");
-      }
-      */
 }
