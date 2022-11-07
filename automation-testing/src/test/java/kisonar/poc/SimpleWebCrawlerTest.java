@@ -2,6 +2,7 @@ package kisonar.poc;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -9,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Disabled("Requires running Nexus")
 public class SimpleWebCrawlerTest {
 
       private ChromeDriver driver;
