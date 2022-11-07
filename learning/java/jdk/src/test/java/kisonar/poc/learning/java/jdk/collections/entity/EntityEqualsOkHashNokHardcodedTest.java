@@ -1,14 +1,15 @@
-package kisonar.poc.learning.java.jdk.collections;
+package kisonar.poc.learning.java.jdk.collections.entity;
 
+import kisonar.poc.learning.java.jdk.collections.CollectionsSetup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static kisonar.poc.learning.java.jdk.collections.CollectionsFactory.getEntityEqualsNokHashOk;
+import static kisonar.poc.learning.java.jdk.collections.CollectionsFactory.getEntityEqualsOkHashNokHardcoded;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class EntityEqualsNokHashOkTest extends CollectionsSetup {
+public class EntityEqualsOkHashNokHardcodedTest extends CollectionsSetup {
 
       @BeforeEach
       public void setUp() {
@@ -17,12 +18,12 @@ public class EntityEqualsNokHashOkTest extends CollectionsSetup {
 
       @Test
       public void equalsOkHashNokWithDifferentKeys() {
-            Entity entityKey1 = getEntityEqualsNokHashOk(id1, name1, value1);
-            Entity entityKey2 = getEntityEqualsNokHashOk(id2, name2, value2);
-            Entity entityKey3 = getEntityEqualsNokHashOk(id3, name3, value3);
-            Entity entityKey4 = getEntityEqualsNokHashOk(id4, name4, value4);
-            Entity entityKey5 = getEntityEqualsNokHashOk(id5, name5, value5);
-            Entity entityKey6 = getEntityEqualsNokHashOk(id6, name6, value6);
+            Entity entityKey1 = getEntityEqualsOkHashNokHardcoded(id1, name1, value1);
+            Entity entityKey2 = getEntityEqualsOkHashNokHardcoded(id2, name2, value2);
+            Entity entityKey3 = getEntityEqualsOkHashNokHardcoded(id3, name3, value3);
+            Entity entityKey4 = getEntityEqualsOkHashNokHardcoded(id4, name4, value4);
+            Entity entityKey5 = getEntityEqualsOkHashNokHardcoded(id5, name5, value5);
+            Entity entityKey6 = getEntityEqualsOkHashNokHardcoded(id6, name6, value6);
             map.put(entityKey1, value1);
             map.put(entityKey2, value2);
             map.put(entityKey3, value3);
@@ -56,12 +57,12 @@ public class EntityEqualsNokHashOkTest extends CollectionsSetup {
 
       @Test
       public void equalsOkHashNokWithSameKeys() {
-            Entity entityKey1 = getEntityEqualsNokHashOk(id1, name1, value1);
-            Entity entityKey2 = getEntityEqualsNokHashOk(id2, name2, value2);
-            Entity entityKey3 = getEntityEqualsNokHashOk(id3, name3, value3);
-            Entity entityKey4 = getEntityEqualsNokHashOk(id4, name3, value3);
-            Entity entityKey5 = getEntityEqualsNokHashOk(id5, name5, value5);
-            Entity entityKey6 = getEntityEqualsNokHashOk(id6, name5, value5);
+            Entity entityKey1 = getEntityEqualsOkHashNokHardcoded(id1, name1, value1);
+            Entity entityKey2 = getEntityEqualsOkHashNokHardcoded(id2, name2, value2);
+            Entity entityKey3 = getEntityEqualsOkHashNokHardcoded(id3, name3, value3);
+            Entity entityKey4 = getEntityEqualsOkHashNokHardcoded(id4, name3, value3);
+            Entity entityKey5 = getEntityEqualsOkHashNokHardcoded(id5, name3, value3);
+            Entity entityKey6 = getEntityEqualsOkHashNokHardcoded(id6, name3, value3);
             map.put(entityKey1, value1);
             map.put(entityKey2, value2);
             map.put(entityKey3, value3);

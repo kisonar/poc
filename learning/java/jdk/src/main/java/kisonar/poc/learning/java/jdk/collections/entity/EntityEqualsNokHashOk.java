@@ -1,4 +1,4 @@
-package kisonar.poc.learning.java.jdk.collections;
+package kisonar.poc.learning.java.jdk.collections.entity;
 
 import java.util.Objects;
 
