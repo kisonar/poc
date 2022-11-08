@@ -1,5 +1,6 @@
-package kisonar.poc.learning.java.jdk.collections;
+package kisonar.poc.learning.java.jdk.collections.entity;
 
+import kisonar.poc.learning.java.jdk.collections.CollectionsSetup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

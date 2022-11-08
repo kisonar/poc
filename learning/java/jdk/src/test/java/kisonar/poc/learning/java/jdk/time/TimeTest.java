@@ -1,10 +1,11 @@
 package kisonar.poc.learning.java.jdk.time;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TimeTest {
 
@@ -14,7 +15,7 @@ public class TimeTest {
             Instant earlier = now.minus(24, ChronoUnit.HOURS);
             long resultHours = ChronoUnit.HOURS.between(earlier, now);
             long resultMinutes = ChronoUnit.MINUTES.between(earlier, now);
-            Assertions.assertEquals(24, resultHours);
-            Assertions.assertEquals(1440, resultMinutes);
+            assertEquals(24, resultHours);
+            assertEquals(1440, resultMinutes);
       }
 }
