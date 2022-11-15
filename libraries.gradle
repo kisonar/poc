@@ -1,8 +1,8 @@
 ext {
 
-    SPRING_BOOT_VERSION = '2.7.0'
+    SPRING_BOOT_VERSION = '2.7.5'
     KAFKA_VERSION = '2.0.0'
-    TEST_CONTAINERS_VERSION ='1.16.3'
+    TEST_CONTAINERS_VERSION ='1.17.5'
     GUACAMOLE_VERSION = '1.4.0'
 
     libraries = [
@@ -10,11 +10,11 @@ ext {
             nettyAll            :   'io.netty:netty-all:4.1.56.Final',
             apacheKafkaClients  :   "org.apache.kafka:kafka-clients:${KAFKA_VERSION}",
             apacheKafkaStreams  :   "org.apache.kafka:kafka-streams:${KAFKA_VERSION}",
-            rabbitMqAmqpClient  :   'com.rabbitmq:amqp-client:5.10.0',
+            rabbitMqAmqpClient  :   'com.rabbitmq:amqp-client:5.16.0',
             apacheCommonsEmail  :   'org.apache.commons:commons-email:1.5',
             jNativeHook         :   'com.1stleg:jnativehook:2.1.0',
             mariaDbLibrary      :   'org.mariadb.jdbc:mariadb-java-client:2.7.4',
-            opencsv             :   'com.opencsv:opencsv:5.6',
+            opencsv             :   'com.opencsv:opencsv:5.7.1',
             googleJson          :   'com.google.code.gson:gson:2.9.0',
 
             springBootWeb         : "org.springframework.boot:spring-boot-starter-web:${SPRING_BOOT_VERSION}",
@@ -34,8 +34,8 @@ ext {
             mockito               : "org.mockito:mockito-core:4.6.1",
             //test automation
             seleniumApi           : 'org.seleniumhq.selenium:selenium-api:4.5.2',
-            selenium              : "org.seleniumhq.selenium:selenium-java:4.5.0",
-            webdrivermanager      : "io.github.bonigarcia:webdrivermanager:5.3.0"
+            selenium              : "org.seleniumhq.selenium:selenium-java:4.6.0",
+            webdrivermanager      : "io.github.bonigarcia:webdrivermanager:5.3.1"
     ]
 
     pluginLibraries = [
