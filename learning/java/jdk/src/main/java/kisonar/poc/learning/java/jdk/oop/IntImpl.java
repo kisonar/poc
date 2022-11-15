@@ -12,5 +12,4 @@ public class IntImpl implements Int1WithDefaultWriteAndJustWrite, Int2WithDefaul
       public String write(String input) {
             return "Write from IntImpl";
       }
-
 }

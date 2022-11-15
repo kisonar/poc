@@ -14,9 +14,7 @@ public class StringMethods {
         return value.stripTrailing();
     }
 
-    /*
     public String stripIndent(String value) {
         return value.stripIndent();
     }
-    */
 }
