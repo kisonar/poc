@@ -8,6 +8,8 @@ apply plugin: 'org.springframework.boot'
 dependencies {
     implementation libraries.springBootStarterWeb
     implementation libraries.springBootStarterActuator
+    implementation libraries.springBootStarterSecurity
+    implementation libraries.securityJwt
 }
 
 description = 'spring-security'

@@ -26,6 +26,8 @@ ext {
             springBootStarterSecurity   : "org.springframework.boot:spring-boot-starter-security:${SPRING_BOOT_VERSION}",
             springBootStarterTest       : "org.springframework.boot:spring-boot-starter-test:${SPRING_BOOT_VERSION}",
 
+            securityJwt: "io.jsonwebtoken:jjwt-api:0.11.5",
+
             guacamoleCommon       : "org.apache.guacamole:guacamole-common:${GUACAMOLE_VERSION}",
             guacamoleCommonJs     : "org.apache.guacamole:guacamole-common-js:${GUACAMOLE_VERSION}",
 
