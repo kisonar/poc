@@ -13,4 +13,3 @@ Required at client side TightVNC as VNC server/receiver/sender
 ## Endpoints
 
 curl -X GET http://localhost:8080/hello
-culr -X GET http://localhost:8080/secured?name=mama

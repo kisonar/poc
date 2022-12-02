@@ -9,6 +9,7 @@ dependencies {
     implementation libraries.springBootDataJpa
     implementation libraries.springBootWeb
     implementation libraries.springBootStarterWebSocket
+    implementation libraries.springBootActuator
     implementation libraries.mariaDbLibrary
     implementation libraries.guacamoleCommon
     implementation libraries.guacamoleCommonJs
@@ -38,7 +39,15 @@ configurations {
 
 description = 'spring'
 
-bootJar {
-    mainClass = 'kisonar.poc.framework.spring.App'
+//bootJar {
+//    mainClass = 'kisonar.poc.framework.spring.security.App'
+//}
+
+springBoot {
+    buildInfo()
+    mainClass.set("kisonar.poc.framework.spring.App")
 }
 
+tasks.jar {
+    enabled = false
+}
