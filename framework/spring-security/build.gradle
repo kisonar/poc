@@ -10,15 +10,13 @@ dependencies {
     implementation libraries.springBootActuator
 }
 
-configurations {
-}
-
 description = 'spring-security'
 
 //bootJar {
 //    mainClass = 'kisonar.poc.framework.spring.security.App'
 //}
 
+/*
 springBoot {
     buildInfo()
     mainClass.set("kisonar.poc.framework.spring.security.App")
@@ -27,3 +25,5 @@ springBoot {
 tasks.jar {
     enabled = false
 }
+
+*/
