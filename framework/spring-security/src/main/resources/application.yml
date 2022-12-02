@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: kisonar-poc-spring-security
+    main:
+      banner-mode: "on"
+    http.encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

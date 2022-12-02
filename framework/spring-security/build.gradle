@@ -1,0 +1,20 @@
+plugins {
+    id "org.springframework.boot" version "2.7.0"
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation libraries.springBootWeb
+}
+
+configurations {
+}
+
+description = 'spring-security'
+
+bootJar {
+    mainClass = 'kisonar.poc.framework.spring.security.App'
+}
+

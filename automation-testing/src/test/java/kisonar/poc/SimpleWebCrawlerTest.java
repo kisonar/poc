@@ -13,6 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Disabled("Requires running Nexus")
 public class SimpleWebCrawlerTest {
 
+      String correctUsername = "admin";
+      String correctPassword = "Nexus2022";
+
       private ChromeDriver driver;
 
       @BeforeEach
@@ -23,8 +26,7 @@ public class SimpleWebCrawlerTest {
 
       @Test
       public void login() throws InterruptedException {
-            String correctUsername = "admin";
-            String correctPassword = "Nexus2022";
+
 
             driver.get("http://localhost:8083");
             TimeUnit.SECONDS.sleep(3);

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -14,7 +13,7 @@ public final class VarTest {
       public void checkTill10() {
             Function<String, String> helloFunction = s -> "Hello " + s;
 
-            List strings = new ArrayList<>();
+            var strings = new ArrayList<>();
             strings.add(helloFunction.apply("World"));
 
             // Inference of generics (Diamond Operator) with anonymous inner classes (Java 9 -> JEP 213)
@@ -26,7 +25,7 @@ public final class VarTest {
       public void checkSince10() {
 
             // Inference of generic types (List<String>)
-            var strings = Arrays.asList("World", "Java 10");
+            var strings = Arrays.asList("World", "Java 10"); //not mutable list
 
             // Inference in Loops
             for (var string : strings) {
@@ -34,15 +33,15 @@ public final class VarTest {
             }
 
             // In combination with the Diamond Operator this leads to the inference of List<Object>
-            var strings3 = new ArrayList<>();
-            strings.add("Hello World");
-            for (var string31 : strings3) {
+            var mutableList = new ArrayList<>();
+            mutableList.add("Hello World");
+            for (var string31 : mutableList) {
                   System.out.println(string31.equals("Worldava 10"));
             }
 
-            var strings2 = new ArrayList<String>();
-            strings2.add("Hello World");
-            for (var string : strings2) {
+            var anotherMutableList = new ArrayList<String>();
+            anotherMutableList.add("Hello World");
+            for (var string : anotherMutableList) {
                   System.out.println(string.replace("World", "Java 10"));
             }
       }
