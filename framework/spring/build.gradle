@@ -6,10 +6,10 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    implementation libraries.springBootDataJpa
-    implementation libraries.springBootWeb
+    implementation libraries.springBootStarterDataJpa
+    implementation libraries.springBootStarterWeb
     implementation libraries.springBootStarterWebSocket
-    implementation libraries.springBootActuator
+    implementation libraries.springBootStarterActuator
     implementation libraries.mariaDbLibrary
     implementation libraries.guacamoleCommon
     implementation libraries.guacamoleCommonJs

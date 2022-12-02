@@ -6,8 +6,8 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    implementation libraries.springBootWeb
-    implementation libraries.springBootActuator
+    implementation libraries.springBootStarterWeb
+    implementation libraries.springBootStarterActuator
 }
 
 description = 'spring-security'
