@@ -6,9 +6,10 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    implementation libraries.springBootDataJpa
-    implementation libraries.springBootWeb
+    implementation libraries.springBootStarterDataJpa
+    implementation libraries.springBootStarterWeb
     implementation libraries.springBootStarterWebSocket
+    implementation libraries.springBootStarterActuator
     implementation libraries.mariaDbLibrary
     implementation libraries.guacamoleCommon
     implementation libraries.guacamoleCommonJs
@@ -18,27 +19,19 @@ dependencies {
     testImplementation libraries.springBootStarterTest
 }
 
-/**
- * Solvs problem LoggerFactory is not a Logback LoggerContext but Logback is on the classpath.
- * */
-
-configurations {
-
-    /* all*.exclude module: 'spring-boot-starter-logging' */
-    /*all*.exclude module: 'logback-classic'
-
-    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-    exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
-    * */
-
-    //all {
-    //    exclude group: 'ch.qos.logback', module: 'logback-classic'
-    //}
-}
-
 description = 'spring'
 
-bootJar {
-    mainClass = 'kisonar.poc.framework.spring.App'
-}
+//creates both FAT and plain JAR
+//bootJar {
+//    mainClass = 'kisonar.poc.framework.spring.security.App'
+//}
 
+//generates FAT jar
+springBoot {
+    buildInfo()
+    mainClass.set("kisonar.poc.framework.spring.App")
+}
+//skips plain jar
+tasks.jar {
+    enabled = false
+}

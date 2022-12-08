@@ -1,0 +1,35 @@
+plugins {
+    id "org.springframework.boot" version "2.7.0"
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation libraries.springBootStarterWeb
+    implementation libraries.springBootStarterActuator
+    implementation libraries.springBootStarterSecurity
+    implementation libraries.securityJwt
+    implementation libraries.securityJwtJackson
+}
+
+description = 'spring-security'
+
+//creates both FAT and plain JAR
+bootJar {
+    mainClass = 'kisonar.poc.framework.spring.security.App'
+}
+
+//generates FAT jar
+/*
+springBoot {
+    buildInfo()
+    mainClass.set("kisonar.poc.framework.spring.security.App")
+}
+*/
+//skips plain jar
+/*
+tasks.jar {
+    enabled = false
+}
+ */
