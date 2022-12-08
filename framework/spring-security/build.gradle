@@ -10,22 +10,26 @@ dependencies {
     implementation libraries.springBootStarterActuator
     implementation libraries.springBootStarterSecurity
     implementation libraries.securityJwt
+    implementation libraries.securityJwtJackson
 }
 
 description = 'spring-security'
 
-//bootJar {
-//    mainClass = 'kisonar.poc.framework.spring.security.App'
-//}
+//creates both FAT and plain JAR
+bootJar {
+    mainClass = 'kisonar.poc.framework.spring.security.App'
+}
 
+//generates FAT jar
 /*
 springBoot {
     buildInfo()
     mainClass.set("kisonar.poc.framework.spring.security.App")
 }
-
+*/
+//skips plain jar
+/*
 tasks.jar {
     enabled = false
 }
-
-*/
+ */

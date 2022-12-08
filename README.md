@@ -22,5 +22,7 @@ gradle dependencies - shows dependencies
 gradle dependencyUpdates
 
 customization
+gradle clean build copyDependencies 
+
 gradle clean build copyDependencies shadowJar
 ```
