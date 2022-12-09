@@ -1,55 +1,52 @@
 package kisonar.poc.framework.spring.security.config;
 
-import kisonar.poc.framework.spring.security.util.JwtAuthenticationEntryPoint;
-import kisonar.poc.framework.spring.security.util.JwtRequestFilter;
-import org.springframework.beans.factory.annotation.Autowired;
+import kisonar.poc.framework.spring.security.controller.rest.web.JwtAuthenticationEntryPoint;
+import kisonar.poc.framework.spring.security.controller.rest.web.JwtRequestFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
-      private final PasswordEncoder passwordEncoder;
       private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-      private final UserDetailsService jwtUserDetailsService;
       private final JwtRequestFilter jwtRequestFilter;
+      private final CustomAuthenticationProvider customAuthenticationProvider;
+      private final UserDetailsService jwtUserDetailsService;
+      private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-      public WebSecurityConfig(PasswordEncoder passwordEncoder, JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint,
-                               UserDetailsService jwtUserDetailsService,
-                               JwtRequestFilter jwtRequestFilter) {
-            this.passwordEncoder = passwordEncoder;
+      public WebSecurityConfig(JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint,
+                               JwtRequestFilter jwtRequestFilter,
+                               CustomAuthenticationProvider customAuthenticationProvider,
+                               UserDetailsService jwtUserDetailsService) {
             this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
-            this.jwtUserDetailsService = jwtUserDetailsService;
             this.jwtRequestFilter = jwtRequestFilter;
-      }
-
-      @Autowired
-      public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-            // configure AuthenticationManager so that it knows from where to load
-            // user for matching credentials
-            // Use BCryptPasswordEncoder
-            auth.userDetailsService(jwtUserDetailsService)
-                    .passwordEncoder(passwordEncoder);
+            this.customAuthenticationProvider = customAuthenticationProvider;
+            this.jwtUserDetailsService = jwtUserDetailsService;
       }
 
       @Bean
-      @Override
-      public AuthenticationManager authenticationManagerBean() throws Exception {
-            return super.authenticationManagerBean();
+      public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+            AuthenticationManagerBuilder authenticationManagerBuilder =
+                    http.getSharedObject(AuthenticationManagerBuilder.class);
+            authenticationManagerBuilder.userDetailsService(jwtUserDetailsService)
+                    .passwordEncoder(passwordEncoder);
+            authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider);
+            return authenticationManagerBuilder.build();
       }
 
-      @Override
-      protected void configure(HttpSecurity httpSecurity) throws Exception {
+      @Bean
+      public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
             // We don't need CSRF for this example
             httpSecurity.csrf().disable()
                     // dont authenticate this particular request
@@ -62,6 +59,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
             // Add a filter to validate the tokens with every request
-            httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+            return httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class).build();
       }
 }
