@@ -1,8 +1,8 @@
-package kisonar.poc.framework.spring.security.util;
+package kisonar.poc.framework.spring.security.controller.rest.web;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import kisonar.poc.framework.spring.security.service.JwtUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import kisonar.poc.framework.spring.security.util.JwtTokenUtil;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,11 +19,13 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-      @Autowired
-      private JwtUserDetailsService jwtUserDetailsService;
+      private final JwtUserDetailsService jwtUserDetailsService;
+      private final JwtTokenUtil jwtTokenUtil;
 
-      @Autowired
-      private JwtTokenUtil jwtTokenUtil;
+      public JwtRequestFilter(JwtUserDetailsService jwtUserDetailsService, JwtTokenUtil jwtTokenUtil) {
+            this.jwtUserDetailsService = jwtUserDetailsService;
+            this.jwtTokenUtil = jwtTokenUtil;
+      }
 
       @Override
       protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
