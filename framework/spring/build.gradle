@@ -13,6 +13,7 @@ dependencies {
     implementation libraries.mariaDbLibrary
     implementation libraries.guacamoleCommon
     implementation libraries.guacamoleCommonJs
+    implementation libraries.springdoc
 
     testImplementation libraries.testContainersJupiter
     testImplementation libraries.testContainersLibrary
