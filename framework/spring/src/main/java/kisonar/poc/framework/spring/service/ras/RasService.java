@@ -23,7 +23,7 @@ public class RasService {
 
       public GuacamoleTunnel getSimpleGuacamoleTunnel() throws GuacamoleException {
             try {
-                  var inetGuacamoleSocket = new InetGuacamoleSocket(guacamoleGuacdConfig.getHost(), guacamoleGuacdConfig.getPort().intValue());
+                  var inetGuacamoleSocket = new InetGuacamoleSocket(guacamoleGuacdConfig.getHost(), guacamoleGuacdConfig.getPort());
                   var configuration = new GuacamoleConfiguration();
                   configuration.setProtocol(guacamoleClientConfig.getProtocol());
                   configuration.setParameter("hostname", guacamoleClientConfig.getHost());
