@@ -1,6 +1,5 @@
 package kisonar.poc.framework.spring.controller.scheduled;
 
-import kisonar.poc.framework.spring.domain.jpa.user.UserEntity;
 import kisonar.poc.framework.spring.service.user.UserService;
 import kisonar.poc.framework.spring.util.user.UserEntityFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,7 +24,7 @@ public class UserController {
 	void generateUsers() {
 		int value = atomicInteger.incrementAndGet();
 		String stringValue = "test" + value;
-		UserEntity userEntity = UserEntityFactory.getUserEntity(stringValue, stringValue, stringValue);
+		var userEntity = UserEntityFactory.getUserEntity(stringValue, stringValue, stringValue);
 		userService.add(userEntity);
 		System.out.println("Added entity " + userEntity);
 	}

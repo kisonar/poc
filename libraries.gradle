@@ -32,10 +32,12 @@ ext {
             guacamoleCommon       : "org.apache.guacamole:guacamole-common:${GUACAMOLE_VERSION}",
             guacamoleCommonJs     : "org.apache.guacamole:guacamole-common-js:${GUACAMOLE_VERSION}",
 
-            junit5jupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.8.2",
+            springdoc : "org.springdoc:springdoc-openapi-ui:1.6.13",
+
+            junit5jupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.9.0",
             testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
             testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",
-            mockito               : "org.mockito:mockito-core:4.6.1",
+            mockito               : "org.mockito:mockito-core:4.8.0",
             //test automation
             seleniumApi           : 'org.seleniumhq.selenium:selenium-api:4.5.2',
             selenium              : "org.seleniumhq.selenium:selenium-java:4.6.0",

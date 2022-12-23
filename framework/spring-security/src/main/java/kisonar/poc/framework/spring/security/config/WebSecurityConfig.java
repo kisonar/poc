@@ -48,14 +48,17 @@ public class WebSecurityConfig {
       @Bean
       public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
             // We don't need CSRF for this example
-            httpSecurity.csrf().disable()
+            httpSecurity
+                    .csrf().disable()
+                    .cors().disable()
                     // dont authenticate this particular request
-                    .authorizeRequests().antMatchers("/authenticate").permitAll().
+                    .authorizeRequests().antMatchers("/authenticate").permitAll()
                     // all other requests need to be authenticated
-                            anyRequest().authenticated().and().
+                    .anyRequest().authenticated()
                     // make sure we use stateless session; session won't be used to
                     // store user's state.
-                            exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+                    .and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                    .and().sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
             // Add a filter to validate the tokens with every request

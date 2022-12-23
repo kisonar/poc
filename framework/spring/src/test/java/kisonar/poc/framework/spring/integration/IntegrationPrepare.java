@@ -1,18 +1,14 @@
 package kisonar.poc.framework.spring.integration;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.testcontainers.containers.DockerComposeContainer;
-import org.testcontainers.containers.wait.strategy.Wait;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
+import org.junit.jupiter.api.Disabled;
 
-import java.io.File;
-import java.time.Duration;
-
-@Testcontainers
+//does not work at GitHub default runner
+@Disabled
+//@Testcontainers
 public class IntegrationPrepare {
 
+
+      /*
       @Container
       public static DockerComposeContainer environment =
               new DockerComposeContainer(new File("docker-compose.yml")).withLocalCompose(true)
@@ -20,6 +16,7 @@ public class IntegrationPrepare {
                       .withExposedService("mariadb_1", 3306, Wait.forListeningPort().withStartupTimeout(Duration.ofSeconds(30)))
                       .withExposedService("kafka", 9092);
 
+      @Disabled
       @BeforeAll
       public static void start() {
             environment.start();
@@ -27,6 +24,7 @@ public class IntegrationPrepare {
             verifyServiceStarted("mariadb_1");
       }
 
+      @Disabled
       @AfterAll
       public static void stop() {
             environment.stop();
@@ -40,4 +38,6 @@ public class IntegrationPrepare {
                   System.out.println("Service " + serviceName + " not available");
             });
       }
+
+      */
 }
