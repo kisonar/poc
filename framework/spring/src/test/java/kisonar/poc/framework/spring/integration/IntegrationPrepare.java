@@ -2,6 +2,7 @@ package kisonar.poc.framework.spring.integration;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.testcontainers.containers.DockerComposeContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
@@ -10,6 +11,8 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import java.io.File;
 import java.time.Duration;
 
+//does not work at GitHub default runner
+@Disabled
 @Testcontainers
 public class IntegrationPrepare {
 
