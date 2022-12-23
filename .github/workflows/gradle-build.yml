@@ -23,4 +23,4 @@ jobs:
       - name: Print Gradle version
         run: gradle --version
       - name: Execute Gradle build
-        run: gradle clean build --stacktrace
+        run: gradle clean build --debug
