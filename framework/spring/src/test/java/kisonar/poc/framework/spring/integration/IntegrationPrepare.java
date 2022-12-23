@@ -1,11 +1,10 @@
 package kisonar.poc.framework.spring.integration;
 
 import org.junit.jupiter.api.Disabled;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 //does not work at GitHub default runner
 @Disabled
-@Testcontainers
+//@Testcontainers
 public class IntegrationPrepare {
 
 
