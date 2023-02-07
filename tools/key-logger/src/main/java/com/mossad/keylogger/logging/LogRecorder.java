@@ -8,26 +8,33 @@ import java.util.logging.SimpleFormatter;
 
 public final class LogRecorder {
 
-    private final Logger LOG = Logger.getLogger(LogRecorder.class.getCanonicalName());
-    private FileHandler fileHandler;
-    private SimpleFormatter simpleFormatter;
+      private final Logger LOG = Logger.getLogger(LogRecorder.class.getCanonicalName());
+      private final SimpleFormatter simpleFormatter;
+      private FileHandler fileHandler;
 
-    public LogRecorder() {
-        simpleFormatter = new SimpleFormatter();
-        try {
-            fileHandler = new FileHandler("Logging", 1024000, 100, true);
-            fileHandler.setEncoding("UTF-8");
-        } catch (IOException ex) {
-            throw new RuntimeException("Cannot create logging file. Exiting application");
-        }
-        fileHandler.setFormatter(simpleFormatter);
-        LOG.addHandler(fileHandler);
-    }
+      public LogRecorder() {
+            simpleFormatter = new SimpleFormatter();
+            try {
+                  fileHandler = new FileHandler("Logging", 1024000, 2, true);
+                  fileHandler.flush();
+                  fileHandler.close();
+                  fileHandler = new FileHandler("Logging", 1024000, 2, true);
+                  fileHandler.setEncoding("UTF-8");
+            }
+            catch (IOException ex) {
+                  throw new RuntimeException("Cannot create logging file. Exiting application");
+            }
+            fileHandler.setFormatter(simpleFormatter);
+            LOG.addHandler(fileHandler);
 
-    public void writeContent(String content) {
-        if (!Objects.isNull(content) && !content.isEmpty()) {
-            LOG.info(content);
-        }
-    }
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                  fileHandler.close();
+            }));
+      }
 
+      public void writeContent(String content) {
+            if (!Objects.isNull(content) && !content.isEmpty()) {
+                  LOG.info(content);
+            }
+      }
 }
