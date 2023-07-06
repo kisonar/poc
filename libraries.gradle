@@ -1,9 +1,10 @@
 ext {
 
-    SPRING_BOOT_VERSION = '2.7.5'
-    KAFKA_VERSION = '2.0.0'
+    SPRING_BOOT_VERSION = '3.1.1'
+    KAFKA_VERSION = '3.5.0'
     TEST_CONTAINERS_VERSION ='1.18.3'
     GUACAMOLE_VERSION = '1.5.2'
+    SELENIUM_VERSION = '4.10.0'
 
     libraries = [
             jdbc6               :   "com.oracle.database.jdbc:ojdbc6:11.2.0.4",
@@ -13,7 +14,7 @@ ext {
             rabbitMqAmqpClient  :   'com.rabbitmq:amqp-client:5.18.0',
             apacheCommonsEmail  :   'org.apache.commons:commons-email:1.5',
             jNativeHook         :   'com.1stleg:jnativehook:2.1.0',
-            mariaDbLibrary      :   'org.mariadb.jdbc:mariadb-java-client:2.7.4',
+            mariaDbLibrary      :   'org.mariadb.jdbc:mariadb-java-client:3.1.4',
             opencsv             :   'com.opencsv:opencsv:5.7.1',
             googleJson          :   'com.google.code.gson:gson:2.10.1',
 
@@ -35,10 +36,10 @@ ext {
             junit5jupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.8.2",
             testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
             testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",
-            mockito               : "org.mockito:mockito-core:4.6.1",
+            mockito               : "org.mockito:mockito-core:5.4.0",
             //test automation
-            seleniumApi           : 'org.seleniumhq.selenium:selenium-api:4.10.0',
-            selenium              : "org.seleniumhq.selenium:selenium-java:4.6.0",
+            seleniumApi           : "org.seleniumhq.selenium:selenium-api:${SELENIUM_VERSION}",
+            selenium              : "org.seleniumhq.selenium:selenium-java:${SELENIUM_VERSION}",
             webdrivermanager      : "io.github.bonigarcia:webdrivermanager:5.4.0"
     ]
 
