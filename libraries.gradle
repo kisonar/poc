@@ -8,6 +8,7 @@ ext {
 
     libraries = [
             jdbc6               :   "com.oracle.database.jdbc:ojdbc6:11.2.0.4",
+            //TODO upgrade
             nettyAll            :   'io.netty:netty-all:4.1.56.Final',
             apacheKafkaClients  :   "org.apache.kafka:kafka-clients:${KAFKA_VERSION}",
             apacheKafkaStreams  :   "org.apache.kafka:kafka-streams:${KAFKA_VERSION}",
@@ -33,7 +34,8 @@ ext {
             guacamoleCommon       : "org.apache.guacamole:guacamole-common:${GUACAMOLE_VERSION}",
             guacamoleCommonJs     : "org.apache.guacamole:guacamole-common-js:${GUACAMOLE_VERSION}",
 
-            junit5jupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.10.0-RC1",
+            //TODO upgrade
+            junit5jupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.8.2",
             testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
             testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",
             mockito               : "org.mockito:mockito-core:5.4.0",
