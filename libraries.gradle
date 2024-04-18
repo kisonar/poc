@@ -1,10 +1,10 @@
 ext {
 
-    SPRING_BOOT_VERSION = '3.1.1'
-    KAFKA_VERSION = '3.5.0'
-    TEST_CONTAINERS_VERSION ='1.18.3'
-    GUACAMOLE_VERSION = '1.5.2'
-    SELENIUM_VERSION = '4.10.0'
+    SPRING_BOOT_VERSION = '3.2.4'
+    KAFKA_VERSION = '3.7.0'
+    TEST_CONTAINERS_VERSION ='1.19.7'
+    GUACAMOLE_VERSION = '1.5.5'
+    SELENIUM_VERSION = '4.19.1'
 
     libraries = [
             jdbc6               :   "com.oracle.database.jdbc:ojdbc6:11.2.0.4",
@@ -12,11 +12,11 @@ ext {
             nettyAll            :   'io.netty:netty-all:4.1.56.Final',
             apacheKafkaClients  :   "org.apache.kafka:kafka-clients:${KAFKA_VERSION}",
             apacheKafkaStreams  :   "org.apache.kafka:kafka-streams:${KAFKA_VERSION}",
-            rabbitMqAmqpClient  :   'com.rabbitmq:amqp-client:5.18.0',
-            apacheCommonsEmail  :   'org.apache.commons:commons-email:1.5',
+            rabbitMqAmqpClient  :   'com.rabbitmq:amqp-client:5.21.0',
+            apacheCommonsEmail  :   'org.apache.commons:commons-email:1.6.0',
             jNativeHook         :   'com.1stleg:jnativehook:2.1.0',
-            mariaDbLibrary      :   'org.mariadb.jdbc:mariadb-java-client:3.1.4',
-            opencsv             :   'com.opencsv:opencsv:5.7.1',
+            mariaDbLibrary      :   'org.mariadb.jdbc:mariadb-java-client:3.3.3',
+            opencsv             :   'com.opencsv:opencsv:5.9',
             googleJson          :   'com.google.code.gson:gson:2.10.1',
 
             springBootStarterWeb        : "org.springframework.boot:spring-boot-starter-web:${SPRING_BOOT_VERSION}",
@@ -38,11 +38,11 @@ ext {
             junit5jupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.8.2",
             testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
             testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",
-            mockito               : "org.mockito:mockito-core:5.4.0",
+            mockito               : "org.mockito:mockito-core:5.11.0",
             //test automation
             seleniumApi           : "org.seleniumhq.selenium:selenium-api:${SELENIUM_VERSION}",
             selenium              : "org.seleniumhq.selenium:selenium-java:${SELENIUM_VERSION}",
-            webdrivermanager      : "io.github.bonigarcia:webdrivermanager:5.4.0"
+            webdrivermanager      : "io.github.bonigarcia:webdrivermanager:5.8.0"
     ]
 
     pluginLibraries = [

@@ -2,7 +2,7 @@
 
 ```
 Requires JAVA 18. Soon movement to 19
-Gradle 7.5.1
+Gradle 8.5
 
 sdk default java 18.0.1-open
 sdk default gradle 7.5.1
@@ -28,4 +28,9 @@ customization
 gradle clean build copyDependencies 
 
 gradle clean build copyDependencies shadowJar
+
+full build
+gradle clean build dependencyUpdates
 ```
+
+
