@@ -33,4 +33,38 @@ full build
 gradle clean build dependencyUpdates
 ```
 
+``` 
+TODO
 
+The following dependencies have later milestone versions:
+ - com.github.johnrengelman.shadow:com.github.johnrengelman.shadow.gradle.plugin [7.1.2 -> 8.1.1]
+ 
+ - io.jsonwebtoken:jjwt-impl [0.11.5 -> 0.12.5]
+     https://github.com/jwtk/jjwt
+ - io.jsonwebtoken:jjwt-jackson [0.11.5 -> 0.12.5]
+     https://github.com/jwtk/jjwt
+     
+ - io.netty:netty-all [4.1.56.Final -> 5.0.0.Alpha2]
+     http://netty.io/
+ - org.javamodularity.moduleplugin:org.javamodularity.moduleplugin.gradle.plugin [1.8.12 -> 1.8.15]
+ 
+ - org.junit.jupiter:junit-jupiter-engine [5.8.2 -> 5.10.2]
+     https://junit.org/junit5/
+     
+ - org.springframework.boot:org.springframework.boot.gradle.plugin [2.7.0 -> 3.2.4]
+     https://spring.io/projects/spring-boot
+     
+ - org.springframework.boot:spring-boot-starter-actuator [3.2.4 -> 3.3.0-M3]
+     https://spring.io/projects/spring-boot
+ - org.springframework.boot:spring-boot-starter-data-jpa [3.2.4 -> 3.3.0-M3]
+     https://spring.io/projects/spring-boot
+ - org.springframework.boot:spring-boot-starter-security [3.2.4 -> 3.3.0-M3]
+     https://spring.io/projects/spring-boot
+ - org.springframework.boot:spring-boot-starter-test [3.2.4 -> 3.3.0-M3]
+     https://spring.io/projects/spring-boot
+ - org.springframework.boot:spring-boot-starter-web [3.2.4 -> 3.3.0-M3]
+     https://spring.io/projects/spring-boot
+ - org.springframework.boot:spring-boot-starter-websocket [3.2.4 -> 3.3.0-M3]
+     https://spring.io/projects/spring-boot
+
+```
