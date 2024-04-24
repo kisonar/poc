@@ -34,7 +34,7 @@ gradle clean build dependencyUpdates
 ```
 
 ``` 
-TODO
+TODO 2024-04-24
 
 The following dependencies have later milestone versions:
  - com.github.johnrengelman.shadow:com.github.johnrengelman.shadow.gradle.plugin [7.1.2 -> 8.1.1]
@@ -46,11 +46,9 @@ The following dependencies have later milestone versions:
      
  - io.netty:netty-all [4.1.56.Final -> 5.0.0.Alpha2]
      http://netty.io/
- - org.javamodularity.moduleplugin:org.javamodularity.moduleplugin.gradle.plugin [1.8.12 -> 1.8.15]
  
  - org.junit.jupiter:junit-jupiter-engine [5.8.2 -> 5.10.2]
      https://junit.org/junit5/
-     
  - org.springframework.boot:org.springframework.boot.gradle.plugin [2.7.0 -> 3.2.4]
      https://spring.io/projects/spring-boot
      
