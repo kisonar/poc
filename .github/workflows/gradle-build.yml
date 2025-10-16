@@ -19,7 +19,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 7.4.2
+          gradle-version: 9.0.0
       - name: Print Gradle version
         run: gradle --version
       - name: Execute Gradle build
