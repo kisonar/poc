@@ -1,6 +1,6 @@
 package kisonar.poc.framework.spring.controller.ras;
 
-import kisonar.poc.framework.spring.config.ras.RasUtils;
+import kisonar.poc.framework.spring.service.ras.RasService;
 import org.apache.guacamole.GuacamoleException;
 import org.apache.guacamole.net.GuacamoleTunnel;
 import org.apache.guacamole.servlet.GuacamoleHTTPTunnelServlet;
@@ -15,14 +15,16 @@ import javax.servlet.http.HttpServletRequest;
 //@WebServlet //mandatory !!
 public class CustomGuacamoleHttpTunnelServlet extends GuacamoleHTTPTunnelServlet {
 
-      public CustomGuacamoleHttpTunnelServlet() {
-      }
+      private final RasService rasService;
 
+      public CustomGuacamoleHttpTunnelServlet(RasService rasService) {
+            this.rasService = rasService;
+      }
 
       @Override
       protected GuacamoleTunnel doConnect(HttpServletRequest request)
               throws GuacamoleException {
-            return RasUtils.getSimpleGuacamoleTunnel();
+            return rasService.getSimpleGuacamoleTunnel();
       }
 
 }

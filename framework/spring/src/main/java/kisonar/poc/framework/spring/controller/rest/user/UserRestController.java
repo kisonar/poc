@@ -1,9 +1,5 @@
 package kisonar.poc.framework.spring.controller.rest.user;
 
-
-//import org.apache.log4j.Logger;
-//import org.apache.log4j.LogManager;
-
 import kisonar.poc.framework.spring.domain.jpa.user.UserEntity;
 import kisonar.poc.framework.spring.service.user.UserService;
 import org.springframework.http.MediaType;
@@ -26,7 +22,6 @@ public class UserRestController {
 
 	@GetMapping("/hello")
 	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		//LOG.info("Invoking endpoint /hello");
 		return String.format("Hello %s!", name);
 	}
 
