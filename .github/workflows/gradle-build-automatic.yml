@@ -23,9 +23,9 @@ jobs:
           distribution: 'temurin'
           java-version: '25'
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
-          gradle-version: 7.6
+          gradle-version: 9.3.1
       - name: Print Gradle version
         run: gradle --version
       - name: Execute Gradle build
