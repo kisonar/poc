@@ -34,7 +34,7 @@ ext {
 
             springdoc : "org.springdoc:springdoc-openapi-ui:1.6.13",
 
-            junit5jupiterEngine  : "org.junit.jupiter:junit-jupiter-engine:6.0.2",
+            junitJupiterEngine: "org.junit.jupiter:junit-jupiter-engine:6.0.2",
             junitPlatformLauncher: "org.junit.platform:junit-platform-launcher:6.0.2",
             testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
             testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",

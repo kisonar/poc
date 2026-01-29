@@ -24,7 +24,7 @@ allprojects {
 
     dependencies {
         /* all projects have JUnit + Mockito activated in compilation & execution*/
-        testImplementation libraries.junit5jupiterEngine
+        testImplementation libraries.junitJupiterEngine
         testRuntimeOnly libraries.junitPlatformLauncher
         testImplementation libraries.mockito
     }
