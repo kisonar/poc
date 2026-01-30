@@ -1,6 +1,6 @@
 ext {
 
-    SPRING_BOOT_VERSION = '2.7.5'
+    SPRING_BOOT_VERSION = '3.5.4'
     KAFKA_VERSION = '2.0.0'
     TEST_CONTAINERS_VERSION ='1.17.5'
     GUACAMOLE_VERSION = '1.4.0'
@@ -34,7 +34,8 @@ ext {
 
             springdoc : "org.springdoc:springdoc-openapi-ui:1.6.13",
 
-            junit5jupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.9.0",
+            junitJupiterEngine: "org.junit.jupiter:junit-jupiter-engine:6.0.2",
+            junitPlatformLauncher: "org.junit.platform:junit-platform-launcher:6.0.2",
             testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
             testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",
             mockito               : "org.mockito:mockito-core:4.8.0",

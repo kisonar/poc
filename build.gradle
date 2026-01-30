@@ -2,8 +2,8 @@ plugins {
     id 'java'
     id 'java-library'
     id 'maven-publish'
-    id 'com.github.ben-manes.versions' version '0.44.0'
-    id 'org.javamodularity.moduleplugin' version '1.7.0'
+    //id 'com.github.ben-manes.versions' version '0.44.0'
+    //id 'org.javamodularity.moduleplugin' version '1.7.0'
 }
 
 allprojects {
@@ -12,7 +12,7 @@ allprojects {
     apply from: "${rootDir}/libraries.gradle"
     apply plugin: 'java'
     apply plugin: 'java-library'
-    apply plugin: 'org.javamodularity.moduleplugin'
+    //apply plugin: 'org.javamodularity.moduleplugin'
 
     repositories {
         mavenLocal()
@@ -24,15 +24,17 @@ allprojects {
 
     dependencies {
         /* all projects have JUnit + Mockito activated in compilation & execution*/
-        testImplementation libraries.junit5jupiterEngine
+        testImplementation libraries.junitJupiterEngine
+        testRuntimeOnly libraries.junitPlatformLauncher
         testImplementation libraries.mockito
     }
 
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(19)
-        }
-    }
+	
+    //java {
+    //    toolchain {
+    //        languageVersion = JavaLanguageVersion.of(19)
+    //    }
+    //}
 
     test {
         useJUnitPlatform()

@@ -33,6 +33,8 @@ springBoot {
     mainClass.set("kisonar.poc.framework.spring.App")
 }
 //skips plain jar
-tasks.jar {
-    enabled = false
-}
+
+// TODO
+//tasks.jar {
+//    enabled = false
+//}

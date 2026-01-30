@@ -1,11 +1,11 @@
 # POC
 
 ```
-Requires JAVA 18. Soon movement to 19
-Gradle 7.5.1
+Requires JAVA 25.x
+Gradle 9.x
 
-sdk default java 18.0.1-open
-sdk default gradle 7.5.1
+sdk default java 25.0.1-open
+sdk default gradle 9.3.1
 ```
 
 ## It contains
