@@ -29,11 +29,12 @@ allprojects {
         testImplementation libraries.mockito
     }
 
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(19)
-        }
-    }
+	
+    //java {
+    //    toolchain {
+    //        languageVersion = JavaLanguageVersion.of(19)
+    //    }
+    //}
 
     test {
         useJUnitPlatform()
