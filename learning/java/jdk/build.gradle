@@ -1,5 +1,4 @@
 dependencies {
-    implementation libraries.jdbc6
     implementation project(':platform:base')
 }
 

@@ -1,5 +1,13 @@
 rootProject.name = 'poc'
 
+include('learning:java:jdk')
+include('learning:java:my-interview:berlin-clock')
+
+//below we have Java modularity
+include('learning:java:features-library')
+include('learning:java:features-services')
+include('learning:java:features-client')
+
 include('platform:base')
 include('platform:ldap')
 include('tools:key-logger-library')
@@ -10,15 +18,8 @@ include('network:netty:netty-server')
 include('network:netty:netty-client')
 include('services:kafka')
 include('services:rabbitmq')
-include('learning:java:jdk')
-include('learning:java:my-interview:berlin-clock')
+
 include('framework:spring')
 include('framework:spring-security')
+
 include('automation-testing')
-
-//below we have Java modularity
-//include('learning:java:features-library')
-//include('learning:java:features-services')
-//include('learning:java:features-client')
-
-

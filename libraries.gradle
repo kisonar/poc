@@ -3,39 +3,40 @@ import org.codehaus.groovy.runtime.GStringImpl
 ext {
 
     SPRING_BOOT_VERSION = "${springBootVersion}" as GStringImpl
-    KAFKA_VERSION = '2.0.0'
+    KAFKA_VERSION = '4.1.1'
     TEST_CONTAINERS_VERSION ='1.17.5'
     GUACAMOLE_VERSION = '1.6.0'
 
     libraries = [
-            jdbc6               :   "com.oracle.database.jdbc:ojdbc6:11.2.0.4",
-            nettyAll            :   'io.netty:netty-all:4.1.56.Final',
+
+            springBootStarterWeb      : "org.springframework.boot:spring-boot-starter-web:${SPRING_BOOT_VERSION}",
+            springBootStarterWebflux  : "org.springframework.boot:spring-boot-starter-webflux:${SPRING_BOOT_VERSION}",
+            springBootStarterActuator : "org.springframework.boot:spring-boot-starter-actuator:${SPRING_BOOT_VERSION}",
+            springBootStarterLogging  : "org.springframework.boot:spring-boot-starter-logging:${SPRING_BOOT_VERSION}",
+            springBootStarterDataJpa  : "org.springframework.boot:spring-boot-starter-data-jpa:${SPRING_BOOT_VERSION}",
+            springBootStarterWebSocket: "org.springframework.boot:spring-boot-starter-websocket:${SPRING_BOOT_VERSION}",
+            springBootStarterSecurity : "org.springframework.boot:spring-boot-starter-security:${SPRING_BOOT_VERSION}",
+            springBootStarterTest     : "org.springframework.boot:spring-boot-starter-test:${SPRING_BOOT_VERSION}",
+            //Kafka
             apacheKafkaClients  :   "org.apache.kafka:kafka-clients:${KAFKA_VERSION}",
             apacheKafkaStreams  :   "org.apache.kafka:kafka-streams:${KAFKA_VERSION}",
+            // various
+            nettyAll                  : 'io.netty:netty-all:4.2.10.Final',
             rabbitMqAmqpClient  :   'com.rabbitmq:amqp-client:5.16.0',
             apacheCommonsEmail  :   'org.apache.commons:commons-email:1.5',
             jNativeHook         :   'com.1stleg:jnativehook:2.1.0',
-            mariaDbLibrary      :   'org.mariadb.jdbc:mariadb-java-client:2.7.4',
-            opencsv             :   'com.opencsv:opencsv:5.7.1',
-            googleJson          :   'com.google.code.gson:gson:2.9.0',
-
-            springBootStarterWeb        : "org.springframework.boot:spring-boot-starter-web:${SPRING_BOOT_VERSION}",
-            springBootStarterWebflux    : "org.springframework.boot:spring-boot-starter-webflux:${SPRING_BOOT_VERSION}",
-            springBootStarterActuator   : "org.springframework.boot:spring-boot-starter-actuator:${SPRING_BOOT_VERSION}",
-            springBootStarterLogging    : "org.springframework.boot:spring-boot-starter-logging:${SPRING_BOOT_VERSION}",
-            springBootStarterDataJpa    : "org.springframework.boot:spring-boot-starter-data-jpa:${SPRING_BOOT_VERSION}",
-            springBootStarterWebSocket  : "org.springframework.boot:spring-boot-starter-websocket:${SPRING_BOOT_VERSION}",
-            springBootStarterSecurity   : "org.springframework.boot:spring-boot-starter-security:${SPRING_BOOT_VERSION}",
-            springBootStarterTest       : "org.springframework.boot:spring-boot-starter-test:${SPRING_BOOT_VERSION}",
-
+            mariaDbLibrary            : 'org.mariadb.jdbc:mariadb-java-client:3.5.7',
+            opencsv                   : 'com.opencsv:opencsv:5.12.0',
+            googleJson                : 'com.google.code.gson:gson:2.13.2',
+            //security
             securityJwt: "io.jsonwebtoken:jjwt-impl:0.11.5",
             securityJwtJackson: "io.jsonwebtoken:jjwt-jackson:0.11.2",
-
+            // Guacamole
             guacamoleCommon       : "org.apache.guacamole:guacamole-common:${GUACAMOLE_VERSION}",
             guacamoleCommonJs     : "org.apache.guacamole:guacamole-common-js:${GUACAMOLE_VERSION}",
-
-            junitJupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.7.1",
-            junitPlatformLauncher: "org.junit.platform:junit-platform-launcher",
+            // Unit tests
+            junitJupiterEngine        : "org.junit.jupiter:junit-jupiter-engine:5.7.1",
+            junitPlatformLauncher     : "org.junit.platform:junit-platform-launcher",
             mockito               : "org.mockito:mockito-core:4.8.0",
             //test automation
             seleniumApi           : 'org.seleniumhq.selenium:selenium-api:4.5.2',

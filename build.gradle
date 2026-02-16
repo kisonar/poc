@@ -25,17 +25,15 @@ allprojects {
     dependencies {
         /* all projects have JUnit + Mockito activated in compilation & execution*/
         testImplementation libraries.junitJupiterEngine
-        //testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.2")
         testRuntimeOnly libraries.junitPlatformLauncher
         testImplementation libraries.mockito
     }
 
-	
-    //java {
-    //    toolchain {
-    //        languageVersion = JavaLanguageVersion.of(19)
-    //    }
-    //}
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(25)
+        }
+    }
 
     test {
         useJUnitPlatform()
@@ -49,5 +47,4 @@ allprojects {
     //    from configurations.default
     //    into 'dependencies'
     //}
-
 }

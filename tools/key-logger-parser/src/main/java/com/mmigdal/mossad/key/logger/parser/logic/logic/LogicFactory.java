@@ -9,11 +9,9 @@ public final class LogicFactory {
     }
 
     public static Logic getLogic(ModeRuntime modeRuntime, ModeExecution modeExecution) {
-        Logic logic = switch (modeRuntime) {
-            case EXECUTOR -> new LogicExecutor(modeExecution);
-            case ClASIC -> new LogicManual(modeExecution);
-            default -> throw new IllegalArgumentException(String.format("Mode runtime Not supported ", modeRuntime));
-        };
-        return logic;
+          return switch (modeRuntime) {
+                case EXECUTOR -> new LogicExecutor(modeExecution);
+                case ClASIC -> new LogicManual(modeExecution);
+          };
     }
 }
