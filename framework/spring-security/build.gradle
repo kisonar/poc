@@ -2,7 +2,6 @@ plugins {
     id "org.springframework.boot" version "${springBootVersion}"
 }
 
-apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
 
 dependencies {
