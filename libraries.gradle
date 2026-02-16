@@ -1,9 +1,11 @@
+import org.codehaus.groovy.runtime.GStringImpl
+
 ext {
 
-    SPRING_BOOT_VERSION = '3.5.4'
+    SPRING_BOOT_VERSION = "${springBootVersion}" as GStringImpl
     KAFKA_VERSION = '2.0.0'
     TEST_CONTAINERS_VERSION ='1.17.5'
-    GUACAMOLE_VERSION = '1.4.0'
+    GUACAMOLE_VERSION = '1.6.0'
 
     libraries = [
             jdbc6               :   "com.oracle.database.jdbc:ojdbc6:11.2.0.4",
@@ -32,21 +34,12 @@ ext {
             guacamoleCommon       : "org.apache.guacamole:guacamole-common:${GUACAMOLE_VERSION}",
             guacamoleCommonJs     : "org.apache.guacamole:guacamole-common-js:${GUACAMOLE_VERSION}",
 
-            springdoc : "org.springdoc:springdoc-openapi-ui:1.6.13",
-
-            junitJupiterEngine: "org.junit.jupiter:junit-jupiter-engine:6.0.2",
-            junitPlatformLauncher: "org.junit.platform:junit-platform-launcher:6.0.2",
-            testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
-            testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",
+            junitJupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.7.1",
+            junitPlatformLauncher: "org.junit.platform:junit-platform-launcher",
             mockito               : "org.mockito:mockito-core:4.8.0",
             //test automation
             seleniumApi           : 'org.seleniumhq.selenium:selenium-api:4.5.2',
             selenium              : "org.seleniumhq.selenium:selenium-java:4.6.0",
             webdrivermanager      : "io.github.bonigarcia:webdrivermanager:5.3.1"
-    ]
-
-    pluginLibraries = [
-            junit                 : 'org.junit.platform:junit-platform-gradle-plugin:1.2.0'
-            //docker                : 'com.bmuschko:gradle-docker-plugin:3.2.4'
     ]
 }

@@ -1,9 +1,9 @@
 plugins {
-    id "org.springframework.boot" version "2.7.0"
+    id "org.springframework.boot" version "${springBootVersion}"
 }
 
-apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
+
 
 dependencies {
     implementation libraries.springBootStarterDataJpa
@@ -11,14 +11,25 @@ dependencies {
     implementation libraries.springBootStarterWebSocket
     implementation libraries.springBootStarterActuator
     implementation libraries.mariaDbLibrary
-    implementation libraries.guacamoleCommon
-    implementation libraries.guacamoleCommonJs
-    implementation libraries.springdoc
+    // implementation libraries.springdoc
 
-    testImplementation libraries.testContainersJupiter
-    testImplementation libraries.testContainersLibrary
-    testImplementation libraries.springBootStarterTest
+
+    //testImplementation  "org.junit.jupiter:junit-jupiter-engine:6.0.2" //libraries.junitJupiterEngine
+    //testImplementation("org.junit.jupiter:junit-jupiter:6.0.2")
+
+    //testImplementation libraries.springBootStarterTest
+    //testImplementation libraries.junitJupiterEngine
+    //testRuntimeOnly libraries.junitPlatformLauncher
 }
+
+
+//test {
+//    useJUnitPlatform()
+//    ignoreFailures = false /*continue even there are test failures*/
+//    testLogging {/
+//        events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
+//   }
+//}/
 
 description = 'spring'
 
@@ -29,7 +40,7 @@ description = 'spring'
 
 //generates FAT jar
 springBoot {
-    buildInfo()
+    //buildInfo()
     mainClass.set("kisonar.poc.framework.spring.App")
 }
 //skips plain jar

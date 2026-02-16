@@ -1,13 +1,12 @@
 package kisonar.poc.framework.spring.domain.jpa.user;
 
-import org.hibernate.annotations.GenericGenerator;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Objects;
 
 import static kisonar.poc.framework.spring.domain.jpa.EntitytGenerationType.NATIVE;
@@ -23,7 +22,6 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = NATIVE)
-    @GenericGenerator(name = NATIVE, strategy = NATIVE)
     @Column(name = USER_ID)
     private Long userId;
 

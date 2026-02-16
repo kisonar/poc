@@ -1,6 +1,10 @@
 package kisonar.poc.framework.spring.security.controller.rest.web;
 
 import io.jsonwebtoken.ExpiredJwtException;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import kisonar.poc.framework.spring.security.service.JwtUserDetailsService;
 import kisonar.poc.framework.spring.security.util.JwtTokenUtil;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,10 +14,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
