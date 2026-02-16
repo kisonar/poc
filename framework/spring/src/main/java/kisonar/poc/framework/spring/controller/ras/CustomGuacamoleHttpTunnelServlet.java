@@ -1,5 +1,6 @@
 package kisonar.poc.framework.spring.controller.ras;
 
+/*
 import kisonar.poc.framework.spring.service.ras.RasService;
 import org.apache.guacamole.GuacamoleException;
 import org.apache.guacamole.net.GuacamoleTunnel;
@@ -28,3 +29,5 @@ public class CustomGuacamoleHttpTunnelServlet extends GuacamoleHTTPTunnelServlet
       }
 
 }
+
+ */

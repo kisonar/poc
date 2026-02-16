@@ -1,5 +1,5 @@
 plugins {
-    id "org.springframework.boot" version "2.7.0"
+    id "org.springframework.boot" version "${springBootVersion}"
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -11,13 +11,9 @@ dependencies {
     implementation libraries.springBootStarterWebSocket
     implementation libraries.springBootStarterActuator
     implementation libraries.mariaDbLibrary
-    implementation libraries.guacamoleCommon
-    implementation libraries.guacamoleCommonJs
     implementation libraries.springdoc
 
-    testImplementation libraries.testContainersJupiter
-    testImplementation libraries.testContainersLibrary
-    testImplementation libraries.springBootStarterTest
+    //testImplementation libraries.springBootStarterTest
 }
 
 description = 'spring'
@@ -29,7 +25,7 @@ description = 'spring'
 
 //generates FAT jar
 springBoot {
-    buildInfo()
+    //buildInfo()
     mainClass.set("kisonar.poc.framework.spring.App")
 }
 //skips plain jar

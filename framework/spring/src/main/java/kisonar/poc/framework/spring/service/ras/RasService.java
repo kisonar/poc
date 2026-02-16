@@ -1,5 +1,7 @@
 package kisonar.poc.framework.spring.service.ras;
 
+
+/*
 import kisonar.poc.framework.spring.config.ras.GuacamoleClientConfig;
 import kisonar.poc.framework.spring.config.ras.GuacamoleGuacdConfig;
 import org.apache.guacamole.GuacamoleException;
@@ -40,3 +42,4 @@ public class RasService {
             }
       }
 }
+*/

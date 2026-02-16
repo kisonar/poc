@@ -1,9 +1,9 @@
 ext {
 
-    SPRING_BOOT_VERSION = '3.5.4'
+    SPRING_BOOT_VERSION = "${springBootVersion}"
     KAFKA_VERSION = '2.0.0'
     TEST_CONTAINERS_VERSION ='1.17.5'
-    GUACAMOLE_VERSION = '1.4.0'
+    GUACAMOLE_VERSION = '1.6.0'
 
     libraries = [
             jdbc6               :   "com.oracle.database.jdbc:ojdbc6:11.2.0.4",
