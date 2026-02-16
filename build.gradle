@@ -25,6 +25,7 @@ allprojects {
     dependencies {
         /* all projects have JUnit + Mockito activated in compilation & execution*/
         testImplementation libraries.junitJupiterEngine
+        //testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.2")
         testRuntimeOnly libraries.junitPlatformLauncher
         testImplementation libraries.mockito
     }
@@ -44,9 +45,9 @@ allprojects {
         }
     }
 
-    task copyDependencies(type: Copy) {
-        from configurations.default
-        into 'dependencies'
-    }
+    //task copyDependencies(type: Copy) {
+    //    from configurations.default
+    //    into 'dependencies'
+    //}
 
 }

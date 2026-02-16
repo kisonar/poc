@@ -32,12 +32,12 @@ ext {
             guacamoleCommon       : "org.apache.guacamole:guacamole-common:${GUACAMOLE_VERSION}",
             guacamoleCommonJs     : "org.apache.guacamole:guacamole-common-js:${GUACAMOLE_VERSION}",
 
-            springdoc : "org.springdoc:springdoc-openapi-ui:1.6.13",
+            //springdoc : "org.springdoc:springdoc-openapi-ui:1.6.13",
 
-            junitJupiterEngine: "org.junit.jupiter:junit-jupiter-engine:6.0.2",
-            junitPlatformLauncher: "org.junit.platform:junit-platform-launcher:6.0.2",
-            testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
-            testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",
+            junitJupiterEngine   : "org.junit.jupiter:junit-jupiter-engine:5.7.1",
+            junitPlatformLauncher: "org.junit.platform:junit-platform-launcher",
+            //testContainersJupiter : "org.testcontainers:junit-jupiter:${TEST_CONTAINERS_VERSION}",
+            //testContainersLibrary : "org.testcontainers:testcontainers:${TEST_CONTAINERS_VERSION}",
             mockito               : "org.mockito:mockito-core:4.8.0",
             //test automation
             seleniumApi           : 'org.seleniumhq.selenium:selenium-api:4.5.2',
@@ -45,8 +45,8 @@ ext {
             webdrivermanager      : "io.github.bonigarcia:webdrivermanager:5.3.1"
     ]
 
-    pluginLibraries = [
-            junit                 : 'org.junit.platform:junit-platform-gradle-plugin:1.2.0'
+    //pluginLibraries = [
+    //junit                 : 'org.junit.platform:junit-platform-gradle-plugin:1.2.0'
             //docker                : 'com.bmuschko:gradle-docker-plugin:3.2.4'
-    ]
+    //]
 }

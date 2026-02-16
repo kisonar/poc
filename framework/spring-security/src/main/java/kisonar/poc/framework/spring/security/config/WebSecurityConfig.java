@@ -8,7 +8,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -48,18 +47,20 @@ public class WebSecurityConfig {
       @Bean
       public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
             // We don't need CSRF for this example
+
             httpSecurity
-                    .csrf().disable()
-                    .cors().disable()
+                    .csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.init(httpSecurity))
+                    .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configure(httpSecurity)).build();
+
                     // dont authenticate this particular request
-                    .authorizeRequests().antMatchers("/authenticate").permitAll()
+            //.authorizeRequests().antMatchers("/authenticate").permitAll()
                     // all other requests need to be authenticated
-                    .anyRequest().authenticated()
+            //.anyRequest().authenticated()
                     // make sure we use stateless session; session won't be used to
                     // store user's state.
-                    .and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
-                    .and().sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+            //.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
+            //.and().sessionManagement()
+            // .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
             // Add a filter to validate the tokens with every request
             return httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class).build();

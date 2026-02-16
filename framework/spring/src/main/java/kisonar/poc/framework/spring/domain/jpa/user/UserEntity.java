@@ -6,7 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Objects;
 
@@ -23,7 +22,6 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = NATIVE)
-    @GenericGenerator(name = NATIVE, strategy = NATIVE)
     @Column(name = USER_ID)
     private Long userId;
 
