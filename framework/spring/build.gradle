@@ -4,7 +4,6 @@ plugins {
 
 apply plugin: 'org.springframework.boot'
 
-
 dependencies {
     implementation libraries.springBootStarterDataJpa
     implementation libraries.springBootStarterWeb
@@ -13,23 +12,8 @@ dependencies {
     implementation libraries.mariaDbLibrary
     // implementation libraries.springdoc
 
-
-    //testImplementation  "org.junit.jupiter:junit-jupiter-engine:6.0.2" //libraries.junitJupiterEngine
-    //testImplementation("org.junit.jupiter:junit-jupiter:6.0.2")
-
     //testImplementation libraries.springBootStarterTest
-    //testImplementation libraries.junitJupiterEngine
-    //testRuntimeOnly libraries.junitPlatformLauncher
 }
-
-
-//test {
-//    useJUnitPlatform()
-//    ignoreFailures = false /*continue even there are test failures*/
-//    testLogging {/
-//        events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
-//   }
-//}/
 
 description = 'spring'
 
