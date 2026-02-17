@@ -1,5 +1,5 @@
 dependencies {
-    implementation project(':learning:java:features-library') // this has to be added. If you remove it, classes fro library module are not visible
+    implementation project(':learning:java:features-library') // this has to be added. If you remove it, classes for library module are not visible
     implementation project(':learning:java:features-services')
 }
 

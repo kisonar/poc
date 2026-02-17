@@ -1,11 +1,10 @@
 package com.mmigdal.mossad.key.logger.parser.logic.logic;
 
-import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeExecution;
 import com.mmigdal.mossad.key.logger.parser.logic.file.FileProcessor;
+import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeExecution;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Logger;
 
 public final class LogicExecutor extends LogicAbstraction {
 
@@ -18,12 +17,10 @@ public final class LogicExecutor extends LogicAbstraction {
     @Override
     public void execute() {
         determineExecutorService();
-        getItems().stream().forEach(item -> {
-            executorService.submit(() -> {
+          getItems().forEach(item -> executorService.submit(() -> {
                 FileProcessor fileProcessor = new FileProcessor();
                 fileProcessor.processFile(Thread.currentThread().getName(), item.input, item.output);
-            });
-        });
+          }));
         executorService.shutdown();
     }
 
@@ -33,7 +30,6 @@ public final class LogicExecutor extends LogicAbstraction {
             case PARALLEL_DEFAULT -> Executors.newWorkStealingPool();
             case SINGLE -> Executors.newSingleThreadExecutor();
             case CACHED -> Executors.newCachedThreadPool();
-            default -> throw new IllegalArgumentException(String.format("Provided mode execution is not supported %s", modeExecution));
         };
     }
 }
