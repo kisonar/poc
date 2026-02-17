@@ -11,10 +11,8 @@ import java.security.Security;
 
 public class KafkaProcuderClientApp {
 
-    public static void main(String[] args) {
-
+      static void main(String[] args) {
         Security.addProvider(new CustomProvider("admin", "1", "Migi custom provider"));
-
         Producer<String, String> producer = new KafkaProducer<>(KafkaProperties.getProducerProperties(KafkaProperties.getCommonProperties()));
         sendMessages(producer);
         sendMessages(producer);
@@ -23,7 +21,7 @@ public class KafkaProcuderClientApp {
 
     private static void sendMessages(Producer<String, String> producer) {
         for (int i = 0; i < 12; i++) {
-            ProducerRecord<String, String> producerRecord = new ProducerRecord(KafkaTopicNames.TOPIC_WRITER,
+              ProducerRecord<String, String> producerRecord = new ProducerRecord<>(KafkaTopicNames.TOPIC_WRITER,
                     String.valueOf(i), String.valueOf(i));
             producer.send(producerRecord);
             System.out.println("Sent message with id: " + i);

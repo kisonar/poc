@@ -18,18 +18,6 @@ dependencies {
 description = 'spring'
 
 //creates both FAT and plain JAR
-//bootJar {
-//    mainClass = 'kisonar.poc.framework.spring.security.App'
-//}
-
-//generates FAT jar
-springBoot {
-    //buildInfo()
-    mainClass.set("kisonar.poc.framework.spring.App")
+bootJar {
+    mainClass = 'kisonar.poc.framework.spring.security.App'
 }
-//skips plain jar
-
-// TODO
-//tasks.jar {
-//    enabled = false
-//}

@@ -2,8 +2,6 @@ plugins {
     id 'java'
     id 'java-library'
     id 'maven-publish'
-    //id 'com.github.ben-manes.versions' version '0.44.0'
-    //id 'org.javamodularity.moduleplugin' version '1.7.0'
 }
 
 allprojects {
@@ -44,8 +42,8 @@ allprojects {
         failFast = true
     }
 
-    //task copyDependencies(type: Copy) {
-    //    from configurations.default
-    //    into 'dependencies'
-    //}
+    tasks.register('copyDependencies', Copy) {
+        from configurations.runtimeClasspath
+        into "build/dependencies"
+    }
 }
