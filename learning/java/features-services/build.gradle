@@ -1,5 +1,5 @@
 dependencies {
-    implementation project(':learning:java:features-library')
+    api project(':learning:java:features-library')
 }
 
 description = 'features-services'
