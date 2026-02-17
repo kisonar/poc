@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.spec.SecretKeySpec;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
@@ -62,9 +63,11 @@ public class JwtTokenUtil implements Serializable {
       //   compaction of the JWT to a URL-safe string
       private String doGenerateToken(Map<String, Object> claims, String subject) {
 
+            SecretKeySpec key = new SecretKeySpec(secret.getBytes(), SignatureAlgorithm.HS512.name());
             return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
                     .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-                    .signWith(SignatureAlgorithm.HS512, secret).compact();
+                    .signWith(key)
+                    .compact();
       }
 
       //validate token

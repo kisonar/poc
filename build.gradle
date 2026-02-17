@@ -2,8 +2,6 @@ plugins {
     id 'java'
     id 'java-library'
     id 'maven-publish'
-    //id 'com.github.ben-manes.versions' version '0.44.0'
-    //id 'org.javamodularity.moduleplugin' version '1.7.0'
 }
 
 allprojects {
@@ -37,15 +35,15 @@ allprojects {
 
     test {
         useJUnitPlatform()
-        ignoreFailures = false /*continue even there are test failures*/
+        ignoreFailures = false /* true continue even there are test failures*/
         testLogging {
             events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
         }
         failFast = true
     }
 
-    //task copyDependencies(type: Copy) {
-    //    from configurations.default
-    //    into 'dependencies'
-    //}
+    tasks.register('copyDependencies', Copy) {
+        from configurations.runtimeClasspath
+        into "build/dependencies"
+    }
 }
