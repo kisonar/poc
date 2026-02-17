@@ -6,7 +6,7 @@ apply plugin: 'org.springframework.boot'
 
 dependencies {
     implementation libraries.springBootStarterDataJpa
-    implementation libraries.springBootStarterWeb
+    implementation libraries.springBootStarterWebflux
     implementation libraries.springBootStarterWebSocket
     implementation libraries.springBootStarterActuator
     implementation libraries.mariaDbLibrary
