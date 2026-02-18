@@ -1,6 +1,6 @@
 package kisonar.poc.framework.spring.controller.scheduled;
 
-import kisonar.poc.framework.spring.service.user.UserService;
+import kisonar.poc.framework.spring.service.UserService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 

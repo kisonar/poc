@@ -1,7 +1,7 @@
 package kisonar.poc.framework.spring.controller.scheduled;
 
 import kisonar.poc.framework.spring.domain.TaskState;
-import kisonar.poc.framework.spring.service.task.TaskService;
+import kisonar.poc.framework.spring.service.TaskService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 

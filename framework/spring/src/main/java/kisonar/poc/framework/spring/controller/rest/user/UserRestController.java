@@ -1,6 +1,6 @@
 package kisonar.poc.framework.spring.controller.rest.user;
 
-import kisonar.poc.framework.spring.service.user.UserService;
+import kisonar.poc.framework.spring.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

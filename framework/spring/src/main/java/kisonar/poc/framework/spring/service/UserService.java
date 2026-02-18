@@ -1,7 +1,7 @@
-package kisonar.poc.framework.spring.service.user;
+package kisonar.poc.framework.spring.service;
 
 import kisonar.poc.framework.spring.domain.jpa.user.UserEntity;
-import kisonar.poc.framework.spring.repository.user.UserRepository;
+import kisonar.poc.framework.spring.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

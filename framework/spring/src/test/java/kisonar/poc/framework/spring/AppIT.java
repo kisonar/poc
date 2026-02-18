@@ -1,6 +1,5 @@
-package kisonar.poc.framework.spring.util.task;
+package kisonar.poc.framework.spring;
 
-import kisonar.poc.framework.spring.App;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

@@ -1,7 +1,7 @@
-package kisonar.poc.framework.spring.service.task;
+package kisonar.poc.framework.spring.service;
 
 import kisonar.poc.framework.spring.domain.jpa.task.TaskEntity;
-import kisonar.poc.framework.spring.repository.task.TaskRepository;
+import kisonar.poc.framework.spring.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

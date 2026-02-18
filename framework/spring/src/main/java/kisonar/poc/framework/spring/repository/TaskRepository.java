@@ -1,4 +1,4 @@
-package kisonar.poc.framework.spring.repository.task;
+package kisonar.poc.framework.spring.repository;
 
 import jakarta.transaction.Transactional;
 import kisonar.poc.framework.spring.domain.jpa.task.TaskEntity;

@@ -10,9 +10,3 @@ spring:
     username: user
     password: pass
     driver-class-name: org.mariadb.jdbc.Driver
-  #jpa:
-  #  hibernate:
-  #    ddl-auto: create
-  #    naming:
-  #      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-  #  show-sql: true

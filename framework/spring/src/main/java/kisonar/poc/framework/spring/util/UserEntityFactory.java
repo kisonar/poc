@@ -1,4 +1,4 @@
-package kisonar.poc.framework.spring.util.user;
+package kisonar.poc.framework.spring.util;
 
 import kisonar.poc.framework.spring.domain.jpa.user.UserEntity;
 

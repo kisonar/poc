@@ -1,4 +1,4 @@
-package kisonar.poc.framework.spring.util.task;
+package kisonar.poc.framework.spring.util;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +8,7 @@ public class TaskEntityFactoryTest {
 
       @Test
       public void testCreateTaskEntity() {
-            var cut = TaskEntityFactory.getUserEntity("OK", "cos");
+            var cut = TaskEntityFactory.getTaskEntity("OK", "cos");
             assertEquals("OK", cut.getTaskName());
       }
 }
