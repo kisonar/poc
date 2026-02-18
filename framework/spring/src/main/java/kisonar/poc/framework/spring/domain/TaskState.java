@@ -2,14 +2,11 @@ package kisonar.poc.framework.spring.domain;
 
 public enum TaskState {
 
-	ONGOING("Ongoing"),
-	DONE("Done"),
-	NEW("New"),
-	POSTPONED("Postponed");
+      ONGOING(),
+      DONE(),
+      NEW(),
+      POSTPONED();
 
-	private final String state;
-
-	TaskState(String state) {
-		this.state = state;
-	}
+      TaskState() {
+      }
 }
