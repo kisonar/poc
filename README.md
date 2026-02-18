@@ -28,3 +28,11 @@ gradle clean build copyDependencies
 
 gradle clean build copyDependencies shadowJar
 ```
+
+#### TODOs
+
+1 after upgrade to Sprign 4.x JPA stopped working
+Caused by: org.hibernate.service.spi.ServiceException:
+Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to:
+Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or
+'hibernate.dialect' when a custom Dialect implementation must be provided)

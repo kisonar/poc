@@ -1,0 +1,22 @@
+tasks.register("startDockerCompose", Exec) {
+    commandLine("docker", "compose", "up", "--detach")
+    mustRunAfter(test)
+}
+
+tasks.register("stopDockerCompose", Exec) {
+    commandLine("docker", "compose", "down", "--volumes")
+}
+
+tasks.register("integrationTest", Test) {
+    useJUnitPlatform()
+    filter {
+        includeTestsMatching("*IT")
+    }
+    testClassesDirs = testing.suites.test.sources.output.classesDirs
+    classpath = testing.suites.test.sources.runtimeClasspath
+
+    dependsOn(startDockerCompose)
+    finalizedBy(stopDockerCompose)
+}
+
+check.dependsOn("integrationTest")

@@ -5,17 +5,19 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    implementation libraries.springBootStarterDataJpa
+    //implementation libraries.springBootStarterDataJpa
     implementation libraries.springBootStarterWebflux
     implementation libraries.springBootStarterWebSocket
     implementation libraries.springBootStarterActuator
     implementation libraries.mariaDbLibrary
     // implementation libraries.springdoc
 
-    //testImplementation libraries.springBootStarterTest
+    testImplementation libraries.springBootTest
 }
 
 description = 'spring'
+
+apply from: "integrationTest.gradle"
 
 //creates both FAT and plain JAR
 bootJar {

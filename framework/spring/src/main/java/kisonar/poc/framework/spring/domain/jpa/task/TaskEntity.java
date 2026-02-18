@@ -1,16 +1,6 @@
 package kisonar.poc.framework.spring.domain.jpa.task;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-import java.util.Objects;
-
-import static kisonar.poc.framework.spring.domain.jpa.EntitytGenerationType.NATIVE;
-
+/*
 @Entity
 @Table(name = "tasks")
 public class TaskEntity {
@@ -85,3 +75,4 @@ public class TaskEntity {
 		this.taskStatus = taskStatus;
 	}
 }
+*/

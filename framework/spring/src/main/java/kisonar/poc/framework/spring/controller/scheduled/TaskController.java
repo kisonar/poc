@@ -2,7 +2,6 @@ package kisonar.poc.framework.spring.controller.scheduled;
 
 import kisonar.poc.framework.spring.domain.TaskState;
 import kisonar.poc.framework.spring.service.task.TaskService;
-import kisonar.poc.framework.spring.util.task.TaskEntityFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 
@@ -29,8 +28,8 @@ public class TaskController {
             int value = atomicInteger.incrementAndGet();
             String taskName = "Task" + value;
             String taskValue = VALUES.get(RANDOM.nextInt(VALUES.size())).name();
-            var taskEntity = TaskEntityFactory.getUserEntity(taskName, taskValue);
-            taskService.add(taskEntity);
-            System.out.println("Added entity " + taskEntity);
+            //var taskEntity = TaskEntityFactory.getUserEntity(taskName, taskValue);
+            //taskService.add(taskEntity);
+            //System.out.println("Added entity " + taskEntity);
       }
 }
