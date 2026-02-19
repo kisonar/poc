@@ -28,7 +28,7 @@ curl -X GET http://localhost:8080/actuator/health
 ```  
 localhost:8080
 system: mysql
-server: db
+server: mariadb - must match docker conatiner instance
 database name: default_database
 user/password: root/root 
 ```
