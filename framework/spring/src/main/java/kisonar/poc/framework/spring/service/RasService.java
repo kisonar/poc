@@ -1,4 +1,4 @@
-package kisonar.poc.framework.spring.service.ras;
+package kisonar.poc.framework.spring.service;
 
 
 /*

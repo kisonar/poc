@@ -1,0 +1,22 @@
+services:
+
+  # MariaDB
+  mariadb:
+    image: mariadb:12.2.2-noble
+    environment:
+      #MARIADB_RANDOM_ROOT_PASSWORD: "true"
+      MARIADB_DATABASE: default_database
+      MARIADB_USER: user
+      MARIADB_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./storage:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d/
+    ports:
+      - "3306:3306"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8085:8080"

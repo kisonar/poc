@@ -57,8 +57,8 @@ public class TaskEntity {
 		return "TaskEntity{" +
 				"taskId=" + taskId +
 				", taskName='" + taskName + '\'' +
-				", taskStatus='" + taskStatus + '\'' +
-				'}';
+                ", taskStatus='" + taskStatus + '\'' +
+                '}';
 	}
 
 	public Long getTaskId() {

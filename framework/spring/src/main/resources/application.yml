@@ -1,32 +1,7 @@
-management:
-  info:
-    java:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: health, info
-
 spring:
-  application:
-    name: kisonar-poc-spring
-    main:
-      banner-mode: "on"
-    http.encoding:
-      charset: UTF-8
-      enabled: true
-      force: true
-  datasource:
-    url: jdbc:mariadb://localhost:3306/default_database
-    username: user
-    password: pass
-    driver-class-name: org.mariadb.jdbc.Driver
-  jpa:
-    show-sql: true
-    hibernate:
-      #ddl-auto: create
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # files underscores in JPA
+  cloud:
+    config:
+      enabled: false
 
 guacamole:
   guacd:
@@ -38,3 +13,12 @@ guacamole:
     protocol: vnc
     ignore-cert: true
     password: Marcin
+
+management:
+  info:
+    java:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health, info

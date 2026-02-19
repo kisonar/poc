@@ -1,8 +1,10 @@
 plugins {
     id "org.springframework.boot" version "${springBootVersion}"
+    id "com.avast.gradle.docker-compose" version "0.17.21"
 }
 
 apply plugin: 'org.springframework.boot'
+apply plugin: 'docker-compose'
 
 dependencies {
     implementation libraries.springBootStarterDataJpa
@@ -10,9 +12,10 @@ dependencies {
     implementation libraries.springBootStarterWebSocket
     implementation libraries.springBootStarterActuator
     implementation libraries.mariaDbLibrary
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // implementation libraries.springdoc
 
-    //testImplementation libraries.springBootStarterTest
+    testImplementation libraries.springBootTest
 }
 
 description = 'spring'
@@ -21,3 +24,5 @@ description = 'spring'
 bootJar {
     mainClass = 'kisonar.poc.framework.spring.security.App'
 }
+
+dockerCompose.isRequiredBy(test)

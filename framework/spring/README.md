@@ -22,3 +22,13 @@ http://localhost:8080/swagger-ui/index.html
 
 curl -X GET http://localhost:8080/actuator/info
 curl -X GET http://localhost:8080/actuator/health
+
+#### Adminer
+
+```  
+localhost:8080
+system: mysql
+server: mariadb - must match docker container instance
+database name: default_database
+user/password: root/root 
+```
