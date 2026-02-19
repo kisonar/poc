@@ -19,7 +19,7 @@ public class UserService {
             return userRepository.findById(userId);
       }
 
-      public void add(UserEntity userEntity) {
-            userRepository.saveAndFlush(userEntity);
+      public void add(UserEntity user) {
+            userRepository.saveAndFlush(user);
       }
 }

@@ -10,5 +10,4 @@ public final class UserEntityFactory {
       public static UserEntity getUserEntity(String name, String password, String email) {
             return new UserEntity(null, name, password, email);
       }
-
 }

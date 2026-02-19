@@ -28,11 +28,7 @@ curl -X GET http://localhost:8080/actuator/health
 ```  
 localhost:8080
 system: mysql
-server: mariadb - must match docker conatiner instance
+server: mariadb - must match docker container instance
 database name: default_database
 user/password: root/root 
 ```
-
-#### TODOs
-
-JPA not working after upgrade to Spring 4.x
