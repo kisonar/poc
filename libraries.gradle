@@ -16,8 +16,8 @@ ext {
             springBootStarterDataJpa  : "org.springframework.boot:spring-boot-starter-data-jpa:${SPRING_BOOT_VERSION}",
             springBootStarterWebSocket: "org.springframework.boot:spring-boot-starter-websocket:${SPRING_BOOT_VERSION}",
             springBootStarterSecurity : "org.springframework.boot:spring-boot-starter-security:${SPRING_BOOT_VERSION}",
-            //springBootStarterTest     : "org.springframework.boot:spring-boot-starter-test:${SPRING_BOOT_VERSION}",
-            springBootTest    : "org.springframework.boot:spring-boot-test:${SPRING_BOOT_VERSION}",
+            //springBootStarterTest    : "org.springframework.boot:spring-boot-starter-test:${SPRING_BOOT_VERSION}",
+            springBootTest            : "org.springframework.boot:spring-boot-test:${SPRING_BOOT_VERSION}",
             //Kafka
             apacheKafkaClients  :   "org.apache.kafka:kafka-clients:${KAFKA_VERSION}",
             apacheKafkaStreams  :   "org.apache.kafka:kafka-streams:${KAFKA_VERSION}",
@@ -30,18 +30,18 @@ ext {
             opencsv                   : 'com.opencsv:opencsv:5.12.0',
             googleJson                : 'com.google.code.gson:gson:2.13.2',
             //security
-            securityJwt: "io.jsonwebtoken:jjwt-impl:0.11.5",
-            securityJwtJackson: "io.jsonwebtoken:jjwt-jackson:0.11.2",
+            securityJwt               : "io.jsonwebtoken:jjwt-impl:0.11.5",
+            securityJwtJackson        : "io.jsonwebtoken:jjwt-jackson:0.11.2",
             // Guacamole
             guacamoleCommon       : "org.apache.guacamole:guacamole-common:${GUACAMOLE_VERSION}",
             guacamoleCommonJs     : "org.apache.guacamole:guacamole-common-js:${GUACAMOLE_VERSION}",
             // Unit tests
-            junitJupiterEngine: "org.junit.jupiter:junit-jupiter-engine:6.0.3",
+            junitJupiterEngine        : "org.junit.jupiter:junit-jupiter-engine:6.0.3",
             junitPlatformLauncher     : "org.junit.platform:junit-platform-launcher",
             mockito               : "org.mockito:mockito-core:4.8.0",
             //test automation
-            seleniumApi           : 'org.seleniumhq.selenium:selenium-api:4.5.2',
-            selenium              : "org.seleniumhq.selenium:selenium-java:4.6.0",
+            seleniumApi               : 'org.seleniumhq.selenium:selenium-api:4.5.2',
+            selenium                  : "org.seleniumhq.selenium:selenium-java:4.6.0",
             webdrivermanager      : "io.github.bonigarcia:webdrivermanager:5.3.1"
     ]
 }
