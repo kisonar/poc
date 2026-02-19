@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
 @SpringBootTest
 public class TaskRepositoryTest {
 
@@ -19,7 +18,7 @@ public class TaskRepositoryTest {
 
       @BeforeEach
       public void setUp() {
-            //taskRepository.deleteAll();
+            taskRepository.deleteAll();
       }
 
       @Test
