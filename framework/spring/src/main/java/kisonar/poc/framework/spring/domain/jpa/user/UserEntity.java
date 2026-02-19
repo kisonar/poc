@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 
 import java.util.Objects;
 
+import static kisonar.poc.framework.spring.domain.jpa.EntitytGenerationType.NATIVE;
+
 @Entity
 @Table(name = "users")
 public class UserEntity {
@@ -19,7 +21,7 @@ public class UserEntity {
       private static final String USER_EMAIL = "userEmail";
 
       @Id
-      @GeneratedValue(strategy = GenerationType.AUTO)
+      @GeneratedValue(strategy = GenerationType.AUTO, generator = NATIVE)
       @Column(name = USER_ID)
       private Long userId;
 
