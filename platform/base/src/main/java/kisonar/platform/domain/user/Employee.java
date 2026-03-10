@@ -4,43 +4,43 @@ import java.util.Objects;
 
 public class Employee {
 
-    private final int id;
-    private final String name;
+      private final int id;
+      private final String name;
 
-    public Employee(int i, String s) {
-        this.id = i;
-        this.name = s;
-    }
+      public Employee(int i, String s) {
+            this.id = i;
+            this.name = s;
+      }
 
-    public int getId() {
-        return id;
-    }
+      public int getId() {
+            return id;
+      }
 
-    public String getName() {
-        return name;
-    }
+      public String getName() {
+            return name;
+      }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Employee employee = (Employee) o;
-        return id == employee.id &&
-                Objects.equals(name, employee.name);
-    }
+      @Override
+      public boolean equals(Object o) {
+            if (this == o) {
+                  return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                  return false;
+            }
+            Employee employee = (Employee) o;
+            return id == employee.id &&
+                    Objects.equals(name, employee.name);
+      }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
+      @Override
+      public int hashCode() {
+            return Objects.hash(id, name);
+      }
 
-    @Override
-    public String toString() {
-        return "[id=" + id + ",name=" + name + "]";
-    }
+      @Override
+      public String toString() {
+            return "[id=" + id + ",name=" + name + "]";
+      }
 }

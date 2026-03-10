@@ -3,13 +3,19 @@ package kisonar.poc.learning.java.jdk.oop;
 public class IntImpl implements Int1WithDefaultWriteAndJustWrite, Int2WithDefaultWrite,
         Int3WithNoDefaultOnlyGo {
 
-      @Override
-      public String go() {
-            return "Go from IntImpl";
+      private final IntMode mode;
+
+      public IntImpl(IntMode mode) {
+            this.mode = mode;
       }
 
       @Override
       public String write(String input) {
-            return "Write from IntImpl";
+            return switch (mode) {
+                  case ONE -> Int1WithDefaultWriteAndJustWrite.super.write(input);
+                  case TWO -> Int2WithDefaultWrite.super.write(input);
+                  case THREE -> "Three Impl write " + input;
+                  default -> "Write default from IntImpl";
+            };
       }
 }

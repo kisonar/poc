@@ -33,7 +33,7 @@ public class RecordFunctionsTest {
             var record = RecordFunctions.copyValuesFromSecondToFirst.apply(entity, entityAnother);
 
             assertEquals(record.id(), entity.id);
-            assertEquals(record.name(), anotherName);
-            assertEquals(record.value(), anotherValue);
+            assertEquals(anotherName, record.name());
+            assertEquals(anotherValue, record.value());
       }
 }

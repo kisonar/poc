@@ -8,39 +8,35 @@ import org.junit.jupiter.api.Test;
 
 class BerlinClockTest {
 
-    private BerlinClock berlinClock;
+      private BerlinClock berlinClock;
 
-    @BeforeEach
-    void setUp() {
-        berlinClock = new BerlinClock();
-    }
+      @BeforeEach
+      void setUp() {
+            berlinClock = new BerlinClock();
+      }
 
-    @AfterEach
-    void tearDown() {
-    }
+      @AfterEach
+      void tearDown() {
+      }
 
-    @Test
-    void convert() {
-      String time = "16:50";
-      ConvertionResult convertionResult = berlinClock.convert(time);
-      Assertions.assertEquals(16, convertionResult.hours);
-      Assertions.assertEquals(50, convertionResult.minutes);
+      @Test
+      void convert() {
+            String time = "16:50";
+            ConvertionResult convertionResult = berlinClock.convert(time);
+            Assertions.assertEquals(16, convertionResult.hours);
+            Assertions.assertEquals(50, convertionResult.minutes);
 
-    }
+      }
 
-    @Test
-    public void logicFlow() {
-      ConvertionResult convertionResult = berlinClock.convert("17:11");
+      @Test
+      public void logicFlow() {
+            ConvertionResult convertionResult = berlinClock.convert("17:11");
 
-    }
-
-
-    @Test
-    void print() {
-    }
+      }
 
 
-
-
+      @Test
+      void print() {
+      }
 
 }

@@ -14,8 +14,10 @@ public class TimeTest {
       public void timeComparison() {
             Instant now = Instant.now();
             Instant earlier = now.minus(24, HOURS);
+
             long resultHours = HOURS.between(earlier, now);
             long resultMinutes = MINUTES.between(earlier, now);
+
             assertEquals(24, resultHours);
             assertEquals(1440, resultMinutes);
       }

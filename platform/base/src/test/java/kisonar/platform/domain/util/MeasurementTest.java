@@ -7,18 +7,18 @@ import java.util.concurrent.TimeUnit;
 
 public class MeasurementTest {
 
-    private Measurement measurement;
+      private Measurement measurement;
 
-    @BeforeEach
-    public void setUp(){
-        measurement = new Measurement();
-    }
+      @BeforeEach
+      public void setUp() {
+            measurement = new Measurement();
+      }
 
-    @Test
-    public void measure() throws InterruptedException {
-        measurement.start();
-        TimeUnit.SECONDS.sleep(1);
-        measurement.finish();
-        measurement.printResult();
-    }
+      @Test
+      public void measure() throws InterruptedException {
+            measurement.start();
+            TimeUnit.SECONDS.sleep(1);
+            measurement.finish();
+            measurement.printResult();
+      }
 }

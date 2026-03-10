@@ -12,76 +12,75 @@ import java.util.logging.Logger;
 
 public final class MailSender {
 
-    private final Logger LOG = Logger.getLogger(MailSender.class.getCanonicalName());
-    private EmailAttachment attachment;
-    private MultiPartEmail email;
+      public static int SMTP_PORT = 465;
+      private final Logger LOG = Logger.getLogger(MailSender.class.getCanonicalName());
+      private final String mailHostName;
+      private final String emailAccount;
+      private final String password;
+      private final int port;
+      private EmailAttachment attachment;
+      private MultiPartEmail email;
 
-    private final String mailHostName;
-    private final String emailAccount;
-    private final String password;
-    private final int port;
+      public MailSender(String mailHostName, String emailAccount, String password, int port) {
+            this.mailHostName = mailHostName;
+            this.emailAccount = emailAccount;
+            this.password = password;
+            this.port = port;
+      }
 
-    public static int SMTP_PORT = 465;
+      public void prepareEmailWithAttqchment(List<String> files) throws EmailException {
+            email = prepareEmail();
+            files.forEach(file -> {
+                  attachment = prepareEmailAttachment(file);
+                  try {
+                        email.attach(attachment);
+                  }
+                  catch (EmailException e) {
+                        LOG.warning(String.format("Cannot add attachment due to: %s", e.getMessage()));
+                  }
+            });
+      }
 
-    public MailSender(String mailHostName, String emailAccount, String password, int port) {
-        this.mailHostName = mailHostName;
-        this.emailAccount = emailAccount;
-        this.password = password;
-        this.port = port;
-    }
+      public void send() throws EmailException {
+            email.send();
+      }
 
-    public void prepareEmailWithAttqchment(List<String> files) throws EmailException {
-        email = prepareEmail();
-        files.forEach(file -> {
-            attachment = prepareEmailAttachment(file);
+      private MultiPartEmail prepareEmail() throws EmailException {
+            email = new MultiPartEmail();
+            email.setHostName(mailHostName);
+            email.addTo(emailAccount);
+            email.setFrom(emailAccount);
+            email.setSubject("AI report: " + LocalDateTime.now());
+            email.setMsg(resolveHostName());
+            email.setSmtpPort(port);
+            email.setSSLOnConnect(true);
+            email.setSSLCheckServerIdentity(true);
+            email.setBounceAddress(emailAccount);
+            email.setAuthentication(emailAccount, password);
+            return email;
+      }
+
+      private EmailAttachment prepareEmailAttachment(String filePath) {
+            attachment = new EmailAttachment();
+            attachment.setPath(filePath);
+            attachment.setDisposition(EmailAttachment.ATTACHMENT);
+            return attachment;
+      }
+
+      private String resolveHostName() {
+            StringBuilder stringBuilder = new StringBuilder();
             try {
-                email.attach(attachment);
+                  stringBuilder.append(InetAddress.getLocalHost().getHostAddress());
+                  stringBuilder.append("\n");
+                  stringBuilder.append(InetAddress.getLocalHost().getHostName());
+                  stringBuilder.append("\n");
+                  stringBuilder.append(InetAddress.getLocalHost().getCanonicalHostName());
+                  stringBuilder.append("\n");
+                  stringBuilder.append(InetAddress.getLocalHost().toString());
             }
-            catch (EmailException e) {
-                LOG.warning(String.format("Cannot add attachment due to: %s", e.getMessage()));
+            catch (UnknownHostException e) {
+                  stringBuilder.append(String.format("\n Host determination failed up due to: %s", e.getMessage()));
             }
-        });
-    }
-
-    public void send() throws EmailException {
-        email.send();
-    }
-
-    private MultiPartEmail prepareEmail() throws EmailException {
-        email = new MultiPartEmail();
-        email.setHostName(mailHostName);
-        email.addTo(emailAccount);
-        email.setFrom(emailAccount);
-        email.setSubject("AI report: " + LocalDateTime.now());
-        email.setMsg(resolveHostName());
-        email.setSmtpPort(port);
-        email.setSSLOnConnect(true);
-        email.setSSLCheckServerIdentity(true);
-        email.setBounceAddress(emailAccount);
-        email.setAuthentication(emailAccount, password);
-        return email;
-    }
-
-    private EmailAttachment prepareEmailAttachment(String filePath) {
-        attachment = new EmailAttachment();
-        attachment.setPath(filePath);
-        attachment.setDisposition(EmailAttachment.ATTACHMENT);
-        return attachment;
-    }
-
-    private String resolveHostName() {
-        StringBuilder stringBuilder = new StringBuilder();
-        try {
-            stringBuilder.append(InetAddress.getLocalHost().getHostAddress());
-            stringBuilder.append("\n");
-            stringBuilder.append(InetAddress.getLocalHost().getHostName());
-            stringBuilder.append("\n");
-            stringBuilder.append(InetAddress.getLocalHost().getCanonicalHostName());
-            stringBuilder.append("\n");
-            stringBuilder.append(InetAddress.getLocalHost().toString());
-        } catch (UnknownHostException e) {
-            stringBuilder.append(String.format("\n Host determination failed up due to: %s", e.getMessage()));
-        }
-        return stringBuilder.toString();
-    }
+            return stringBuilder.toString();
+      }
 }

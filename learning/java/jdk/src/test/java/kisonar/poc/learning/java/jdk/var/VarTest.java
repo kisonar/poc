@@ -13,17 +13,16 @@ public final class VarTest {
       public void checkTill10() {
             Function<String, String> helloFunction = s -> "Hello " + s;
 
-            var strings = new ArrayList<>();
+            var strings = new ArrayList<String>();
             strings.add(helloFunction.apply("World"));
 
             // Inference of generics (Diamond Operator) with anonymous inner classes (Java 9 -> JEP 213)
-            Consumer printer = (Consumer<String>) string -> System.out.println(string);
-            strings.forEach(printer::accept);
+            Consumer<String> printer = System.out::println;
+            strings.forEach(printer);
       }
 
       @Test
       public void checkSince10() {
-
             // Inference of generic types (List<String>)
             var strings = Arrays.asList("World", "Java 10"); //not mutable list
 

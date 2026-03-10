@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -22,7 +21,7 @@ public class StreamsTest {
             User user2 = UserFactory.getUser("2", "Adrian", "Puchalski", "password2", "kisonar@wp.pl");
             usersList.add(user1);
             usersList.add(user2);
-            List<String> userNames = usersList.stream().map(User::name).collect(Collectors.toList());
+            List<String> userNames = usersList.stream().map(User::name).toList();
             assertEquals(2, userNames.size());
       }
 
@@ -45,13 +44,27 @@ public class StreamsTest {
 
       @Test
       public void reduceAsSilnia() {
-            var result = Stream.of(1, 2, 3, 4).reduce(1, (val1, val2) -> val1 * val2);
+            var result = Stream.of(1, 2, 3, 4).reduce(1,
+                    (val1, val2) ->
+                            val1 * val2
+            );
             assertEquals(24, result);
+
+            var resultForTwo = Stream.of(1, 2, 3, 4).reduce(2,
+                    (val1, val2) ->
+                            val1 * val2
+            );
+            assertEquals(48, resultForTwo);
+
       }
 
       @Test
       public void reduceAsTest() {
-            var result = Stream.of(1, 2, 3, 4).reduce(1, (val1, val2) -> val1 < val2 ? val1 + val2 : val1 * val2);
+            var result = Stream.of(1, 2, 3, 4).reduce(1,
+                    (accResult, val2) ->
+                            accResult < val2 ?
+                                    accResult + val2 :
+                                    accResult * val2);
             assertEquals(36, result);
       }
 }

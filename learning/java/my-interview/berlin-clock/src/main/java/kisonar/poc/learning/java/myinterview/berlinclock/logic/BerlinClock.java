@@ -7,17 +7,17 @@ import java.time.LocalTime;
 
 public class BerlinClock {
 
-    private Converter converter;
+      private final Converter converter;
 
-    public BerlinClock() {
-        converter = new Converter();
-    }
+      public BerlinClock() {
+            converter = new Converter();
+      }
 
-  public ConvertionResult convert(String inputHhMm) {
-    LocalTime dateTime = LocalTime.parse(inputHhMm);
-    return converter.convertToBerlinClockFormat(dateTime);
-  }
+      public ConvertionResult convert(String inputHhMm) {
+            LocalTime dateTime = LocalTime.parse(inputHhMm);
+            return converter.convertToBerlinClockFormat(dateTime);
+      }
 
-  public void printResult(ConvertionResult convertionResult) {
-  }
+      public void printResult(ConvertionResult convertionResult) {
+      }
 }

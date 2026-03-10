@@ -12,18 +12,18 @@ import java.util.stream.Stream;
 
 public interface Logic {
 
-    void execute();
+      void execute();
 
-    void prepare(String inputDirectory, String outputDirectory, List<String> years);
+      void prepare(String inputDirectory, String outputDirectory, List<String> years);
 
-    default List<Item> readItems(Path inputPath, Path outputPath) throws IOException {
-        Stream<Path> filesPaths = Files.list(inputPath).sorted();
-        List<Item> items = new ArrayList<>();
-        filesPaths.forEach(filePath -> {
-            String sourceFileName = filePath.toFile().getName();
-            Path destinationFilePath = Paths.get(outputPath.toString(), sourceFileName);
-            items.add(new Item(filePath, destinationFilePath));
-        });
-        return items;
-    }
+      default List<Item> readItems(Path inputPath, Path outputPath) throws IOException {
+            Stream<Path> filesPaths = Files.list(inputPath).sorted();
+            List<Item> items = new ArrayList<>();
+            filesPaths.forEach(filePath -> {
+                  String sourceFileName = filePath.toFile().getName();
+                  Path destinationFilePath = Paths.get(outputPath.toString(), sourceFileName);
+                  items.add(new Item(filePath, destinationFilePath));
+            });
+            return items;
+      }
 }

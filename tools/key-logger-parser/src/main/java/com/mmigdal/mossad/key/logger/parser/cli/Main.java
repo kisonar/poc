@@ -6,30 +6,28 @@ import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeExecution;
 import com.mmigdal.mossad.key.logger.parser.logic.model.mode.ModeRuntime;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+      static void main(String[] args) {
 
-        if (args.length < 1) {
-            throw new IllegalArgumentException("Insufficient number of input parameters!!!");
-        }
-        String inputDirectory = args[0];
-        String outputDirectory = args[1];
-        List<String> years = parseYears(args);
+            if (args.length < 1) {
+                  throw new IllegalArgumentException("Insufficient number of input parameters!!!");
+            }
+            String inputDirectory = args[0];
+            String outputDirectory = args[1];
+            List<String> years = parseYears(args);
 
-        Logic logic = LogicFactory.getLogic(ModeRuntime.EXECUTOR, ModeExecution.PARALLEL_FIXED);
-        logic.prepare(inputDirectory, outputDirectory, years);
-        logic.execute();
-    }
+            Logic logic = LogicFactory.getLogic(ModeRuntime.EXECUTOR, ModeExecution.PARALLEL_FIXED);
+            logic.prepare(inputDirectory, outputDirectory, years);
+            logic.execute();
+      }
 
-    private static List<String> parseYears(String[] input) {
-        List<String> years = new ArrayList<>();
-        for (int index = 2; index < input.length; index++) {
-            years.add(input[index]);
-        }
-        return Collections.unmodifiableList(years);
-    }
+      private static List<String> parseYears(String[] input) {
+            List<String> years = new ArrayList<>(Arrays.asList(input).subList(2, input.length));
+            return Collections.unmodifiableList(years);
+      }
 }

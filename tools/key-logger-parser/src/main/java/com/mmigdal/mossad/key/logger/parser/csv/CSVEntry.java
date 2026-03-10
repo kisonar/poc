@@ -19,7 +19,7 @@ public class CSVEntry {
 
       @Override
       public String toString() {
-            return new StringBuilder().append("TimeStamp:").append(timeStamp).append("Content: ").append(textToParse).toString();
+            return "TimeStamp:" + timeStamp + "Content: " + textToParse;
       }
 
       public Date getDate() {
@@ -33,7 +33,7 @@ public class CSVEntry {
                   return gson.fromJson(textToParse, LineEntry.class);
             }
             catch (Exception ex) {
-                 // System.out.println("Parsing JSON line  failed: " + textToParse);
+                  // System.out.println("Parsing JSON line  failed: " + textToParse);
             }
             return new LineEntryEmpty();
       }

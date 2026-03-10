@@ -6,14 +6,14 @@ import java.util.logging.Logger;
 
 public final class LogicManual extends LogicAbstraction {
 
-    private static Logger LOG = Logger.getLogger(LogicManual.class.getName());
+      private static final Logger LOG = Logger.getLogger(LogicManual.class.getName());
 
-    public LogicManual(ModeExecution modeExecution) {
-        super(modeExecution);
-    }
+      public LogicManual(ModeExecution modeExecution) {
+            super(modeExecution);
+      }
 
-    @Override
-    public void execute() {
-        throw new RuntimeException("Not implemented yet...");
-    }
+      @Override
+      public void execute() {
+            throw new RuntimeException("Not implemented yet...");
+      }
 }
