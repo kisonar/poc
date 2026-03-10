@@ -7,30 +7,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class StringTest {
 
       private final String something = " something ";
-      private final String anything = " anything ";
-      private final String nothing = "    ";
-      private final String whatecer = " whatever anywhere   ";
 
       @Test
-      public void join() {
+      public void string_join() {
+            String anything = " anything ";
+
             String result = String.join("|", something, anything);
+
             assertEquals(" something | anything ", result);
       }
 
-      public String strip(String value) {
-            return value.strip();
+      @Test
+      public void string_format() {
+            var result = String.format("Input %s output", "Yes");
+
+            assertEquals("Input Yes output", result);
       }
 
-      public String stripLeading(String value) {
-            return value.stripLeading();
+      @Test
+      public void string_strip() {
+            assertEquals("something", something.strip());
+            assertEquals("something ", something.stripLeading());
+            assertEquals(" something", something.stripTrailing());
+            assertEquals("something", something.stripIndent());
       }
-
-      public String stripTrailing(String value) {
-            return value.stripTrailing();
-      }
-
-      public String stripIndent(String value) {
-            return value.stripIndent();
-      }
-
 }

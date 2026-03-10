@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -22,7 +21,7 @@ public class StreamsTest {
             User user2 = UserFactory.getUser("2", "Adrian", "Puchalski", "password2", "kisonar@wp.pl");
             usersList.add(user1);
             usersList.add(user2);
-            List<String> userNames = usersList.stream().map(User::name).collect(Collectors.toList());
+            List<String> userNames = usersList.stream().map(User::name).toList();
             assertEquals(2, userNames.size());
       }
 

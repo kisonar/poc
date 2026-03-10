@@ -4,8 +4,7 @@ public class IntImpl implements Int1WithDefaultWriteAndJustWrite, Int2WithDefaul
         Int3WithNoDefaultOnlyGo {
 
       @Override
-      public String go() {
-            return "Go from IntImpl";
+      public void go() {
       }
 
       @Override

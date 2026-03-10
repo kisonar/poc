@@ -6,7 +6,7 @@ import java.util.concurrent.Flow.Subscription;
 public class PrintSubscriber implements Subscriber<Integer> {
 
     private Subscription subscription;
-    private int identifier;
+      private final int identifier;
 
     PrintSubscriber(int identifier) {
         this.identifier = identifier;
