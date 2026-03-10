@@ -7,21 +7,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserFactoryTest {
 
-    @Test
-    public void canCreateUser() {
-        String ldapId = "ldapId";
-        String userName = "userName";
-        String userSurname = "userSurname";
-        String userPassword = "userPassword";
-        String userEmail = "user@user.com";
+      @Test
+      public void canCreateUser() {
+            String ldapId = "ldapId";
+            String userName = "userName";
+            String userSurname = "userSurname";
+            String userPassword = "userPassword";
+            String userEmail = "user@user.com";
 
-        User user = UserFactory.getUser(ldapId, userName, userSurname, userPassword, userEmail);
+            User user = UserFactory.getUser(ldapId, userName, userSurname, userPassword, userEmail);
 
-        assertEquals(ldapId, user.ldapId());
-        assertEquals(userName, user.name());
-        assertEquals(userSurname, user.surname());
-        assertEquals(userPassword, user.password());
-        assertEquals(userEmail, user.email());
+            assertEquals(ldapId, user.ldapId());
+            assertEquals(userName, user.name());
+            assertEquals(userSurname, user.surname());
+            assertEquals(userPassword, user.password());
+            assertEquals(userEmail, user.email());
 
-    }
+      }
 }

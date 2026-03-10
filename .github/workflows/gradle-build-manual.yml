@@ -17,7 +17,7 @@ jobs:
           distribution: 'temurin'
           java-version: '25'
       - name: Print Java version
-        run: java --version			  
+        run: java --version
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
         with:

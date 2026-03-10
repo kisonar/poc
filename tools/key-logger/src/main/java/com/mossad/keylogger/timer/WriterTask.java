@@ -9,19 +9,19 @@ import java.util.TimerTask;
 
 public class WriterTask extends TimerTask {
 
-    private final KeyReader keyReader;
-    private final LogRecorder logRecorder;
+      private final KeyReader keyReader;
+      private final LogRecorder logRecorder;
 
-    public WriterTask(KeyReader keyReader, LogRecorder logRecorder) {
-        this.keyReader = keyReader;
-        this.logRecorder = logRecorder;
-    }
+      public WriterTask(KeyReader keyReader, LogRecorder logRecorder) {
+            this.keyReader = keyReader;
+            this.logRecorder = logRecorder;
+      }
 
-    @Override
-    public void run() {
-        List<String> keys = keyReader.getCollectedKeys();
-        StringBuilder stringBuilder = new StringBuilder();
-        keys.forEach(key -> stringBuilder.append(key));
-        logRecorder.writeContent(stringBuilder.toString());
-    }
+      @Override
+      public void run() {
+            List<String> keys = keyReader.getCollectedKeys();
+            StringBuilder stringBuilder = new StringBuilder();
+            keys.forEach(stringBuilder::append);
+            logRecorder.writeContent(stringBuilder.toString());
+      }
 }

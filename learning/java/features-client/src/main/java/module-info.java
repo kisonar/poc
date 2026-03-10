@@ -1,3 +1,3 @@
 module kisonar.poc.learning.java.features.client {
-    requires kisonar.poc.learning.java.features.services;
+      requires kisonar.poc.learning.java.features.services;
 }

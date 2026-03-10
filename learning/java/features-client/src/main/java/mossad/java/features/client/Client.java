@@ -5,7 +5,7 @@ import mossad.java.features.services.Service;
 
 public class Client {
 
-    private Service service;
-    private Position position;
+      private Service service;
+      private Position position;
 
 }

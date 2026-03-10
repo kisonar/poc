@@ -16,42 +16,42 @@ import static kisonar.poc.services.kafka.KafkaProperties.KAFKA_PORT;
 
 public class KafkaStreamsHandler {
 
-    public static void main(String[] args) {
-        Properties props = new Properties();
-        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-pipe");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_HOST + ":" + KAFKA_PORT);
-        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
-        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+      static void main(String[] args) {
+            Properties props = new Properties();
+            props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-pipe");
+            props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_HOST + ":" + KAFKA_PORT);
+            props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+            props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
-        final StreamsBuilder builder = new StreamsBuilder();
+            final StreamsBuilder builder = new StreamsBuilder();
 
-        KStream<String, String> stream = builder.stream(KafkaTopicNames.TOPIC_READER);
-        stream.filter((key, value) -> value.endsWith("1"));
-        stream.to(KafkaTopicNames.TOPIC_WRITER);
+            KStream<String, String> stream = builder.stream(KafkaTopicNames.TOPIC_READER);
+            stream.filter((key, value) -> value.endsWith("1"));
+            stream.to(KafkaTopicNames.TOPIC_WRITER);
 
-        final Topology topology = builder.build();
+            final Topology topology = builder.build();
 
-        final KafkaStreams streams = new KafkaStreams(topology, props);
-        final CountDownLatch latch = new CountDownLatch(1);
+            final KafkaStreams streams = new KafkaStreams(topology, props);
+            final CountDownLatch latch = new CountDownLatch(1);
 
-        // attach shutdown handler to catch control-c
-        Runtime.getRuntime().addShutdownHook(new Thread("streams-shutdown-hook") {
-            @Override
-            public void run() {
-                streams.close();
-                latch.countDown();
+            // attach shutdown handler to catch control-c
+            Runtime.getRuntime().addShutdownHook(new Thread("streams-shutdown-hook") {
+                  @Override
+                  public void run() {
+                        streams.close();
+                        latch.countDown();
+                  }
+            });
+
+            try {
+                  streams.start();
+                  latch.await();
             }
-        });
+            catch (Throwable e) {
 
-        try {
-            streams.start();
-            latch.await();
-        } catch (Throwable e) {
-
-            System.exit(1);
-        }
-        System.exit(0);
-    }
-
+                  System.exit(1);
+            }
+            System.exit(0);
+      }
 
 }

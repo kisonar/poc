@@ -8,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class KeyLoggerEntriesTest {
 
-    @Test
-    public void getKeyLoggerEntriesToFilterOut() {
-        List<String> entriesToBeFiltered = KeyLoggerEntries.getStringsToFilterOut();
+      @Test
+      public void getKeyLoggerEntriesToFilterOut() {
+            List<String> entriesToBeFiltered = KeyLoggerEntries.getStringsToFilterOut();
 
-        assertEquals(22, entriesToBeFiltered.size());
-    }
+            assertEquals(22, entriesToBeFiltered.size());
+      }
 }

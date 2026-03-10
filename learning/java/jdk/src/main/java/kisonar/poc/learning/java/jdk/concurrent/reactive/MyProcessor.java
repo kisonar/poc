@@ -13,34 +13,34 @@ public final class MyProcessor
         extends SubmissionPublisher<Freelancer>
         implements Processor<Employee, Freelancer> {
 
-    private Subscription subscription;
-    private final Function<Employee, Freelancer> function;
+      private final Function<Employee, Freelancer> function;
+      private Subscription subscription;
 
-    public MyProcessor(Function<Employee, Freelancer> function) {
-        super();
-        this.function = function;
-    }
+      public MyProcessor(Function<Employee, Freelancer> function) {
+            super();
+            this.function = function;
+      }
 
-    @Override
-    public void onSubscribe(Subscription subscription) {
-        this.subscription = subscription;
-        subscription.request(1);
-    }
+      @Override
+      public void onSubscribe(Subscription subscription) {
+            this.subscription = subscription;
+            subscription.request(1);
+      }
 
-    @Override
-    public void onNext(Employee emp) {
-        submit(function.apply(emp));
-        subscription.request(1);
-    }
+      @Override
+      public void onNext(Employee emp) {
+            submit(function.apply(emp));
+            subscription.request(1);
+      }
 
-    @Override
-    public void onError(Throwable e) {
-        e.printStackTrace();
-    }
+      @Override
+      public void onError(Throwable e) {
+            e.printStackTrace();
+      }
 
-    @Override
-    public void onComplete() {
-        System.out.println("Done");
-    }
+      @Override
+      public void onComplete() {
+            System.out.println("Done");
+      }
 
 }

@@ -7,16 +7,16 @@ import java.util.Queue;
 
 public class StateMachine {
 
-    private Queue<Step> steps = new PriorityQueue<>();
+      private final Queue<Step> steps = new PriorityQueue<>();
 
-    public StateMachine() {
-    }
+      public StateMachine() {
+      }
 
-    public void initialize() {
-    }
+      public void initialize() {
+      }
 
-    public void executeStep() {
-    }
+      public void executeStep() {
+      }
 }
 
 
