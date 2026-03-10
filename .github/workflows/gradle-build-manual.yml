@@ -1,6 +1,12 @@
-name: 'Kisonar POC CI'
+name: 'Kisonar POC CI - manual'
 
-on: [ push ]
+on:
+  workflow_dispatch:
+    inputs:
+      target_env:
+        description: 'Environment to which make the terraform deployment'
+        required: true
+        default: dev
 
 jobs:
   build:
