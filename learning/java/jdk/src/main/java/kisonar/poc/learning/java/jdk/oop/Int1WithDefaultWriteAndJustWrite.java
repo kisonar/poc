@@ -5,4 +5,5 @@ public interface Int1WithDefaultWriteAndJustWrite {
   default String write(String input) {
         return "One write " + input;
   }
+
 }

@@ -9,14 +9,8 @@ public class IntImpl implements Int1WithDefaultWriteAndJustWrite, Int2WithDefaul
             this.mode = mode;
       }
 
-
-      @Override
-      public void go() {
-      }
-
       @Override
       public String write(String input) {
-
             return switch (mode) {
                   case ONE -> Int1WithDefaultWriteAndJustWrite.super.write(input);
                   case TWO -> Int2WithDefaultWrite.super.write(input);
