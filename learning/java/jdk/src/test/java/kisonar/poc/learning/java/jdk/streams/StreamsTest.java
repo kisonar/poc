@@ -44,13 +44,27 @@ public class StreamsTest {
 
       @Test
       public void reduceAsSilnia() {
-            var result = Stream.of(1, 2, 3, 4).reduce(1, (val1, val2) -> val1 * val2);
+            var result = Stream.of(1, 2, 3, 4).reduce(1,
+                    (val1, val2) ->
+                            val1 * val2
+            );
             assertEquals(24, result);
+
+            var resultForTwo = Stream.of(1, 2, 3, 4).reduce(2,
+                    (val1, val2) ->
+                            val1 * val2
+            );
+            assertEquals(48, resultForTwo);
+
       }
 
       @Test
       public void reduceAsTest() {
-            var result = Stream.of(1, 2, 3, 4).reduce(1, (val1, val2) -> val1 < val2 ? val1 + val2 : val1 * val2);
+            var result = Stream.of(1, 2, 3, 4).reduce(1,
+                    (accResult, val2) ->
+                            accResult < val2 ?
+                                    accResult + val2 :
+                                    accResult * val2);
             assertEquals(36, result);
       }
 }
