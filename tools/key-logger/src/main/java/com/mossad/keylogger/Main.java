@@ -12,8 +12,8 @@ public class Main {
             Logger.getGlobal().setLevel(Level.INFO);
             LogicFlow logicFlow = new LogicFlow(args[0], args[1], args[2], Integer.parseInt(args[3]));
             logicFlow.execute();
+            Runtime.getRuntime().addShutdownHook(new Thread(logicFlow::stop));
       }
-
 }
 
 

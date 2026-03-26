@@ -15,7 +15,7 @@ public class MailSenderTest {
                     "smtp.wp.pl",
                     "someEmail",
                     "somePassword", MailSender.SMTP_PORT);
-            mailSender.prepareEmailWithAttqchment(Collections.emptyList());
+            mailSender.prepareEmailWithAttachment(Collections.emptyList());
             mailSender.send();
       }
 }

@@ -28,7 +28,7 @@ public final class MailSender {
             this.port = port;
       }
 
-      public void prepareEmailWithAttqchment(List<String> files) throws EmailException {
+      public void prepareEmailWithAttachment(List<String> files) throws EmailException {
             email = prepareEmail();
             files.forEach(file -> {
                   attachment = prepareEmailAttachment(file);

