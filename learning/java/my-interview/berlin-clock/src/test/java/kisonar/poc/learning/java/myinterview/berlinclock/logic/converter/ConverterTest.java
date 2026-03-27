@@ -16,16 +16,45 @@ public class ConverterTest {
       }
 
       @Test
-      void convert() {
-            ConvertionResult convertionResult = converter.convertToBerlinClockFormat(LocalTime.of(16, 44));
+      void shouldTransformMidnightToDisplayDataWithNoActivatedHourOrMinuteLamps() {
+            var displayData = converter.transformLocalTimeToDisplayData(LocalTime.MIDNIGHT);
 
-            Assertions.assertEquals(16, convertionResult.hours);
-            Assertions.assertEquals(44, convertionResult.minutes);
+            Assertions.assertEquals(LocalTime.MIDNIGHT, displayData.localTime());
+            Assertions.assertEquals(0, displayData.displayDataHours().activatedLampsHoursAtTop());
+            Assertions.assertEquals(0, displayData.displayDataHours().activatedLampsHoursAtBottom());
+            Assertions.assertEquals(0, displayData.displayDataMinutes().activatedLampsMinutesAtTop());
+            Assertions.assertEquals(0, displayData.displayDataMinutes().activatedLampsMinutesAtBottom());
+      }
 
-            Assertions.assertEquals(3, convertionResult.hoursRangeFive);
-            Assertions.assertEquals(1, convertionResult.hoursRangeOne);
+      @Test
+      void shouldTransformTimeToDisplayDataUsingFiveAndSingleUnitRanges() {
+            var time = LocalTime.of(16, 44);
 
-            Assertions.assertEquals(8, convertionResult.minutesRangeFive);
-            Assertions.assertEquals(4, convertionResult.minutesRangeOne);
+            var displayData = converter.transformLocalTimeToDisplayData(time);
+
+            Assertions.assertEquals(time, displayData.localTime());
+            Assertions.assertEquals(3, displayData.displayDataHours().activatedLampsHoursAtTop());
+            Assertions.assertEquals(1, displayData.displayDataHours().activatedLampsHoursAtBottom());
+            Assertions.assertEquals(8, displayData.displayDataMinutes().activatedLampsMinutesAtTop());
+            Assertions.assertEquals(4, displayData.displayDataMinutes().activatedLampsMinutesAtBottom());
+      }
+
+      @Test
+      void shouldTransformLastMinuteOfDayToMaximumDisplayDataRanges() {
+            var time = LocalTime.of(23, 59);
+
+            var displayData = converter.transformLocalTimeToDisplayData(time);
+
+            Assertions.assertEquals(time, displayData.localTime());
+            Assertions.assertEquals(4, displayData.displayDataHours().activatedLampsHoursAtTop());
+            Assertions.assertEquals(3, displayData.displayDataHours().activatedLampsHoursAtBottom());
+            Assertions.assertEquals(11, displayData.displayDataMinutes().activatedLampsMinutesAtTop());
+            Assertions.assertEquals(4, displayData.displayDataMinutes().activatedLampsMinutesAtBottom());
+      }
+
+      @SuppressWarnings("DataFlowIssue")
+      @Test
+      void shouldThrowExceptionWhenTimeIsNull() {
+            Assertions.assertThrows(NullPointerException.class, () -> converter.transformLocalTimeToDisplayData(null));
       }
 }
