@@ -24,7 +24,7 @@ jobs:
           java-version: '26'
       - name: Print Java version
         run: java --version
-      - name: Setup Gradle
+      - name: Setup Gradle 9.5.0
         uses: gradle/actions/setup-gradle@v6
         with:
           gradle-version: 9.5.0
@@ -32,3 +32,5 @@ jobs:
         run: gradle --version
       - name: Execute Gradle build
         run: gradle clean build
+      - name: Print target environment
+        run: Selected environment {{ inputs.target_env }}"
