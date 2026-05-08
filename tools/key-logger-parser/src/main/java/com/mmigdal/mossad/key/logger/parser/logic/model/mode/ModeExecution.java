@@ -4,5 +4,6 @@ public enum ModeExecution {
       PARALLEL_FIXED,
       PARALLEL_DEFAULT,
       SINGLE,
-      CACHED
+      CACHED,
+      VIRTUAL
 }
