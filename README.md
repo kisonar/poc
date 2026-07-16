@@ -1,12 +1,14 @@
 # POC
 
 ```
-Requires JAVA 25.x
-Gradle 9.x
+Requires JAVA 26.x
+Gradle 9.4.x
 
-sdk default java 25.0.1-open
-sdk default gradle 9.3.1
+sdk default java 26.0.1-open
+sdk default gradle 9.6.0
 ```
+
+https://docs.gradle.org/current/userguide/compatibility.html
 
 ## It contains
 
