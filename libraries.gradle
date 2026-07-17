@@ -28,7 +28,7 @@ ext {
             jNativeHook         :   'com.1stleg:jnativehook:2.1.0',
             mariaDbLibrary            : 'org.mariadb.jdbc:mariadb-java-client:3.5.9',
             opencsv                   : 'com.opencsv:opencsv:5.12.0',
-            googleJson                : 'com.google.code.gson:gson:2.13.2',
+            googleJson                : 'com.google.code.gson:gson:2.14.0',
             //security
             securityJwt               : "io.jsonwebtoken:jjwt-impl:0.11.5",
             securityJwtJackson        : "io.jsonwebtoken:jjwt-jackson:0.11.2",
