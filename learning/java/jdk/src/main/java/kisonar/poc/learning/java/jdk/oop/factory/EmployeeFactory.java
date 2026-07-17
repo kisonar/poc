@@ -1,6 +1,6 @@
-package kisonar.platform.domain.user.factory;
+package kisonar.poc.learning.java.jdk.oop.factory;
 
-import kisonar.platform.domain.user.Employee;
+import kisonar.poc.learning.java.jdk.oop.Employee;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package kisonar.poc.ldap;
 
-import kisonar.platform.domain.user.User;
+import kisonar.platform.domain.user.UserRecord;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -23,7 +23,7 @@ public class LdapClientTest {
       private final static Hashtable<String, Object> env = new Hashtable<>();
       private final String groupNameNotDefined = "groupNotDefined";
       private final String groupName = "mygroup";
-      private final User user = new User("mmigdal", "marcin", "migdal", "password", "marcin.migdal@email.com");
+      private final UserRecord userRecord = new UserRecord("mmigdal", "marcin", "migdal", "password", "marcin.migdal@email.com");
       private DirContext ctx;
       private LdapClient ldapClient;
 
@@ -91,11 +91,11 @@ public class LdapClientTest {
             ldapClient.createGroup(groupName);
             assertEquals(2, ldapClient.fetchGroups().size());
 
-            ldapClient.createUser(user, groupName);
+            ldapClient.createUser(userRecord, groupName);
             assertEquals(2, ldapClient.fetchUsers().size());
             assertEquals(2, ldapClient.fetchGroups().size());
 
-            ldapClient.removeUser(user.ldapId());
+            ldapClient.removeUser(userRecord.ldapId());
             assertEquals(1, ldapClient.fetchUsers().size());
             assertEquals(2, ldapClient.fetchGroups().size());
 
@@ -106,7 +106,7 @@ public class LdapClientTest {
 
       @Test
       public void addUserToNonExistingGroup() throws NamingException {
-            assertThrows(javax.naming.NameNotFoundException.class, () -> ldapClient.createUser(user, groupNameNotDefined));
+            assertThrows(javax.naming.NameNotFoundException.class, () -> ldapClient.createUser(userRecord, groupNameNotDefined));
       }
 
       @Test

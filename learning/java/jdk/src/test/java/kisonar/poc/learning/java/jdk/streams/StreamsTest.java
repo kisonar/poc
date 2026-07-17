@@ -1,7 +1,7 @@
 package kisonar.poc.learning.java.jdk.streams;
 
-import kisonar.platform.domain.user.User;
-import kisonar.platform.domain.user.factory.UserFactory;
+import kisonar.platform.domain.user.UserRecord;
+import kisonar.poc.learning.java.jdk.oop.factory.UserFactory;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,15 +13,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StreamsTest {
 
-      private final List<User> usersList = new ArrayList<>();
+      private final List<UserRecord> usersList = new ArrayList<>();
 
       @Test
       public void addUsersAndFetchNames() {
-            User user1 = UserFactory.getUser("1", "Marcin", "Migdal", "password1", "kisonar@wp.pl");
-            User user2 = UserFactory.getUser("2", "Adrian", "Puchalski", "password2", "kisonar@wp.pl");
-            usersList.add(user1);
-            usersList.add(user2);
-            List<String> userNames = usersList.stream().map(User::name).toList();
+            UserRecord userRecord1 = UserFactory.getUser("1", "Marcin", "Migdal", "password1", "kisonar@wp.pl");
+            UserRecord userRecord2 = UserFactory.getUser("2", "Adrian", "Puchalski", "password2", "kisonar@wp.pl");
+            usersList.add(userRecord1);
+            usersList.add(userRecord2);
+            List<String> userNames = usersList.stream().map(UserRecord::name).toList();
             assertEquals(2, userNames.size());
       }
 
