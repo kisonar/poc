@@ -5,7 +5,6 @@ plugins {
 description = 'automation-testing'
 
 dependencies {
-    implementation libraries.seleniumApi
     implementation libraries.selenium
     implementation libraries.webdrivermanager
 }
