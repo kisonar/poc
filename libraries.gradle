@@ -40,8 +40,8 @@ ext {
             junitPlatformLauncher     : "org.junit.platform:junit-platform-launcher",
             mockito               : "org.mockito:mockito-core:5.23.0",
             //test automation
-            seleniumApi               : 'org.seleniumhq.selenium:selenium-api:4.5.2',
-            selenium                  : "org.seleniumhq.selenium:selenium-java:4.6.0",
+            seleniumApi               : 'org.seleniumhq.selenium:selenium-api:4.45.0',
+            selenium                  : "org.seleniumhq.selenium:selenium-java:4.45.0",
             webdrivermanager      : "io.github.bonigarcia:webdrivermanager:5.3.1"
     ]
 }
