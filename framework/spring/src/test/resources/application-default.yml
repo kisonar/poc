@@ -1,6 +1,7 @@
 spring:
   cloud:
     config:
+      active: false
       enabled: false
 
   application:

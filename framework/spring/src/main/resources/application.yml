@@ -3,17 +3,6 @@ spring:
     config:
       enabled: false
 
-guacamole:
-  guacd:
-    host: 127.0.0.1
-    port: 4822
-  client:
-    host: 192.67.234
-    port: 5900
-    protocol: vnc
-    ignore-cert: true
-    password: Marcin
-
 management:
   info:
     java:
