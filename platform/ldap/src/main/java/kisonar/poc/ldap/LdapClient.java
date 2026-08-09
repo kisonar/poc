@@ -1,6 +1,6 @@
 package kisonar.poc.ldap;
 
-import kisonar.platform.domain.user.User;
+import kisonar.platform.domain.user.UserRecord;
 
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
@@ -58,7 +58,7 @@ public class LdapClient {
             return Collections.unmodifiableList(groups);
       }
 
-      public void createUser(User user, String groupName) throws NamingException {
+      public void createUser(UserRecord userRecord, String groupName) throws NamingException {
             Attributes attributes = new BasicAttributes();
             attributes.put(PERSON);
             attributes.put(ORGANIZATIONAL_PERSON);
@@ -67,10 +67,10 @@ public class LdapClient {
             //attributes.put(LDAPConsts.SHADOW_ACCOUNT);
             //String valueHomeDirectory = "/home/"+prefix;
             // Attribute attributeHomeDirectory = new BasicAttribute(LDAPConsts.HOME_DIRECTORY,valueHomeDirectory);
-            Attribute attributeUid = new BasicAttribute(UID, user.ldapId());
-            Attribute attributeCn = new BasicAttribute(CN, user.name());
-            Attribute attributeSn = new BasicAttribute(SN, user.surname());
-            Attribute attributePassword = new BasicAttribute(PASSWORD, user.password());
+            Attribute attributeUid = new BasicAttribute(UID, userRecord.ldapId());
+            Attribute attributeCn = new BasicAttribute(CN, userRecord.name());
+            Attribute attributeSn = new BasicAttribute(SN, userRecord.surname());
+            Attribute attributePassword = new BasicAttribute(PASSWORD, userRecord.password());
             //Attribute attributeEmail = new BasicAttribute(EMAIL, user.email);
             attributes.put(attributeUid);
             attributes.put(attributeCn);
@@ -78,35 +78,35 @@ public class LdapClient {
             attributes.put(attributePassword);
             //attributes.put(attributeEmail);
 
-            String dn = generateUserFQName(user.ldapId(), List.of(groupName));
+            String dn = generateUserFQName(userRecord.ldapId(), List.of(groupName));
             ctx.createSubcontext(dn, attributes);
-            LOGGER.log(Level.INFO, String.format("Added user with ID: %s to group %s", user.ldapId(), groupName));
+            LOGGER.log(Level.INFO, String.format("Added user with ID: %s to group %s", userRecord.ldapId(), groupName));
             LOGGER.log(Level.INFO, String.format("FQDN is: %s", dn));
       }
 
-      public List<User> fetchUsers() throws NamingException {
+      public List<UserRecord> fetchUsers() throws NamingException {
             SearchControls searchControls = new SearchControls();
             searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
             NamingEnumeration<SearchResult> namingEnumeration =
                     ctx.search("", UID_ALL, new Object[]{}, searchControls);
-            List<User> users = new ArrayList<>();
+            List<UserRecord> userRecords = new ArrayList<>();
             while (namingEnumeration.hasMore()) {
                   SearchResult sr = namingEnumeration.next();
                   Attributes attributes = sr.getAttributes();
-                  users.add(extractUser(attributes));
+                  userRecords.add(extractUser(attributes));
             }
-            return Collections.unmodifiableList(users);
+            return Collections.unmodifiableList(userRecords);
       }
 
       //TODO
-      public Optional<User> findUser(String userId) throws NamingException {
+      public Optional<UserRecord> findUser(String userId) throws NamingException {
             List<String> groups = fetchGroups();
             String groupsBase = generateGroupsString(groups);
             SearchControls searchControls = new SearchControls();
             searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
             String filter = "(&(objectclass=" + INETORGPERSON + ")(" + UID + EQUALS + userId + "))";
             NamingEnumeration<SearchResult> results = ctx.search(groupsBase, filter, searchControls);
-            User user = null;
+            UserRecord userRecord = null;
             while (results.hasMore()) {
                   SearchResult sr = results.next();
                   Attributes attributes = sr.getAttributes();
@@ -114,11 +114,11 @@ public class LdapClient {
                   if (attributeUid != null) {
                         String candidateUserId = attributeUid.get().toString();
                         if (candidateUserId.equals(userId)) {
-                              user = extractUser(attributes);
+                              userRecord = extractUser(attributes);
                         }
                   }
             }
-            return Optional.ofNullable(user);
+            return Optional.ofNullable(userRecord);
       }
 
       public void close() throws NamingException {
@@ -167,11 +167,11 @@ public class LdapClient {
             return stringBuilder.toString();
       }
 
-      private User extractUser(Attributes attributes) throws NamingException {
+      private UserRecord extractUser(Attributes attributes) throws NamingException {
             String nameCn = attributes.get(CN).toString();
             String surnameSN = attributes.get(SN).toString();
             String password = new String((byte[]) attributes.get(PASSWORD).get());
-            return new User(attributes.get(UID).toString(), nameCn, surnameSN, password, nameCn + "." + surnameSN + "@email.com");
+            return new UserRecord(attributes.get(UID).toString(), nameCn, surnameSN, password, nameCn + "." + surnameSN + "@email.com");
       }
 
 }

@@ -1,9 +1,9 @@
 package kisonar.poc.learning.java.jdk.concurrent.reactive;
 
 
-import kisonar.platform.domain.user.Employee;
-import kisonar.platform.domain.user.Freelancer;
-import kisonar.platform.domain.user.factory.EmployeeFactory;
+import kisonar.poc.learning.java.jdk.oop.Employee;
+import kisonar.poc.learning.java.jdk.oop.Freelancer;
+import kisonar.poc.learning.java.jdk.oop.factory.EmployeeFactory;
 import kisonar.poc.learning.java.jdk.concurrent.reactive.subscriber.FreelancerSubscriber;
 import org.junit.jupiter.api.Test;
 
