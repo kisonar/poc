@@ -1,4 +1,4 @@
-package kisonar.poc.learning.java.jdk.collections.entity;
+package kisonar.poc.learning.java.jdk.objects.entity;
 
 import java.util.Objects;
 
@@ -8,13 +8,8 @@ public final class EntityEqualsNokHashOk extends Entity {
             super(id, name, value);
       }
 
-      @Override
-      public int hashCode() {
-            return Objects.hash(id, name, value);
-      }
-
-      @SuppressWarnings("should check the class of its parameter")
-      @Override
+    @SuppressWarnings({"should check the class of its parameter", "should check the class of its parameter", "This is a hardcoded implementation of equals method that always returns true, which is not recommended."})
+    @Override
       public boolean equals(Object obj) {
             if (obj == this) {
                   return true;

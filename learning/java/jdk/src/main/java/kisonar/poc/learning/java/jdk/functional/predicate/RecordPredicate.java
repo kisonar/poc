@@ -1,6 +1,6 @@
 package kisonar.poc.learning.java.jdk.functional.predicate;
 
-import kisonar.poc.learning.java.jdk.collections.record.RecordEntity;
+import kisonar.poc.learning.java.jdk.objects.record.RecordEntity;
 
 import java.util.function.Predicate;
 

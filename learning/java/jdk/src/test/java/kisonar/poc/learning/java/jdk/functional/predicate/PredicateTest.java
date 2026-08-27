@@ -1,6 +1,6 @@
 package kisonar.poc.learning.java.jdk.functional.predicate;
 
-import kisonar.poc.learning.java.jdk.collections.CollectionsFactory;
+import kisonar.poc.learning.java.jdk.objects.CollectionsFactory;
 import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;

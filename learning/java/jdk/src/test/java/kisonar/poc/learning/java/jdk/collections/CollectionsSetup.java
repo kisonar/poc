@@ -1,6 +1,6 @@
 package kisonar.poc.learning.java.jdk.collections;
 
-import kisonar.poc.learning.java.jdk.collections.entity.Entity;
+import kisonar.poc.learning.java.jdk.objects.entity.Entity;
 
 import java.util.HashMap;
 import java.util.Map;

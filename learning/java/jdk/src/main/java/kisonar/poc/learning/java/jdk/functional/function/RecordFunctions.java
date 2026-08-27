@@ -1,7 +1,7 @@
 package kisonar.poc.learning.java.jdk.functional.function;
 
-import kisonar.poc.learning.java.jdk.collections.entity.EntityEqualsOkHashOk;
-import kisonar.poc.learning.java.jdk.collections.record.RecordEntity;
+import kisonar.poc.learning.java.jdk.objects.entity.EntityEqualsOkHashOk;
+import kisonar.poc.learning.java.jdk.objects.record.RecordEntity;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;

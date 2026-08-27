@@ -1,7 +1,7 @@
 package kisonar.poc.learning.java.jdk.functional.function;
 
-import kisonar.poc.learning.java.jdk.collections.CollectionsFactory;
-import kisonar.poc.learning.java.jdk.collections.entity.EntityEqualsOkHashOk;
+import kisonar.poc.learning.java.jdk.objects.CollectionsFactory;
+import kisonar.poc.learning.java.jdk.objects.entity.EntityEqualsOkHashOk;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,4 +1,4 @@
-package kisonar.poc.learning.java.jdk.collections.entity;
+package kisonar.poc.learning.java.jdk.objects.entity;
 
 public final class EntityEqualsNokFalseHashNokHardcoded extends Entity {
 

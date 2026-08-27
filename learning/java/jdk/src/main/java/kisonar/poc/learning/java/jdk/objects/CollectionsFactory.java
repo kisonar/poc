@@ -1,13 +1,13 @@
-package kisonar.poc.learning.java.jdk.collections;
+package kisonar.poc.learning.java.jdk.objects;
 
-import kisonar.poc.learning.java.jdk.collections.entity.Entity;
-import kisonar.poc.learning.java.jdk.collections.entity.EntityEqualsNokFalseHashNokHardcoded;
-import kisonar.poc.learning.java.jdk.collections.entity.EntityEqualsNokHashOk;
-import kisonar.poc.learning.java.jdk.collections.entity.EntityEqualsNokTrueHashNokHardcoded;
-import kisonar.poc.learning.java.jdk.collections.entity.EntityEqualsOkHashNok;
-import kisonar.poc.learning.java.jdk.collections.entity.EntityEqualsOkHashNokHardcoded;
-import kisonar.poc.learning.java.jdk.collections.entity.EntityEqualsOkHashOk;
-import kisonar.poc.learning.java.jdk.collections.record.RecordEntity;
+import kisonar.poc.learning.java.jdk.objects.entity.Entity;
+import kisonar.poc.learning.java.jdk.objects.entity.EntityEqualsNokFalseHashNokHardcoded;
+import kisonar.poc.learning.java.jdk.objects.entity.EntityEqualsNokHashOk;
+import kisonar.poc.learning.java.jdk.objects.entity.EntityEqualsNokTrueHashNokHardcoded;
+import kisonar.poc.learning.java.jdk.objects.entity.EntityEqualsOkHashNok;
+import kisonar.poc.learning.java.jdk.objects.entity.EntityEqualsOkHashNokHardcoded;
+import kisonar.poc.learning.java.jdk.objects.entity.EntityEqualsOkHashOk;
+import kisonar.poc.learning.java.jdk.objects.record.RecordEntity;
 
 public final class CollectionsFactory {
 

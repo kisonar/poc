@@ -1,10 +1,10 @@
-package kisonar.poc.learning.java.jdk.collections.entity;
+package kisonar.poc.learning.java.jdk.objects.entity;
 
 import kisonar.poc.learning.java.jdk.collections.CollectionsSetup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static kisonar.poc.learning.java.jdk.collections.CollectionsFactory.getEntityEqualsNokTrueHashNokHardcoded;
+import static kisonar.poc.learning.java.jdk.objects.CollectionsFactory.getEntityEqualsNokTrueHashNokHardcoded;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotSame;

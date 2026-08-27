@@ -1,4 +1,4 @@
-package kisonar.poc.learning.java.jdk.concurrent.reactive;
+package kisonar.poc.learning.java.jdk.concurrent;
 
 import org.junit.jupiter.api.Test;
 

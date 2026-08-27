@@ -1,4 +1,4 @@
-package kisonar.poc.learning.java.jdk.collections.record;
+package kisonar.poc.learning.java.jdk.objects.record;
 
 import kisonar.poc.learning.java.jdk.collections.CollectionsSetup;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static kisonar.poc.learning.java.jdk.collections.CollectionsFactory.getRecord;
+import static kisonar.poc.learning.java.jdk.objects.CollectionsFactory.getRecord;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RecordTest extends CollectionsSetup {
 
-      private final Map<RecordEntity, String> map = new HashMap();
+      private final Map<RecordEntity, String> map = new HashMap<>();
 
       @BeforeEach
       public void setUp() {
