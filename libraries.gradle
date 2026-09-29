@@ -6,6 +6,8 @@ ext {
     KAFKA_VERSION = '4.3.1'
     TEST_CONTAINERS_VERSION ='1.17.5'
     GUACAMOLE_VERSION = '1.6.0'
+    JWT_VERSION = '0.11.5'
+    WEBDRIVERMANAGER_VERSION = '6.1.0'
 
     libraries = [
 
@@ -30,8 +32,8 @@ ext {
             opencsv                   : 'com.opencsv:opencsv:5.12.0',
             googleJson                : 'com.google.code.gson:gson:2.14.0',
             //security
-            securityJwt               : "io.jsonwebtoken:jjwt-impl:0.11.5",
-            securityJwtJackson        : "io.jsonwebtoken:jjwt-jackson:0.11.2",
+            securityJwt               : "io.jsonwebtoken:jjwt-impl:${JWT_VERSION}",
+            securityJwtJackson        : "io.jsonwebtoken:jjwt-jackson:${JWT_VERSION}",
             // Guacamole
             guacamoleCommon       : "org.apache.guacamole:guacamole-common:${GUACAMOLE_VERSION}",
             guacamoleCommonJs     : "org.apache.guacamole:guacamole-common-js:${GUACAMOLE_VERSION}",
@@ -41,6 +43,6 @@ ext {
             mockito               : "org.mockito:mockito-core:5.23.0",
             //test automation
             selenium                  : "org.seleniumhq.selenium:selenium-java:4.45.0",
-            webdrivermanager      : "io.github.bonigarcia:webdrivermanager:5.3.1"
+            webdrivermanager      : "io.github.bonigarcia:webdrivermanager:${WEBDRIVERMANAGER_VERSION}"
     ]
 }
