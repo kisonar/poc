@@ -18,11 +18,11 @@ public final class KafkaProperties {
       private KafkaProperties() {
       }
 
-      public static Properties getCommonProperties() {
-            Properties props = new Properties();
-            props.put("bootstrap.servers", KAFKA_HOST + ":" + KAFKA_PORT);
-            return props;
-      }
+       public static Properties getCommonProperties() {
+             var props = new Properties();
+             props.put("bootstrap.servers", "%s:%d".formatted(KAFKA_HOST, KAFKA_PORT));
+             return props;
+       }
 
       public static Properties getConsumerProperties(Properties props) {
             props.put("group.id", GROUP_ID);

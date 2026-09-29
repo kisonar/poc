@@ -8,21 +8,18 @@ public class StringTest {
 
       private final String something = " something ";
 
-      @Test
-      public void string_join() {
-            String anything = " anything ";
+       @Test
+       public void string_join() {
+             var anything = " anything ";
+             var result = String.join("|", something, anything);
+             assertEquals(" something | anything ", result);
+       }
 
-            String result = String.join("|", something, anything);
-
-            assertEquals(" something | anything ", result);
-      }
-
-      @Test
-      public void string_format() {
-            var result = String.format("Input %s output", "Yes");
-
-            assertEquals("Input Yes output", result);
-      }
+       @Test
+       public void string_format() {
+             var result = "Input %s output".formatted("Yes");
+             assertEquals("Input Yes output", result);
+       }
 
       @Test
       public void string_strip() {

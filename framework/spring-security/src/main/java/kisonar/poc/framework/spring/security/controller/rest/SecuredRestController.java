@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SecuredRestController {
 
-      @GetMapping("/secured")
-      public String hello(@RequestParam(value = "name", defaultValue = "Secured default") String name) {
-            return String.format("Hello %s!", name);
-      }
+       @GetMapping("/secured")
+       public String hello(@RequestParam(value = "name", defaultValue = "Secured default") String name) {
+             return "Hello %s!".formatted(name);
+       }
 }

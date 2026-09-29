@@ -33,10 +33,10 @@ public final class Measurement {
             stopLong = Calendar.getInstance().getTime().getTime();
       }
 
-      public void printResult() {
-            LOG.log(Level.INFO, String.format("Execution took %d", stop - start));
-            LOG.log(Level.INFO, String.format("Execution took %d", stopLong - startLong));
-            // System.out.println(String.format("Execution took %d", stop - start));
-            // System.out.println(String.format("Execution took %d", stopLong - startLong));
-      }
+       public void printResult() {
+             var executionTimeNanos = stop - start;
+             var executionTimeMillis = stopLong - startLong;
+             LOG.log(Level.INFO, "Execution took %d nanoseconds".formatted(executionTimeNanos));
+             LOG.log(Level.INFO, "Execution took %d milliseconds".formatted(executionTimeMillis));
+       }
 }

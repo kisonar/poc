@@ -15,10 +15,10 @@ public class UserRestController {
 
       }
 
-      @GetMapping("/hello")
-      public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-            return String.format("Hello %s!", name);
-      }
+       @GetMapping("/hello")
+       public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+             return "Hello %s!".formatted(name);
+       }
 
     /*
 	@GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)

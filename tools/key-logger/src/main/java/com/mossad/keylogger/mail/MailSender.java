@@ -28,59 +28,57 @@ public final class MailSender {
             this.port = port;
       }
 
-      public void prepareEmailWithAttachment(List<String> files) throws EmailException {
-            email = prepareEmail();
-            files.forEach(file -> {
-                  attachment = prepareEmailAttachment(file);
-                  try {
-                        email.attach(attachment);
-                  }
-                  catch (EmailException e) {
-                        LOG.warning(String.format("Cannot add attachment due to: %s", e.getMessage()));
-                  }
-            });
-      }
+       public void prepareEmailWithAttachment(List<String> files) throws EmailException {
+             email = prepareEmail();
+             files.forEach(file -> {
+                   attachment = prepareEmailAttachment(file);
+                   try {
+                         email.attach(attachment);
+                   }
+                   catch (EmailException e) {
+                         LOG.warning("Cannot add attachment due to: %s".formatted(e.getMessage()));
+                   }
+             });
+       }
 
       public void send() throws EmailException {
             email.send();
       }
 
-      private MultiPartEmail prepareEmail() throws EmailException {
-            email = new MultiPartEmail();
-            email.setHostName(mailHostName);
-            email.addTo(emailAccount);
-            email.setFrom(emailAccount);
-            email.setSubject("AI report: " + LocalDateTime.now());
-            email.setMsg(resolveHostName());
-            email.setSmtpPort(port);
-            email.setSSLOnConnect(true);
-            email.setSSLCheckServerIdentity(true);
-            email.setBounceAddress(emailAccount);
-            email.setAuthentication(emailAccount, password);
-            return email;
-      }
+       private MultiPartEmail prepareEmail() throws EmailException {
+             email = new MultiPartEmail();
+             email.setHostName(mailHostName);
+             email.addTo(emailAccount);
+             email.setFrom(emailAccount);
+             email.setSubject("AI report: %s".formatted(LocalDateTime.now()));
+             email.setMsg(resolveHostName());
+             email.setSmtpPort(port);
+             email.setSSLOnConnect(true);
+             email.setSSLCheckServerIdentity(true);
+             email.setBounceAddress(emailAccount);
+             email.setAuthentication(emailAccount, password);
+             return email;
+       }
 
-      private EmailAttachment prepareEmailAttachment(String filePath) {
-            attachment = new EmailAttachment();
-            attachment.setPath(filePath);
-            attachment.setDisposition(EmailAttachment.ATTACHMENT);
-            return attachment;
-      }
+       private EmailAttachment prepareEmailAttachment(String filePath) {
+             attachment = new EmailAttachment();
+             attachment.setPath(filePath);
+             attachment.setDisposition(EmailAttachment.ATTACHMENT);
+             return attachment;
+       }
 
-      private String resolveHostName() {
-            StringBuilder stringBuilder = new StringBuilder();
-            try {
-                  stringBuilder.append(InetAddress.getLocalHost().getHostAddress());
-                  stringBuilder.append("\n");
-                  stringBuilder.append(InetAddress.getLocalHost().getHostName());
-                  stringBuilder.append("\n");
-                  stringBuilder.append(InetAddress.getLocalHost().getCanonicalHostName());
-                  stringBuilder.append("\n");
-                  stringBuilder.append(InetAddress.getLocalHost().toString());
-            }
-            catch (UnknownHostException e) {
-                  stringBuilder.append(String.format("\n Host determination failed up due to: %s", e.getMessage()));
-            }
-            return stringBuilder.toString();
-      }
+       private String resolveHostName() {
+             var stringBuilder = new StringBuilder();
+             try {
+                   var localhost = InetAddress.getLocalHost();
+                   stringBuilder.append(localhost.getHostAddress()).append("\n")
+                         .append(localhost.getHostName()).append("\n")
+                         .append(localhost.getCanonicalHostName()).append("\n")
+                         .append(localhost.toString());
+             }
+             catch (UnknownHostException e) {
+                   stringBuilder.append("\n Host determination failed up due to: %s".formatted(e.getMessage()));
+             }
+             return stringBuilder.toString();
+       }
 }

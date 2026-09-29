@@ -11,31 +11,31 @@ import java.util.Date;
 
 public class CSVEntry {
 
-      Gson gson = new Gson();
-      @CsvBindByPosition(position = 0)
-      private Long timeStamp;
-      @CsvBindByPosition(position = 1)
-      private String textToParse;
+       Gson gson = new Gson();
+       @CsvBindByPosition(position = 0)
+       private Long timeStamp;
+       @CsvBindByPosition(position = 1)
+       private String textToParse;
 
-      @Override
-      public String toString() {
-            return "TimeStamp:" + timeStamp + "Content: " + textToParse;
-      }
+       @Override
+       public String toString() {
+             return "TimeStamp: %s Content: %s".formatted(timeStamp, textToParse);
+       }
 
-      public Date getDate() {
-            Instant date = Instant.ofEpochMilli(timeStamp);
-            return Date.from(date);
-      }
+       public Date getDate() {
+             var date = Instant.ofEpochMilli(timeStamp);
+             return Date.from(date);
+       }
 
-      public LineEntryContract getLineEntry() {
+       public LineEntryContract getLineEntry() {
 
-            try {
-                  return gson.fromJson(textToParse, LineEntry.class);
-            }
-            catch (Exception ex) {
-                  // System.out.println("Parsing JSON line  failed: " + textToParse);
-            }
-            return new LineEntryEmpty();
-      }
+             try {
+                   return gson.fromJson(textToParse, LineEntry.class);
+             }
+             catch (Exception ex) {
+                   // System.out.println("Parsing JSON line  failed: " + textToParse);
+             }
+             return new LineEntryEmpty();
+       }
 
 }

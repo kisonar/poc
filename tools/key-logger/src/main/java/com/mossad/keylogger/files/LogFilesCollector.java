@@ -7,40 +7,38 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static kisonar.platform.domain.BaseDefinitions.EMPTY;
 
 public final class LogFilesCollector {
 
-      private final Logger LOG = Logger.getLogger(LogFilesCollector.class.getCanonicalName());
+       private final Logger LOG = Logger.getLogger(LogFilesCollector.class.getCanonicalName());
 
-      public LogFilesCollector() {
-      }
+       public LogFilesCollector() {
+       }
 
-      public List<String> collectLogs() {
-            File currentDirectory = new File(new File(EMPTY).getAbsolutePath());
-            String pathAsString = currentDirectory.getAbsolutePath();
-            try (Stream<Path> paths = Files.list(Paths.get(pathAsString))) {
-                  return paths.map(Path::toString).filter(path -> !path.endsWith(".lck") && path.contains("Log"))
-                          .collect(Collectors.toList());
+       public List<String> collectLogs() {
+             var currentDirectory = new File(new File(EMPTY).getAbsolutePath());
+             var pathAsString = currentDirectory.getAbsolutePath();
+             try (var paths = Files.list(Paths.get(pathAsString))) {
+                   return paths.map(Path::toString).filter(path -> !path.endsWith(".lck") && path.contains("Log"))
+                           .toList();
 
-            }
-            catch (IOException e) {
-                  LOG.warning(String.format("Cannot collect logs %s", e.getMessage()));
-                  return List.of();
-            }
-      }
+             }
+             catch (IOException e) {
+                   LOG.warning("Cannot collect logs %s".formatted(e.getMessage()));
+                   return List.of();
+             }
+       }
 
-      public void removeLogs(List<String> filesNames) {
-            filesNames.forEach(path -> {
-                  try {
-                        Files.delete(Paths.get(path));
-                  }
-                  catch (IOException e) {
-                        LOG.warning(String.format("Cannot remove logs %s", e.getMessage()));
-                  }
-            });
-      }
+       public void removeLogs(List<String> filesNames) {
+             filesNames.forEach(path -> {
+                   try {
+                         Files.delete(Paths.get(path));
+                   }
+                   catch (IOException e) {
+                         LOG.warning("Cannot remove logs %s".formatted(e.getMessage()));
+                   }
+             });
+       }
 }

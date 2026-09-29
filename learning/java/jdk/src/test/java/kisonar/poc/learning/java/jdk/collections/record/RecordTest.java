@@ -16,18 +16,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RecordTest extends CollectionsSetup {
 
-      private final Map<RecordEntity, String> map = new HashMap();
+       private final Map<RecordEntity, String> map = new HashMap<>();
 
-      @BeforeEach
-      public void setUp() {
-            this.map.clear();
-      }
+       @BeforeEach
+       public void setUp() {
+             this.map.clear();
+       }
 
-      @Test
-      public void useRecordsWithUniqueValues() {
-            RecordEntity entityKey1 = getRecord(id1, name1, value1);
-            RecordEntity entityKey2 = getRecord(id2, name2, value2);
-            RecordEntity entityKey3 = getRecord(id3, name3, value3);
+       @Test
+       public void useRecordsWithUniqueValues() {
+             var entityKey1 = getRecord(id1, name1, value1);
+             var entityKey2 = getRecord(id2, name2, value2);
+             var entityKey3 = getRecord(id3, name3, value3);
             RecordEntity entityKey4 = getRecord(id4, name4, value4);
             RecordEntity entityKey5 = getRecord(id5, name5, value5);
             RecordEntity entityKey6 = getRecord(id6, name6, value6);

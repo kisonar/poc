@@ -58,31 +58,31 @@ public class LdapClient {
             return Collections.unmodifiableList(groups);
       }
 
-      public void createUser(User user, String groupName) throws NamingException {
-            Attributes attributes = new BasicAttributes();
-            attributes.put(PERSON);
-            attributes.put(ORGANIZATIONAL_PERSON);
-            attributes.put(INET_ORG_PERSON);
-            // attributes.put(LDAPConsts.POSSIX_ACCOUNT);
-            //attributes.put(LDAPConsts.SHADOW_ACCOUNT);
-            //String valueHomeDirectory = "/home/"+prefix;
-            // Attribute attributeHomeDirectory = new BasicAttribute(LDAPConsts.HOME_DIRECTORY,valueHomeDirectory);
-            Attribute attributeUid = new BasicAttribute(UID, user.ldapId());
-            Attribute attributeCn = new BasicAttribute(CN, user.name());
-            Attribute attributeSn = new BasicAttribute(SN, user.surname());
-            Attribute attributePassword = new BasicAttribute(PASSWORD, user.password());
-            //Attribute attributeEmail = new BasicAttribute(EMAIL, user.email);
-            attributes.put(attributeUid);
-            attributes.put(attributeCn);
-            attributes.put(attributeSn);
-            attributes.put(attributePassword);
-            //attributes.put(attributeEmail);
+       public void createUser(User user, String groupName) throws NamingException {
+             var attributes = new BasicAttributes();
+             attributes.put(PERSON);
+             attributes.put(ORGANIZATIONAL_PERSON);
+             attributes.put(INET_ORG_PERSON);
+             // attributes.put(LDAPConsts.POSSIX_ACCOUNT);
+             //attributes.put(LDAPConsts.SHADOW_ACCOUNT);
+             //String valueHomeDirectory = "/home/"+prefix;
+             // Attribute attributeHomeDirectory = new BasicAttribute(LDAPConsts.HOME_DIRECTORY,valueHomeDirectory);
+             var attributeUid = new BasicAttribute(UID, user.ldapId());
+             var attributeCn = new BasicAttribute(CN, user.name());
+             var attributeSn = new BasicAttribute(SN, user.surname());
+             var attributePassword = new BasicAttribute(PASSWORD, user.password());
+             //Attribute attributeEmail = new BasicAttribute(EMAIL, user.email);
+             attributes.put(attributeUid);
+             attributes.put(attributeCn);
+             attributes.put(attributeSn);
+             attributes.put(attributePassword);
+             //attributes.put(attributeEmail);
 
-            String dn = generateUserFQName(user.ldapId(), List.of(groupName));
-            ctx.createSubcontext(dn, attributes);
-            LOGGER.log(Level.INFO, String.format("Added user with ID: %s to group %s", user.ldapId(), groupName));
-            LOGGER.log(Level.INFO, String.format("FQDN is: %s", dn));
-      }
+             var dn = generateUserFQName(user.ldapId(), List.of(groupName));
+             ctx.createSubcontext(dn, attributes);
+             LOGGER.log(Level.INFO, "Added user with ID: %s to group %s".formatted(user.ldapId(), groupName));
+             LOGGER.log(Level.INFO, "FQDN is: %s".formatted(dn));
+       }
 
       public List<User> fetchUsers() throws NamingException {
             SearchControls searchControls = new SearchControls();
@@ -125,12 +125,12 @@ public class LdapClient {
             ctx.close();
       }
 
-      public void removeUser(String userId) throws NamingException {
-            Optional<String> userFQNameOptional = findUserFQName(userId);
-            if (userFQNameOptional.isPresent())
-                  ctx.destroySubcontext(userFQNameOptional.get());
-            LOGGER.log(Level.INFO, String.format("Removed user with ID: %s", userId));
-      }
+       public void removeUser(String userId) throws NamingException {
+             var userFQNameOptional = findUserFQName(userId);
+             if (userFQNameOptional.isPresent())
+                   ctx.destroySubcontext(userFQNameOptional.get());
+             LOGGER.log(Level.INFO, "Removed user with ID: %s".formatted(userId));
+       }
 
       private Optional<String> findUserFQName(String userId) throws NamingException {
             Optional<String> userDn = Optional.empty();
