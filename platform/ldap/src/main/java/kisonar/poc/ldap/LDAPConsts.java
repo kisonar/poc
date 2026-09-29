@@ -15,10 +15,10 @@ public final class LDAPConsts {
       static final String HOME_DIRECTORY = "homeDirectory";
       static final String EMAIL = "e-mail";
 
-      static final String UID = "uid";
-      static final String UID_ALL = "(" + UID + "=*)";
-      static final String OU = "ou";
-      static final String OU_ALL = "(" + OU + "=*)";
+       static final String UID = "uid";
+       static final String UID_ALL = "(%s=*)".formatted(UID);
+       static final String OU = "ou";
+       static final String OU_ALL = "(%s=*)".formatted(OU);
       static final String SN = "sn";
       static final String CN = "cn";
       static final String PASSWORD = "userPassword";

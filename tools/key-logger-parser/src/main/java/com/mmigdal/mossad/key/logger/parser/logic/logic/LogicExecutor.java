@@ -24,12 +24,12 @@ public final class LogicExecutor extends LogicAbstraction {
             executorService.shutdown();
       }
 
-      private void determineExecutorService() {
-            executorService = switch (modeExecution) {
-                  case PARALLEL_FIXED -> Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
-                  case PARALLEL_DEFAULT -> Executors.newWorkStealingPool();
-                  case SINGLE -> Executors.newSingleThreadExecutor();
-                  case CACHED -> Executors.newCachedThreadPool();
-            };
-      }
+       private void determineExecutorService() {
+             executorService = switch (modeExecution) {
+                   case PARALLEL_FIXED -> Executors.newThreadPerTaskExecutor(Thread.ofVirtual().name("logic-executor-", 0).factory());
+                   case PARALLEL_DEFAULT -> Executors.newVirtualThreadPerTaskExecutor();
+                   case SINGLE -> Executors.newSingleThreadExecutor(Thread.ofVirtual().name("logic-single-", 0).factory());
+                   case CACHED -> Executors.newVirtualThreadPerTaskExecutor();
+             };
+       }
 }

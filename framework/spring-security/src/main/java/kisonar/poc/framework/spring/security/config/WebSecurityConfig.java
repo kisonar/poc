@@ -34,15 +34,14 @@ public class WebSecurityConfig {
             this.jwtUserDetailsService = jwtUserDetailsService;
       }
 
-      @Bean
-      public AuthenticationManager authManager(HttpSecurity http) throws Exception {
-            AuthenticationManagerBuilder authenticationManagerBuilder =
-                    http.getSharedObject(AuthenticationManagerBuilder.class);
-            authenticationManagerBuilder.userDetailsService(jwtUserDetailsService)
-                    .passwordEncoder(passwordEncoder);
-            authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider);
-            return authenticationManagerBuilder.build();
-      }
+       @Bean
+       public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+             var authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+             authenticationManagerBuilder.userDetailsService(jwtUserDetailsService)
+                     .passwordEncoder(passwordEncoder);
+             authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider);
+             return authenticationManagerBuilder.build();
+       }
 
       @Bean
       public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {

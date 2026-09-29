@@ -23,24 +23,24 @@ public abstract class LogicAbstraction implements Logic {
             this.items = new ArrayList<>();
       }
 
-      public void prepare(String inputDirectory, String outputDirectory, List<String> years) {
-            years.forEach(year -> {
-                  String inputYear = createYearLocation(inputDirectory, year);
-                  String outputYear = createYearLocation(outputDirectory, year);
-                  Path input = Path.of(inputYear);
-                  Path output = Path.of(outputYear);
-                  if (input.toFile().isDirectory() && output.toFile().isDirectory()) {
-                        try {
-                              items.addAll(readItems(input, output));
-                        }
-                        catch (IOException e) {
-                              LOG.log(Level.WARNING, String.format("Cannot read items for %s %s", inputYear, outputYear));
-                        }
-                  } else {
-                        LOG.log(Level.WARNING, String.format("One of locations is not a directory %s %s", input, output));
-                  }
-            });
-      }
+       public void prepare(String inputDirectory, String outputDirectory, List<String> years) {
+             years.forEach(year -> {
+                   var inputYear = createYearLocation(inputDirectory, year);
+                   var outputYear = createYearLocation(outputDirectory, year);
+                   var input = Path.of(inputYear);
+                   var output = Path.of(outputYear);
+                   if (input.toFile().isDirectory() && output.toFile().isDirectory()) {
+                         try {
+                               items.addAll(readItems(input, output));
+                         }
+                         catch (IOException e) {
+                               LOG.log(Level.WARNING, "Cannot read items for %s %s".formatted(inputYear, outputYear));
+                         }
+                   } else {
+                         LOG.log(Level.WARNING, "One of locations is not a directory %s %s".formatted(input, output));
+                   }
+             });
+       }
 
       public List<Item> getItems() {
             return Collections.unmodifiableList(items);

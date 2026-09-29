@@ -2,7 +2,6 @@ package com.mmigdal.mossad.key.logger.parser.logic.file;
 
 import com.mmigdal.mossad.key.logger.parser.logic.line.LineProcessor;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -23,22 +22,22 @@ public final class FileProcessor {
             lineProcessor = new LineProcessor();
       }
 
-      public void processFile(String threadName, Path pathInputFile, Path pathOutputFile) {
-            try {
-                  LOG.info(String.format("Thread %s is starting processing files %s %s", threadName, pathInputFile.toAbsolutePath().toFile().getName(), pathOutputFile.toAbsolutePath().toFile().getName()));
-                  Stream<String> lines = readLines(pathInputFile);
-                  Stream<String> filteredLines = lineProcessor.executeFilteringForLogger(lines);
-                  List<String> processedLines = lineProcessor.executeReplacement(filteredLines);
-                  saveResult(processedLines, pathOutputFile);
-                  lineProcessor.reset();
-                  LOG.info(String.format("Thread %s finished processing files %s %s", threadName, pathInputFile.toAbsolutePath().toFile().getName(),
-                          pathOutputFile.toAbsolutePath().toFile().getName()));
-            }
-            catch (IOException e) {
-                  LOG.log(Level.WARNING, String
-                          .format("Thread %s had problem with processing file %s %s", threadName, pathInputFile, e.getMessage()));
-            }
-      }
+       public void processFile(String threadName, Path pathInputFile, Path pathOutputFile) {
+             try {
+                   var inputFileName = pathInputFile.toAbsolutePath().toFile().getName();
+                   var outputFileName = pathOutputFile.toAbsolutePath().toFile().getName();
+                   LOG.info("Thread %s is starting processing files %s %s".formatted(threadName, inputFileName, outputFileName));
+                   var lines = readLines(pathInputFile);
+                   var filteredLines = lineProcessor.executeFilteringForLogger(lines);
+                   var processedLines = lineProcessor.executeReplacement(filteredLines);
+                   saveResult(processedLines, pathOutputFile);
+                   lineProcessor.reset();
+                   LOG.info("Thread %s finished processing files %s %s".formatted(threadName, inputFileName, outputFileName));
+             }
+             catch (IOException e) {
+                   LOG.log(Level.WARNING, "Thread %s had problem with processing file %s %s".formatted(threadName, pathInputFile, e.getMessage()));
+             }
+       }
 
       private Stream<String> readLines(Path filePath) throws IOException {
             if (!Files.exists(filePath, LinkOption.NOFOLLOW_LINKS)) {
@@ -47,23 +46,23 @@ public final class FileProcessor {
             return Files.readAllLines(filePath, StandardCharsets.ISO_8859_1).stream();
       }
 
-      private void saveResult(List<String> linesToWrite, Path outputFilePath) throws IOException {
-            File outputFile = outputFilePath.toFile();
-            if (outputFile.exists()) {
-                  outputFile.delete();
-            }
-            outputFile.createNewFile();
-            try (FileWriter fileWriter = new FileWriter(outputFile)) {
-                  linesToWrite.stream().forEachOrdered(line -> {
-                        try {
-                              fileWriter.write(line);
-                              fileWriter.write("\n");
-                        }
-                        catch (IOException e) {
-                              LOG.log(Level.WARNING, String.format("Problems during saving result: %s ", e.getMessage()));
-                        }
-                  });
-            }
-      }
+       private void saveResult(List<String> linesToWrite, Path outputFilePath) throws IOException {
+             var outputFile = outputFilePath.toFile();
+             if (outputFile.exists()) {
+                   outputFile.delete();
+             }
+             outputFile.createNewFile();
+             try (var fileWriter = new FileWriter(outputFile)) {
+                   linesToWrite.stream().forEachOrdered(line -> {
+                         try {
+                               fileWriter.write(line);
+                               fileWriter.write("\n");
+                         }
+                         catch (IOException e) {
+                               LOG.log(Level.WARNING, "Problems during saving result: %s ".formatted(e.getMessage()));
+                         }
+                   });
+             }
+       }
 
 }

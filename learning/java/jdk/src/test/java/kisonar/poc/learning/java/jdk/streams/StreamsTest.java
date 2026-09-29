@@ -15,15 +15,15 @@ public class StreamsTest {
 
       private final List<User> usersList = new ArrayList<>();
 
-      @Test
-      public void addUsersAndFetchNames() {
-            User user1 = UserFactory.getUser("1", "Marcin", "Migdal", "password1", "kisonar@wp.pl");
-            User user2 = UserFactory.getUser("2", "Adrian", "Puchalski", "password2", "kisonar@wp.pl");
-            usersList.add(user1);
-            usersList.add(user2);
-            List<String> userNames = usersList.stream().map(User::name).toList();
-            assertEquals(2, userNames.size());
-      }
+       @Test
+       public void addUsersAndFetchNames() {
+             var user1 = UserFactory.getUser("1", "Marcin", "Migdal", "password1", "kisonar@wp.pl");
+             var user2 = UserFactory.getUser("2", "Adrian", "Puchalski", "password2", "kisonar@wp.pl");
+             usersList.add(user1);
+             usersList.add(user2);
+             var userNames = usersList.stream().map(User::name).toList();
+             assertEquals(2, userNames.size());
+       }
 
       @Test
       public void intStream() {
