@@ -17,11 +17,11 @@ jobs:
     steps:
       - name: GitHub checkout action
         uses: actions/checkout@v7
-      - name: Setup Java 26
+      - name: Setup Java 27
         uses: actions/setup-java@v6
         with:
           distribution: 'oracle'
-          java-version: '26'
+          java-version: '27'
       - name: Print Java version
         run: java --version
       - name: Setup Gradle 9.5.0
