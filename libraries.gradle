@@ -36,8 +36,8 @@ ext {
             guacamoleCommon       : "org.apache.guacamole:guacamole-common:${GUACAMOLE_VERSION}",
             guacamoleCommonJs     : "org.apache.guacamole:guacamole-common-js:${GUACAMOLE_VERSION}",
             // Unit tests
-            junitJupiterEngine        : "org.junit.jupiter:junit-jupiter-engine:6.1.1",
-            junitPlatformLauncher     : "org.junit.platform:junit-platform-launcher",
+            junitJupiterEngine        : "org.junit.jupiter:junit-jupiter-engine:6.1.3",
+            junitPlatformLauncher     : "org.junit.platform:junit-platform-launcher:6.1.3",
             mockito               : "org.mockito:mockito-core:5.23.0",
             //test automation
             selenium                  : "org.seleniumhq.selenium:selenium-java:4.45.0",
