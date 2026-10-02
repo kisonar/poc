@@ -74,7 +74,7 @@ public final class MailSender {
                    stringBuilder.append(localhost.getHostAddress()).append("\n")
                          .append(localhost.getHostName()).append("\n")
                          .append(localhost.getCanonicalHostName()).append("\n")
-                         .append(localhost.toString());
+                         .append(localhost);
              }
              catch (UnknownHostException e) {
                    stringBuilder.append("\n Host determination failed up due to: %s".formatted(e.getMessage()));

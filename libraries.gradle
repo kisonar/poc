@@ -7,7 +7,6 @@ ext {
     TEST_CONTAINERS_VERSION ='1.17.5'
     GUACAMOLE_VERSION = '1.6.0'
     JWT_VERSION = '0.11.5'
-    WEBDRIVERMANAGER_VERSION = '6.1.0'
 
     libraries = [
 
@@ -43,6 +42,6 @@ ext {
             mockito               : "org.mockito:mockito-core:5.23.0",
             //test automation
             selenium                  : "org.seleniumhq.selenium:selenium-java:4.45.0",
-            webdrivermanager      : "io.github.bonigarcia:webdrivermanager:${WEBDRIVERMANAGER_VERSION}"
+            webdrivermanager      : "io.github.bonigarcia:webdrivermanager:6.1.0"
     ]
 }
