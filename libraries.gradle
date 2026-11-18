@@ -6,7 +6,7 @@ ext {
     KAFKA_VERSION = '4.3.1'
     TEST_CONTAINERS_VERSION ='1.17.5'
     GUACAMOLE_VERSION = '1.6.0'
-    JWT_VERSION = '0.12.0' // to update to version 0.13
+    JWT_VERSION = '0.11.5' // to update to version 0.13
 
     libraries = [
 
