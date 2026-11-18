@@ -1,9 +1,7 @@
 # POC
 
 ```
-Requires JAVA 79.x
-Gradle 9.8.0
-
+Requires
 sdk default java 27.0.0-oracle
 sdk default gradle 9.6.0
 ```
