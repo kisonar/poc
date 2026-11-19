@@ -12,7 +12,6 @@ dependencies {
     implementation libraries.springBootStarterWebSocket
     implementation libraries.springBootStarterActuator
     implementation libraries.mariaDbLibrary
-    implementation libraries.springBootStarterDataJpa
 
     testImplementation libraries.springBootTest
 }
@@ -21,7 +20,7 @@ description = 'spring'
 
 //creates both FAT and plain JAR
 bootJar {
-    mainClass = 'kisonar.poc.framework.spring.security.App'
+    mainClass = 'kisonar.poc.framework.spring.App'
 }
 
 dockerCompose.isRequiredBy(test)

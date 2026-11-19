@@ -16,5 +16,5 @@ description = 'spring-security'
 
 //creates both FAT and plain JAR
 bootJar {
-    mainClass = 'kisonar.poc.framework.spring.security.App'
+    mainClass = 'kisonar.poc.framework.spring.security.SpringBootSecurityApp'
 }

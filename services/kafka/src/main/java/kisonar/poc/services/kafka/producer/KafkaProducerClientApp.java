@@ -9,7 +9,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.security.Security;
 
-public class KafkaProcuderClientApp {
+public class KafkaProducerClientApp {
 
        static void main(String[] args) {
              Security.addProvider(new CustomProvider("admin", "1", "Migi custom provider"));
