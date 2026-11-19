@@ -11,6 +11,7 @@ import javax.naming.directory.BasicAttributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
+import javax.naming.ldap.Rdn;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +27,9 @@ import static kisonar.poc.ldap.LDAPConsts.*;
 public class LdapClient {
 
       private final static Logger LOGGER = Logger.getLogger(LdapClient.class.getName());
+      // {0} is substituted and escaped by JNDI, so user input cannot alter the filter
+      private static final String USER_BY_UID_FILTER =
+              "(&(%s=%s)(%s={0}))".formatted(OBJECT_CLASS, INETORGPERSON, UID);
       private final DirContext ctx;
 
       public LdapClient(DirContext ctx) {
@@ -104,8 +108,8 @@ public class LdapClient {
             String groupsBase = generateGroupsString(groups);
             SearchControls searchControls = new SearchControls();
             searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-            String filter = "(&(objectclass=" + INETORGPERSON + ")(" + UID + EQUALS + userId + "))";
-            NamingEnumeration<SearchResult> results = ctx.search(groupsBase, filter, searchControls);
+            NamingEnumeration<SearchResult> results =
+                    ctx.search(groupsBase, USER_BY_UID_FILTER, new Object[]{userId}, searchControls);
             User user = null;
             while (results.hasMore()) {
                   SearchResult sr = results.next();
@@ -136,8 +140,8 @@ public class LdapClient {
             Optional<String> userDn = Optional.empty();
             SearchControls searchControls = new SearchControls();
             searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-            String filter = "(&(" + OBJECT_CLASS + EQUALS + INETORGPERSON + ")(" + UID + EQUALS + userId + "))";
-            NamingEnumeration<SearchResult> results = ctx.search(EMPTY, filter, searchControls);
+            NamingEnumeration<SearchResult> results =
+                    ctx.search(EMPTY, USER_BY_UID_FILTER, new Object[]{userId}, searchControls);
             while (results.hasMore()) {
                   SearchResult searchResult = results.next();
                   userDn = Optional.of(searchResult.getName());
@@ -148,19 +152,19 @@ public class LdapClient {
       }
 
       private String generateUserFQName(String uid, List<String> groups) {
-            return UID + EQUALS + uid +
+            return UID + EQUALS + Rdn.escapeValue(uid) +
                     COMA +
                     generateGroupsString(groups);
       }
 
       private String generateGroupFQName(String groupName) {
-            return OU + EQUALS + groupName;
+            return OU + EQUALS + Rdn.escapeValue(groupName);
       }
 
       private String generateGroupsString(List<String> groups) {
             StringBuilder stringBuilder = new StringBuilder();
             for (String group : groups) {
-                  stringBuilder.append(OU).append(EQUALS).append(group).append(COMA);
+                  stringBuilder.append(OU).append(EQUALS).append(Rdn.escapeValue(group)).append(COMA);
             }
             if (!groups.isEmpty())
                   stringBuilder.deleteCharAt(stringBuilder.length() - 1);
