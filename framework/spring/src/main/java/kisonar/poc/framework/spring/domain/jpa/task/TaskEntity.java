@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 import java.util.Objects;
 
-import static kisonar.poc.framework.spring.domain.jpa.EntitytGenerationType.NATIVE;
+import static kisonar.poc.framework.spring.domain.jpa.EntityGenerationType.NATIVE;
 
 @Entity
 @Table(name = "tasks")

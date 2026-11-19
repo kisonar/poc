@@ -39,7 +39,6 @@ public class LoopBackTimeStamp {
       /**
        * Transfer a 16 byte-long byte[] to 2 long numbers, every 8 bytes represent a long number.
        *
-       * @param content
        */
       public void fromByteArray(byte[] content) {
             int len = content.length;
