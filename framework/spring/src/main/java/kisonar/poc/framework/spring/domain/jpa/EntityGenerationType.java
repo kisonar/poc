@@ -2,8 +2,8 @@ package kisonar.poc.framework.spring.domain.jpa;
 
 public final class EntityGenerationType {
 
-      public static final String NATIVE = "native";
+    public static final String NATIVE = "native";
 
-      private EntityGenerationType() {
-      }
+    private EntityGenerationType() {
+    }
 }

@@ -9,17 +9,17 @@ import java.util.Optional;
 @Service
 public class TaskService {
 
-      private final TaskRepository userRepository;
+    private final TaskRepository userRepository;
 
-      public TaskService(TaskRepository userRepository) {
-            this.userRepository = userRepository;
-      }
+    public TaskService(TaskRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-      public Optional<TaskEntity> getById(Long userId) {
-            return userRepository.findById(userId);
-      }
+    public Optional<TaskEntity> getById(Long userId) {
+        return userRepository.findById(userId);
+    }
 
-      public void add(TaskEntity userEntity) {
-            userRepository.saveAndFlush(userEntity);
-      }
+    public void add(TaskEntity userEntity) {
+        userRepository.saveAndFlush(userEntity);
+    }
 }

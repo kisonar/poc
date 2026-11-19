@@ -9,14 +9,14 @@ import kisonar.platform.domain.util.Measurement;
 
 public class MainExecutorParallelFixed {
 
-      static void main(String[] args) {
-            Logic logic = LogicFactory.getLogic(ModeRuntime.EXECUTOR, ModeExecution.PARALLEL_FIXED);
-            logic.prepare(TestingConfiguration.LINUX_PATH_FQ_INPUT, TestingConfiguration.LINUX_PATH_FQ_OUTPUT, Configuration.YEARS);
-            Measurement measurement = new Measurement();
-            measurement.prepare();
-            measurement.start();
-            logic.execute();
-            measurement.finish();
-            measurement.printResult();
-      }
+    static void main(String[] args) {
+        Logic logic = LogicFactory.getLogic(ModeRuntime.EXECUTOR, ModeExecution.PARALLEL_FIXED);
+        logic.prepare(TestingConfiguration.LINUX_PATH_FQ_INPUT, TestingConfiguration.LINUX_PATH_FQ_OUTPUT, Configuration.YEARS);
+        Measurement measurement = new Measurement();
+        measurement.prepare();
+        measurement.start();
+        logic.execute();
+        measurement.finish();
+        measurement.printResult();
+    }
 }

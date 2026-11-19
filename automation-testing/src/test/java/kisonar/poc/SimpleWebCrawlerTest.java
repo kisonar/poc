@@ -13,34 +13,32 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Disabled("Requires running Nexus")
 public class SimpleWebCrawlerTest {
 
-      String correctUsername = "admin";
-      String correctPassword = "Nexus2022";
+    String correctUsername = "admin";
+    String correctPassword = "Nexus2022";
 
-      private ChromeDriver driver;
+    private ChromeDriver driver;
 
-      @BeforeEach
-      public void setup() {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-      }
+    @BeforeEach
+    public void setup() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+    }
 
-      @Test
-      public void login() throws InterruptedException {
+    @Test
+    public void login() throws InterruptedException {
+        driver.get("http://localhost:8083");
+        TimeUnit.SECONDS.sleep(3);
 
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.clickLoginLink();
 
-            driver.get("http://localhost:8083");
-            TimeUnit.SECONDS.sleep(3);
+        LoginPopup loginPopup = new LoginPopup(driver);
+        loginPopup.enterCredentials(correctUsername, correctPassword);
+        loginPopup.login();
 
-            WelcomePage welcomePage = new WelcomePage(driver);
-            welcomePage.clickLoginLink();
+        AuthenticatedPage authenticatedPage = new AuthenticatedPage(driver);
+        assertEquals("admin", authenticatedPage.getUserValue());
 
-            LoginPopup loginPopup = new LoginPopup(driver);
-            loginPopup.enterCredentials(correctUsername, correctPassword);
-            loginPopup.login();
-
-            AuthenticatedPage authenticatedPage = new AuthenticatedPage(driver);
-            assertEquals("admin", authenticatedPage.getUserValue());
-
-            driver.close();
-      }
+        driver.close();
+    }
 }

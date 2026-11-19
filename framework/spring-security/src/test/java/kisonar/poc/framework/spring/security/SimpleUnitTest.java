@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class SimpleUnitTest {
 
-      @Test
-      public void justRun() {
-      }
+    @Test
+    public void justRun() {
+    }
 }

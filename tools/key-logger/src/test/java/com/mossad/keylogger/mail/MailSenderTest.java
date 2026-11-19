@@ -8,14 +8,14 @@ import java.util.Collections;
 
 public class MailSenderTest {
 
-      @Disabled
-      @Test
-      public void sendEmail() throws EmailException {
-            MailSender mailSender = new MailSender(
-                    "smtp.wp.pl",
-                    "someEmail",
-                    "somePassword", MailSender.SMTP_PORT);
-            mailSender.prepareEmailWithAttachment(Collections.emptyList());
-            mailSender.send();
-      }
+    @Disabled
+    @Test
+    public void sendEmail() throws EmailException {
+        MailSender mailSender = new MailSender(
+                "smtp.wp.pl",
+                "someEmail",
+                "somePassword", MailSender.SMTP_PORT);
+        mailSender.prepareEmailWithAttachment(Collections.emptyList());
+        mailSender.send();
+    }
 }

@@ -8,34 +8,33 @@ import java.util.logging.SimpleFormatter;
 
 public final class LogRecorder {
 
-      private final Logger LOG = Logger.getLogger(LogRecorder.class.getCanonicalName());
-      private FileHandler fileHandler;
+    private final Logger LOG = Logger.getLogger(LogRecorder.class.getCanonicalName());
+    private FileHandler fileHandler;
 
-      public LogRecorder() {
-            SimpleFormatter simpleFormatter = new SimpleFormatter();
-            try {
-                  fileHandler = new FileHandler("Logging", 1024000, 2, true);
-                  fileHandler.flush();
-                  fileHandler.close();
-                  fileHandler = new FileHandler("Logging", 1024000, 2, true);
-                  fileHandler.setEncoding("UTF-8");
-            }
-            catch (IOException ex) {
-                  throw new RuntimeException("Cannot create logging file. Exiting application");
-            }
-            fileHandler.setFormatter(simpleFormatter);
-            LOG.addHandler(fileHandler);
-            Runtime.getRuntime().addShutdownHook(new Thread(() -> fileHandler.close()));
-      }
-
-      public void writeContent(String content) {
-            if (!Objects.isNull(content) && !content.isEmpty()) {
-                  LOG.info(content);
-            }
-      }
-
-      public void close() {
+    public LogRecorder() {
+        SimpleFormatter simpleFormatter = new SimpleFormatter();
+        try {
+            fileHandler = new FileHandler("Logging", 1024000, 2, true);
+            fileHandler.flush();
             fileHandler.close();
-      }
+            fileHandler = new FileHandler("Logging", 1024000, 2, true);
+            fileHandler.setEncoding("UTF-8");
+        } catch (IOException ex) {
+            throw new RuntimeException("Cannot create logging file. Exiting application");
+        }
+        fileHandler.setFormatter(simpleFormatter);
+        LOG.addHandler(fileHandler);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> fileHandler.close()));
+    }
+
+    public void writeContent(String content) {
+        if (!Objects.isNull(content) && !content.isEmpty()) {
+            LOG.info(content);
+        }
+    }
+
+    public void close() {
+        fileHandler.close();
+    }
 
 }

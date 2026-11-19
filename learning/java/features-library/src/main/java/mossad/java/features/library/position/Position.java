@@ -8,17 +8,17 @@ import java.util.List;
 public final class Position {
 
 
-      private final List<PositionItem> positionItems;
+    private final List<PositionItem> positionItems;
 
-      public Position() {
-            positionItems = new ArrayList<>();
-      }
+    public Position() {
+        positionItems = new ArrayList<>();
+    }
 
-      public List<PositionItem> getPositionItems() {
-            return positionItems;
-      }
+    public List<PositionItem> getPositionItems() {
+        return positionItems;
+    }
 
-      public void addPositionItem(PositionItem positionItem) {
-            positionItems.add(positionItem);
-      }
+    public void addPositionItem(PositionItem positionItem) {
+        positionItems.add(positionItem);
+    }
 }

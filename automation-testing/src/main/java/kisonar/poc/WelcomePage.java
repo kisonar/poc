@@ -10,16 +10,16 @@ import java.util.concurrent.TimeUnit;
 
 public class WelcomePage extends AbstractPage {
 
-      @FindBy(how = How.ID_OR_NAME, id = "nx-header-signin-1145-btnInnerEl")
-      WebElement loginLink;
+    @FindBy(how = How.ID_OR_NAME, id = "nx-header-signin-1145-btnInnerEl")
+    WebElement loginLink;
 
-      public WelcomePage(WebDriver driver) {
-            super(driver);
-            initialize(this);
-      }
+    public WelcomePage(WebDriver driver) {
+        super(driver);
+        initialize(this);
+    }
 
-      public void clickLoginLink() throws InterruptedException {
-            loginLink.click();
-            TimeUnit.SECONDS.sleep(2);
-      }
+    public void clickLoginLink() throws InterruptedException {
+        loginLink.click();
+        TimeUnit.SECONDS.sleep(2);
+    }
 }

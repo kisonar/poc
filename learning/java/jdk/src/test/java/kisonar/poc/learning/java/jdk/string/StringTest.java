@@ -6,26 +6,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringTest {
 
-      private final String something = " something ";
+    private final String something = " something ";
 
-       @Test
-       public void string_join() {
-             var anything = " anything ";
-             var result = String.join("|", something, anything);
-             assertEquals(" something | anything ", result);
-       }
+    @Test
+    public void string_join() {
+        var anything = " anything ";
+        var result = String.join("|", something, anything);
+        assertEquals(" something | anything ", result);
+    }
 
-       @Test
-       public void string_format() {
-             var result = "Input %s output".formatted("Yes");
-             assertEquals("Input Yes output", result);
-       }
+    @Test
+    public void string_format() {
+        var result = "Input %s output".formatted("Yes");
+        assertEquals("Input Yes output", result);
+    }
 
-      @Test
-      public void string_strip() {
-            assertEquals("something", something.strip());
-            assertEquals("something ", something.stripLeading());
-            assertEquals(" something", something.stripTrailing());
-            assertEquals("something", something.stripIndent());
-      }
+    @Test
+    public void string_strip() {
+        assertEquals("something", something.strip());
+        assertEquals("something ", something.stripLeading());
+        assertEquals(" something", something.stripTrailing());
+        assertEquals("something", something.stripIndent());
+    }
 }
