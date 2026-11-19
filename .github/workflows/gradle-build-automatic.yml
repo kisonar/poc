@@ -18,10 +18,10 @@ jobs:
           java-version: '27'
       - name: Print Java version
         run: java --version
-      - name: Setup Gradle 9.8.0
+      - name: Setup Gradle 9.9.1
         uses: gradle/actions/setup-gradle@v6.4.1
         with:
-          gradle-version: 9.8.0
+          gradle-version: 9.9.1
       - name: Print Gradle version
         run: gradle --version
       - name: Execute Gradle build
