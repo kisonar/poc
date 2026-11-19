@@ -8,15 +8,15 @@ import org.openqa.selenium.support.How;
 
 public class AuthenticatedPage extends AbstractPage {
 
-      @FindBy(how = How.ID_OR_NAME, id = "button-1144-btnInnerEl")
-      WebElement userNameLabel;
+    @FindBy(how = How.ID_OR_NAME, id = "button-1144-btnInnerEl")
+    WebElement userNameLabel;
 
-      public AuthenticatedPage(WebDriver driver) {
-            super(driver);
-            initialize(this);
-      }
+    public AuthenticatedPage(WebDriver driver) {
+        super(driver);
+        initialize(this);
+    }
 
-      public String getUserValue() {
-            return userNameLabel.getText();
-      }
+    public String getUserValue() {
+        return userNameLabel.getText();
+    }
 }
