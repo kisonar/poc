@@ -75,12 +75,12 @@ public class LdapClient {
         var attributeCn = new BasicAttribute(CN, user.name());
         var attributeSn = new BasicAttribute(SN, user.surname());
         var attributePassword = new BasicAttribute(PASSWORD, user.password());
-        //Attribute attributeEmail = new BasicAttribute(EMAIL, user.email);
+        Attribute attributeEmail = new BasicAttribute(EMAIL, user.email());
         attributes.put(attributeUid);
         attributes.put(attributeCn);
         attributes.put(attributeSn);
         attributes.put(attributePassword);
-        //attributes.put(attributeEmail);
+        attributes.put(attributeEmail);
 
         var dn = generateUserFQName(user.ldapId(), List.of(groupName));
         ctx.createSubcontext(dn, attributes);
@@ -102,7 +102,6 @@ public class LdapClient {
         return Collections.unmodifiableList(users);
     }
 
-    //TODO
     public Optional<User> findUser(String userId) throws NamingException {
         List<String> groups = fetchGroups();
         String groupsBase = generateGroupsString(groups);
@@ -141,10 +140,7 @@ public class LdapClient {
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
         NamingEnumeration<SearchResult> results =
                 ctx.search(EMPTY, USER_BY_UID_FILTER, new Object[]{userId}, searchControls);
-        if (results.hasMore()) {
-            return Optional.of(results.next().getName());
-        }
-        return Optional.empty();
+        return (results.hasMore() ? Optional.of(results.next().getName()) : Optional.empty());
     }
 
     private String generateUserFQName(String uid, List<String> groups) {
@@ -162,9 +158,8 @@ public class LdapClient {
         for (String group : groups) {
             stringBuilder.append(OU).append(EQUALS).append(Rdn.escapeValue(group)).append(COMA);
         }
-        if (!groups.isEmpty())
-            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-        return stringBuilder.toString();
+        return (!groups.isEmpty()) ?
+                stringBuilder.deleteCharAt(stringBuilder.length() - 1).toString() : stringBuilder.toString();
     }
 
     private User extractUser(Attributes attributes) throws NamingException {
@@ -173,5 +168,4 @@ public class LdapClient {
         String password = new String((byte[]) attributes.get(PASSWORD).get());
         return new User(attributes.get(UID).toString(), nameCn, surnameSN, password, nameCn + "." + surnameSN + "@email.com");
     }
-
 }
