@@ -9,14 +9,14 @@ import kisonar.platform.domain.util.Measurement;
 
 public class MainExecutorSingle {
 
-      static void main(String[] args) {
-            Logic logic = LogicFactory.getLogic(ModeRuntime.EXECUTOR, ModeExecution.SINGLE);
-            logic.prepare(TestingConfiguration.WIN_PATH_FQ_INPUT, TestingConfiguration.WIN_PATH_FQ_OUTPUT, Configuration.YEARS);
-            Measurement measurement = new Measurement();
-            measurement.prepare();
-            measurement.start();
-            logic.execute();
-            measurement.finish();
-            measurement.printResult();
-      }
+    static void main(String[] args) {
+        Logic logic = LogicFactory.getLogic(ModeRuntime.EXECUTOR, ModeExecution.SINGLE);
+        logic.prepare(TestingConfiguration.WIN_PATH_FQ_INPUT, TestingConfiguration.WIN_PATH_FQ_OUTPUT, Configuration.YEARS);
+        Measurement measurement = new Measurement();
+        measurement.prepare();
+        measurement.start();
+        logic.execute();
+        measurement.finish();
+        measurement.printResult();
+    }
 }

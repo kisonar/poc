@@ -11,15 +11,15 @@ import java.util.List;
 
 public class KafkaConsumerClientApp {
 
-       static void main(String[] args) {
-             Security.addProvider(new CustomProvider("admin", "1", "Migi custom provider"));
-             var consumer = new KafkaConsumer<String, String>(KafkaProperties.getConsumerProperties(KafkaProperties.getCommonProperties()));
-             consumer.subscribe(List.of(KafkaTopicNames.TOPIC_READER));
-             while (true) {
-                   var records = consumer.poll(Duration.ofSeconds(1L));
-                   for (var record : records) {
-                         System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
-                   }
-             }
-       }
+    static void main(String[] args) {
+        Security.addProvider(new CustomProvider("admin", "1", "Migi custom provider"));
+        var consumer = new KafkaConsumer<String, String>(KafkaProperties.getConsumerProperties(KafkaProperties.getCommonProperties()));
+        consumer.subscribe(List.of(KafkaTopicNames.TOPIC_READER));
+        while (true) {
+            var records = consumer.poll(Duration.ofSeconds(1L));
+            for (var record : records) {
+                System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+            }
+        }
+    }
 }

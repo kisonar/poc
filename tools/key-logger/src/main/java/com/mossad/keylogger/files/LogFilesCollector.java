@@ -12,33 +12,31 @@ import static kisonar.platform.domain.BaseDefinitions.EMPTY;
 
 public final class LogFilesCollector {
 
-       private final Logger LOG = Logger.getLogger(LogFilesCollector.class.getCanonicalName());
+    private final Logger LOG = Logger.getLogger(LogFilesCollector.class.getCanonicalName());
 
-       public LogFilesCollector() {
-       }
+    public LogFilesCollector() {
+    }
 
-       public List<String> collectLogs() {
-             var currentDirectory = new File(new File(EMPTY).getAbsolutePath());
-             var pathAsString = currentDirectory.getAbsolutePath();
-             try (var paths = Files.list(Paths.get(pathAsString))) {
-                   return paths.map(Path::toString).filter(path -> !path.endsWith(".lck") && path.contains("Log"))
-                           .toList();
+    public List<String> collectLogs() {
+        var currentDirectory = new File(new File(EMPTY).getAbsolutePath());
+        var pathAsString = currentDirectory.getAbsolutePath();
+        try (var paths = Files.list(Paths.get(pathAsString))) {
+            return paths.map(Path::toString).filter(path -> !path.endsWith(".lck") && path.contains("Log"))
+                    .toList();
 
-             }
-             catch (IOException e) {
-                   LOG.warning("Cannot collect logs %s".formatted(e.getMessage()));
-                   return List.of();
-             }
-       }
+        } catch (IOException e) {
+            LOG.warning("Cannot collect logs %s".formatted(e.getMessage()));
+            return List.of();
+        }
+    }
 
-       public void removeLogs(List<String> filesNames) {
-             filesNames.forEach(path -> {
-                   try {
-                         Files.delete(Paths.get(path));
-                   }
-                   catch (IOException e) {
-                         LOG.warning("Cannot remove logs %s".formatted(e.getMessage()));
-                   }
-             });
-       }
+    public void removeLogs(List<String> filesNames) {
+        filesNames.forEach(path -> {
+            try {
+                Files.delete(Paths.get(path));
+            } catch (IOException e) {
+                LOG.warning("Cannot remove logs %s".formatted(e.getMessage()));
+            }
+        });
+    }
 }

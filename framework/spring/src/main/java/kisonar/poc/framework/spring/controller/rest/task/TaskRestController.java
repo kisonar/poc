@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/task")
 public class TaskRestController {
 
-      @GetMapping("/get")
-      public ResponseEntity<HttpStatus> getTask(@RequestParam TaskState taskState) {
-            String name = taskState.name();
-            return ResponseEntity.ok().build();
-      }
+    @GetMapping("/get")
+    public ResponseEntity<HttpStatus> getTask(@RequestParam TaskState taskState) {
+        String name = taskState.name();
+        return ResponseEntity.ok().build();
+    }
 }

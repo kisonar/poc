@@ -9,17 +9,17 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-      private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-      public UserService(UserRepository userRepository) {
-            this.userRepository = userRepository;
-      }
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-      public Optional<UserEntity> getById(Long userId) {
-            return userRepository.findById(userId);
-      }
+    public Optional<UserEntity> getById(Long userId) {
+        return userRepository.findById(userId);
+    }
 
-      public void add(UserEntity user) {
-            userRepository.saveAndFlush(user);
-      }
+    public void add(UserEntity user) {
+        userRepository.saveAndFlush(user);
+    }
 }

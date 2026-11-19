@@ -9,17 +9,17 @@ import kisonar.poc.network.netty.library.LoopBackTimeStamp;
  */
 public class ClientHandler extends ChannelInboundHandlerAdapter {
 
-       @Override
-       public void channelRead(ChannelHandlerContext ctx, Object msg) {
-             var ts = (LoopBackTimeStamp) msg;
-             System.out.println("Cient received message..");
-             ctx.writeAndFlush(ts); //recieved message sent back directly
-             System.out.println("CLient write and flush");
-       }
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+        var ts = (LoopBackTimeStamp) msg;
+        System.out.println("Cient received message..");
+        ctx.writeAndFlush(ts); //recieved message sent back directly
+        System.out.println("CLient write and flush");
+    }
 
-      @Override
-      public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-            // Close the connection when an exception is raised.
-            ctx.close();
-      }
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        // Close the connection when an exception is raised.
+        ctx.close();
+    }
 }

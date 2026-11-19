@@ -16,38 +16,38 @@ import kisonar.poc.network.netty.library.TimeStampEncoder;
  */
 public class Server {
 
-       static void main(String[] args) throws InterruptedException {
+    static void main(String[] args) throws InterruptedException {
 
-             var boosGroup = new NioEventLoopGroup();
-             var workerGroup = new NioEventLoopGroup();
-             var bootstrap = new ServerBootstrap();
-             bootstrap.group(boosGroup, workerGroup);
-             bootstrap.channel(NioServerSocketChannel.class);
+        var boosGroup = new NioEventLoopGroup();
+        var workerGroup = new NioEventLoopGroup();
+        var bootstrap = new ServerBootstrap();
+        bootstrap.group(boosGroup, workerGroup);
+        bootstrap.channel(NioServerSocketChannel.class);
 
-             // ===========================================================
-             // 1. define a separate thread pool to execute handlers with
-             //    slow business logic. e.g database operation
-             // ===========================================================
-             final var group = new DefaultEventExecutorGroup(3); //thread pool of 1500
+        // ===========================================================
+        // 1. define a separate thread pool to execute handlers with
+        //    slow business logic. e.g database operation
+        // ===========================================================
+        final var group = new DefaultEventExecutorGroup(3); //thread pool of 1500
 
-             bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
-                   @Override
-                   protected void initChannel(SocketChannel ch) throws Exception {
-                         var pipeline = ch.pipeline();
-                         pipeline.addLast("idleStateHandler", new IdleStateHandler(0, 0, 5)); // add with name
-                         pipeline.addLast(new TimeStampEncoder()); // add without name, name auto generated
-                         pipeline.addLast(new TimeStampDecoder()); // add without name, name auto generated
+        bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
+            @Override
+            protected void initChannel(SocketChannel ch) throws Exception {
+                var pipeline = ch.pipeline();
+                pipeline.addLast("idleStateHandler", new IdleStateHandler(0, 0, 5)); // add with name
+                pipeline.addLast(new TimeStampEncoder()); // add without name, name auto generated
+                pipeline.addLast(new TimeStampDecoder()); // add without name, name auto generated
 
-                         //===========================================================
-                         // 2. run handler with slow business logic
-                         //    in separate thread from I/O thread
-                         //===========================================================
-                         pipeline.addLast(group, "serverHandler", new ServerHandler());
-                   }
-             });
+                //===========================================================
+                // 2. run handler with slow business logic
+                //    in separate thread from I/O thread
+                //===========================================================
+                pipeline.addLast(group, "serverHandler", new ServerHandler());
+            }
+        });
 
-             bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
-             bootstrap.bind(19000).sync();
-             System.out.println("Server has been run");
-       }
+        bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
+        bootstrap.bind(19000).sync();
+        System.out.println("Server has been run");
+    }
 }

@@ -6,41 +6,41 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IntImplTest {
 
-      private final String message = "Go";
+    private final String message = "Go";
 
-      @Test
-      void testInt1() {
-            Int1WithDefaultWriteAndJustWrite cut = new IntImpl(IntMode.ONE);
+    @Test
+    void testInt1() {
+        Int1WithDefaultWriteAndJustWrite cut = new IntImpl(IntMode.ONE);
 
-            var response = cut.write(message);
+        var response = cut.write(message);
 
-            assertEquals("One write Go", response);
-      }
+        assertEquals("One write Go", response);
+    }
 
-      @Test
-      void testInt2() {
-            Int2WithDefaultWrite cut = new IntImpl(IntMode.TWO);
+    @Test
+    void testInt2() {
+        Int2WithDefaultWrite cut = new IntImpl(IntMode.TWO);
 
-            var response = cut.write(message);
+        var response = cut.write(message);
 
-            assertEquals("Two write  Go", response);
-      }
+        assertEquals("Two write  Go", response);
+    }
 
-      @Test
-      void testInt3() {
-            Int3WithNoDefaultOnlyGo cut = new IntImpl(IntMode.THREE);
+    @Test
+    void testInt3() {
+        Int3WithNoDefaultOnlyGo cut = new IntImpl(IntMode.THREE);
 
-            var response = cut.write(message);
+        var response = cut.write(message);
 
-            assertEquals("Three Impl write Go", response);
-      }
+        assertEquals("Three Impl write Go", response);
+    }
 
-      @Test
-      void testDefault() {
-            Int3WithNoDefaultOnlyGo cut = new IntImpl(IntMode.DEFAULT);
+    @Test
+    void testDefault() {
+        Int3WithNoDefaultOnlyGo cut = new IntImpl(IntMode.DEFAULT);
 
-            var response = cut.write(message);
+        var response = cut.write(message);
 
-            assertEquals("Write default from IntImpl", response);
-      }
+        assertEquals("Write default from IntImpl", response);
+    }
 }

@@ -9,19 +9,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class UserRepositoryTest {
 
-      @Autowired
-      private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-      @Test
-      public void saveTask() {
-            String name = "user99";
-            String password = "user99pass";
-            String emial = "user99email";
-            var user = UserEntityFactory.getUserEntity(name, password, emial);
+    @Test
+    public void saveTask() {
+        String name = "user99";
+        String password = "user99pass";
+        String emial = "user99email";
+        var user = UserEntityFactory.getUserEntity(name, password, emial);
 
-            var savedUser = userRepository.save(user);
+        var savedUser = userRepository.save(user);
 
-            var foundTask = userRepository.findById(savedUser.getUserId()).orElseGet(Assertions::fail);
-            Assertions.assertEquals(savedUser.getUserId(), foundTask.getUserId());
-      }
+        var foundTask = userRepository.findById(savedUser.getUserId()).orElseGet(Assertions::fail);
+        Assertions.assertEquals(savedUser.getUserId(), foundTask.getUserId());
+    }
 }

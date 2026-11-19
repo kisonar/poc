@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserRestController {
 
-      private final UserService userService;
+    private final UserService userService;
 
-      public UserRestController(UserService userService) {
-            this.userService = userService;
+    public UserRestController(UserService userService) {
+        this.userService = userService;
 
-      }
+    }
 
-       @GetMapping("/hello")
-       public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-             return "Hello %s!".formatted(name);
-       }
+    @GetMapping("/hello")
+    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return "Hello %s!".formatted(name);
+    }
 
     /*
 	@GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)

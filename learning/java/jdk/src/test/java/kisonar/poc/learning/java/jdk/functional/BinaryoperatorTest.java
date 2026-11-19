@@ -6,13 +6,13 @@ import java.util.function.BinaryOperator;
 
 public class BinaryoperatorTest {
 
-      private final BinaryOperator<Integer> binaryOperator = (val1, val2) -> val1 * val2;
+    private final BinaryOperator<Integer> binaryOperator = (val1, val2) -> val1 * val2;
 
 
-      @Test
-      public void testBinaryOperator() {
-            var result = binaryOperator.apply(2, 3);
+    @Test
+    public void testBinaryOperator() {
+        var result = binaryOperator.apply(2, 3);
 
-            assert result == 6;
-      }
+        assert result == 6;
+    }
 }

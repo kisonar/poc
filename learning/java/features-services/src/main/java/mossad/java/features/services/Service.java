@@ -7,14 +7,14 @@ import java.util.List;
 
 public class Service {
 
-      private final List<Position> positions = new ArrayList<>();
+    private final List<Position> positions = new ArrayList<>();
 
-      public Service() {
+    public Service() {
 
-      }
+    }
 
-      public void addPositionItem(Position position) {
-            positions.add(position);
-      }
+    public void addPositionItem(Position position) {
+        positions.add(position);
+    }
 
 }

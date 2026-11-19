@@ -9,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PredicateTest {
 
-      @Test
-      public void predicates() {
-            var result = IntStream.range(1, 9)
-                    .mapToObj(item -> CollectionsFactory.getRecord(item, "", ""))
-                    .filter(RecordPredicate.recordEntityPredicateNameNotBlank)
-                    .toList();
-            assertTrue(result.isEmpty());
-      }
+    @Test
+    public void predicates() {
+        var result = IntStream.range(1, 9)
+                .mapToObj(item -> CollectionsFactory.getRecord(item, "", ""))
+                .filter(RecordPredicate.recordEntityPredicateNameNotBlank)
+                .toList();
+        assertTrue(result.isEmpty());
+    }
 }

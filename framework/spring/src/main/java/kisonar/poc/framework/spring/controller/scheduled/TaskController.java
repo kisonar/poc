@@ -14,22 +14,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Controller
 public class TaskController {
 
-      private final AtomicInteger atomicInteger = new AtomicInteger();
-      private final List<TaskState> VALUES = List.of(TaskState.values());
-      private final Random RANDOM = new Random();
-      private final TaskService taskService;
+    private final AtomicInteger atomicInteger = new AtomicInteger();
+    private final List<TaskState> VALUES = List.of(TaskState.values());
+    private final Random RANDOM = new Random();
+    private final TaskService taskService;
 
-      public TaskController(TaskService taskService) {
-            this.taskService = taskService;
-      }
+    public TaskController(TaskService taskService) {
+        this.taskService = taskService;
+    }
 
-      @Scheduled(fixedDelay = 100, timeUnit = TimeUnit.SECONDS)
-      void generateTasks() {
-            int value = atomicInteger.incrementAndGet();
-            String taskName = "Task" + value;
-            String taskValue = VALUES.get(RANDOM.nextInt(VALUES.size())).name();
-            //var taskEntity = TaskEntityFactory.getUserEntity(taskName, taskValue);
-            //taskService.add(taskEntity);
-            //System.out.println("Added entity " + taskEntity);
-      }
+    @Scheduled(fixedDelay = 100, timeUnit = TimeUnit.SECONDS)
+    void generateTasks() {
+        int value = atomicInteger.incrementAndGet();
+        String taskName = "Task" + value;
+        String taskValue = VALUES.get(RANDOM.nextInt(VALUES.size())).name();
+        //var taskEntity = TaskEntityFactory.getUserEntity(taskName, taskValue);
+        //taskService.add(taskEntity);
+        //System.out.println("Added entity " + taskEntity);
+    }
 }

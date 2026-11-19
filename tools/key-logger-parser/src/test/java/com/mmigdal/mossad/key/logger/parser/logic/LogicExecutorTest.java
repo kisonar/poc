@@ -22,51 +22,51 @@ import static com.mmigdal.mossad.key.logger.parser.logic.others.TestingConfigura
 @Disabled
 public class LogicExecutorTest {
 
-      private static final Logger LOG = Logger.getLogger(LogicExecutorTest.class.getName());
-      private long startTime;
+    private static final Logger LOG = Logger.getLogger(LogicExecutorTest.class.getName());
+    private long startTime;
 
-      @BeforeEach
-      public void recordStartTime() {
-            startTime = getTime();
-      }
+    @BeforeEach
+    public void recordStartTime() {
+        startTime = getTime();
+    }
 
-       @AfterEach
-       public void recordEndTime() {
-             var endTime = getTime();
-             LOG.info("Execution took: %d ms".formatted((endTime - startTime)));
-       }
+    @AfterEach
+    public void recordEndTime() {
+        var endTime = getTime();
+        LOG.info("Execution took: %d ms".formatted((endTime - startTime)));
+    }
 
-       @EnabledOnOs(OS.LINUX)
-       @Test
-       public void processFile_whenLinux_executor_parallel() {
-             executeGenericTest(LINUX_PATH_FQ_INPUT, LINUX_PATH_FQ_OUTPUT, ModeExecution.PARALLEL_FIXED);
-       }
+    @EnabledOnOs(OS.LINUX)
+    @Test
+    public void processFile_whenLinux_executor_parallel() {
+        executeGenericTest(LINUX_PATH_FQ_INPUT, LINUX_PATH_FQ_OUTPUT, ModeExecution.PARALLEL_FIXED);
+    }
 
-       @EnabledOnOs(OS.LINUX)
-       @Test
-       public void processFile_whenLinux_executor_single() {
-             executeGenericTest(LINUX_PATH_FQ_INPUT, LINUX_PATH_FQ_OUTPUT, ModeExecution.SINGLE);
-       }
+    @EnabledOnOs(OS.LINUX)
+    @Test
+    public void processFile_whenLinux_executor_single() {
+        executeGenericTest(LINUX_PATH_FQ_INPUT, LINUX_PATH_FQ_OUTPUT, ModeExecution.SINGLE);
+    }
 
-       @EnabledOnOs(OS.WINDOWS)
-       @Test
-       public void processFile_whenWindows_executor_single() {
-             executeGenericTest(WIN_PATH_FQ_INPUT, WIN_PATH_FQ_OUTPUT, ModeExecution.SINGLE);
-       }
+    @EnabledOnOs(OS.WINDOWS)
+    @Test
+    public void processFile_whenWindows_executor_single() {
+        executeGenericTest(WIN_PATH_FQ_INPUT, WIN_PATH_FQ_OUTPUT, ModeExecution.SINGLE);
+    }
 
-       @EnabledOnOs(OS.WINDOWS)
-       @Test
-       public void processFile_whenWindows_executor_parallel() {
-             executeGenericTest(WIN_PATH_FQ_INPUT, WIN_PATH_FQ_OUTPUT, ModeExecution.PARALLEL_FIXED);
-       }
+    @EnabledOnOs(OS.WINDOWS)
+    @Test
+    public void processFile_whenWindows_executor_parallel() {
+        executeGenericTest(WIN_PATH_FQ_INPUT, WIN_PATH_FQ_OUTPUT, ModeExecution.PARALLEL_FIXED);
+    }
 
-       private void executeGenericTest(String inputPath, String outputPath, ModeExecution modeExecution) {
-             var logic = LogicFactory.getLogic(ModeRuntime.EXECUTOR, modeExecution);
-             logic.prepare(inputPath, outputPath, YEARS);
-             logic.execute();
-       }
+    private void executeGenericTest(String inputPath, String outputPath, ModeExecution modeExecution) {
+        var logic = LogicFactory.getLogic(ModeRuntime.EXECUTOR, modeExecution);
+        logic.prepare(inputPath, outputPath, YEARS);
+        logic.execute();
+    }
 
-      private long getTime() {
-            return Calendar.getInstance().getTime().getTime();
-      }
+    private long getTime() {
+        return Calendar.getInstance().getTime().getTime();
+    }
 }

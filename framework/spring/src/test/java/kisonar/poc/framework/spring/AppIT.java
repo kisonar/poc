@@ -6,8 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest(classes = App.class)
 public class AppIT {
 
-      @Test
-      public void startup() {
+    @Test
+    public void startup() {
 
-      }
+    }
 }

@@ -18,50 +18,50 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig {
 
-      private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-      private final JwtRequestFilter jwtRequestFilter;
-      private final CustomAuthenticationProvider customAuthenticationProvider;
-      private final UserDetailsService jwtUserDetailsService;
-      private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final JwtRequestFilter jwtRequestFilter;
+    private final CustomAuthenticationProvider customAuthenticationProvider;
+    private final UserDetailsService jwtUserDetailsService;
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-      public WebSecurityConfig(JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint,
-                               JwtRequestFilter jwtRequestFilter,
-                               CustomAuthenticationProvider customAuthenticationProvider,
-                               UserDetailsService jwtUserDetailsService) {
-            this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
-            this.jwtRequestFilter = jwtRequestFilter;
-            this.customAuthenticationProvider = customAuthenticationProvider;
-            this.jwtUserDetailsService = jwtUserDetailsService;
-      }
+    public WebSecurityConfig(JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint,
+                             JwtRequestFilter jwtRequestFilter,
+                             CustomAuthenticationProvider customAuthenticationProvider,
+                             UserDetailsService jwtUserDetailsService) {
+        this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
+        this.jwtRequestFilter = jwtRequestFilter;
+        this.customAuthenticationProvider = customAuthenticationProvider;
+        this.jwtUserDetailsService = jwtUserDetailsService;
+    }
 
-       @Bean
-       public AuthenticationManager authManager(HttpSecurity http) throws Exception {
-             var authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-             authenticationManagerBuilder.userDetailsService(jwtUserDetailsService)
-                     .passwordEncoder(passwordEncoder);
-             authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider);
-             return authenticationManagerBuilder.build();
-       }
+    @Bean
+    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+        var authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+        authenticationManagerBuilder.userDetailsService(jwtUserDetailsService)
+                .passwordEncoder(passwordEncoder);
+        authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider);
+        return authenticationManagerBuilder.build();
+    }
 
-      @Bean
-      public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-            // We don't need CSRF for this example
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        // We don't need CSRF for this example
 
-            httpSecurity
-                    .csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.init(httpSecurity))
-                    .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configure(httpSecurity)).build();
+        httpSecurity
+                .csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.init(httpSecurity))
+                .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configure(httpSecurity)).build();
 
-                    // dont authenticate this particular request
-            //.authorizeRequests().antMatchers("/authenticate").permitAll()
-                    // all other requests need to be authenticated
-            //.anyRequest().authenticated()
-                    // make sure we use stateless session; session won't be used to
-                    // store user's state.
-            //.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
-            //.and().sessionManagement()
-            // .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // dont authenticate this particular request
+        //.authorizeRequests().antMatchers("/authenticate").permitAll()
+        // all other requests need to be authenticated
+        //.anyRequest().authenticated()
+        // make sure we use stateless session; session won't be used to
+        // store user's state.
+        //.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
+        //.and().sessionManagement()
+        // .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-            // Add a filter to validate the tokens with every request
-            return httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class).build();
-      }
+        // Add a filter to validate the tokens with every request
+        return httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class).build();
+    }
 }
