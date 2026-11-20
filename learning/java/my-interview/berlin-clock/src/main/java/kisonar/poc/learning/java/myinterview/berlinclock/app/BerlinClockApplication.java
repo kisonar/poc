@@ -10,7 +10,6 @@ import java.time.LocalTime;
 public class BerlinClockApplication {
 
     private final Converter converter = new Converter();
-
     private static final Color LAMP_OFF = Color.DARK_GRAY;
     private static final Color LAMP_RED = Color.RED;
     private static final Color LAMP_YELLOW = Color.ORANGE;
